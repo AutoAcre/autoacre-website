@@ -1,48 +1,254 @@
 {
-  "nextIndex": 0,
-  "lastPublished": null,
-  "lastPublishedDate": null,
-  "published": [],
+  "nextIndex": 1,
+  "lastPublished": 0,
+  "lastPublishedDate": "2026-04-26",
+  "published": [
+    {
+      "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
+      "date": "2026-04-26",
+      "title": "How Much Does Acreage Mowing Cost in Byron Bay?"
+    }
+  ],
   "topics": [
-    { "title": "How Much Does Acreage Mowing Cost in Byron Bay?", "keyword": "acreage mowing cost Byron Bay", "tag": "Pricing", "img": "hero.png" },
-    { "title": "Autonomous Mowing vs Traditional Ride-On: A Property Owner's Guide", "keyword": "autonomous mowing vs ride-on", "tag": "Comparison", "img": "commercial-hero.png" },
-    { "title": "Managing Holiday Rental Grounds Without a Contractor", "keyword": "holiday rental property mowing Byron Bay", "tag": "Holiday Rental", "img": "aerial-prestige.png" },
-    { "title": "Why Councils Are Switching to Autonomous Mowing", "keyword": "council mowing Northern Rivers", "tag": "Commercial", "img": "commercial-council.png" },
-    { "title": "Steep Block Mowing Solutions for the Northern Rivers Hinterland", "keyword": "steep block mowing Northern Rivers", "tag": "Residential", "img": "hinterland-aerial.png" },
-    { "title": "5 Signs Your Acreage Property Needs a Better Mowing Solution", "keyword": "acreage mowing solution Northern Rivers", "tag": "Maintenance", "img": "problem.png" },
-    { "title": "Acreage Mowing in Bangalow — What Property Owners Need to Know", "keyword": "acreage mowing Bangalow", "tag": "Suburb", "img": "g1-striping.png" },
-    { "title": "The Hidden Cost of Fortnightly Mowing on Lifestyle Properties", "keyword": "fortnightly mowing cost acreage", "tag": "Cost Analysis", "img": "result.png" },
-    { "title": "Autonomous Mowing Subscription Service — Is It Worth It?", "keyword": "autonomous mowing subscription Byron Bay", "tag": "Subscription", "img": "demo-scene.png" },
-    { "title": "Solar Farm Vegetation Management with Autonomous Mowers", "keyword": "solar farm mowing vegetation management", "tag": "Commercial", "img": "commercial-solar.png" },
-    { "title": "Acreage Mowing in Ewingsdale — Prestige Property Grounds Management", "keyword": "acreage mowing Ewingsdale", "tag": "Suburb", "img": "aerial-prestige.png" },
-    { "title": "Acreage Mowing in Newrybar — Lifestyle Property Maintenance Guide", "keyword": "acreage mowing Newrybar", "tag": "Suburb", "img": "hinterland-aerial.png" },
-    { "title": "Acreage Mowing in Mullumbimby — Northern Rivers Property Guide", "keyword": "acreage mowing Mullumbimby", "tag": "Suburb", "img": "g1-wide-paddock.png" },
-    { "title": "Acreage Mowing in Federal — Hinterland Property Maintenance", "keyword": "acreage mowing Federal", "tag": "Suburb", "img": "demo-scene.png" },
-    { "title": "Acreage Mowing in Myocum — Elevated Hinterland Property Care", "keyword": "acreage mowing Myocum", "tag": "Suburb", "img": "aerial-prestige.png" },
-    { "title": "Acreage Mowing in Alstonville — Plateau Property Maintenance", "keyword": "acreage mowing Alstonville", "tag": "Suburb", "img": "g1-striping.png" },
-    { "title": "Acreage Mowing in Tintenbar — Rural Lifestyle Property Guide", "keyword": "acreage mowing Tintenbar", "tag": "Suburb", "img": "g1-wide-paddock.png" },
-    { "title": "Acreage Mowing in Brooklet — Hinterland Grounds Management", "keyword": "acreage mowing Brooklet", "tag": "Suburb", "img": "hinterland-aerial.png" },
-    { "title": "Golf Course Robot Mower Australia — What Superintendents Need to Know", "keyword": "golf course robot mower Australia", "tag": "Commercial", "img": "commercial-golf.png" },
-    { "title": "Resort Grounds Maintenance Byron Bay — The Autonomous Mowing Advantage", "keyword": "resort grounds maintenance Byron Bay", "tag": "Commercial", "img": "commercial-resort.png" },
-    { "title": "School Grounds Maintenance Northern Rivers — A Better Approach", "keyword": "school grounds maintenance Northern Rivers", "tag": "Commercial", "img": "commercial-school.png" },
-    { "title": "Commercial Grounds Maintenance Northern Rivers — Complete Guide", "keyword": "commercial grounds maintenance Northern Rivers", "tag": "Commercial", "img": "commercial-hero.png" },
-    { "title": "Autonomous Mower Dealer Northern Rivers — Buying vs Subscribing", "keyword": "autonomous mower dealer Northern Rivers", "tag": "Commercial", "img": "hilux-trailer.png" },
-    { "title": "How to Manage a Lifestyle Property Without Living On It", "keyword": "lifestyle property mowing Byron Bay hinterland", "tag": "Holiday Rental", "img": "veranda-view.png" },
-    { "title": "Why Absentee Property Owners Are Switching to Autonomous Mowing", "keyword": "absentee owner mowing Byron Bay", "tag": "Holiday Rental", "img": "aerial-prestige.png" },
-    { "title": "Acreage Mowing Byron Shire — A Complete Property Owner's Guide", "keyword": "acreage mowing Byron Shire", "tag": "Regional", "img": "hinterland-aerial.png" },
-    { "title": "Acreage Mowing Northern Rivers — The Ultimate Regional Guide", "keyword": "acreage mowing Northern Rivers", "tag": "Regional", "img": "g1-wide-paddock.png" },
-    { "title": "Zero Turn vs Autonomous Mowing — What's Best for Acreage?", "keyword": "zero turn mowing Byron hinterland", "tag": "Comparison", "img": "commercial-hero.png" },
-    { "title": "Ride-On Mowing Service Byron Bay — Why Autonomous Beats It", "keyword": "ride-on mowing service Byron Bay", "tag": "Comparison", "img": "result.png" },
-    { "title": "How Much Does It Cost to Maintain a 10-Acre Lifestyle Property?", "keyword": "lifestyle property maintenance cost Byron Bay", "tag": "Pricing", "img": "hero.png" },
-    { "title": "Park and Reserve Mowing — How Councils Use Autonomous Technology", "keyword": "council grounds mowing Northern Rivers", "tag": "Commercial", "img": "commercial-park.png" },
-    { "title": "Acreage Mowing in Tyagarah — Coastal Hinterland Property Guide", "keyword": "acreage mowing Tyagarah", "tag": "Suburb", "img": "hinterland-aerial.png" },
-    { "title": "Acreage Mowing in Clunes — Valley Property Maintenance Guide", "keyword": "acreage mowing Clunes", "tag": "Suburb", "img": "g1-striping.png" },
-    { "title": "Acreage Mowing in Teven — Rural Valley Property Guide", "keyword": "acreage mowing Teven", "tag": "Suburb", "img": "g1-wide-paddock.png" },
-    { "title": "Fire Hazard Reduction Mowing — How Autonomous Technology Helps", "keyword": "fire hazard mowing Northern Rivers", "tag": "Safety", "img": "hinterland-aerial.png" },
-    { "title": "Pasture Management for Lifestyle Properties in the Northern Rivers", "keyword": "pasture management lifestyle property Northern Rivers", "tag": "Maintenance", "img": "g1-wide-paddock.png" },
-    { "title": "What Is a PANDAG G1 Autonomous Mower? A Buyer's Guide", "keyword": "PANDAG G1 autonomous mower", "tag": "Product", "img": "g1-closeup.png" },
-    { "title": "How Autonomous Mowing Works — A Simple Explainer for Property Owners", "keyword": "how autonomous mowing works", "tag": "Education", "img": "demo-scene.png" },
-    { "title": "Acreage Mowing in Nashua — Large Block Property Guide", "keyword": "acreage mowing Nashua", "tag": "Suburb", "img": "g1-wide-paddock.png" },
-    { "title": "Acreage Mowing in Eureka — Northern Rivers Rural Property Guide", "keyword": "acreage mowing Eureka", "tag": "Suburb", "img": "hinterland-aerial.png" }
+    {
+      "title": "How Much Does Acreage Mowing Cost in Byron Bay?",
+      "keyword": "acreage mowing cost Byron Bay",
+      "tag": "Pricing",
+      "img": "hero.png"
+    },
+    {
+      "title": "Autonomous Mowing vs Traditional Ride-On: A Property Owner's Guide",
+      "keyword": "autonomous mowing vs ride-on",
+      "tag": "Comparison",
+      "img": "commercial-hero.png"
+    },
+    {
+      "title": "Managing Holiday Rental Grounds Without a Contractor",
+      "keyword": "holiday rental property mowing Byron Bay",
+      "tag": "Holiday Rental",
+      "img": "aerial-prestige.png"
+    },
+    {
+      "title": "Why Councils Are Switching to Autonomous Mowing",
+      "keyword": "council mowing Northern Rivers",
+      "tag": "Commercial",
+      "img": "commercial-council.png"
+    },
+    {
+      "title": "Steep Block Mowing Solutions for the Northern Rivers Hinterland",
+      "keyword": "steep block mowing Northern Rivers",
+      "tag": "Residential",
+      "img": "hinterland-aerial.png"
+    },
+    {
+      "title": "5 Signs Your Acreage Property Needs a Better Mowing Solution",
+      "keyword": "acreage mowing solution Northern Rivers",
+      "tag": "Maintenance",
+      "img": "problem.png"
+    },
+    {
+      "title": "Acreage Mowing in Bangalow — What Property Owners Need to Know",
+      "keyword": "acreage mowing Bangalow",
+      "tag": "Suburb",
+      "img": "g1-striping.png"
+    },
+    {
+      "title": "The Hidden Cost of Fortnightly Mowing on Lifestyle Properties",
+      "keyword": "fortnightly mowing cost acreage",
+      "tag": "Cost Analysis",
+      "img": "result.png"
+    },
+    {
+      "title": "Autonomous Mowing Subscription Service — Is It Worth It?",
+      "keyword": "autonomous mowing subscription Byron Bay",
+      "tag": "Subscription",
+      "img": "demo-scene.png"
+    },
+    {
+      "title": "Solar Farm Vegetation Management with Autonomous Mowers",
+      "keyword": "solar farm mowing vegetation management",
+      "tag": "Commercial",
+      "img": "commercial-solar.png"
+    },
+    {
+      "title": "Acreage Mowing in Ewingsdale — Prestige Property Grounds Management",
+      "keyword": "acreage mowing Ewingsdale",
+      "tag": "Suburb",
+      "img": "aerial-prestige.png"
+    },
+    {
+      "title": "Acreage Mowing in Newrybar — Lifestyle Property Maintenance Guide",
+      "keyword": "acreage mowing Newrybar",
+      "tag": "Suburb",
+      "img": "hinterland-aerial.png"
+    },
+    {
+      "title": "Acreage Mowing in Mullumbimby — Northern Rivers Property Guide",
+      "keyword": "acreage mowing Mullumbimby",
+      "tag": "Suburb",
+      "img": "g1-wide-paddock.png"
+    },
+    {
+      "title": "Acreage Mowing in Federal — Hinterland Property Maintenance",
+      "keyword": "acreage mowing Federal",
+      "tag": "Suburb",
+      "img": "demo-scene.png"
+    },
+    {
+      "title": "Acreage Mowing in Myocum — Elevated Hinterland Property Care",
+      "keyword": "acreage mowing Myocum",
+      "tag": "Suburb",
+      "img": "aerial-prestige.png"
+    },
+    {
+      "title": "Acreage Mowing in Alstonville — Plateau Property Maintenance",
+      "keyword": "acreage mowing Alstonville",
+      "tag": "Suburb",
+      "img": "g1-striping.png"
+    },
+    {
+      "title": "Acreage Mowing in Tintenbar — Rural Lifestyle Property Guide",
+      "keyword": "acreage mowing Tintenbar",
+      "tag": "Suburb",
+      "img": "g1-wide-paddock.png"
+    },
+    {
+      "title": "Acreage Mowing in Brooklet — Hinterland Grounds Management",
+      "keyword": "acreage mowing Brooklet",
+      "tag": "Suburb",
+      "img": "hinterland-aerial.png"
+    },
+    {
+      "title": "Golf Course Robot Mower Australia — What Superintendents Need to Know",
+      "keyword": "golf course robot mower Australia",
+      "tag": "Commercial",
+      "img": "commercial-golf.png"
+    },
+    {
+      "title": "Resort Grounds Maintenance Byron Bay — The Autonomous Mowing Advantage",
+      "keyword": "resort grounds maintenance Byron Bay",
+      "tag": "Commercial",
+      "img": "commercial-resort.png"
+    },
+    {
+      "title": "School Grounds Maintenance Northern Rivers — A Better Approach",
+      "keyword": "school grounds maintenance Northern Rivers",
+      "tag": "Commercial",
+      "img": "commercial-school.png"
+    },
+    {
+      "title": "Commercial Grounds Maintenance Northern Rivers — Complete Guide",
+      "keyword": "commercial grounds maintenance Northern Rivers",
+      "tag": "Commercial",
+      "img": "commercial-hero.png"
+    },
+    {
+      "title": "Autonomous Mower Dealer Northern Rivers — Buying vs Subscribing",
+      "keyword": "autonomous mower dealer Northern Rivers",
+      "tag": "Commercial",
+      "img": "hilux-trailer.png"
+    },
+    {
+      "title": "How to Manage a Lifestyle Property Without Living On It",
+      "keyword": "lifestyle property mowing Byron Bay hinterland",
+      "tag": "Holiday Rental",
+      "img": "veranda-view.png"
+    },
+    {
+      "title": "Why Absentee Property Owners Are Switching to Autonomous Mowing",
+      "keyword": "absentee owner mowing Byron Bay",
+      "tag": "Holiday Rental",
+      "img": "aerial-prestige.png"
+    },
+    {
+      "title": "Acreage Mowing Byron Shire — A Complete Property Owner's Guide",
+      "keyword": "acreage mowing Byron Shire",
+      "tag": "Regional",
+      "img": "hinterland-aerial.png"
+    },
+    {
+      "title": "Acreage Mowing Northern Rivers — The Ultimate Regional Guide",
+      "keyword": "acreage mowing Northern Rivers",
+      "tag": "Regional",
+      "img": "g1-wide-paddock.png"
+    },
+    {
+      "title": "Zero Turn vs Autonomous Mowing — What's Best for Acreage?",
+      "keyword": "zero turn mowing Byron hinterland",
+      "tag": "Comparison",
+      "img": "commercial-hero.png"
+    },
+    {
+      "title": "Ride-On Mowing Service Byron Bay — Why Autonomous Beats It",
+      "keyword": "ride-on mowing service Byron Bay",
+      "tag": "Comparison",
+      "img": "result.png"
+    },
+    {
+      "title": "How Much Does It Cost to Maintain a 10-Acre Lifestyle Property?",
+      "keyword": "lifestyle property maintenance cost Byron Bay",
+      "tag": "Pricing",
+      "img": "hero.png"
+    },
+    {
+      "title": "Park and Reserve Mowing — How Councils Use Autonomous Technology",
+      "keyword": "council grounds mowing Northern Rivers",
+      "tag": "Commercial",
+      "img": "commercial-park.png"
+    },
+    {
+      "title": "Acreage Mowing in Tyagarah — Coastal Hinterland Property Guide",
+      "keyword": "acreage mowing Tyagarah",
+      "tag": "Suburb",
+      "img": "hinterland-aerial.png"
+    },
+    {
+      "title": "Acreage Mowing in Clunes — Valley Property Maintenance Guide",
+      "keyword": "acreage mowing Clunes",
+      "tag": "Suburb",
+      "img": "g1-striping.png"
+    },
+    {
+      "title": "Acreage Mowing in Teven — Rural Valley Property Guide",
+      "keyword": "acreage mowing Teven",
+      "tag": "Suburb",
+      "img": "g1-wide-paddock.png"
+    },
+    {
+      "title": "Fire Hazard Reduction Mowing — How Autonomous Technology Helps",
+      "keyword": "fire hazard mowing Northern Rivers",
+      "tag": "Safety",
+      "img": "hinterland-aerial.png"
+    },
+    {
+      "title": "Pasture Management for Lifestyle Properties in the Northern Rivers",
+      "keyword": "pasture management lifestyle property Northern Rivers",
+      "tag": "Maintenance",
+      "img": "g1-wide-paddock.png"
+    },
+    {
+      "title": "What Is a PANDAG G1 Autonomous Mower? A Buyer's Guide",
+      "keyword": "PANDAG G1 autonomous mower",
+      "tag": "Product",
+      "img": "g1-closeup.png"
+    },
+    {
+      "title": "How Autonomous Mowing Works — A Simple Explainer for Property Owners",
+      "keyword": "how autonomous mowing works",
+      "tag": "Education",
+      "img": "demo-scene.png"
+    },
+    {
+      "title": "Acreage Mowing in Nashua — Large Block Property Guide",
+      "keyword": "acreage mowing Nashua",
+      "tag": "Suburb",
+      "img": "g1-wide-paddock.png"
+    },
+    {
+      "title": "Acreage Mowing in Eureka — Northern Rivers Rural Property Guide",
+      "keyword": "acreage mowing Eureka",
+      "tag": "Suburb",
+      "img": "hinterland-aerial.png"
+    }
   ]
 }
