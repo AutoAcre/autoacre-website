@@ -34,6 +34,57 @@ function httpsPost(url, headers, body) {
   });
 }
 
+// ── Generate 3 FAQ Q&A pairs for the post (for FAQPage schema) ───────────────
+// Returns an array of {q, a} objects. Returns [] on any failure so the post
+// still publishes — graceful degradation.
+async function generateFaqs(topic) {
+  try {
+    const result = await httpsPost(
+      'https://api.anthropic.com/v1/messages',
+      {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      {
+        model: 'claude-sonnet-4-5',
+        max_tokens: 1200,
+        system: `You write FAQ pairs for AutoAcre, an autonomous acreage mowing service in Byron Bay & the Northern Rivers, NSW. Brand: premium, grounded, Australian, NOT tech startup. Owner Ben Bonifant, 0499 649 094. PANDAG G1 mower (25 acres/day, 38° slopes), $600-$800/month residential. Australian spelling. Each answer is 2-3 sentences, factual, specific, and self-contained (a person reading just the answer should understand it without the question). Output ONLY a JSON array of exactly 3 objects: [{"q":"...","a":"..."},{"q":"...","a":"..."},{"q":"...","a":"..."}]. No markdown. No code fences. No prose around the JSON.`,
+        messages: [{
+          role: 'user',
+          content: `Write 3 FAQ pairs that an AI answer engine could cite for this blog post. The questions must be the kinds of questions real Northern Rivers acreage owners ask. Make them specific to the post topic so they reinforce the post's authority.\n\nTitle: ${topic.title}\nTarget keyword: ${topic.keyword}\nCategory: ${topic.tag}\n\nOutput the JSON array directly with no code fences and no surrounding prose.`
+        }]
+      }
+    );
+    if (result.error) throw new Error('Anthropic FAQ error: ' + result.error.message);
+    let txt = (result.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
+    // Strip code fences if the model added them anyway
+    if (txt.startsWith('```')) {
+      const lines = txt.split('\n');
+      lines.shift();
+      if (lines[lines.length - 1].trim().startsWith('```')) lines.pop();
+      txt = lines.join('\n').trim();
+    }
+    const parsed = JSON.parse(txt);
+    if (!Array.isArray(parsed)) throw new Error('FAQ response not an array');
+    return parsed
+      .filter(x => x && typeof x.q === 'string' && typeof x.a === 'string')
+      .slice(0, 3);
+  } catch (e) {
+    console.warn('FAQ generation failed (post will still publish without FAQ schema):', e.message);
+    return [];
+  }
+}
+
+// ── Escape a string for safe embedding in a JSON-LD <script> block ───────────
+function jsonLdEscape(s) {
+  return String(s)
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .replace(/\r?\n/g, ' ')
+    .replace(/<\/script/gi, '<\\/script');
+}
+
 // ── Generate post content via Anthropic ──────────────────────────────────────
 async function generateContent(topic) {
   console.log(`Generating: ${topic.title}`);
@@ -116,7 +167,75 @@ function buildPostHtml(post) {
   <link rel="canonical" href="https://autoacre.com.au/${post.slug}.html">
   <meta property="og:title" content="${post.title}"><meta property="og:description" content="${post.excerpt}">
   <meta property="og:image" content="./img/og-image.png"><meta property="og:url" content="https://autoacre.com.au/${post.slug}.html"><meta property="og:type" content="article">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${post.title}","description":"${post.excerpt}","author":{"@type":"Person","name":"Ben Bonifant"},"publisher":{"@type":"Organization","name":"AutoAcre","url":"https://autoacre.com.au"},"datePublished":"${post.date}","keywords":"${post.keyword}"}<\/script>
+  <script type="application/ld+json">${(() => {
+    const articleId = `https://autoacre.com.au/${post.slug}.html#article`;
+    const pageId = `https://autoacre.com.au/${post.slug}.html#webpage`;
+    const orgId = "https://autoacre.com.au/#organization";
+    const personId = "https://autoacre.com.au/#ben-bonifant";
+    const websiteId = "https://autoacre.com.au/#website";
+    const graph = [
+      {
+        "@type": "WebPage",
+        "@id": pageId,
+        "url": `https://autoacre.com.au/${post.slug}.html`,
+        "name": post.title,
+        "description": post.excerpt,
+        "inLanguage": "en-AU",
+        "isPartOf": { "@id": websiteId },
+        "primaryImageOfPage": `https://autoacre.com.au/img/${post.img}`,
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".page-hero-text h1", ".page-hero-text p", ".pb h2", ".pb p"]
+        }
+      },
+      {
+        "@type": "Article",
+        "@id": articleId,
+        "headline": post.title,
+        "description": post.excerpt,
+        "articleSection": post.tag,
+        "keywords": post.keyword,
+        "wordCount": post.wordCount || undefined,
+        "datePublished": post.date,
+        "dateModified": post.date,
+        "inLanguage": "en-AU",
+        "image": `https://autoacre.com.au/img/${post.img}`,
+        "author": { "@id": personId },
+        "publisher": { "@id": orgId },
+        "mainEntityOfPage": { "@id": pageId },
+        "isPartOf": { "@id": websiteId },
+        "about": { "@id": orgId },
+        "mentions": [
+          { "@id": orgId },
+          { "@id": "https://autoacre.com.au/#service-residential" },
+          { "@id": "https://autoacre.com.au/#service-commercial" },
+          { "@id": "https://autoacre.com.au/#product-pandag-g1" }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoacre.com.au/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://autoacre.com.au/blog.html" },
+          { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://autoacre.com.au/${post.slug}.html` }
+        ]
+      }
+    ];
+    if (Array.isArray(post.faqs) && post.faqs.length) {
+      graph.push({
+        "@type": "FAQPage",
+        "@id": `https://autoacre.com.au/${post.slug}.html#faq`,
+        "isPartOf": { "@id": pageId },
+        "about": { "@id": orgId },
+        "mainEntity": post.faqs.map(f => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a }
+        }))
+      });
+    }
+    return JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
+  })()}<\/script>
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -146,6 +265,14 @@ ${SITE_HEADER}
         <div class="pb">${post.content}</div>
       </div>
     </div></section>
+    ${(Array.isArray(post.faqs) && post.faqs.length) ? `<section class="section section--alt"><div class="container">
+      <div style="max-width:780px;margin:0 auto;">
+        <h2 style="font-size:26px;font-weight:600;margin:0 0 1em;color:#2D2D2D;">Frequently asked questions</h2>
+        <style>.post-faq{padding:1.3em 0;border-bottom:1px solid #E8E8E0}.post-faq:last-child{border-bottom:none}.post-faq .q{font-size:18px;font-weight:600;margin:0 0 0.4em;color:#2D2D2D}.post-faq .a{font-size:16px;line-height:1.7;color:#444;margin:0}</style>
+        ${post.faqs.map(f => `<div class="post-faq"><p class="q">${f.q}</p><p class="a">${f.a}</p></div>`).join('')}
+        <p style="margin-top:1.6em;font-size:15px;color:#666;">More answers in the <a href="faq.html" style="color:#7A8B2D;">AutoAcre FAQ</a>, or browse the <a href="glossary.html" style="color:#7A8B2D;">glossary</a>.</p>
+      </div>
+    </div></section>` : ''}
     <section class="cta-banner"><div class="container">
       <h2>Ready to transform your property?</h2>
       <p>Book an on-site demonstration and see the PANDAG G1 handle your terrain. $350–$450 credited to your first month.</p>
@@ -229,6 +356,9 @@ function buildSitemap(published) {
     ['https://autoacre.com.au/blog.html', '0.9', 'weekly'],
     ['https://autoacre.com.au/demo.html', '0.8', 'monthly'],
     ['https://autoacre.com.au/quote.html', '0.8', 'monthly'],
+    ['https://autoacre.com.au/faq.html', '0.9', 'monthly'],
+    ['https://autoacre.com.au/glossary.html', '0.8', 'monthly'],
+    ['https://autoacre.com.au/facts.html', '0.8', 'monthly'],
   ];
   const suburbs = ['bangalow','ewingsdale','newrybar','alstonville','teven','tintenbar','brooklet','clunes','nashua','eureka','federal','myocum','tyagarah','mullumbimby'];
   const suburbUrls = suburbs.map(s => [`https://autoacre.com.au/mowing-${s}.html`, '0.8', 'monthly']);
@@ -251,8 +381,10 @@ async function main() {
   const topic = queue.topics[queue.nextIndex];
   console.log(`Publishing topic ${queue.nextIndex + 1}/${queue.topics.length}: ${topic.title}`);
 
-  // Generate content
+  // Generate content + paired FAQs (for FAQPage schema)
   const content = await generateContent(topic);
+  const faqs = await generateFaqs(topic);
+  console.log(`Generated ${faqs.length} FAQ pair(s) for schema enrichment`);
 
   // Build post object
   const today = new Date().toISOString().split('T')[0];
@@ -266,6 +398,8 @@ async function main() {
     content,
     excerpt: words.slice(0, 30).join(' ') + '…',
     readTime: Math.max(4, Math.round(words.length / 200)),
+    wordCount: words.length,
+    faqs,
     date: today
   };
 

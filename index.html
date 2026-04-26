@@ -15,32 +15,270 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_AU">
   
-  <!-- JSON-LD: LocalBusiness -->
+  <!-- JSON-LD: Canonical Entity Graph (Knowledge Graph for AI answer engines) -->
+  <!-- Every other page on the site references these entities by @id. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "AutoAcre",
-    "description": "Autonomous acreage mowing and grounds management for lifestyle properties, councils, schools and estates across the Northern Rivers, NSW.",
-    "url": "https://autoacre.com.au",
-    "telephone": "+61499649094",
-    "email": "ben@autoacre.com.au",
-    "founder": {
-      "@type": "Person",
-      "name": "Ben Bonifant"
-    },
-    "areaServed": [
-      {"@type": "City", "name": "Byron Bay"},
-      {"@type": "City", "name": "Bangalow"},
-      {"@type": "City", "name": "Newrybar"},
-      {"@type": "City", "name": "Ewingsdale"}
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "NSW",
-      "addressCountry": "AU"
-    },
-    "sameAs": []
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://autoacre.com.au/#organization",
+        "name": "AutoAcre",
+        "alternateName": "AutoAcre — Autonomous Acreage Management",
+        "legalName": "AutoAcre",
+        "description": "AutoAcre is the autonomous acreage mowing service for the Northern Rivers, NSW. We provide daily robotic mowing on subscription for lifestyle properties, councils, schools, resorts and commercial estates using the PANDAG G1 robotic mower platform.",
+        "url": "https://autoacre.com.au/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://autoacre.com.au/#logo",
+          "url": "https://autoacre.com.au/img/logo.png",
+          "caption": "AutoAcre — Autonomous Acreage Management"
+        },
+        "image": "https://autoacre.com.au/img/og-image.png",
+        "telephone": "+61499649094",
+        "email": "ben@autoacre.com.au",
+        "priceRange": "$600-$800/month",
+        "currenciesAccepted": "AUD",
+        "paymentAccepted": "Credit Card, Bank Transfer",
+        "founder": { "@id": "https://autoacre.com.au/#ben-bonifant" },
+        "founderOf": { "@id": "https://autoacre.com.au/#organization" },
+        "knowsAbout": [
+          "autonomous mowing",
+          "robotic mowers",
+          "acreage management",
+          "lifestyle property maintenance",
+          "PANDAG G1 robotic mower",
+          "commercial grounds management",
+          "council vegetation management",
+          "solar farm vegetation management",
+          "Northern Rivers NSW property maintenance",
+          "Byron Bay hinterland",
+          "steep slope mowing"
+        ],
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" },
+          { "@type": "AdministrativeArea", "name": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Byron Bay", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Bangalow", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Newrybar", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Ewingsdale", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Mullumbimby", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Brunswick Heads", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Federal", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Myocum", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Tyagarah", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Brooklet", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Clunes", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Eureka", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Nashua", "containedInPlace": "Byron Shire, NSW" },
+          { "@type": "City", "name": "Teven", "containedInPlace": "Ballina Shire, NSW" },
+          { "@type": "City", "name": "Tintenbar", "containedInPlace": "Ballina Shire, NSW" },
+          { "@type": "City", "name": "Alstonville", "containedInPlace": "Ballina Shire, NSW" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Byron Bay",
+          "addressRegion": "NSW",
+          "postalCode": "2481",
+          "addressCountry": "AU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -28.6474,
+          "longitude": 153.6020
+        },
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "07:00",
+          "closes": "18:00"
+        }],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "AutoAcre Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": { "@id": "https://autoacre.com.au/#service-residential" }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@id": "https://autoacre.com.au/#service-commercial" }
+            }
+          ]
+        },
+        "makesOffer": [
+          { "@id": "https://autoacre.com.au/#service-residential" },
+          { "@id": "https://autoacre.com.au/#service-commercial" }
+        ],
+        "slogan": "Your acreage, always presentable.",
+        "sameAs": [
+          "https://www.google.com/maps/search/AutoAcre+Byron+Bay",
+          "https://www.facebook.com/autoacre",
+          "https://www.instagram.com/autoacre"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://autoacre.com.au/#website",
+        "url": "https://autoacre.com.au/",
+        "name": "AutoAcre",
+        "description": "Autonomous acreage mowing and grounds management for the Northern Rivers, NSW.",
+        "publisher": { "@id": "https://autoacre.com.au/#organization" },
+        "inLanguage": "en-AU",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://autoacre.com.au/blog.html?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://autoacre.com.au/#webpage",
+        "url": "https://autoacre.com.au/",
+        "name": "AutoAcre — Autonomous Acreage Mowing | Byron Bay & Northern Rivers",
+        "isPartOf": { "@id": "https://autoacre.com.au/#website" },
+        "about": { "@id": "https://autoacre.com.au/#organization" },
+        "primaryImageOfPage": { "@id": "https://autoacre.com.au/#logo" },
+        "inLanguage": "en-AU",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero-content", "#problem-heading", "#how-heading"]
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://autoacre.com.au/#ben-bonifant",
+        "name": "Ben Bonifant",
+        "jobTitle": "Founder & Operator",
+        "worksFor": { "@id": "https://autoacre.com.au/#organization" },
+        "telephone": "+61499649094",
+        "email": "ben@autoacre.com.au",
+        "knowsAbout": [
+          "autonomous mowing",
+          "PANDAG G1 robotic mower",
+          "lifestyle property management",
+          "Northern Rivers acreage"
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://autoacre.com.au/#service-residential",
+        "name": "Residential Autonomous Mowing Subscription",
+        "serviceType": "Autonomous Acreage Mowing",
+        "category": "Lawn and Grounds Maintenance",
+        "provider": { "@id": "https://autoacre.com.au/#organization" },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" }
+        ],
+        "audience": {
+          "@type": "PeopleAudience",
+          "audienceType": "Lifestyle acreage property owners (0.5 to 3 acres)"
+        },
+        "description": "Daily autonomous mowing for lifestyle acreage properties from 0.5 to 3 acres. Includes the autonomous mowing unit, all maintenance, blade replacements, firmware updates, weekly photo reports, and a 7-day repair SLA with zero-turn backup. Properties are mowed every day rather than fortnightly, producing consistently manicured grounds.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "AUD",
+          "priceRange": "$600-$800",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "600.00-800.00",
+            "priceCurrency": "AUD",
+            "unitText": "MONTH",
+            "billingDuration": "P1M"
+          },
+          "availability": "https://schema.org/InStock",
+          "areaServed": { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" }
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://autoacre.com.au/#service-commercial",
+        "name": "Commercial Autonomous Mowing — PANDAG G1",
+        "serviceType": "Commercial Grounds Management",
+        "category": "Commercial Vegetation Management",
+        "provider": { "@id": "https://autoacre.com.au/#organization" },
+        "areaServed": [
+          { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" },
+          { "@type": "AdministrativeArea", "name": "New South Wales, Australia" }
+        ],
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "Councils, schools, resorts, golf courses, solar farms, large estates"
+        },
+        "description": "PANDAG G1 robotic mower deployment for commercial properties. Covers up to 25 acres per day, handles slopes up to 38 degrees, and operates autonomously with remote fleet management. Available as managed deployment or dealer purchase.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "AUD",
+          "availability": "https://schema.org/InStock",
+          "areaServed": { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" }
+        }
+      },
+      {
+        "@type": "Product",
+        "@id": "https://autoacre.com.au/#product-pandag-g1",
+        "name": "PANDAG G1 Robotic Mower",
+        "category": "Autonomous Robotic Mower",
+        "description": "Commercial-grade autonomous robotic mower with 25-acre daily capacity, 38-degree slope handling, and GPS-RTK precision navigation. Used by AutoAcre across all Northern Rivers properties.",
+        "brand": { "@type": "Brand", "name": "PANDAG" },
+        "offers": {
+          "@type": "Offer",
+          "seller": { "@id": "https://autoacre.com.au/#organization" },
+          "areaServed": { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" },
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://autoacre.com.au/#homepage-faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does the AutoAcre residential subscription cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Residential subscriptions run between $600 and $800 per month depending on property size and terrain complexity. This covers daily autonomous mowing, weekly photo reports, all maintenance and blade replacements, firmware updates, and a 7-day repair SLA with zero-turn backup. No hidden costs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What size property does AutoAcre service?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AutoAcre's residential subscription covers properties from 0.5 to 3 acres. For larger properties or commercial sites up to 25 acres per day, AutoAcre offers commercial solutions through the PANDAG G1 platform."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What areas does AutoAcre service?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AutoAcre services properties across Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Federal, Myocum, Tyagarah, Brooklet, Clunes, Eureka, Nashua, Teven, Tintenbar, Alstonville and the broader Northern Rivers hinterland in NSW, Australia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if the autonomous mower breaks down?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every AutoAcre residential subscription includes a 7-day repair SLA. If the autonomous unit needs attention, AutoAcre repairs or replaces it within seven days and sends a zero-turn mower and operator to maintain the property in the meantime at no extra cost."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is autonomous mowing safe around children and pets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. AutoAcre's autonomous mowing units have collision detection, lift sensors, and boundary systems. They operate at low speeds and stop immediately on contact with an obstacle. Exclusion zones for play areas and garden beds are configured during installation."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
@@ -394,6 +632,14 @@
           <ul>
             <li><a href="about.html">About</a></li>
             <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Knowledge</h4>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="facts.html">Facts &amp; Figures</a></li>
           </ul>
         </div>
         <div class="footer-col">
