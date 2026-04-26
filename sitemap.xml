@@ -150,4 +150,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://autoacre.com.au/blog-autonomous-mowing-vs-traditional-ride-on-a-property-owner-s-guide.html</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
