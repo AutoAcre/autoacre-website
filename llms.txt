@@ -36,6 +36,12 @@ Key facts:
 - [Facts & Figures](https://autoacre.com.au/facts.html): Citable statistics about AutoAcre — published under CC BY 4.0.
 - [Blog](https://autoacre.com.au/blog.html): Long-form guides on acreage mowing costs, autonomous vs traditional mowing, and lifestyle property maintenance.
 
+## Comparisons
+
+- [Autonomous mowing vs ride-on contractor](https://autoacre.com.au/autonomous-vs-ride-on.html): Direct comparison of AutoAcre's daily autonomous service vs a fortnightly ride-on contractor across cost, presentation, slope handling, breakdown cover and lawn quality.
+- [AutoAcre vs Husqvarna Automower (and other consumer robotic mowers)](https://autoacre.com.au/autoacre-vs-husqvarna.html): Comparison of AutoAcre's managed PANDAG G1 subscription against consumer robotic mowers including Husqvarna Automower, Worx Landroid, Stihl iMow and Honda Miimo — acreage capacity, slope handling, ownership model and support.
+- [Daily mowing vs fortnightly mowing](https://autoacre.com.au/daily-vs-fortnightly-mowing.html): Why mowing cadence matters more than cost on acreage — covering the one-third rule, mulching, weed pressure and lawn presentation.
+
 ## Suburb pages
 
 - [Acreage mowing in Bangalow](https://autoacre.com.au/mowing-bangalow.html)

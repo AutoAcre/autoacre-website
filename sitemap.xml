@@ -61,6 +61,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://autoacre.com.au/autonomous-vs-ride-on.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://autoacre.com.au/autoacre-vs-husqvarna.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://autoacre.com.au/daily-vs-fortnightly-mowing.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://autoacre.com.au/mowing-bangalow.html</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
