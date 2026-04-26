@@ -1,0 +1,35 @@
+name: Auto Publish Blog Post
+
+on:
+  schedule:
+    - cron: '0 2 */7 * *'  # Every 7 days at 2am UTC (12pm AEST)
+  workflow_dispatch:        # Also allows manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write           # Required so the action can push commits back to the repo
+
+jobs:
+  publish-post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate and publish blog post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node generate-post.js
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "AutoAcre Blog Agent"
+          git config user.email "ben@autoacre.com.au"
+          git add -A
+          git diff --staged --quiet || git commit -m "Auto publish: $(node -e "const q=require('./posts-queue.json'); console.log(q.topics[q.lastPublished] ? q.topics[q.lastPublished].title : 'blog post')")"
+          git push
