@@ -13,37 +13,140 @@
   <meta property="og:type" content="website">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "AutoAcre Acreage Mowing Newrybar",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "AutoAcre",
-      "telephone": "+61499649094",
-      "email": "ben@autoacre.com.au",
-      "url": "https://autoacre.com.au",
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "NSW",
-        "addressCountry": "AU"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://autoacre.com.au/mowing-newrybar.html#webpage",
+      "url": "https://autoacre.com.au/mowing-newrybar.html",
+      "name": "Acreage Mowing Newrybar | AutoAcre",
+      "description": "Daily autonomous acreage mowing for lifestyle properties in Newrybar, Byron Shire, NSW.",
+      "inLanguage": "en-AU",
+      "isPartOf": {
+        "@id": "https://autoacre.com.au/#website"
+      },
+      "about": {
+        "@id": "https://autoacre.com.au/#organization"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".page-hero-text h1",
+          ".page-hero-text p",
+          ".faq-answer-inner"
+        ]
       }
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "Newrybar",
-      "containedInPlace": {
-        "@type": "AdministrativeArea",
-        "name": "Byron Shire, NSW"
+    {
+      "@type": "Service",
+      "@id": "https://autoacre.com.au/mowing-newrybar.html#service",
+      "name": "Acreage Mowing — Newrybar",
+      "serviceType": "Autonomous Acreage Mowing",
+      "category": "Lawn and Grounds Maintenance",
+      "provider": {
+        "@id": "https://autoacre.com.au/#organization"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Newrybar",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Byron Shire, NSW"
+        }
+      },
+      "audience": {
+        "@type": "PeopleAudience",
+        "audienceType": "Lifestyle acreage property owners in Newrybar (Byron Shire, NSW)"
+      },
+      "description": "Daily autonomous acreage mowing subscription for lifestyle properties in Newrybar, Byron Shire, NSW. Includes the PANDAG G1 robotic mower, all maintenance, weekly photo reports and a 7-day repair SLA with zero-turn backup.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "AUD",
+        "priceRange": "$600-$800",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "600.00-800.00",
+          "priceCurrency": "AUD",
+          "unitText": "MONTH",
+          "billingDuration": "P1M"
+        },
+        "availability": "https://schema.org/InStock",
+        "areaServed": {
+          "@type": "City",
+          "name": "Newrybar"
+        }
       }
     },
-    "description": "Daily autonomous acreage mowing subscription for lifestyle properties in Newrybar. Includes all maintenance, weekly photo reports and 7-day repair SLA.",
-    "offers": {
-      "@type": "Offer",
-      "priceRange": "$600-$800/month",
-      "priceCurrency": "AUD"
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autoacre.com.au/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Residential",
+          "item": "https://autoacre.com.au/residential.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Newrybar",
+          "item": "https://autoacre.com.au/mowing-newrybar.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://autoacre.com.au/mowing-newrybar.html#faq",
+      "isPartOf": {
+        "@id": "https://autoacre.com.au/mowing-newrybar.html#webpage"
+      },
+      "about": {
+        "@id": "https://autoacre.com.au/#organization"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you service all of Newrybar and surrounds?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We service Newrybar and the surrounding Byron Shire area, including Bangalow, Alstonville and Tintenbar. If you're unsure whether your property falls within our service area, call us on 0499 649 094 or request a quote and we'll confirm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the mower handle Newrybar's terrain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The PANDAG G1 is built for gently undulating hinterland with open pasture and wooded edges. It handles slopes up to 38° and navigates complex terrain with precision boundary mapping. We assess every property during a free site visit before deployment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's included in the subscription?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Everything. Daily mowing, weekly photo reports, all maintenance and blade changes, remote monitoring, and a 7-day repair SLA with zero-turn backup at no extra cost. One flat monthly fee, no surprises."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a lock-in contract?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Subscriptions are month-to-month with 30 days notice to cancel. We're confident you'll see the difference in your property within the first month."
+          }
+        }
+      ]
     }
-  }
+  ]
+}
   </script>
 
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
@@ -260,6 +363,24 @@
             </ul>
             <a href="quote.html" class="btn btn--primary btn--large" style="width: 100%;">Get a Personalised Quote</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="newrybar-context-heading">
+      <div class="container">
+        <div style="max-width:820px;margin:0 auto;">
+          <span class="section-label">Local context</span>
+          <h2 id="newrybar-context-heading" style="margin-bottom:0.6em;">Why daily autonomous mowing fits Newrybar</h2>
+          <p style="line-height:1.8;color:var(--color-text-muted);margin-bottom:1.2em;">
+            Newrybar sits approximately 16 km south of Byron Bay in Byron Shire, NSW — a quiet hinterland village with established lifestyle acreage. The terrain is rolling hill country with ridge lines and creek gullies — terrain that genuinely benefits from the PANDAG G1's 38° slope handling, and lifestyle blocks here typically run 1 to 10 acres.
+          </p>
+          <p style="line-height:1.8;color:var(--color-text-muted);margin-bottom:1.2em;">
+            The Northern Rivers climate is subtropical, with high summer rainfall that drives vigorous year-round grass growth. Common acreage grass types across Newrybar — kikuyu, paspalum, couch and buffalo — all benefit from daily mowing rather than a fortnightly contractor cycle: clippings stay short enough to mulch back in, the lawn never gets long enough to clump, and the property looks consistently presentable instead of saw-toothing between visits.
+          </p>
+          <p style="line-height:1.8;color:var(--color-text-muted);margin-bottom:0;">
+            For more detail on how the service works, see the <a href="faq.html" style="color:#7A8B2D;">AutoAcre FAQ</a>, the <a href="glossary.html" style="color:#7A8B2D;">glossary of mowing terms</a>, or the <a href="facts.html" style="color:#7A8B2D;">facts and figures</a> page covering equipment specs and pricing.
+          </p>
         </div>
       </div>
     </section>
