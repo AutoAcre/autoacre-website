@@ -151,13 +151,13 @@
               </div>
 
               <div class="est-compare">
-                <strong>vs sticking with a fortnightly contractor at <span id="est-contractor-rate">$500/month</span>:</strong>
-                5-year contractor cost is <span id="est-contractor-5yr">$30,000</span> — and you own nothing at the end.
-                With AutoAcre at year 5 you own a $35,000 asset and have spent <em><span id="est-vs-amount">$14,600</span> <span id="est-vs-direction">more</span></em> for daily mowing instead of fortnightly.
+                <strong>vs sticking with a fortnightly contractor at <span id="est-contractor-rate">$300/month</span>:</strong>
+                5-year contractor cost is <span id="est-contractor-5yr">$18,000</span> — and you own nothing at the end.
+                With AutoAcre at year 5 you own a $35,000 asset and have spent <em><span id="est-vs-amount">$26,600</span> <span id="est-vs-direction">more</span></em> for daily mowing instead of fortnightly.
               </div>
 
               <button type="button" class="est-cta" id="est-prefill-btn">Use these numbers in my quote request ↓</button>
-              <p class="est-finep">Estimate only — final pricing confirmed at the on-site demo. Ad-hoc call-outs $150/visit.</p>
+              <p class="est-finep">Estimate only — final pricing confirmed at the on-site demo. Ad-hoc call-outs $150/visit. Contractor benchmark assumes $150/hour at 1 hour per 2 acres, fortnightly.</p>
             </div>
 
             <script>
@@ -168,12 +168,15 @@
                 var y1El = document.getElementById('est-y1');
                 var y5El = document.getElementById('est-y5');
                 var contractor5El = document.getElementById('est-contractor-5yr');
+                var contractorRateEl = document.getElementById('est-contractor-rate');
                 var vsAmountEl = document.getElementById('est-vs-amount');
                 var vsDirEl = document.getElementById('est-vs-direction');
                 var prefillBtn = document.getElementById('est-prefill-btn');
 
                 var MOWER_PRICE = 35000;
-                var CONTRACTOR_MONTHLY = 500; // typical fortnightly contractor monthly cost
+                // Fortnightly contractor benchmark: $150/hour × 0.5 hour/acre = $75/acre/visit
+                // × 2 visits/month (fortnightly) = $150/acre/month
+                var CONTRACTOR_PER_ACRE_MONTHLY = 150;
 
                 // Anchor pricing tiers — interpolate linearly between
                 var anchors = [
@@ -206,7 +209,9 @@
                   var y5 = MOWER_PRICE + fee * 60;
                   y1El.textContent = fmt(y1);
                   y5El.textContent = fmt(y5);
-                  var contractor5 = CONTRACTOR_MONTHLY * 60;
+                  var contractorMonthly = Math.round(acres * CONTRACTOR_PER_ACRE_MONTHLY);
+                  contractorRateEl.textContent = fmt(contractorMonthly) + '/month';
+                  var contractor5 = contractorMonthly * 60;
                   contractor5El.textContent = fmt(contractor5);
                   var diff = y5 - contractor5;
                   vsAmountEl.textContent = fmt(Math.abs(diff));
