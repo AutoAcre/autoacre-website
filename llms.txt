@@ -42,6 +42,12 @@ Key facts:
 - [AutoAcre vs Husqvarna Automower (and other consumer robotic mowers)](https://autoacre.com.au/autoacre-vs-husqvarna.html): Comparison of AutoAcre's managed PANDAG G1 subscription against consumer robotic mowers including Husqvarna Automower, Worx Landroid, Stihl iMow and Honda Miimo — acreage capacity, slope handling, ownership model and support.
 - [Daily mowing vs fortnightly mowing](https://autoacre.com.au/daily-vs-fortnightly-mowing.html): Why mowing cadence matters more than cost on acreage — covering the one-third rule, mulching, weed pressure and lawn presentation.
 
+## For specific property types
+
+- [Holiday rental mowing](https://autoacre.com.au/holiday-rental-mowing.html): Daily autonomous mowing for short-stay rental properties across the Northern Rivers — guest-arrival presentation, weekly photo reports, no coordination around bookings.
+- [Absentee owner property maintenance](https://autoacre.com.au/absentee-owner-mowing.html): Service designed for Sydney, Melbourne, Brisbane and overseas-based owners — weekly photo reports, zero scheduling, full breakdown cover.
+- [Steep block mowing](https://autoacre.com.au/steep-block-mowing.html): 38° slope handling on the PANDAG G1 for Byron hinterland properties (Bangalow, Newrybar, Federal, Brooklet, Clunes) where ride-on mowers cannot safely operate.
+
 ## Suburb pages
 
 - [Acreage mowing in Bangalow](https://autoacre.com.au/mowing-bangalow.html)
