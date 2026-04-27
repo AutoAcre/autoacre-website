@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book a Demo — AutoAcre Autonomous Mowing | Byron Bay</title>
-  <meta name="description" content="Book a demonstration mow — $350-$450 flat fee, credited to your first month if you subscribe. On-site demonstration of autonomous acreage mowing. We'll bring the mower to your property in Byron Bay, Bangalow, Newrybar or the Northern Rivers hinterland.">
+  <meta name="description" content="Book a 2.5-hour on-site demonstration of autonomous mowing on your property — flat $387 fee, credited to your first month's management fee if you proceed. Morning (8am) or afternoon (1pm) sessions across Byron Bay, Bangalow, Newrybar and the Northern Rivers hinterland.">
   <link rel="canonical" href="https://autoacre.com.au/demo.html">
   <meta property="og:title" content="Book a Demo — AutoAcre">
-  <meta property="og:description" content="See autonomous mowing in action on your property. $350-$450 demo fee credited to your first month.">
+  <meta property="og:description" content="2.5-hour on-site demonstration of autonomous mowing. $387 flat fee, credited to your first month if you proceed.">
   <meta property="og:image" content="./img/og-image.png">
   <meta property="og:url" content="https://autoacre.com.au/demo.html">
   <meta property="og:type" content="website">
@@ -79,33 +79,33 @@
             <h1>See it on
 your property</h1>
             <p style="color: var(--color-text-muted); margin-bottom: var(--space-4); line-height: 1.8;">
-              We'll bring the autonomous mower to your property and run it for a full day. You'll see exactly how it handles your terrain, how quiet it is, and how it navigates your specific layout.
+              A 2.5-hour on-site demonstration. We bring the PANDAG G1 to your property and run it on your actual terrain. You'll see exactly how it handles your slope, how quiet it is, and how it navigates your specific layout.
             </p>
             <p style="color: var(--color-text); margin-bottom: var(--space-6); font-weight: 600; font-size: var(--text-lg);">
-              $350–$450 flat fee per visit
+              $387 flat fee · 2.5-hour session
             </p>
             <p style="color: var(--color-text-muted); margin-bottom: var(--space-6); line-height: 1.7; font-size: var(--text-sm);">
-              Sign up for a monthly management fee and we'll credit the demo fee to your first month — so it costs you nothing if you proceed.
+              Two sessions available: morning starting at 8am, or afternoon starting at 1pm. The $387 fee is credited to your first month's management fee if you proceed with Buy + Manage.
             </p>
 
             <div style="margin-bottom: var(--space-8);">
-              <h3 style="margin-bottom: var(--space-4);">What's included</h3>
+              <h3 style="margin-bottom: var(--space-4);">What's included in the 2.5 hours</h3>
               <ul class="feature-list">
                 <li>
                   <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Pre-visit property qualification: slope check, RTK signal test, terrain assessment
+                  On-arrival property qualification: slope check, RTK signal test, terrain assessment
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Machine setup and zone mapping on arrival
+                  Machine setup and zone mapping
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Full day autonomous mow on your property
+                  Live autonomous mow demonstration on your terrain
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  End-of-day debrief: GPS coverage map, photos, and subscription discussion
+                  End-of-session debrief: GPS coverage map, photos, Buy + Manage pricing for your property
                 </li>
               </ul>
             </div>
@@ -160,8 +160,8 @@ your property</h1>
                   <label for="demo-interest">Service interest</label>
                   <select id="demo-interest" name="service_interest">
                     <option value="">Select service</option>
-                    <option value="residential">Residential subscription</option>
-                    <option value="commercial">Commercial solution</option>
+                    <option value="residential">Residential Buy + Manage</option>
+                    <option value="commercial">Commercial deployment</option>
                     <option value="both">Both / not sure yet</option>
                   </select>
                 </div>
@@ -171,20 +171,20 @@ your property</h1>
                     <input type="date" id="demo-date" name="preferred_date">
                   </div>
                   <div class="form-group">
-                    <label for="demo-time">Preferred time</label>
-                    <select id="demo-time" name="preferred_time">
-                      <option value="">Select time</option>
-                      <option value="morning">Morning (8am–12pm)</option>
-                      <option value="afternoon">Afternoon (12pm–4pm)</option>
-                      <option value="flexible">Flexible</option>
+                    <label for="demo-time">Session time *</label>
+                    <select id="demo-time" name="preferred_time" required>
+                      <option value="">Select session</option>
+                      <option value="morning-8am">Morning session — starts 8am (2.5 hours)</option>
+                      <option value="afternoon-1pm">Afternoon session — starts 1pm (2.5 hours)</option>
                     </select>
+                    <div class="form-error">Please select a session time</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="demo-message">Anything else?</label>
                   <textarea id="demo-message" name="message" rows="3" placeholder="Tell us about your property, specific areas, or any questions..."></textarea>
                 </div>
-                <button type="submit" class="btn btn--primary btn--large" style="width: 100%;">Book My Free Demo</button>
+                <button type="submit" class="btn btn--primary btn--large" style="width: 100%;">Book My Demo Session</button>
                 <p class="form-note" style="margin-top: var(--space-3); text-align: center;">We'll confirm your demo within 24 hours. Or call <a href="tel:0499649094" style="font-weight: 600;">0499 649 094</a></p>
               </form>
             </div>
