@@ -190,39 +190,53 @@
       <div class="container">
         <div style="max-width:860px;margin:0 auto;">
           <style>
-            .tldr-box { background:#F5F5F0; border-left:3px solid #7A8B2D; padding:1.6em 1.8em; margin: 0 0 2.5em; border-radius: 4px; }
-            .tldr-box h2 { font-size: 18px; font-weight:600; margin: 0 0 0.8em; color: #2D2D2D; }
-            .tldr-box p { font-size: 16px; line-height: 1.75; color: #444; margin: 0 0 0.7em; }
+            /* All colors use site design tokens so the page adapts to light/dark theme */
+            .tldr-box { background: var(--color-surface); border-left: 3px solid var(--color-primary); padding: var(--space-6) var(--space-8); margin: 0 0 var(--space-10); border-radius: var(--radius-sm); }
+            .tldr-box h2 { font-size: var(--text-base); font-weight: 600; margin: 0 0 var(--space-3); color: var(--color-text); font-family: var(--font-body); }
+            .tldr-box p { font-size: var(--text-base); line-height: 1.75; color: var(--color-text); margin: 0 0 var(--space-3); }
             .tldr-box p:last-child { margin: 0; }
-            .tldr-box strong { color: #2D2D2D; }
-            .section-h { font-size: 26px; font-weight:600; margin: 0 0 0.7em; color: #2D2D2D; line-height: 1.3; }
-            .section-p { font-size: 16.5px; line-height: 1.8; color: #444; margin: 0 0 1.2em; }
-            .tier-read { background: #fff; border:1px solid #E8E8E0; border-radius: 8px; padding: 1.4em 1.6em; margin: 0 0 1.2em; }
-            .tier-read h3 { font-size: 19px; font-weight:600; margin: 0 0 0.4em; color: #2D2D2D; }
-            .tier-read .verdict { font-size: 15px; font-weight: 600; color: #7A8B2D; margin: 0 0 0.7em; }
-            .tier-read .verdict.warning { color: #b35a35; }
-            .tier-read p { font-size: 15.5px; line-height: 1.7; color: #444; margin: 0 0 0.6em; }
+            .tldr-box strong { color: var(--color-text); font-weight: 600; }
+            .tldr-box a { color: var(--color-primary); }
+
+            .section-h { font-size: var(--text-lg); font-weight: 600; margin: 0 0 var(--space-3); color: var(--color-text); line-height: 1.3; font-family: var(--font-display); }
+            .section-p { font-size: var(--text-base); line-height: 1.8; color: var(--color-text-muted); margin: 0 0 var(--space-5); }
+            .section-p strong { color: var(--color-text); font-weight: 600; }
+            .section-p a { color: var(--color-primary); }
+
+            .tier-read { background: var(--color-surface-2); border: 1px solid var(--color-divider); border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); margin: 0 0 var(--space-5); }
+            .tier-read h3 { font-size: var(--text-base); font-weight: 600; margin: 0 0 var(--space-2); color: var(--color-text); font-family: var(--font-body); }
+            .tier-read .verdict { font-size: var(--text-sm); font-weight: 600; color: var(--color-primary); margin: 0 0 var(--space-3); }
+            .tier-read .verdict.warning { color: var(--color-text-muted); }
+            .tier-read p { font-size: var(--text-sm); line-height: 1.7; color: var(--color-text-muted); margin: 0 0 var(--space-2); }
             .tier-read p:last-child { margin: 0; }
-            .econ-table { width: 100%; border-collapse: collapse; margin: 1em 0 1.5em; font-size: 14px; }
-            .econ-table th, .econ-table td { padding: 0.7em 0.9em; text-align: left; border-bottom: 1px solid #E8E8E0; }
-            .econ-table th { background: #F5F5F0; font-weight: 600; color: #2D2D2D; font-size: 13px; }
+            .tier-read p strong { color: var(--color-text); font-weight: 600; }
+            .tier-read a { color: var(--color-primary); }
+
+            .econ-table { width: 100%; border-collapse: collapse; margin: var(--space-4) 0 var(--space-6); font-size: var(--text-sm); }
+            .econ-table th, .econ-table td { padding: var(--space-3) var(--space-4); text-align: left; border-bottom: 1px solid var(--color-divider); color: var(--color-text); }
+            .econ-table th { background: var(--color-surface); font-weight: 600; color: var(--color-text); font-size: var(--text-xs); }
             .econ-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
-            .econ-table td.win { color: #7A8B2D; font-weight: 600; }
-            .econ-table td.warn { color: #b35a35; }
-            .caveat-block { padding: 1.1em 0 1.1em; border-bottom: 1px solid #E8E8E0; }
+            .econ-table td.win { color: var(--color-primary); font-weight: 600; }
+
+            .caveat-block { padding: var(--space-5) 0; border-bottom: 1px solid var(--color-divider); }
             .caveat-block:last-child { border-bottom: none; }
-            .caveat-block strong { display: block; font-size: 16px; font-weight: 600; color: #2D2D2D; margin-bottom: 0.3em; }
-            .caveat-block p { font-size: 15.5px; line-height: 1.7; color: #444; margin: 0; }
-            .next-step-box { background: #2D2D2D; color: #fff; padding: 1.8em 2em; border-radius: 8px; margin: 2.5em 0 0; }
-            .next-step-box h2 { color: #fff; font-size: 22px; font-weight: 600; margin: 0 0 0.6em; }
-            .next-step-box p { color: #ddd; font-size: 16px; line-height: 1.7; margin: 0 0 1em; }
-            .next-step-box .btn-row { display: flex; gap: 0.8em; flex-wrap: wrap; }
-            .next-step-box a { background: #7A8B2D; color: #fff; padding: 0.8em 1.4em; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 15px; }
-            .next-step-box a.secondary { background: transparent; border: 1px solid #888; color: #fff; }
-            .ddec-faq { padding: 1.3em 0; border-bottom: 1px solid #E8E8E0; }
+            .caveat-block strong { display: block; font-size: var(--text-base); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-2); }
+            .caveat-block p { font-size: var(--text-sm); line-height: 1.7; color: var(--color-text-muted); margin: 0; }
+            .caveat-block p strong { display: inline; margin-bottom: 0; }
+            .caveat-block a { color: var(--color-primary); }
+
+            .next-step-box { background: var(--color-charcoal); color: var(--color-text-inverse); padding: var(--space-8) var(--space-10); border-radius: var(--radius-md); margin: var(--space-10) 0 0; }
+            .next-step-box h2 { color: var(--color-text-inverse); font-size: var(--text-lg); font-weight: 600; margin: 0 0 var(--space-3); font-family: var(--font-display); }
+            .next-step-box p { color: var(--color-text-inverse); opacity: 0.85; font-size: var(--text-base); line-height: 1.7; margin: 0 0 var(--space-5); }
+            .next-step-box .btn-row { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+            .next-step-box a { background: var(--color-primary); color: var(--color-text-inverse); padding: var(--space-3) var(--space-5); border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; font-size: var(--text-sm); }
+            .next-step-box a.secondary { background: transparent; border: 1px solid rgba(255, 255, 255, 0.3); color: var(--color-text-inverse); }
+            .next-step-box a:hover { background: var(--color-primary-hover); }
+
+            .ddec-faq { padding: var(--space-5) 0; border-bottom: 1px solid var(--color-divider); }
             .ddec-faq:last-child { border-bottom: none; }
-            .ddec-faq .q { font-size: 17px; font-weight:600; margin: 0 0 0.4em; color: #2D2D2D; }
-            .ddec-faq .a { font-size: 15.5px; line-height: 1.75; color: #444; margin: 0; }
+            .ddec-faq .q { font-size: var(--text-base); font-weight: 600; margin: 0 0 var(--space-2); color: var(--color-text); }
+            .ddec-faq .a { font-size: var(--text-sm); line-height: 1.75; color: var(--color-text-muted); margin: 0; }
           </style>
 
           <div class="tldr-box">
@@ -265,7 +279,7 @@
             </tbody>
           </table>
           </div>
-          <p class="section-p" style="font-size:13.5px;color:#666;">Negative numbers mean AutoAcre is cheaper than the fortnightly contractor over 8 years.</p>
+          <p class="section-p" style="font-size: var(--text-xs); color: var(--color-text-faint); margin-top: calc(var(--space-3) * -1);">Negative numbers mean AutoAcre is cheaper than the fortnightly contractor over 8 years.</p>
 
           <h2 class="section-h">Tier-by-tier read</h2>
 
@@ -350,7 +364,7 @@
 
           <h2 class="section-h">When AutoAcre's offer probably isn't right for you</h2>
           <p class="section-p">An honest decision document has to include the no-cases. The AutoAcre Buy + Manage offer is probably wrong for you if:</p>
-          <ul style="font-size:16.5px;line-height:1.85;color:#444;margin: 0 0 1.6em; padding-left: 1.4em;">
+          <ul style="font-size: var(--text-base); line-height: 1.85; color: var(--color-text-muted); margin: 0 0 var(--space-6); padding-left: var(--space-6);">
             <li><strong>Your mowable area is under 4 acres.</strong> The economics don't work. Buy a consumer robotic mower or stick with a contractor.</li>
             <li><strong>You can't or won't fund $33,490 up-front.</strong> Financing options exist, but if the year 1 cash gap genuinely doesn't work for you, the offer doesn't either.</li>
             <li><strong>You enjoy mowing.</strong> Some lifestyle owners genuinely like the time on the ride-on. AutoAcre takes that away. If that's you, keep your ride-on.</li>
@@ -373,7 +387,7 @@
 
           <h2 class="section-h" style="margin-top: 3.5em;">Related</h2>
           <p class="section-p">Decision-support pages that go deeper on specific angles:</p>
-          <ul style="font-size:16.5px;line-height:1.85;color:#444;margin: 0 0 1.6em; padding-left: 1.4em;">
+          <ul style="font-size: var(--text-base); line-height: 1.85; color: var(--color-text-muted); margin: 0 0 var(--space-6); padding-left: var(--space-6);">
             <li><a href="autonomous-vs-ride-on.html">Autonomous mowing vs ride-on contractor</a> — the head-to-head on cost, presentation, slope handling and breakdown cover.</li>
             <li><a href="autoacre-vs-husqvarna.html">AutoAcre vs Husqvarna Automower</a> — for owners considering a consumer robotic mower instead.</li>
             <li><a href="daily-vs-fortnightly-mowing.html">Frequent mowing vs fortnightly mowing</a> — why cadence matters more than cost on acreage.</li>
