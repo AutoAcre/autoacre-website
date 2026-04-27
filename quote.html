@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get a Quote — AutoAcre Autonomous Mowing | Byron Bay &amp; Northern Rivers</title>
-  <meta name="description" content="Get a personalised quote for autonomous acreage mowing. Buy + Manage offer: PANDAG G1 sale at $35,000 + $80–$410/mo management. Commercial fleet solutions available. Byron Bay, Northern Rivers.">
+  <meta name="description" content="Get a personalised quote for autonomous acreage mowing. Buy + Manage offer: PANDAG G1 sale at $33,490 + $260–$650/mo management. Commercial fleet solutions available. Byron Bay, Northern Rivers.">
   <link rel="canonical" href="https://autoacre.com.au/quote.html">
   <meta property="og:title" content="Get a Quote — AutoAcre Autonomous Mowing">
-  <meta property="og:description" content="Personalised quote for autonomous mowing. Buy + Manage from $35K + $80/mo management. Commercial fleet solutions. Northern Rivers.">
+  <meta property="og:description" content="Personalised quote for autonomous mowing. Buy + Manage: $33,490 + $260–$650/mo management. Commercial fleet solutions. Northern Rivers.">
   <meta property="og:image" content="./img/og-image.png">
   <meta property="og:url" content="https://autoacre.com.au/quote.html">
   <meta property="og:type" content="website">
@@ -117,23 +117,23 @@
             <div class="est-card">
               <span class="est-label">Instant Estimate</span>
               <h3>Estimate your numbers</h3>
-              <p class="sub">Move the slider to your mowable area. The numbers update live — covering Year 1 outlay, 5-year total, and how that compares to staying with a fortnightly contractor.</p>
+              <p class="sub">Move the slider to your mowable area. The numbers update live — Year 1 outlay, 8-year total, and how that compares to a fortnightly contractor over the same window.</p>
 
               <div class="est-slider-row">
                 <span>Mowable area</span>
-                <span class="val" id="est-area-display">2.0 acres</span>
+                <span class="val" id="est-area-display">5.0 acres</span>
               </div>
-              <input type="range" id="est-slider" class="est-slider" min="0.5" max="5" step="0.1" value="2" aria-label="Mowable area in acres">
-              <div class="est-ticks"><span>0.5 ac</span><span>2.5 ac</span><span>5 ac</span></div>
+              <input type="range" id="est-slider" class="est-slider" min="4" max="10" step="0.5" value="5" aria-label="Mowable area in acres">
+              <div class="est-ticks"><span>4 ac</span><span>7 ac</span><span>10 ac</span></div>
 
               <div class="est-pricing-grid">
                 <div class="est-tile">
                   <div class="lab">Mower (one-time)</div>
-                  <div class="num">$35,000</div>
+                  <div class="num">$33,490</div>
                 </div>
                 <div class="est-tile">
                   <div class="lab">Monthly management</div>
-                  <div class="num"><span id="est-monthly">$160</span><span class="unit">/mo</span></div>
+                  <div class="num"><span id="est-monthly">$330</span><span class="unit">/mo</span></div>
                 </div>
               </div>
 
@@ -141,23 +141,24 @@
                 <div class="grid">
                   <div>
                     <div class="lab">Year 1 total</div>
-                    <div class="num" id="est-y1">$36,920</div>
+                    <div class="num" id="est-y1">$37,450</div>
                   </div>
                   <div>
-                    <div class="lab">5-year total</div>
-                    <div class="num" id="est-y5">$44,600</div>
+                    <div class="lab">8-year total</div>
+                    <div class="num" id="est-y8">$65,170</div>
                   </div>
                 </div>
               </div>
 
               <div class="est-compare">
-                <strong>vs sticking with a fortnightly contractor at <span id="est-contractor-rate">$300/month</span>:</strong>
-                5-year contractor cost is <span id="est-contractor-5yr">$18,000</span> — and you own nothing at the end.
-                With AutoAcre at year 5 you own a $35,000 asset and have spent <em><span id="est-vs-amount">$26,600</span> <span id="est-vs-direction">more</span></em> for daily mowing instead of fortnightly.
+                <strong>vs a fortnightly contractor at <span id="est-contractor-rate">$750/month</span>:</strong>
+                8-year contractor cost is <span id="est-contractor-8yr">$72,000</span> — and you own nothing at the end.
+                With AutoAcre over 8 years you spend <em><span id="est-vs-amount">$6,830</span> <span id="est-vs-direction">less</span></em> on cash AND own a mower worth ~$6,700 at year 8 (~20% residual).
+                Net of residual, AutoAcre is <strong><span id="est-net-amount">$13,530</span> <span id="est-net-direction">cheaper</span></strong> — with ~3× the mowing frequency (≈78 mows/year vs ≈26).
               </div>
 
               <button type="button" class="est-cta" id="est-prefill-btn">Use these numbers in my quote request ↓</button>
-              <p class="est-finep">Estimate only — final pricing confirmed at the on-site demo. Ad-hoc call-outs $150/visit. Contractor benchmark assumes $150/hour at 1 hour per 2 acres, fortnightly.</p>
+              <p class="est-finep">Estimate only — final pricing confirmed at the on-site demo. Ad-hoc call-outs $150/visit. Contractor benchmark assumes $150/hour at 1 hour per 2 acres, fortnightly. Residual is an estimate at year 8 — secondary market for commercial robotic mowers in Australia is thin.</p>
             </div>
 
             <script>
@@ -166,21 +167,25 @@
                 var areaDisplay = document.getElementById('est-area-display');
                 var monthlyEl = document.getElementById('est-monthly');
                 var y1El = document.getElementById('est-y1');
-                var y5El = document.getElementById('est-y5');
-                var contractor5El = document.getElementById('est-contractor-5yr');
+                var y8El = document.getElementById('est-y8');
+                var contractor8El = document.getElementById('est-contractor-8yr');
                 var contractorRateEl = document.getElementById('est-contractor-rate');
                 var vsAmountEl = document.getElementById('est-vs-amount');
                 var vsDirEl = document.getElementById('est-vs-direction');
+                var netAmountEl = document.getElementById('est-net-amount');
+                var netDirEl = document.getElementById('est-net-direction');
                 var prefillBtn = document.getElementById('est-prefill-btn');
 
-                var MOWER_PRICE = 35000;
+                var MOWER_PRICE = 33490;
+                var RESIDUAL_VALUE = 6700; // ~20% of mower price at year 8
                 // Fortnightly contractor benchmark: $150/hour × 0.5 hour/acre = $75/acre/visit
                 // × 2 visits/month (fortnightly) = $150/acre/month
                 var CONTRACTOR_PER_ACRE_MONTHLY = 150;
+                var ANALYSIS_MONTHS = 96; // 8 years
 
                 // Anchor pricing tiers — interpolate linearly between
                 var anchors = [
-                  [0.5, 40], [1, 80], [2, 160], [3, 245], [4, 325], [5, 410]
+                  [4, 260], [5, 330], [6, 390], [7, 455], [8, 520], [9, 585], [10, 650]
                 ];
 
                 function feeForAcres(acres) {
@@ -203,19 +208,24 @@
                 function update() {
                   var acres = parseFloat(slider.value);
                   var fee = feeForAcres(acres);
-                  areaDisplay.textContent = acres.toFixed(1) + (Math.abs(acres - 1.0) < 0.05 ? ' acre' : ' acres');
+                  areaDisplay.textContent = acres.toFixed(1) + ' acres';
                   monthlyEl.textContent = fmt(fee);
                   var y1 = MOWER_PRICE + fee * 12;
-                  var y5 = MOWER_PRICE + fee * 60;
+                  var y8 = MOWER_PRICE + fee * ANALYSIS_MONTHS;
                   y1El.textContent = fmt(y1);
-                  y5El.textContent = fmt(y5);
+                  y8El.textContent = fmt(y8);
                   var contractorMonthly = Math.round(acres * CONTRACTOR_PER_ACRE_MONTHLY);
                   contractorRateEl.textContent = fmt(contractorMonthly) + '/month';
-                  var contractor5 = contractorMonthly * 60;
-                  contractor5El.textContent = fmt(contractor5);
-                  var diff = y5 - contractor5;
-                  vsAmountEl.textContent = fmt(Math.abs(diff));
-                  vsDirEl.textContent = diff >= 0 ? 'more' : 'less';
+                  var contractor8 = contractorMonthly * ANALYSIS_MONTHS;
+                  contractor8El.textContent = fmt(contractor8);
+                  // Cash diff (positive = AutoAcre more)
+                  var cashDiff = y8 - contractor8;
+                  vsAmountEl.textContent = fmt(Math.abs(cashDiff));
+                  vsDirEl.textContent = cashDiff >= 0 ? 'more' : 'less';
+                  // Net of residual
+                  var netDiff = cashDiff - RESIDUAL_VALUE;
+                  netAmountEl.textContent = fmt(Math.abs(netDiff));
+                  netDirEl.textContent = netDiff >= 0 ? 'more expensive' : 'cheaper';
                 }
 
                 slider.addEventListener('input', update);
@@ -226,11 +236,9 @@
                   var sel = document.getElementById('quote-size');
                   if (sel) {
                     var val = '';
-                    if (acres < 1) val = 'under-1';
-                    else if (acres < 2) val = '1-2';
-                    else if (acres < 3) val = '2-3';
-                    else if (acres <= 5) val = '3-5';
-                    else val = '5+';
+                    if (acres <= 5) val = '4-5';
+                    else if (acres <= 7) val = '6-7';
+                    else val = '8-10';
                     sel.value = val;
                     // Briefly highlight to show prefill landed
                     sel.style.boxShadow = '0 0 0 3px rgba(122, 139, 45, 0.3)';
@@ -247,7 +255,7 @@
               <ul class="feature-list">
                 <li>
                   <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <strong>Residential:</strong>&nbsp;$80–$410/month management fee for properties 0.5–5 acres
+                  <strong>Residential:</strong>&nbsp;$260–$650/month management fee for properties 4–10 acres
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -289,11 +297,11 @@
                     <label for="quote-size">Property size *</label>
                     <select id="quote-size" name="property_size" required>
                       <option value="">Select size</option>
-                      <option value="under-1">Under 1 acre</option>
-                      <option value="1-2">1–2 acres</option>
-                      <option value="2-3">2–3 acres</option>
-                      <option value="3-5">3–5 acres</option>
-                      <option value="5+">5+ acres</option>
+                      <option value="4-5">4–5 acres</option>
+                      <option value="6-7">6–7 acres</option>
+                      <option value="8-10">8–10 acres</option>
+                      <option value="under-4">Under 4 acres (we'll suggest alternatives)</option>
+                      <option value="over-10">Over 10 acres (commercial scope)</option>
                     </select>
                     <div class="form-error">Please select a property size</div>
                   </div>
