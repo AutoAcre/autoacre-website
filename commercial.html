@@ -13,14 +13,103 @@
   <meta property="og:type" content="website">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "AutoAcre Commercial Autonomous Mowing",
-    "provider": {"@type": "LocalBusiness", "name": "AutoAcre"},
-    "description": "PANDAG G1 dealer providing commercial autonomous mowing solutions for councils, schools, resorts, and large estates. Fleet management and managed deployment contracts.",
-    "areaServed": ["Byron Bay", "Bangalow", "Northern Rivers", "NSW"]
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://autoacre.com.au/commercial.html#webpage",
+      "url": "https://autoacre.com.au/commercial.html",
+      "name": "Commercial Autonomous Mowing | AutoAcre — PANDAG G1 Dealer Northern Rivers",
+      "inLanguage": "en-AU",
+      "isPartOf": {
+        "@id": "https://autoacre.com.au/#website"
+      },
+      "about": {
+        "@id": "https://autoacre.com.au/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://autoacre.com.au/#service-commercial"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".page-hero-text h1",
+          ".page-hero-text p",
+          ".faq-answer-inner"
+        ]
+      },
+      "mentions": [
+        {
+          "@id": "https://autoacre.com.au/#product-pandag-g1"
+        },
+        {
+          "@id": "https://autoacre.com.au/#organization"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://autoacre.com.au/#service-commercial",
+      "isPartOf": {
+        "@id": "https://autoacre.com.au/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://autoacre.com.au/commercial.html#faq",
+      "isPartOf": {
+        "@id": "https://autoacre.com.au/commercial.html#webpage"
+      },
+      "about": {
+        "@id": "https://autoacre.com.au/#organization"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the managed deployment contract work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We own and operate the PANDAG G1 on your site under a fixed monthly contract. This includes all maintenance, monitoring, blade changes, and firmware updates. You get consistent grounds without any capital expenditure or in-house expertise required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the G1 handle Australian conditions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The G1 is built for commercial use in demanding environments. It handles slopes up to 38°, operates in light rain, and has an 8-hour battery for full-day coverage. The Northern Rivers climate is well within its operating parameters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do we need special infrastructure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The G1 needs a charging station (we install this), standard power supply, and reasonable cellular coverage. We assess all requirements during the site survey and handle all installation."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autoacre.com.au/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Commercial",
+          "item": "https://autoacre.com.au/commercial.html"
+        }
+      ]
+    }
+  ]
+}
   </script>
 
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">

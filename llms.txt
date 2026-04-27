@@ -54,6 +54,10 @@ Key facts:
 - [How to assess if your property is right for autonomous mowing](https://autoacre.com.au/how-to-assess-if-your-property-is-right-for-autonomous-mowing.html): Seven-point self-qualification checklist — property size, slope, terrain, surface, power access, service area, managed-vs-DIY decision.
 - [How to switch from a fortnightly mowing contractor](https://autoacre.com.au/how-to-switch-from-a-fortnightly-contractor.html): Seven-step migration walkthrough from booking the AutoAcre on-site demo through week-four photo reports.
 
+## Service area
+
+- [Service Area — Northern Rivers](https://autoacre.com.au/service-area.html): Authoritative reference for AutoAcre's service area across Byron Shire and Ballina Shire, NSW. Place + AdministrativeArea schema, ItemList of 14 suburbs with descriptions, embedded service-area map, FAQs about coverage of Byron Bay, Ballina, Lismore, Tweed and adjacent localities.
+
 ## Suburb pages
 
 - [Acreage mowing in Bangalow](https://autoacre.com.au/mowing-bangalow.html)
