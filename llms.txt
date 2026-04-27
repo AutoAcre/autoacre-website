@@ -29,6 +29,10 @@ Key facts:
 - [On-site demo](https://autoacre.com.au/demo.html): How to book an on-site demonstration of the PANDAG G1 on your property.
 - [Quote request](https://autoacre.com.au/quote.html): Get a quote for autonomous mowing on your property.
 
+## Decision support
+
+- [Is autonomous acreage mowing worth it?](https://autoacre.com.au/is-autonomous-mowing-worth-it.html): 8-year cost analysis comparing AutoAcre's Buy + Manage offer (PANDAG G1 at $33,490 + monthly management) head-to-head against a fortnightly contractor across 4-10 acre Northern Rivers properties. Tier-by-tier economics, 20% residual sensitivity, year-1 cash shock, and the non-spreadsheet factors (frequency, scheduling load, asset ownership) that decide it.
+
 ## Knowledge base
 
 - [FAQ](https://autoacre.com.au/faq.html): Authoritative answers about autonomous mowing — costs, slope handling, coverage, safety, comparisons, and how the AutoAcre Buy + Manage offer works.
