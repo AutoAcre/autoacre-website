@@ -38,7 +38,7 @@
         "image": "https://autoacre.com.au/img/og-image.png",
         "telephone": "+61499649094",
         "email": "ben@autoacre.com.au",
-        "priceRange": "$600-$800/month",
+        "priceRange": "$35,000 mower sale + $80-$410/month management",
         "currenciesAccepted": "AUD",
         "paymentAccepted": "Credit Card, Bank Transfer",
         "founder": { "@id": "https://autoacre.com.au/#ben-bonifant" },
@@ -168,38 +168,78 @@
       {
         "@type": "Service",
         "@id": "https://autoacre.com.au/#service-residential",
-        "name": "Residential Autonomous Mowing Subscription",
-        "serviceType": "Autonomous Acreage Mowing",
-        "category": "Lawn and Grounds Maintenance",
+        "name": "PANDAG G1 Sale + Management Service",
+        "serviceType": "Autonomous Mower Sale and Ongoing Management",
+        "category": "Robotic Mower Supply and Managed Service",
         "provider": { "@id": "https://autoacre.com.au/#organization" },
         "areaServed": [
           { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" }
         ],
         "audience": {
           "@type": "PeopleAudience",
-          "audienceType": "Lifestyle acreage property owners (0.5 to 3 acres)"
+          "audienceType": "Lifestyle acreage property owners (0.5 to 5 acres) buying a commercial robotic mower with ongoing managed service"
         },
-        "description": "Daily autonomous mowing for lifestyle acreage properties from 0.5 to 3 acres. Includes the autonomous mowing unit, all maintenance, blade replacements, firmware updates, weekly photo reports, and a 7-day repair SLA with zero-turn backup. Properties are mowed every day rather than fortnightly, producing consistently manicured grounds.",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "AUD",
-          "priceRange": "$600-$800",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "600.00-800.00",
+        "description": "Customers buy the PANDAG G1 robotic mower outright from AutoAcre and pay a fixed monthly management fee for ongoing service — scheduled maintenance, blade replacements, firmware updates, remote monitoring, and repair coordination. Mower sale price is $35,000 AUD. Management fee is tiered by property size, priced at 50% of equivalent zero-turn-contractor service rate: $80/month for 1 acre, $160/month for 2 acres, $245/month for 3 acres, $325/month for 4 acres, $410/month for 5 acres.",
+        "isRelatedTo": { "@id": "https://autoacre.com.au/#product-pandag-g1" },
+        "offers": [
+          {
+            "@type": "Offer",
+            "@id": "https://autoacre.com.au/#offer-management-fee",
+            "name": "Monthly Management Fee (tiered by property size)",
             "priceCurrency": "AUD",
-            "unitText": "MONTH",
-            "billingDuration": "P1M"
-          },
-          "availability": "https://schema.org/InStock",
-          "areaServed": { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" }
-        }
+            "priceSpecification": [
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "1 acre",
+                "price": "80",
+                "priceCurrency": "AUD",
+                "unitText": "MONTH",
+                "billingDuration": "P1M"
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "2 acres",
+                "price": "160",
+                "priceCurrency": "AUD",
+                "unitText": "MONTH",
+                "billingDuration": "P1M"
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "3 acres",
+                "price": "245",
+                "priceCurrency": "AUD",
+                "unitText": "MONTH",
+                "billingDuration": "P1M"
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "4 acres",
+                "price": "325",
+                "priceCurrency": "AUD",
+                "unitText": "MONTH",
+                "billingDuration": "P1M"
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "5 acres",
+                "price": "410",
+                "priceCurrency": "AUD",
+                "unitText": "MONTH",
+                "billingDuration": "P1M"
+              }
+            ],
+            "priceRange": "$80-$410/month",
+            "availability": "https://schema.org/InStock",
+            "areaServed": { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" }
+          }
+        ]
       },
       {
         "@type": "Service",
         "@id": "https://autoacre.com.au/#service-commercial",
-        "name": "Commercial Autonomous Mowing — PANDAG G1",
-        "serviceType": "Commercial Grounds Management",
+        "name": "Commercial PANDAG G1 Sale + Managed Deployment",
+        "serviceType": "Commercial Robotic Mower Supply and Managed Operation",
         "category": "Commercial Vegetation Management",
         "provider": { "@id": "https://autoacre.com.au/#organization" },
         "areaServed": [
@@ -210,7 +250,8 @@
           "@type": "BusinessAudience",
           "audienceType": "Councils, schools, resorts, golf courses, solar farms, large estates"
         },
-        "description": "PANDAG G1 robotic mower deployment for commercial properties. Covers up to 25 acres per day, handles slopes up to 38 degrees, and operates autonomously with remote fleet management. Available as managed deployment or commercial supply.",
+        "description": "PANDAG G1 robotic mower supply and ongoing managed-service operation for commercial sites. AutoAcre supplies the unit and operates the management service: scheduled maintenance, blade replacements, firmware updates, remote monitoring, repair coordination. Covers up to 25 acres per day per unit, handles slopes up to 38 degrees, GPS-RTK precision navigation. Commercial deployments are scoped per site and quoted individually.",
+        "isRelatedTo": { "@id": "https://autoacre.com.au/#product-pandag-g1" },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "AUD",
@@ -223,10 +264,18 @@
         "@id": "https://autoacre.com.au/#product-pandag-g1",
         "name": "PANDAG G1 Robotic Mower",
         "category": "Autonomous Robotic Mower",
-        "description": "Commercial-grade autonomous robotic mower with 25-acre daily capacity, 38-degree slope handling, and GPS-RTK precision navigation. Used by AutoAcre across all Northern Rivers properties.",
+        "description": "Commercial-grade autonomous robotic mower with 25-acre daily capacity, 38-degree slope handling, and GPS-RTK precision navigation. Sold by AutoAcre across the Northern Rivers, NSW.",
         "brand": { "@type": "Brand", "name": "PANDAG" },
         "offers": {
           "@type": "Offer",
+          "@id": "https://autoacre.com.au/#offer-pandag-g1-sale",
+          "price": "35000",
+          "priceCurrency": "AUD",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "35000",
+            "priceCurrency": "AUD"
+          },
           "seller": { "@id": "https://autoacre.com.au/#organization" },
           "areaServed": { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" },
           "availability": "https://schema.org/InStock"
@@ -238,10 +287,26 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "How much does the AutoAcre residential subscription cost?",
+            "name": "How does AutoAcre's offer work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Residential subscriptions run between $600 and $800 per month depending on property size and terrain complexity. This covers daily autonomous mowing, weekly photo reports, all maintenance and blade replacements, firmware updates, and a 7-day repair SLA with zero-turn backup. No hidden costs."
+              "text": "Customers buy the PANDAG G1 autonomous mower outright from AutoAcre at $35,000 AUD, then pay a fixed monthly management fee for AutoAcre's ongoing service. The management fee is tiered by property size from $80 per month for 1 acre up to $410 per month for 5 acres. The fee covers scheduled maintenance, blade replacements, firmware updates, remote monitoring, repair coordination and ongoing operational guidance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does the PANDAG G1 cost to buy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "$35,000 AUD outright, supplied by AutoAcre as the regional dealer. The mower is yours — installed, set up, and running on your property. You then pay a tiered monthly management fee for AutoAcre's ongoing service."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the management fee cover?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Scheduled maintenance, blade replacements, firmware updates, remote monitoring of operational status, repair coordination if the unit develops a fault, and ongoing operational advice. The fee is priced at 50% of what a zero-turn contractor would charge for equivalent ongoing service — clear, defensible value because the customer already owns the asset."
             }
           },
           {
@@ -249,7 +314,7 @@
             "name": "What size property does AutoAcre service?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AutoAcre's residential subscription covers properties from 0.5 to 3 acres. For larger properties or commercial sites up to 25 acres per day, AutoAcre offers commercial solutions through the PANDAG G1 platform."
+              "text": "AutoAcre's Buy + Manage offer is designed for lifestyle acreage from 0.5 to 5 acres. For larger properties or commercial sites the PANDAG G1 covers up to 25 acres per day per unit and is quoted as a commercial deployment."
             }
           },
           {
@@ -262,18 +327,10 @@
           },
           {
             "@type": "Question",
-            "name": "What happens if the autonomous mower breaks down?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Every AutoAcre residential subscription includes a 7-day repair SLA. If the autonomous unit needs attention, AutoAcre repairs or replaces it within seven days and sends a zero-turn mower and operator to maintain the property in the meantime at no extra cost."
-            }
-          },
-          {
-            "@type": "Question",
             "name": "Is autonomous mowing safe around children and pets?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. AutoAcre's autonomous mowing units have collision detection, lift sensors, and boundary systems. They operate at low speeds and stop immediately on contact with an obstacle. Exclusion zones for play areas and garden beds are configured during installation."
+              "text": "Yes. The PANDAG G1 has collision detection, lift sensors, and GPS-bounded operation. It operates at low speeds and stops immediately on contact with an obstacle. Exclusion zones for play areas and garden beds are configured during installation."
             }
           }
         ]
@@ -390,7 +447,7 @@
       <div class="container hero-content">
         <span class="hero-badge">Now Servicing Byron Bay &amp; Northern Rivers</span>
         <h1>Your acreage, always presentable</h1>
-        <p>Daily autonomous mowing for lifestyle properties across the Byron Bay hinterland. One subscription. Weekly photo reports. Zero effort from you.</p>
+        <p>Buy the PANDAG G1 autonomous mower. We manage it. Daily mowing on lifestyle acreage across the Byron Bay hinterland — your asset, our service.</p>
         <div class="hero-actions">
           <a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a>
           <a href="quote.html" class="btn btn--secondary btn--large">Get a Quote</a>
@@ -438,12 +495,12 @@
             <p>An on-site visit to map your acreage, identify mowing zones, and plan the optimal daily rotation for your terrain.</p>
           </div>
           <div class="step">
-            <h3>We deploy the system</h3>
-            <p>Professional installation of the autonomous mowing unit with boundary mapping tailored to your property's layout and features.</p>
+            <h3>You buy the mower, we install it</h3>
+            <p>The PANDAG G1 is supplied at $35,000, professionally installed on your property with boundary mapping tailored to your terrain. The mower is yours — you own the asset.</p>
           </div>
           <div class="step">
-            <h3>Your grounds run themselves</h3>
-            <p>Daily zone-rotation mowing, weekly photo reports, and full maintenance coverage — all under one predictable monthly subscription.</p>
+            <h3>We manage it ongoing</h3>
+            <p>Tiered monthly management fee from $80 to $410 (1 to 5 acres) covers scheduled maintenance, blade replacements, firmware updates, monitoring and repair coordination. Half what a zero-turn contractor would charge for equivalent service.</p>
           </div>
         </div>
       </div>
@@ -462,8 +519,8 @@
             <div class="card-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            <h3>Residential Subscription</h3>
-            <p>Daily autonomous mowing for lifestyle properties from 0.5 to 3 acres. $600–$800/month covers everything — maintenance, monitoring, weekly reports, and 7-day repair SLA with zero-turn backup.</p>
+            <h3>Residential Buy + Manage</h3>
+            <p>Buy the PANDAG G1 at $35,000. Pay a tiered monthly management fee ($80–$410/mo for 1–5 acres) for ongoing maintenance, monitoring and repair coordination. The mower's yours, the service is ours.</p>
           </a>
           <a href="commercial.html" class="card">
             <div class="card-icon">
@@ -501,7 +558,7 @@
           </div>
           <div class="testimonial">
             <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
-            <blockquote>"The weekly photo reports are brilliant. I live in Sydney and visit every few weeks — I always know exactly what the property looks like without being there."</blockquote>
+            <blockquote>"Owning the mower made the maths obvious. AutoAcre's management fee is half what we used to pay our contractor — and the lawn never has a bad day."</blockquote>
             <cite>— Absentee owner, Newrybar</cite>
           </div>
         </div>
@@ -543,11 +600,11 @@
         <div class="faq-list reveal">
           <div class="faq-item">
             <button class="faq-question" aria-expanded="false">
-              How much does the residential subscription cost?
+              How does AutoAcre's Buy + Manage offer work?
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
             <div class="faq-answer"><div class="faq-answer-inner">
-              Residential subscriptions run between $600 and $800 per month depending on property size and terrain complexity. This covers daily autonomous mowing, weekly photo reports, all maintenance and blade replacements, firmware updates, and a 7-day repair SLA with zero-turn backup. No hidden costs.
+              AutoAcre's Buy + Manage offer is the PANDAG G1 sold outright at $35,000 plus an $80–$410/month management fee tiered by property size (1–5 acres). Management covers scheduled maintenance, blade replacements, firmware updates, monitoring and repair coordination.
             </div></div>
           </div>
           <div class="faq-item">
@@ -556,7 +613,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
             <div class="faq-answer"><div class="faq-answer-inner">
-              Our residential subscription covers properties from 0.5 to 3 acres. For larger properties or commercial sites up to 25 acres per day, we offer commercial solutions through the PANDAG G1 platform. Contact us for a site assessment.
+              Our Buy + Manage offer covers properties from 0.5 to 5 acres of mowable area. For larger properties or commercial sites up to 25 acres per day, we offer commercial deployments through the PANDAG G1 platform. Contact us for a site assessment.
             </div></div>
           </div>
           <div class="faq-item">
@@ -574,7 +631,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
             <div class="faq-answer"><div class="faq-answer-inner">
-              Every residential subscription includes a 7-day repair SLA. If the autonomous unit needs attention, we'll have it repaired or replaced within seven days. In the meantime, we'll send a zero-turn mower and operator to maintain your property at no extra cost.
+              AutoAcre's management service includes ongoing repair coordination. If the unit develops a fault, AutoAcre coordinates the repair process — sourcing parts, arranging service, getting the unit operational again. The customer owns the asset and AutoAcre manages the lifecycle.
             </div></div>
           </div>
           <div class="faq-item">
