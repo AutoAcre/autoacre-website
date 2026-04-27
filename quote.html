@@ -81,13 +81,161 @@
               Tell us about your property and we'll get back to you with a clear, personalised quote. No hidden costs, no complicated tiers — just straightforward pricing for your situation.
             </p>
 
-            <div style="background: var(--color-primary-light); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-8);">
-              <h3 style="font-size: var(--text-base); margin-bottom: var(--space-3);">Quick quote estimate</h3>
-              <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--space-4);">
-                Want an instant estimate? Try our interactive quote tool for a ballpark figure based on your property size and type.
-              </p>
-              <a href="https://www.perplexity.ai/computer/a/autoacre-quote-tool-wZwFpkqGQRiM7Jp27xUs5Q" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Try the Quote Tool</a>
+            <!-- Inline cost estimator — vanilla JS, no external dependencies -->
+            <style>
+              .est-card { background: #fff; border: 1px solid #E8E8E0; border-radius: 12px; padding: 1.8em; margin-bottom: var(--space-8); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+              .est-label { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; color: #7A8B2D; margin-bottom: 0.4em; }
+              .est-card h3 { font-size: 22px; font-weight: 600; margin: 0 0 0.5em; color: #2D2D2D; line-height: 1.3; }
+              .est-card .sub { font-size: 14.5px; color: #555; line-height: 1.6; margin-bottom: 1.6em; }
+              .est-slider-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; font-weight: 600; color: #2D2D2D; margin-bottom: 0.6em; }
+              .est-slider-row .val { color: #7A8B2D; font-family: 'Zodiak', serif; font-size: 18px; }
+              .est-slider { width: 100%; -webkit-appearance: none; appearance: none; background: transparent; height: 24px; }
+              .est-slider:focus { outline: none; }
+              .est-slider::-webkit-slider-runnable-track { height: 6px; background: #E8E8E0; border-radius: 3px; }
+              .est-slider::-moz-range-track { height: 6px; background: #E8E8E0; border-radius: 3px; }
+              .est-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #7A8B2D; border-radius: 50%; margin-top: -8px; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: transform 0.1s; }
+              .est-slider::-moz-range-thumb { width: 22px; height: 22px; background: #7A8B2D; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+              .est-slider:active::-webkit-slider-thumb { transform: scale(1.15); }
+              .est-ticks { display: flex; justify-content: space-between; font-size: 12px; color: #888; margin-top: 0.3em; }
+              .est-pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; margin: 1.6em 0 1em; }
+              .est-tile { background: #F5F5F0; padding: 0.9em 1em; border-radius: 6px; border-left: 3px solid #7A8B2D; }
+              .est-tile .lab { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: #7A8B2D; font-weight: 600; margin-bottom: 0.25em; }
+              .est-tile .num { font-family: 'Zodiak', serif; font-size: 24px; font-weight: 600; color: #2D2D2D; line-height: 1.1; }
+              .est-tile .num .unit { font-size: 13px; font-weight: 400; color: #666; font-family: 'Work Sans', sans-serif; }
+              .est-totals { background: #2D2D2D; color: #fff; padding: 1.2em 1.4em; border-radius: 8px; margin-bottom: 1em; }
+              .est-totals .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; }
+              .est-totals .lab { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.7; margin-bottom: 0.3em; }
+              .est-totals .num { font-family: 'Zodiak', serif; font-size: 26px; font-weight: 600; }
+              .est-compare { background: #FFF8EB; border-left: 3px solid #C8A028; padding: 0.95em 1.15em; border-radius: 4px; font-size: 14px; line-height: 1.65; color: #444; margin-bottom: 1.2em; }
+              .est-compare strong { color: #2D2D2D; }
+              .est-compare em { font-style: normal; color: #7A8B2D; font-weight: 600; }
+              .est-cta { display: block; width: 100%; padding: 0.95em; background: #7A8B2D; color: #fff; border: none; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; transition: background 0.15s; text-align: center; font-family: inherit; }
+              .est-cta:hover { background: #6B7A26; }
+              .est-finep { font-size: 12.5px; color: #777; margin-top: 0.8em; line-height: 1.55; text-align: center; }
+            </style>
+
+            <div class="est-card">
+              <span class="est-label">Instant Estimate</span>
+              <h3>Estimate your numbers</h3>
+              <p class="sub">Move the slider to your mowable area. The numbers update live — covering Year 1 outlay, 5-year total, and how that compares to staying with a fortnightly contractor.</p>
+
+              <div class="est-slider-row">
+                <span>Mowable area</span>
+                <span class="val" id="est-area-display">2.0 acres</span>
+              </div>
+              <input type="range" id="est-slider" class="est-slider" min="0.5" max="5" step="0.1" value="2" aria-label="Mowable area in acres">
+              <div class="est-ticks"><span>0.5 ac</span><span>2.5 ac</span><span>5 ac</span></div>
+
+              <div class="est-pricing-grid">
+                <div class="est-tile">
+                  <div class="lab">Mower (one-time)</div>
+                  <div class="num">$35,000</div>
+                </div>
+                <div class="est-tile">
+                  <div class="lab">Monthly management</div>
+                  <div class="num"><span id="est-monthly">$160</span><span class="unit">/mo</span></div>
+                </div>
+              </div>
+
+              <div class="est-totals">
+                <div class="grid">
+                  <div>
+                    <div class="lab">Year 1 total</div>
+                    <div class="num" id="est-y1">$36,920</div>
+                  </div>
+                  <div>
+                    <div class="lab">5-year total</div>
+                    <div class="num" id="est-y5">$44,600</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="est-compare">
+                <strong>vs sticking with a fortnightly contractor at <span id="est-contractor-rate">$500/month</span>:</strong>
+                5-year contractor cost is <span id="est-contractor-5yr">$30,000</span> — and you own nothing at the end.
+                With AutoAcre at year 5 you own a $35,000 asset and have spent <em><span id="est-vs-amount">$14,600</span> <span id="est-vs-direction">more</span></em> for daily mowing instead of fortnightly.
+              </div>
+
+              <button type="button" class="est-cta" id="est-prefill-btn">Use these numbers in my quote request ↓</button>
+              <p class="est-finep">Estimate only — final pricing confirmed at the on-site demo. Ad-hoc call-outs $150/visit.</p>
             </div>
+
+            <script>
+              (function(){
+                var slider = document.getElementById('est-slider');
+                var areaDisplay = document.getElementById('est-area-display');
+                var monthlyEl = document.getElementById('est-monthly');
+                var y1El = document.getElementById('est-y1');
+                var y5El = document.getElementById('est-y5');
+                var contractor5El = document.getElementById('est-contractor-5yr');
+                var vsAmountEl = document.getElementById('est-vs-amount');
+                var vsDirEl = document.getElementById('est-vs-direction');
+                var prefillBtn = document.getElementById('est-prefill-btn');
+
+                var MOWER_PRICE = 35000;
+                var CONTRACTOR_MONTHLY = 500; // typical fortnightly contractor monthly cost
+
+                // Anchor pricing tiers — interpolate linearly between
+                var anchors = [
+                  [0.5, 40], [1, 80], [2, 160], [3, 245], [4, 325], [5, 410]
+                ];
+
+                function feeForAcres(acres) {
+                  if (acres <= anchors[0][0]) return anchors[0][1];
+                  if (acres >= anchors[anchors.length-1][0]) return anchors[anchors.length-1][1];
+                  for (var i = 0; i < anchors.length - 1; i++) {
+                    var a1 = anchors[i][0], f1 = anchors[i][1];
+                    var a2 = anchors[i+1][0], f2 = anchors[i+1][1];
+                    if (acres >= a1 && acres <= a2) {
+                      var t = (acres - a1) / (a2 - a1);
+                      var raw = f1 + t * (f2 - f1);
+                      return Math.round(raw / 5) * 5; // round to nearest $5
+                    }
+                  }
+                  return 0;
+                }
+
+                function fmt(n) { return '$' + Math.round(n).toLocaleString('en-AU'); }
+
+                function update() {
+                  var acres = parseFloat(slider.value);
+                  var fee = feeForAcres(acres);
+                  areaDisplay.textContent = acres.toFixed(1) + (Math.abs(acres - 1.0) < 0.05 ? ' acre' : ' acres');
+                  monthlyEl.textContent = fmt(fee);
+                  var y1 = MOWER_PRICE + fee * 12;
+                  var y5 = MOWER_PRICE + fee * 60;
+                  y1El.textContent = fmt(y1);
+                  y5El.textContent = fmt(y5);
+                  var contractor5 = CONTRACTOR_MONTHLY * 60;
+                  contractor5El.textContent = fmt(contractor5);
+                  var diff = y5 - contractor5;
+                  vsAmountEl.textContent = fmt(Math.abs(diff));
+                  vsDirEl.textContent = diff >= 0 ? 'more' : 'less';
+                }
+
+                slider.addEventListener('input', update);
+                update();
+
+                prefillBtn.addEventListener('click', function() {
+                  var acres = parseFloat(slider.value);
+                  var sel = document.getElementById('quote-size');
+                  if (sel) {
+                    var val = '';
+                    if (acres < 1) val = 'under-1';
+                    else if (acres < 2) val = '1-2';
+                    else if (acres < 3) val = '2-3';
+                    else if (acres <= 5) val = '3-5';
+                    else val = '5+';
+                    sel.value = val;
+                    // Briefly highlight to show prefill landed
+                    sel.style.boxShadow = '0 0 0 3px rgba(122, 139, 45, 0.3)';
+                    setTimeout(function() { sel.style.boxShadow = ''; }, 1500);
+                  }
+                  var form = document.querySelector('form[name="quote"]');
+                  if (form) form.scrollIntoView({behavior: 'smooth', block: 'start'});
+                });
+              })();
+            </script>
 
             <div>
               <h3 style="margin-bottom: var(--space-4);">Pricing guide</h3>
@@ -154,8 +302,8 @@
                   <label for="quote-interest">Service interest *</label>
                   <select id="quote-interest" name="service_interest" required>
                     <option value="">Select service</option>
-                    <option value="residential">Residential subscription</option>
-                    <option value="commercial">Commercial solution</option>
+                    <option value="residential">Residential Buy + Manage</option>
+                    <option value="commercial">Commercial deployment</option>
                     <option value="both">Both / not sure yet</option>
                   </select>
                   <div class="form-error">Please select a service</div>
