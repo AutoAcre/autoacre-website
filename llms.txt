@@ -58,6 +58,14 @@ Key facts:
 
 - [Service Area — Northern Rivers](https://autoacre.com.au/service-area.html): Authoritative reference for AutoAcre's service area across Byron Shire and Ballina Shire, NSW. Place + AdministrativeArea schema, ItemList of 14 suburbs with descriptions, embedded service-area map, FAQs about coverage of Byron Bay, Ballina, Lismore, Tweed and adjacent localities.
 
+## Commercial verticals
+
+- [Solar farm vegetation management](https://autoacre.com.au/solar-farm-mowing.html): Autonomous mowing for Australian solar farms — eliminates panel-strike risk, navigates tight row spacing with GPS-RTK precision, runs continuously, scales across fleets.
+- [Council mowing — Northern Rivers](https://autoacre.com.au/council-mowing-northern-rivers.html): Fleet-scalable autonomous vegetation management for Byron, Ballina, Lismore and Tweed councils — parks, reserves, sportsfields, managed verges.
+- [Resort grounds maintenance](https://autoacre.com.au/resort-grounds-maintenance.html): Daily autonomous mowing for premium Northern Rivers resorts and lifestyle accommodation — quiet operation, every guest sees pristine grounds, no scheduling clashes.
+- [School grounds maintenance](https://autoacre.com.au/school-grounds-maintenance.html): Child-safe autonomous mowing for primary, secondary and private schools across the Northern Rivers — outside-hours capable, no on-site fuel storage.
+- [Golf course autonomous mowing](https://autoacre.com.au/golf-course-robot-mower.html): Programmable-cut-height autonomous mowing for golf course fairway, rough and approach — pre-dawn operation that doesn't disrupt play.
+
 ## Suburb pages
 
 - [Acreage mowing in Bangalow](https://autoacre.com.au/mowing-bangalow.html)

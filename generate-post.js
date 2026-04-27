@@ -369,6 +369,11 @@ function buildSitemap(published) {
     ['https://autoacre.com.au/how-to-assess-if-your-property-is-right-for-autonomous-mowing.html', '0.85', 'monthly'],
     ['https://autoacre.com.au/how-to-switch-from-a-fortnightly-contractor.html', '0.85', 'monthly'],
     ['https://autoacre.com.au/service-area.html', '0.9', 'monthly'],
+    ['https://autoacre.com.au/solar-farm-mowing.html', '0.85', 'monthly'],
+    ['https://autoacre.com.au/council-mowing-northern-rivers.html', '0.85', 'monthly'],
+    ['https://autoacre.com.au/resort-grounds-maintenance.html', '0.85', 'monthly'],
+    ['https://autoacre.com.au/school-grounds-maintenance.html', '0.85', 'monthly'],
+    ['https://autoacre.com.au/golf-course-robot-mower.html', '0.85', 'monthly'],
   ];
   const suburbs = ['bangalow','ewingsdale','newrybar','alstonville','teven','tintenbar','brooklet','clunes','nashua','eureka','federal','myocum','tyagarah','mullumbimby'];
   const suburbUrls = suburbs.map(s => [`https://autoacre.com.au/mowing-${s}.html`, '0.8', 'monthly']);
