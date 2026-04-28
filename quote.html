@@ -18,6 +18,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./base.css">
   <link rel="stylesheet" href="./style.css">
+
+  <!-- Map area calculator: Leaflet + Leaflet.draw -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
 </head>
 <body>
 
@@ -81,8 +85,41 @@
               Tell us about your property and we'll get back to you with a clear, personalised quote. No hidden costs, no complicated tiers — just straightforward pricing for your situation.
             </p>
 
-            <!-- Inline cost estimator — vanilla JS, no external dependencies -->
+            <!-- Map-based area calculator + cost estimator -->
             <style>
+              /* === MAP CARD === */
+              .map-card { background: #fff; border: 1px solid #E8E8E0; border-radius: 12px; padding: 1.8em; margin-bottom: var(--space-6); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+              .map-card .map-label { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; color: #7A8B2D; margin-bottom: 0.4em; }
+              .map-card h3 { font-size: 22px; font-weight: 600; margin: 0 0 0.5em; color: #2D2D2D; line-height: 1.3; }
+              .map-card .sub { font-size: 14.5px; color: #555; line-height: 1.6; margin-bottom: 1.4em; }
+              .map-search-row { display: flex; gap: 0.5em; margin-bottom: 0.9em; }
+              .map-search-row input { flex: 1; min-width: 0; padding: 0.65em 0.8em; border: 1px solid #DDDDD8; border-radius: 6px; font-size: 14px; font-family: inherit; }
+              .map-search-row input:focus { outline: none; border-color: #7A8B2D; }
+              .map-search-row button { padding: 0.65em 1.1em; background: #2D2D2D; color: #fff; border: none; border-radius: 6px; font-weight: 600; font-size: 13.5px; cursor: pointer; font-family: inherit; }
+              .map-search-row button:hover { background: #444; }
+              #map-canvas { width: 100%; height: 380px; border-radius: 8px; border: 1px solid #DDDDD8; margin-bottom: 0.9em; background: #F5F5F0; }
+              .map-controls { display: flex; flex-wrap: wrap; gap: 0.5em; align-items: center; margin-bottom: 1em; }
+              .map-controls button { padding: 0.55em 1em; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; border: 1px solid #DDDDD8; background: #fff; color: #2D2D2D; }
+              .map-controls button.primary { background: #7A8B2D; color: #fff; border-color: #7A8B2D; }
+              .map-controls button.primary:hover { background: #6B7A26; }
+              .map-controls button:hover { background: #F5F5F0; }
+              .map-controls button:disabled { opacity: 0.4; cursor: not-allowed; }
+              .map-readout { margin-left: auto; font-family: 'Zodiak', serif; font-size: 18px; color: #2D2D2D; font-weight: 600; }
+              .map-readout .map-readout-num { color: #7A8B2D; font-size: 24px; }
+              .map-readout .map-readout-unit { font-size: 14px; color: #666; font-weight: 400; margin-left: 0.2em; }
+              .map-readout .map-readout-secondary { display: block; font-size: 12px; color: #888; font-weight: 400; font-family: 'Work Sans', sans-serif; margin-top: 0.1em; text-align: right; }
+              #map-use-btn { display: block; width: 100%; padding: 0.85em; background: #7A8B2D; color: #fff; border: none; border-radius: 6px; font-weight: 600; font-size: 15px; cursor: pointer; font-family: inherit; margin-bottom: 0.6em; }
+              #map-use-btn:hover { background: #6B7A26; }
+              #map-use-btn:disabled { background: #DDDDD8; color: #888; cursor: not-allowed; }
+              .map-finep { font-size: 12.5px; color: #777; line-height: 1.55; margin: 0; }
+              @media (max-width: 600px) {
+                .map-search-row { flex-direction: column; }
+                .map-readout { margin-left: 0; width: 100%; text-align: left; padding-top: 0.4em; }
+                .map-readout .map-readout-secondary { text-align: left; }
+                #map-canvas { height: 340px; }
+              }
+
+              /* === EST CARD (existing) === */
               .est-card { background: #fff; border: 1px solid #E8E8E0; border-radius: 12px; padding: 1.8em; margin-bottom: var(--space-8); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
               .est-label { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; color: #7A8B2D; margin-bottom: 0.4em; }
               .est-card h3 { font-size: 22px; font-weight: 600; margin: 0 0 0.5em; color: #2D2D2D; line-height: 1.3; }
@@ -114,10 +151,38 @@
               .est-finep { font-size: 12.5px; color: #777; margin-top: 0.8em; line-height: 1.55; text-align: center; }
             </style>
 
+            <!-- MAP AREA CALCULATOR -->
+            <div class="map-card">
+              <span class="map-label">Step 1 — Map your property</span>
+              <h3>Outline your mowable area on satellite</h3>
+              <p class="sub">Search your address, zoom in close, then click around the boundary of the area you want mowed (skip garden beds, driveways and exclusion zones). We'll calculate exact acreage and use it in the cost estimate below. Optional — if you already know your acreage, skip to the slider.</p>
+
+              <div class="map-search-row">
+                <input type="text" id="map-address" placeholder="Enter your address — e.g. 36 Old Byron Bay Rd, Bangalow" autocomplete="off">
+                <button id="map-search-btn" type="button">Find</button>
+              </div>
+
+              <div id="map-canvas" role="application" aria-label="Interactive map for outlining mowable area"></div>
+
+              <div class="map-controls">
+                <button id="map-draw-btn" type="button" class="primary">Draw mowable area</button>
+                <button id="map-clear-btn" type="button">Clear</button>
+                <div class="map-readout">
+                  <span class="map-readout-num" id="map-acres">0.0</span>
+                  <span class="map-readout-unit">acres</span>
+                  <span class="map-readout-secondary"><span id="map-m2">0</span> m²</span>
+                </div>
+              </div>
+
+              <button id="map-use-btn" type="button" disabled>Use this area in my estimate ↓</button>
+              <p class="map-finep">Tip: zoom in close on satellite view, click each corner of the area you want mowed, then click your starting point (or double-click) to close the polygon. Drag corners to fine-tune. Drawing is touch-friendly on mobile.</p>
+            </div>
+
+            <!-- COST ESTIMATOR -->
             <div class="est-card">
-              <span class="est-label">Instant Estimate</span>
+              <span class="est-label">Step 2 — Instant estimate</span>
               <h3>Estimate your numbers</h3>
-              <p class="sub">Move the slider to your mowable area. The numbers update live — Year 1 outlay, 8-year total, and how that compares to a fortnightly contractor over the same window.</p>
+              <p class="sub">Move the slider to your mowable area (or use the area from the map above). The numbers update live — Year 1 outlay, 8-year total, and how that compares to a fortnightly contractor over the same window.</p>
 
               <div class="est-slider-row">
                 <span>Mowable area</span>
@@ -158,10 +223,164 @@
               </div>
 
               <button type="button" class="est-cta" id="est-prefill-btn">Use these numbers in my quote request ↓</button>
-              <p class="est-finep">Estimate only — final pricing confirmed at the on-site demo. Ad-hoc call-outs $150/visit. Contractor benchmark assumes $150/hour at 1 hour per 2 acres, fortnightly. Residual is an estimate at year 8 — secondary market for commercial robotic mowers in Australia is thin.</p>
+              <p class="est-finep">Estimate only — final pricing confirmed at the on-site demo. Ad-hoc call-outs $150/visit. Contractor benchmark $250/acre/month based on Northern Rivers premium acreage market reference pricing (zero-turn, fortnightly, mowing only). Residual is an estimate at year 8 — secondary market for commercial robotic mowers in Australia is thin.</p>
             </div>
 
+            <!-- Leaflet + Leaflet.draw + Turf for the map area calculator -->
+            <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+
             <script>
+              // === Map area calculator ===
+              (function(){
+                if (typeof L === 'undefined') return; // Leaflet failed to load — skip map
+
+                // Center map on Byron Bay hinterland
+                var BYRON_CENTER = [-28.6850, 153.5500];
+
+                var map = L.map('map-canvas', {
+                  zoomControl: true,
+                  scrollWheelZoom: true,
+                  dragging: true,
+                  tap: true
+                }).setView(BYRON_CENTER, 13);
+
+                // Esri World Imagery — free satellite tiles, no API key
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+                  maxZoom: 19
+                }).addTo(map);
+
+                // Drawn-items layer
+                var drawnItems = new L.FeatureGroup();
+                map.addLayer(drawnItems);
+
+                // Custom polygon drawer (we'll trigger it from our own button)
+                var polygonDrawer = new L.Draw.Polygon(map, {
+                  shapeOptions: {
+                    color: '#7A8B2D',
+                    weight: 3,
+                    fillOpacity: 0.25,
+                    fillColor: '#7A8B2D'
+                  },
+                  showArea: false,
+                  allowIntersection: false
+                });
+
+                var acresEl = document.getElementById('map-acres');
+                var m2El = document.getElementById('map-m2');
+                var drawBtn = document.getElementById('map-draw-btn');
+                var clearBtn = document.getElementById('map-clear-btn');
+                var useBtn = document.getElementById('map-use-btn');
+                var addressInput = document.getElementById('map-address');
+                var searchBtn = document.getElementById('map-search-btn');
+                var lastAcres = 0;
+
+                function updateReadout(layer) {
+                  if (!layer) {
+                    acresEl.textContent = '0.0';
+                    m2El.textContent = '0';
+                    useBtn.disabled = true;
+                    lastAcres = 0;
+                    return;
+                  }
+                  var geojson = layer.toGeoJSON();
+                  var areaM2 = turf.area(geojson);
+                  var acres = areaM2 / 4046.8564224;
+                  acresEl.textContent = acres.toFixed(2);
+                  m2El.textContent = Math.round(areaM2).toLocaleString('en-AU');
+                  useBtn.disabled = false;
+                  lastAcres = acres;
+                }
+
+                map.on(L.Draw.Event.CREATED, function (e) {
+                  drawnItems.clearLayers();
+                  drawnItems.addLayer(e.layer);
+                  updateReadout(e.layer);
+                });
+
+                map.on(L.Draw.Event.EDITED, function (e) {
+                  e.layers.eachLayer(function(l){ updateReadout(l); });
+                });
+
+                drawBtn.addEventListener('click', function(){
+                  drawnItems.clearLayers();
+                  updateReadout(null);
+                  polygonDrawer.enable();
+                });
+
+                clearBtn.addEventListener('click', function(){
+                  drawnItems.clearLayers();
+                  updateReadout(null);
+                  polygonDrawer.disable();
+                });
+
+                useBtn.addEventListener('click', function(){
+                  if (lastAcres <= 0) return;
+                  var slider = document.getElementById('est-slider');
+                  if (!slider) return;
+                  // Clamp to slider range (4-10 acres)
+                  var min = parseFloat(slider.min);
+                  var max = parseFloat(slider.max);
+                  var v = Math.max(min, Math.min(max, lastAcres));
+                  slider.value = v.toFixed(1);
+                  slider.dispatchEvent(new Event('input', { bubbles: true }));
+                  // Scroll the est-card into view
+                  var est = document.querySelector('.est-card');
+                  if (est) est.scrollIntoView({behavior:'smooth', block:'start'});
+                  // Briefly highlight
+                  if (est) {
+                    est.style.transition = 'box-shadow 0.4s';
+                    est.style.boxShadow = '0 0 0 3px rgba(122,139,45,0.4)';
+                    setTimeout(function(){ est.style.boxShadow = ''; }, 1800);
+                  }
+                  // If outside slider range, flag it briefly
+                  if (lastAcres < min) {
+                    alert('Your area is below 4 acres — that\'s under our residential window. We\'d recommend a consumer robotic mower instead. The estimate below shows our minimum tier.');
+                  } else if (lastAcres > max) {
+                    alert('Your area is above 10 acres — that\'s commercial-scope territory. The estimate below shows our maximum residential tier; please request a commercial quote for accurate pricing.');
+                  }
+                });
+
+                // Address search via Nominatim (OpenStreetMap free geocoding)
+                function geocodeAddress() {
+                  var q = addressInput.value.trim();
+                  if (!q) return;
+                  searchBtn.disabled = true;
+                  searchBtn.textContent = '…';
+                  // Bias toward NSW Australia
+                  var url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=au&q=' + encodeURIComponent(q);
+                  fetch(url, { headers: { 'Accept-Language': 'en-AU' } })
+                    .then(function(r){ return r.json(); })
+                    .then(function(results){
+                      searchBtn.disabled = false;
+                      searchBtn.textContent = 'Find';
+                      if (!results || !results.length) {
+                        alert('Address not found. Try simplifying — e.g. "Bangalow NSW" or just the suburb.');
+                        return;
+                      }
+                      var lat = parseFloat(results[0].lat);
+                      var lon = parseFloat(results[0].lon);
+                      map.setView([lat, lon], 18);
+                    })
+                    .catch(function(){
+                      searchBtn.disabled = false;
+                      searchBtn.textContent = 'Find';
+                      alert('Search failed. Try again, or just zoom and pan the map manually.');
+                    });
+                }
+
+                searchBtn.addEventListener('click', geocodeAddress);
+                addressInput.addEventListener('keydown', function(e){
+                  if (e.key === 'Enter') { e.preventDefault(); geocodeAddress(); }
+                });
+
+                // Invalidate size after page settles (in case of layout shift)
+                setTimeout(function(){ map.invalidateSize(); }, 300);
+              })();
+
+              // === Cost estimator (existing) ===
               (function(){
                 var slider = document.getElementById('est-slider');
                 var areaDisplay = document.getElementById('est-area-display');
@@ -178,9 +397,9 @@
 
                 var MOWER_PRICE = 33490;
                 var RESIDUAL_VALUE = 6700; // ~20% of mower price at year 8
-                // Fortnightly contractor benchmark: $150/hour × 0.5 hour/acre = $75/acre/visit
-                // × 2 visits/month (fortnightly) = $150/acre/month
-                var CONTRACTOR_PER_ACRE_MONTHLY = 150;
+                // Fortnightly contractor benchmark: $250/acre/month
+                // Based on Northern Rivers premium acreage market reference pricing (zero-turn, mowing only, fortnightly)
+                var CONTRACTOR_PER_ACRE_MONTHLY = 250;
                 var ANALYSIS_MONTHS = 96; // 8 years
 
                 // Anchor pricing tiers — interpolate linearly between
