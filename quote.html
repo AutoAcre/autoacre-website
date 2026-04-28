@@ -343,9 +343,45 @@
                   }
                 });
 
+                // Hard-coded Northern Rivers suburb centroids — last-resort fallback when
+                // external geocoders can't find a rural AU address (which is common for OSM).
+                // If the user's input mentions any of these suburbs, we jump to its centroid.
+                var NR_SUBURBS = [
+                  ['byron bay',    -28.6474, 153.6020],
+                  ['bangalow',     -28.6896, 153.5217],
+                  ['newrybar',     -28.7169, 153.5089],
+                  ['ewingsdale',   -28.6478, 153.5611],
+                  ['mullumbimby',  -28.5530, 153.4992],
+                  ['federal',      -28.7164, 153.4408],
+                  ['myocum',       -28.6131, 153.5347],
+                  ['tyagarah',     -28.6092, 153.5547],
+                  ['brooklet',     -28.7681, 153.5017],
+                  ['clunes',       -28.7256, 153.4156],
+                  ['eureka',       -28.7058, 153.4631],
+                  ['nashua',       -28.7708, 153.4894],
+                  ['teven',        -28.8403, 153.4842],
+                  ['tintenbar',    -28.7861, 153.5217],
+                  ['alstonville',  -28.8367, 153.4406],
+                  ['ballina',      -28.8674, 153.5640],
+                  ['lismore',      -28.8160, 153.2780],
+                  ['ocean shores', -28.5042, 153.5300],
+                  ['brunswick heads', -28.5417, 153.5500],
+                  ['suffolk park', -28.6800, 153.6122]
+                ];
+
+                function trySuburbMatch(q) {
+                  var lower = q.toLowerCase();
+                  for (var i = 0; i < NR_SUBURBS.length; i++) {
+                    if (lower.indexOf(NR_SUBURBS[i][0]) !== -1) {
+                      return Promise.resolve({ lat: NR_SUBURBS[i][1], lon: NR_SUBURBS[i][2], _suburb: NR_SUBURBS[i][0] });
+                    }
+                  }
+                  return Promise.resolve(null);
+                }
+
                 // Address search — Photon (OSM-based, fuzzy-friendly) with Nominatim fallback.
-                // Both are free, no API key, both have good AU coverage but different strengths
-                // on rural addresses. Trying Photon first gets more rural hits.
+                // Both are free, no API key. If both fail (rural OSM gap), fall through to
+                // the local suburb-centroid dictionary above.
                 function tryPhoton(q) {
                   // Bias the search toward Northern Rivers, NSW
                   var url = 'https://photon.komoot.io/api/?limit=1&lat=-28.685&lon=153.55&q=' + encodeURIComponent(q);
@@ -403,19 +439,29 @@
                   tryPhoton(q)
                     .then(function(r){ return r || tryNominatim(q); })
                     .then(function(r){ return r || trySimplified(q); })
+                    .then(function(r){ return r || trySuburbMatch(q); })
                     .then(function(r){
                       searchBtn.disabled = false;
                       searchBtn.textContent = 'Find';
                       if (!r) {
-                        alert('Couldn\'t find that address. Try just the suburb (e.g. "Bangalow NSW") or pan the map manually to your property — the polygon tool works either way.');
+                        alert('Couldn\'t locate that. Try just the suburb (e.g. "Bangalow" or "Byron Bay") — or pan the map manually to your property. The polygon tool works either way.');
                         return;
                       }
-                      map.setView([r.lat, r.lon], 18);
+                      // If we matched on suburb-only, zoom slightly less so user can find their street
+                      var zoom = r._suburb ? 15 : 18;
+                      map.setView([r.lat, r.lon], zoom);
                     })
                     .catch(function(){
                       searchBtn.disabled = false;
                       searchBtn.textContent = 'Find';
-                      alert('Search service unavailable. Pan the map manually to your property — the polygon tool still works.');
+                      // Even on network failure, try the local suburb dictionary
+                      trySuburbMatch(addressInput.value.trim()).then(function(r){
+                        if (r) {
+                          map.setView([r.lat, r.lon], 15);
+                        } else {
+                          alert('Search service unavailable. Pan the map manually to your property — the polygon tool still works.');
+                        }
+                      });
                     });
                 }
 
