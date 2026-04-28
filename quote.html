@@ -343,31 +343,79 @@
                   }
                 });
 
-                // Address search via Nominatim (OpenStreetMap free geocoding)
+                // Address search — Photon (OSM-based, fuzzy-friendly) with Nominatim fallback.
+                // Both are free, no API key, both have good AU coverage but different strengths
+                // on rural addresses. Trying Photon first gets more rural hits.
+                function tryPhoton(q) {
+                  // Bias the search toward Northern Rivers, NSW
+                  var url = 'https://photon.komoot.io/api/?limit=1&lat=-28.685&lon=153.55&q=' + encodeURIComponent(q);
+                  return fetch(url)
+                    .then(function(r){ return r.json(); })
+                    .then(function(data){
+                      if (data && data.features && data.features.length) {
+                        var coords = data.features[0].geometry.coordinates; // [lon, lat]
+                        return { lat: coords[1], lon: coords[0] };
+                      }
+                      return null;
+                    });
+                }
+
+                function tryNominatim(q) {
+                  // Try AU-only first, then global as second pass
+                  var auUrl = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=au&q=' + encodeURIComponent(q);
+                  return fetch(auUrl, { headers: { 'Accept-Language': 'en-AU' } })
+                    .then(function(r){ return r.json(); })
+                    .then(function(results){
+                      if (results && results.length) {
+                        return { lat: parseFloat(results[0].lat), lon: parseFloat(results[0].lon) };
+                      }
+                      // Fallback: global search (some rural AU addresses index without countrycode)
+                      var globalUrl = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q);
+                      return fetch(globalUrl, { headers: { 'Accept-Language': 'en-AU' } })
+                        .then(function(r){ return r.json(); })
+                        .then(function(results2){
+                          if (results2 && results2.length) {
+                            return { lat: parseFloat(results2[0].lat), lon: parseFloat(results2[0].lon) };
+                          }
+                          return null;
+                        });
+                    });
+                }
+
+                function trySimplified(q) {
+                  // If exact address fails, try just the last two comma-separated parts
+                  // (typically "Suburb, State"). E.g. "36 Old Byron Bay Rd, Bangalow, NSW" → "Bangalow, NSW"
+                  var parts = q.split(',').map(function(p){return p.trim();}).filter(Boolean);
+                  if (parts.length < 2) return Promise.resolve(null);
+                  var simple = parts.slice(-2).join(', ');
+                  return tryPhoton(simple).then(function(r){
+                    if (r) return r;
+                    return tryNominatim(simple);
+                  });
+                }
+
                 function geocodeAddress() {
                   var q = addressInput.value.trim();
                   if (!q) return;
                   searchBtn.disabled = true;
                   searchBtn.textContent = '…';
-                  // Bias toward NSW Australia
-                  var url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=au&q=' + encodeURIComponent(q);
-                  fetch(url, { headers: { 'Accept-Language': 'en-AU' } })
-                    .then(function(r){ return r.json(); })
-                    .then(function(results){
+
+                  tryPhoton(q)
+                    .then(function(r){ return r || tryNominatim(q); })
+                    .then(function(r){ return r || trySimplified(q); })
+                    .then(function(r){
                       searchBtn.disabled = false;
                       searchBtn.textContent = 'Find';
-                      if (!results || !results.length) {
-                        alert('Address not found. Try simplifying — e.g. "Bangalow NSW" or just the suburb.');
+                      if (!r) {
+                        alert('Couldn\'t find that address. Try just the suburb (e.g. "Bangalow NSW") or pan the map manually to your property — the polygon tool works either way.');
                         return;
                       }
-                      var lat = parseFloat(results[0].lat);
-                      var lon = parseFloat(results[0].lon);
-                      map.setView([lat, lon], 18);
+                      map.setView([r.lat, r.lon], 18);
                     })
                     .catch(function(){
                       searchBtn.disabled = false;
                       searchBtn.textContent = 'Find';
-                      alert('Search failed. Try again, or just zoom and pan the map manually.');
+                      alert('Search service unavailable. Pan the map manually to your property — the polygon tool still works.');
                     });
                 }
 
