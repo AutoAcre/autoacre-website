@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get a Quote — AutoAcre Autonomous Mowing | Byron Bay &amp; Northern Rivers</title>
-  <meta name="description" content="Get a personalised quote for autonomous acreage mowing. Buy + Manage offer: PANDAG G1 sale at $33,490 + $260–$650/mo management. Commercial fleet solutions available. Byron Bay, Northern Rivers.">
+  <meta name="description" content="Get a personalised quote for autonomous acreage mowing. Buy + Manage offer: PANDAG G1 sale at $33,490 + $165–$650/mo management. Commercial fleet solutions available. Byron Bay, Northern Rivers.">
   <link rel="canonical" href="https://autoacre.com.au/quote.html">
   <meta property="og:title" content="Get a Quote — AutoAcre Autonomous Mowing">
-  <meta property="og:description" content="Personalised quote for autonomous mowing. Buy + Manage: $33,490 + $260–$650/mo management. Commercial fleet solutions. Northern Rivers.">
+  <meta property="og:description" content="Personalised quote for autonomous mowing. Buy + Manage: $33,490 + $165–$650/mo management. Commercial fleet solutions. Northern Rivers.">
   <meta property="og:image" content="./img/og-image.png">
   <meta property="og:url" content="https://autoacre.com.au/quote.html">
   <meta property="og:type" content="website">
@@ -188,8 +188,8 @@
                 <span>Mowable area</span>
                 <span class="val" id="est-area-display">5.0 acres</span>
               </div>
-              <input type="range" id="est-slider" class="est-slider" min="4" max="10" step="0.5" value="5" aria-label="Mowable area in acres">
-              <div class="est-ticks"><span>4 ac</span><span>7 ac</span><span>10 ac</span></div>
+              <input type="range" id="est-slider" class="est-slider" min="2.5" max="10" step="0.5" value="5" aria-label="Mowable area in acres">
+              <div class="est-ticks"><span>2.5 ac</span><span>6 ac</span><span>10 ac</span></div>
 
               <div class="est-pricing-grid">
                 <div class="est-tile">
@@ -320,7 +320,7 @@
                   if (lastAcres <= 0) return;
                   var slider = document.getElementById('est-slider');
                   if (!slider) return;
-                  // Clamp to slider range (4-10 acres)
+                  // Clamp to slider range (2.5-10 acres)
                   var min = parseFloat(slider.min);
                   var max = parseFloat(slider.max);
                   var v = Math.max(min, Math.min(max, lastAcres));
@@ -337,7 +337,7 @@
                   }
                   // If outside slider range, flag it briefly
                   if (lastAcres < min) {
-                    alert('Your area is below 4 acres — that\'s under our residential window. We\'d recommend a consumer robotic mower instead. The estimate below shows our minimum tier.');
+                    alert('Your area is below 2.5 acres — that\'s under our residential window. A consumer robotic mower (Husqvarna Automower or Mammotion Luba 2 AWD) is usually the right fit at this size. The estimate below shows our minimum tier.');
                   } else if (lastAcres > max) {
                     alert('Your area is above 10 acres — that\'s commercial-scope territory. The estimate below shows our maximum residential tier; please request a commercial quote for accurate pricing.');
                   }
@@ -498,7 +498,7 @@
 
                 // Anchor pricing tiers — interpolate linearly between
                 var anchors = [
-                  [4, 260], [5, 330], [6, 390], [7, 455], [8, 520], [9, 585], [10, 650]
+                  [2.5, 165], [3, 195], [4, 260], [5, 330], [6, 390], [7, 455], [8, 520], [9, 585], [10, 650]
                 ];
 
                 function feeForAcres(acres) {
@@ -549,7 +549,8 @@
                   var sel = document.getElementById('quote-size');
                   if (sel) {
                     var val = '';
-                    if (acres <= 5) val = '4-5';
+                    if (acres <= 3) val = '2.5-3';
+                    else if (acres <= 5) val = '4-5';
                     else if (acres <= 7) val = '6-7';
                     else val = '8-10';
                     sel.value = val;
@@ -568,7 +569,7 @@
               <ul class="feature-list">
                 <li>
                   <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <strong>Residential:</strong>&nbsp;$260–$650/month management fee for properties 4–10 acres
+                  <strong>Residential:</strong>&nbsp;$165–$650/month management fee for properties 2.5–10 acres
                 </li>
                 <li>
                   <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -610,10 +611,11 @@
                     <label for="quote-size">Property size *</label>
                     <select id="quote-size" name="property_size" required>
                       <option value="">Select size</option>
+                      <option value="2.5-3">2.5–3 acres</option>
                       <option value="4-5">4–5 acres</option>
                       <option value="6-7">6–7 acres</option>
                       <option value="8-10">8–10 acres</option>
-                      <option value="under-4">Under 4 acres (we'll suggest alternatives)</option>
+                      <option value="under-2.5">Under 2.5 acres (we'll suggest alternatives)</option>
                       <option value="over-10">Over 10 acres (commercial scope)</option>
                     </select>
                     <div class="form-error">Please select a property size</div>
