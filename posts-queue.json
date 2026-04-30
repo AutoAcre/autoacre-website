@@ -1,12 +1,17 @@
 {
-  "nextIndex": 1,
-  "lastPublished": 0,
-  "lastPublishedDate": "2026-04-26",
+  "nextIndex": 2,
+  "lastPublished": 1,
+  "lastPublishedDate": "2026-04-29",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
       "date": "2026-04-26",
       "title": "How Much Does Acreage Mowing Cost in Byron Bay?"
+    },
+    {
+      "slug": "blog-autonomous-mowing-vs-traditional-ride-on-a-property-owner-s-guide",
+      "date": "2026-04-29",
+      "title": "Autonomous Mowing vs Traditional Ride-On: A Property Owner's Guide"
     }
   ],
   "topics": [
