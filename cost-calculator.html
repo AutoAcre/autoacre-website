@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost Calculator — Compare Acreage Mowing Options | AutoAcre</title>
+<meta name="description" content="Compare the real 8-year cost of mowing your acreage across DIY zero-turn, contractor, owning your own robot mower, and Buy + Manage with AutoAcre. Honest numbers. No phone number required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; min-height: 100%; background: #0E120F; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  *, *::before, *::after { box-sizing: border-box; }
+  input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; }
+  input[type="range"]::-moz-range-thumb { border: none; }
+  @media print {
+    .no-print, [data-no-print] { display: none !important; }
+  }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Hidden Netlify form definition for build-time discovery -->
+  <form name="calc-leads" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="calc-leads"/>
+    <input name="lead-tier"/><input name="acres"/><input name="postcode"/><input name="terrain"/>
+    <input name="frequency"/><input name="cheapest-path"/><input name="cheapest-total"/>
+    <input name="name"/><input name="email"/><input name="consent"/>
+    <input name="bot-field"/>
+  </form>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="calc-shared.jsx"></script>
+  <script type="text/babel" src="direction-production.jsx"></script>
+
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "accent": "#B8E04C",
+      "gating": "soft",
+      "mode": "dark"
+    }/*EDITMODE-END*/;
+
+    function App() {
+      const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+      return (
+        <>
+          <ProductionCalculator
+            accent={tweaks.accent}
+            gating={tweaks.gating}
+            initialMode={tweaks.mode}
+            key={tweaks.mode}
+          />
+
+          <TweaksPanel title="Tweaks">
+            <TweakSection title="Theme">
+              <TweakRadio
+                label="Mode"
+                value={tweaks.mode}
+                onChange={v=>setTweak('mode', v)}
+                options={[{value:'dark', label:'Dark'}, {value:'light', label:'Light'}]}
+              />
+            </TweakSection>
+
+            <TweakSection title="Lead capture">
+              <TweakRadio
+                label="Gating"
+                value={tweaks.gating}
+                onChange={v=>setTweak('gating', v)}
+                options={[{value:'off', label:'Off'}, {value:'soft', label:'Soft'}]}
+              />
+              <div style={{fontSize:11, color:'#888', marginTop:-4, lineHeight:1.4}}>
+                Soft = cheapest answer + chart visible; full table gated.
+              </div>
+            </TweakSection>
+
+            <TweakSection title="Accent">
+              <TweakColor label="Accent" value={tweaks.accent} onChange={v=>setTweak('accent', v)}/>
+              <TweakButton label="Lime" onClick={()=>setTweak('accent', '#B8E04C')}/>
+              <TweakButton label="Olive" onClick={()=>setTweak('accent', '#7A8B2D')}/>
+              <TweakButton label="Cyan terminal" onClick={()=>setTweak('accent', '#5CD8C8')}/>
+              <TweakButton label="Amber" onClick={()=>setTweak('accent', '#E8A547')}/>
+            </TweakSection>
+          </TweaksPanel>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>
