@@ -5,18 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cost Calculator — Compare Acreage Mowing Options | AutoAcre</title>
 <meta name="description" content="Compare the real 8-year cost of mowing your acreage across DIY zero-turn, contractor, owning your own robot mower, and Buy + Manage with AutoAcre. Honest numbers. No phone number required.">
+<link rel="canonical" href="https://autoacre.com.au/cost-calculator.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Cost Calculator — Compare Acreage Mowing Options | AutoAcre">
+<meta property="og:description" content="Compare the real 8-year cost of mowing your acreage. Honest numbers. No phone number required.">
+<meta property="og:image" content="./img/og-image.png">
+<meta property="og:url" content="https://autoacre.com.au/cost-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#7A8B2D">
+
+<!-- Site fonts -->
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Calculator fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Site CSS -->
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+
 <style>
-  html, body { margin: 0; padding: 0; min-height: 100%; background: #0E120F; }
-  body { font-family: 'Inter', system-ui, sans-serif; }
   *, *::before, *::after { box-sizing: border-box; }
-  input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
-  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; }
-  input[type="range"]::-moz-range-thumb { border: none; }
+  /* Calculator container — keeps its own dark theme without affecting site chrome */
+  .calc-page-wrap { background: #0E120F; min-height: 60vh; font-family: 'Inter', system-ui, sans-serif; }
+  .calc-page-wrap input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
+  .calc-page-wrap input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; }
+  .calc-page-wrap input[type="range"]::-moz-range-thumb { border: none; }
   @media print {
-    .no-print, [data-no-print] { display: none !important; }
+    .site-header, .site-footer, .scroll-banner, .mobile-nav, .no-print, [data-no-print] { display: none !important; }
   }
 </style>
 
@@ -25,75 +50,265 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
+
+ <!-- HEADER -->
+ <header class="site-header" role="banner">
+ <div class="header-inner">
+  <a href="index.html" class="header-logo" aria-label="AutoAcre home">
+  <img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Management" height="52" style="height: 52px; width: auto;">
+  </a>
+
+  <nav class="header-nav" aria-label="Main navigation">
+  <a href="index.html">Home</a>
+  <a href="residential.html">Residential</a>
+  <a href="commercial.html">Commercial</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href="cost-calculator.html" aria-current="page">Calculator</a>
+  <div class="nav-dropdown">
+  <button class="nav-dropdown-trigger">
+   Areas
+   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+  <div class="nav-dropdown-menu">
+   <a href="mowing-bangalow.html">Bangalow</a>
+   <a href="mowing-ewingsdale.html">Ewingsdale</a>
+   <a href="mowing-newrybar.html">Newrybar</a>
+   <a href="mowing-alstonville.html">Alstonville</a>
+   <a href="mowing-brooklet.html">Brooklet</a>
+   <a href="mowing-clunes.html">Clunes</a>
+   <a href="mowing-federal.html">Federal</a>
+   <a href="mowing-mullumbimby.html">Mullumbimby</a>
+   <a href="mowing-myocum.html">Myocum</a>
+   <a href="mowing-nashua.html">Nashua</a>
+   <a href="mowing-teven.html">Teven</a>
+   <a href="mowing-tintenbar.html">Tintenbar</a>
+   <a href="mowing-tyagarah.html">Tyagarah</a>
+   <a href="mowing-eureka.html">Eureka</a>
+  </div>
+  </div>
+  </nav>
+
+  <div class="header-actions">
+  <a href="tel:0499649094" class="header-phone" aria-label="Call 0499 649 094">
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+   0499 649 094
+  </a>
+  <a href="demo.html" class="btn btn--primary header-cta">Book a Demo</a>
+  <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"></button>
+  <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
+  </div>
+ </div>
+ </header>
+
+ <!-- Mobile Nav -->
+ <nav class="mobile-nav" aria-label="Mobile navigation">
+ <a href="index.html">Home</a>
+ <a href="residential.html">Residential</a>
+ <a href="commercial.html">Commercial</a>
+ <a href="about.html">About</a>
+ <a href="blog.html">Blog</a>
+ <a href="cost-calculator.html" aria-current="page">Calculator</a>
+ <div class="mobile-nav-areas">
+ <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+  Areas
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+ </button>
+ <div class="mobile-nav-areas-list">
+   <a href="mowing-bangalow.html">Bangalow</a>
+   <a href="mowing-ewingsdale.html">Ewingsdale</a>
+   <a href="mowing-newrybar.html">Newrybar</a>
+   <a href="mowing-alstonville.html">Alstonville</a>
+   <a href="mowing-brooklet.html">Brooklet</a>
+   <a href="mowing-clunes.html">Clunes</a>
+   <a href="mowing-federal.html">Federal</a>
+   <a href="mowing-mullumbimby.html">Mullumbimby</a>
+   <a href="mowing-myocum.html">Myocum</a>
+   <a href="mowing-nashua.html">Nashua</a>
+   <a href="mowing-teven.html">Teven</a>
+   <a href="mowing-tintenbar.html">Tintenbar</a>
+   <a href="mowing-tyagarah.html">Tyagarah</a>
+   <a href="mowing-eureka.html">Eureka</a>
+ </div>
+ </div>
+ <div class="mobile-nav-cta">
+  <a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a>
+  <a href="quote.html" class="btn btn--secondary btn--large">Get a Quote</a>
+ </div>
+ <a href="tel:0499649094" class="mobile-nav-phone">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  0499 649 094
+ </a>
+ </nav>
+
+ <main class="calc-page-wrap">
   <div id="root"></div>
+ </main>
 
-  <!-- Hidden Netlify form definition for build-time discovery -->
-  <form name="calc-leads" data-netlify="true" netlify-honeypot="bot-field" hidden>
-    <input type="hidden" name="form-name" value="calc-leads"/>
-    <input name="lead-tier"/><input name="acres"/><input name="postcode"/><input name="terrain"/>
-    <input name="frequency"/><input name="cheapest-path"/><input name="cheapest-total"/>
-    <input name="name"/><input name="email"/><input name="consent"/>
-    <input name="bot-field"/>
-  </form>
+ <!-- Hidden Netlify form definition for build-time discovery -->
+ <form name="calc-leads" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="calc-leads"/>
+  <input name="lead-tier"/><input name="acres"/><input name="postcode"/><input name="terrain"/>
+  <input name="frequency"/><input name="cheapest-path"/><input name="cheapest-total"/>
+  <input name="name"/><input name="email"/><input name="consent"/>
+  <input name="bot-field"/>
+ </form>
 
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
-  <script type="text/babel" src="calc-shared.jsx"></script>
-  <script type="text/babel" src="direction-production.jsx"></script>
+ <!-- FOOTER -->
+ <footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div class="footer-grid">
+  <div class="footer-brand">
+   <a href="index.html" class="header-logo" aria-label="AutoAcre home">
+   <img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Management" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
+   </a>
+   <p>Autonomous grounds management for lifestyle properties and commercial estates across the Northern Rivers.</p>
+  </div>
+  <div class="footer-col">
+   <h4>Services</h4>
+   <ul>
+   <li><a href="residential.html">Residential</a></li>
+   <li><a href="commercial.html">Commercial</a></li>
+   <li><a href="demo.html">Book a Demo</a></li>
+   <li><a href="quote.html">Get a Quote</a></li>
+   </ul>
+  </div>
+  <div class="footer-col">
+   <h4>Company</h4>
+   <ul>
+   <li><a href="about.html">About</a></li>
+   <li><a href="blog.html">Blog</a></li>
+   </ul>
+  </div>
+  <div class="footer-col">
+   <h4>Knowledge</h4>
+   <ul>
+   <li><a href="faq.html">FAQ</a></li>
+   <li><a href="glossary.html">Glossary</a></li>
+   <li><a href="facts.html">Facts &amp; Figures</a></li>
+   <li><a href="service-area.html">Service Area</a></li>
+   <li><a href="cost-calculator.html">Cost Calculator</a></li>
+   </ul>
+  </div>
+  <div class="footer-col">
+   <h4>Compare</h4>
+   <ul>
+   <li><a href="autonomous-vs-ride-on.html">vs Ride-On Contractor</a></li>
+   <li><a href="autoacre-vs-husqvarna.html">vs Husqvarna Automower</a></li>
+   <li><a href="daily-vs-fortnightly-mowing.html">Daily vs Fortnightly</a></li>
+   </ul>
+  </div>
+  <div class="footer-col">
+   <h4>For your property</h4>
+   <ul>
+   <li><a href="holiday-rental-mowing.html">Holiday Rentals</a></li>
+   <li><a href="absentee-owner-mowing.html">Absentee Owners</a></li>
+   <li><a href="steep-block-mowing.html">Steep Blocks</a></li>
+   </ul>
+  </div>
+  <div class="footer-col">
+   <h4>How to</h4>
+   <ul>
+   <li><a href="how-to-prepare-acreage-for-autonomous-mowing.html">Prepare your acreage</a></li>
+   <li><a href="how-to-assess-if-your-property-is-right-for-autonomous-mowing.html">Assess your property</a></li>
+   <li><a href="how-to-switch-from-a-fortnightly-contractor.html">Switch from a contractor</a></li>
+   </ul>
+  </div>
+  <div class="footer-col">
+   <h4>Industries</h4>
+   <ul>
+   <li><a href="solar-farm-mowing.html">Solar Farms</a></li>
+   <li><a href="council-mowing-northern-rivers.html">Councils</a></li>
+   <li><a href="resort-grounds-maintenance.html">Resorts</a></li>
+   <li><a href="school-grounds-maintenance.html">Schools</a></li>
+   <li><a href="golf-course-robot-mower.html">Golf Courses</a></li>
+   </ul>
+  </div>
+  <div class="footer-col">
+   <h4>Contact</h4>
+   <div class="footer-contact-item">
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+   <a href="tel:0499649094">0499 649 094</a>
+   </div>
+   <div class="footer-contact-item">
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+   <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>
+   </div>
+   <div class="footer-contact-item">
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+   <span>Byron Bay &amp; Northern Rivers, NSW</span>
+   </div>
+  </div>
+  </div>
+  <div class="footer-bottom">
+  <span>&copy; 2026 AutoAcre. All rights reserved.</span>
+  <span>ABN pending · Servicing Byron Bay, Bangalow, Newrybar, Ewingsdale &amp; surrounds</span>
+  </div>
+ </div>
+ </footer>
 
-  <script type="text/babel">
-    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-      "accent": "#B8E04C",
-      "gating": "soft",
-      "mode": "dark"
-    }/*EDITMODE-END*/;
+ <!-- Site nav behavior (mobile menu, theme toggle, dropdown) -->
+ <script src="./app.js" defer></script>
 
-    function App() {
-      const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+ <!-- Calculator scripts -->
+ <script type="text/babel" src="tweaks-panel.jsx"></script>
+ <script type="text/babel" src="calc-shared.jsx"></script>
+ <script type="text/babel" src="direction-production.jsx"></script>
 
-      return (
-        <>
-          <ProductionCalculator
-            accent={tweaks.accent}
-            gating={tweaks.gating}
-            initialMode={tweaks.mode}
-            key={tweaks.mode}
-          />
+ <script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+   "accent": "#B8E04C",
+   "gating": "soft",
+   "mode": "dark"
+  }/*EDITMODE-END*/;
 
-          <TweaksPanel title="Tweaks">
-            <TweakSection title="Theme">
-              <TweakRadio
-                label="Mode"
-                value={tweaks.mode}
-                onChange={v=>setTweak('mode', v)}
-                options={[{value:'dark', label:'Dark'}, {value:'light', label:'Light'}]}
-              />
-            </TweakSection>
+  function App() {
+   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
 
-            <TweakSection title="Lead capture">
-              <TweakRadio
-                label="Gating"
-                value={tweaks.gating}
-                onChange={v=>setTweak('gating', v)}
-                options={[{value:'off', label:'Off'}, {value:'soft', label:'Soft'}]}
-              />
-              <div style={{fontSize:11, color:'#888', marginTop:-4, lineHeight:1.4}}>
-                Soft = cheapest answer + chart visible; full table gated.
-              </div>
-            </TweakSection>
+   return (
+    <>
+     <ProductionCalculator
+      accent={tweaks.accent}
+      gating={tweaks.gating}
+      initialMode={tweaks.mode}
+      key={tweaks.mode}
+     />
 
-            <TweakSection title="Accent">
-              <TweakColor label="Accent" value={tweaks.accent} onChange={v=>setTweak('accent', v)}/>
-              <TweakButton label="Lime" onClick={()=>setTweak('accent', '#B8E04C')}/>
-              <TweakButton label="Olive" onClick={()=>setTweak('accent', '#7A8B2D')}/>
-              <TweakButton label="Cyan terminal" onClick={()=>setTweak('accent', '#5CD8C8')}/>
-              <TweakButton label="Amber" onClick={()=>setTweak('accent', '#E8A547')}/>
-            </TweakSection>
-          </TweaksPanel>
-        </>
-      );
-    }
+     <TweaksPanel title="Tweaks">
+      <TweakSection title="Theme">
+       <TweakRadio
+        label="Mode"
+        value={tweaks.mode}
+        onChange={v=>setTweak('mode', v)}
+        options={[{value:'dark', label:'Dark'}, {value:'light', label:'Light'}]}
+       />
+      </TweakSection>
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
-  </script>
+      <TweakSection title="Lead capture">
+       <TweakRadio
+        label="Gating"
+        value={tweaks.gating}
+        onChange={v=>setTweak('gating', v)}
+        options={[{value:'off', label:'Off'}, {value:'soft', label:'Soft'}]}
+       />
+       <div style={{fontSize:11, color:'#888', marginTop:-4, lineHeight:1.4}}>
+        Soft = cheapest answer + chart visible; full table gated.
+       </div>
+      </TweakSection>
+
+      <TweakSection title="Accent">
+       <TweakColor label="Accent" value={tweaks.accent} onChange={v=>setTweak('accent', v)}/>
+       <TweakButton label="Lime" onClick={()=>setTweak('accent', '#B8E04C')}/>
+       <TweakButton label="Olive" onClick={()=>setTweak('accent', '#7A8B2D')}/>
+       <TweakButton label="Cyan terminal" onClick={()=>setTweak('accent', '#5CD8C8')}/>
+       <TweakButton label="Amber" onClick={()=>setTweak('accent', '#E8A547')}/>
+      </TweakSection>
+     </TweaksPanel>
+    </>
+   );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+ </script>
 </body>
 </html>
