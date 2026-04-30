@@ -37,9 +37,54 @@
   *, *::before, *::after { box-sizing: border-box; }
   /* Calculator container — keeps its own dark theme without affecting site chrome */
   .calc-page-wrap { background: #0E120F; min-height: 60vh; font-family: 'Inter', system-ui, sans-serif; }
-  .calc-page-wrap input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
-  .calc-page-wrap input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; }
-  .calc-page-wrap input[type="range"]::-moz-range-thumb { border: none; }
+
+  /* Defeat base.css interference with the calculator's invisible-overlay range inputs.
+     Without these overrides base.css applies a transition + focus-visible outline + border-radius
+     to range inputs, which breaks click-to-position thumb behavior. */
+  .calc-page-wrap input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    transition: none;
+    pointer-events: auto;
+  }
+  .calc-page-wrap input[type="range"]:focus,
+  .calc-page-wrap input[type="range"]:focus-visible {
+    outline: none;
+    outline-offset: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .calc-page-wrap input[type="range"]::-webkit-slider-runnable-track {
+    background: transparent;
+    border: 0;
+  }
+  .calc-page-wrap input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+  .calc-page-wrap input[type="range"]::-moz-range-track {
+    background: transparent;
+    border: 0;
+  }
+  .calc-page-wrap input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
   @media print {
     .site-header, .site-footer, .scroll-banner, .mobile-nav, .no-print, [data-no-print] { display: none !important; }
   }
