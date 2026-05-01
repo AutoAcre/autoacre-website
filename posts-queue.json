@@ -1,7 +1,7 @@
 {
-  "nextIndex": 2,
-  "lastPublished": 1,
-  "lastPublishedDate": "2026-04-29",
+  "nextIndex": 3,
+  "lastPublished": 2,
+  "lastPublishedDate": "2026-05-01",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -12,6 +12,11 @@
       "slug": "blog-autonomous-mowing-vs-traditional-ride-on-a-property-owner-s-guide",
       "date": "2026-04-29",
       "title": "Autonomous Mowing vs Traditional Ride-On: A Property Owner's Guide"
+    },
+    {
+      "slug": "blog-managing-holiday-rental-grounds-without-a-contractor",
+      "date": "2026-05-01",
+      "title": "Managing Holiday Rental Grounds Without a Contractor"
     }
   ],
   "topics": [
