@@ -224,12 +224,58 @@ a:hover {
 }
 
 /* =============================================
+   PRE-LAUNCH BANNER
+   ============================================= */
+
+:root {
+  --prelaunch-banner-height: 36px;
+}
+
+.prelaunch-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  background: var(--color-charcoal);
+  color: #fff;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  min-height: var(--prelaunch-banner-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prelaunch-banner p { margin: 0; }
+
+.prelaunch-banner a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.prelaunch-banner a:hover { opacity: 0.85; }
+
+@media (max-width: 540px) {
+  :root {
+    --prelaunch-banner-height: 56px;
+  }
+  .prelaunch-banner {
+    font-size: 0.8125rem;
+    padding: 6px 12px;
+  }
+}
+
+/* =============================================
    HEADER
    ============================================= */
 
 .site-header {
   position: fixed;
-  top: 0;
+  top: var(--prelaunch-banner-height);
   left: 0;
   right: 0;
   z-index: 100;
@@ -529,7 +575,7 @@ a:hover {
 
 .hero {
   position: relative;
-  padding-top: 4rem;
+  padding-top: calc(4rem + var(--prelaunch-banner-height));
   overflow: hidden;
 }
 
@@ -654,7 +700,7 @@ a:hover {
    ============================================= */
 
 .page-hero {
-  padding-top: 4rem;
+  padding-top: calc(4rem + var(--prelaunch-banner-height));
   position: relative;
   overflow: hidden;
 }

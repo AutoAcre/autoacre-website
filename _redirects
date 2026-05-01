@@ -1,0 +1,7 @@
+# Stage 1 pivot — quote/demo deprecated, redirect to register-interest waitlist.
+# Permanent (301) so any inbound links pass ranking signal to the new page.
+
+/quote.html         /register-interest.html   301
+/demo.html          /register-interest.html   301
+/quote              /register-interest.html   301
+/demo               /register-interest.html   301

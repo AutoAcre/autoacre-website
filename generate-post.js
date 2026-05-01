@@ -123,7 +123,10 @@ async function generateContent(topic) {
 
 // ── Build blog post HTML ──────────────────────────────────────────────────────
 function buildPostHtml(post) {
-  const SITE_HEADER = `  <header class="site-header" role="banner">
+  const SITE_HEADER = `  <div class="prelaunch-banner" role="region" aria-label="Pre-launch announcement">
+    <p>AutoAcre is launching managed-service operations in Q1 2027. The calculator and Buyer's Guide are open now — <a href="register-interest.html">join the launch list</a>.</p>
+  </div>
+  <header class="site-header" role="banner">
     <div class="header-inner">
       <a href="index.html" class="header-logo" aria-label="AutoAcre home">
         <img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Management" height="52" style="height:52px;width:auto;">
