@@ -328,7 +328,7 @@ a:hover {
 .header-nav {
   display: none;
   align-items: center;
-  gap: var(--space-6);
+  gap: 2rem;
 }
 
 @media (min-width: 1024px) {
@@ -338,6 +338,7 @@ a:hover {
 }
 
 .header-nav a {
+  padding: 0.5rem;
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-text-muted);
