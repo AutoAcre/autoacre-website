@@ -70,22 +70,103 @@
     </p>
 
     <!--
-      MailerLite embedded form goes here.
-      After completing MailerLite setup (sign up → verify domain → create
-      "AutoAcre Launch List" group → add custom fields suburb / acres /
-      current_monthly_cost / property_type / vertical / source → build the
-      embedded form linked to that group), paste the JS embed snippet that
-      MailerLite gives you in place of the placeholder block below.
-      The query-string prefill script that follows reads ?suburb= /
-      ?type= / ?vertical= and populates the matching fields once the
-      MailerLite widget renders.
+      Netlify Forms — submissions land in the Netlify dashboard; Ben gets an
+      email on each signup. data-netlify="true" plus the hidden form-name input
+      register the form at build time. netlify-honeypot adds a hidden bot-field
+      input to catch automated spam. URL query params (?suburb= / ?type= /
+      ?vertical=) prefill the matching fields via the script at the bottom of
+      the page.
     -->
-    <div id="mailerlite-launchlist-form">
-     <div style="border: 2px dashed var(--color-divider); border-radius: var(--radius-lg); padding: var(--space-8); text-align: center; background: var(--color-surface);">
-      <p style="margin: 0 0 var(--space-3); font-weight: 500;">Launch list form — MailerLite embed pending.</p>
-      <p style="margin: 0; color: var(--color-text-muted); font-size: var(--text-sm);">Once MailerLite signup is complete, paste the embedded-form snippet here. In the meantime, please <a href="mailto:ben@autoacre.com.au?subject=Launch%20list%20interest">email Ben directly</a> to be added to the list.</p>
+    <form name="launch-list" method="POST" action="/thank-you.html"
+          data-netlify="true" netlify-honeypot="bot-field"
+          class="launch-list-form" id="launch-list-form">
+     <input type="hidden" name="form-name" value="launch-list">
+     <input type="hidden" name="bot-field">
+     <input type="hidden" name="source" value="register-interest">
+
+     <div class="form-row">
+      <label>
+       <span class="form-label">Your name <span class="req">*</span></span>
+       <input type="text" name="name" required autocomplete="name">
+      </label>
+      <label>
+       <span class="form-label">Email <span class="req">*</span></span>
+       <input type="email" name="email" required autocomplete="email">
+      </label>
      </div>
-    </div>
+
+     <div class="form-row">
+      <label>
+       <span class="form-label">Suburb (Northern Rivers) <span class="req">*</span></span>
+       <input type="text" name="suburb" required autocomplete="address-level2">
+      </label>
+      <label>
+       <span class="form-label">Property size (acres) <span class="req">*</span></span>
+       <input type="number" name="acres" min="0.5" max="200" step="0.5" required>
+      </label>
+     </div>
+
+     <label class="form-block">
+      <span class="form-label">What does your current mowing cost per month? <span class="opt">(optional, $)</span></span>
+      <input type="number" name="current_monthly_cost" min="0" step="10" placeholder="e.g. 840">
+     </label>
+
+     <fieldset class="form-block">
+      <legend class="form-label">Property type</legend>
+      <div class="radio-group">
+       <label class="radio">
+        <input type="radio" name="property_type" value="residential" checked>
+        <span>Residential acreage (2.5–10 acres)</span>
+       </label>
+       <label class="radio">
+        <input type="radio" name="property_type" value="commercial">
+        <span>Commercial / institutional</span>
+       </label>
+      </div>
+     </fieldset>
+
+     <input type="hidden" name="vertical" id="vertical-field">
+
+     <label class="form-block">
+      <span class="form-label">Anything else we should know? <span class="opt">(optional)</span></span>
+      <textarea name="notes" rows="3" placeholder="Slope, access, current contractor, timeline, anything that helps us prep for your launch."></textarea>
+     </label>
+
+     <button type="submit" class="btn btn--primary btn--large" style="width: 100%; margin-top: var(--space-4);">
+      Join the launch list
+     </button>
+
+     <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); text-align: center;">
+      We'll email you the Buyer's Guide and a tailored cost comparison. No spam, no resale, easy unsubscribe.
+     </p>
+    </form>
+
+    <style>
+     .launch-list-form { display: flex; flex-direction: column; gap: var(--space-5); margin-bottom: var(--space-8); }
+     .launch-list-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+     @media (max-width: 540px) { .launch-list-form .form-row { grid-template-columns: 1fr; } }
+     .launch-list-form .form-block { display: block; }
+     .launch-list-form label { display: block; }
+     .launch-list-form .form-label { display: block; font-size: var(--text-sm); font-weight: 500; margin-bottom: var(--space-2); color: var(--color-text); }
+     .launch-list-form .req { color: var(--color-error); }
+     .launch-list-form .opt { font-weight: 400; color: var(--color-text-muted); }
+     .launch-list-form input[type="text"],
+     .launch-list-form input[type="email"],
+     .launch-list-form input[type="number"],
+     .launch-list-form textarea {
+      width: 100%; padding: var(--space-3) var(--space-4);
+      border: 1px solid var(--color-border); border-radius: var(--radius-md);
+      background: var(--color-bg); color: var(--color-text); font: inherit;
+      transition: border-color 180ms;
+     }
+     .launch-list-form input:focus, .launch-list-form textarea:focus {
+      outline: none; border-color: var(--color-primary);
+     }
+     .launch-list-form fieldset { border: none; padding: 0; margin: 0; }
+     .launch-list-form .radio-group { display: flex; flex-direction: column; gap: var(--space-2); }
+     .launch-list-form .radio { display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-3); border: 1px solid var(--color-divider); border-radius: var(--radius-md); }
+     .launch-list-form .radio input { margin: 0; }
+    </style>
 
     <p style="margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-divider); color: var(--color-text-muted);">
      Want to see the numbers first? <a href="cost-calculator.html" style="font-weight: 600;">Run the calculator</a> to compare your current contractor cost against autonomous mowing across an 8-year window.
@@ -103,31 +184,33 @@
 
  <script src="./app.js" defer></script>
 
- <!-- Prefill MailerLite form fields from URL query params (?suburb= / ?type= / ?vertical=) -->
+ <!-- Prefill form fields from URL query params (?suburb= / ?type= / ?vertical=) -->
  <script>
  (function () {
   const params = new URLSearchParams(window.location.search);
-  const presets = {
-   suburb: params.get('suburb'),
-   property_type: params.get('type'),
-   vertical: params.get('vertical')
-  };
+  const form = document.getElementById('launch-list-form');
+  if (!form) return;
 
-  const tryFill = () => {
-   const form = document.querySelector('#mailerlite-launchlist-form .ml-form-embedContainer form');
-   if (!form) return false;
-   Object.entries(presets).forEach(([key, value]) => {
-    if (!value) return;
-    const input = form.querySelector('[name="fields[' + key + ']"]');
-    if (input) input.value = value;
-   });
-   return true;
-  };
+  // Suburb (text input)
+  const suburb = params.get('suburb');
+  if (suburb) {
+   const input = form.querySelector('[name="suburb"]');
+   if (input) input.value = suburb;
+  }
 
-  let attempts = 0;
-  const interval = setInterval(() => {
-   if (tryFill() || ++attempts > 40) clearInterval(interval);
-  }, 250);
+  // Property type (radio buttons)
+  const type = params.get('type');
+  if (type === 'residential' || type === 'commercial') {
+   const radio = form.querySelector('[name="property_type"][value="' + type + '"]');
+   if (radio) radio.checked = true;
+  }
+
+  // Vertical (hidden input — for commercial pages)
+  const vertical = params.get('vertical');
+  if (vertical) {
+   const input = form.querySelector('[name="vertical"]');
+   if (input) input.value = vertical;
+  }
  })();
  </script>
 </body>
