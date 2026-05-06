@@ -37,3 +37,12 @@
 /mowing-tyagarah            /robot-mower-installation-tyagarah            301
 /mowing-mullumbimby.html    /robot-mower-installation-mullumbimby.html    301
 /mowing-mullumbimby         /robot-mower-installation-mullumbimby         301
+
+# Phase 4 — retire two superseded comparison pages.
+# autoacre-vs-husqvarna folds into the new "best robot mower for large properties" page.
+# daily-vs-fortnightly-mowing folds into the rewritten autonomous-vs-ride-on page.
+
+/autoacre-vs-husqvarna.html         /best-robot-mower-for-large-properties.html   301
+/autoacre-vs-husqvarna              /best-robot-mower-for-large-properties        301
+/daily-vs-fortnightly-mowing.html   /autonomous-vs-ride-on.html                   301
+/daily-vs-fortnightly-mowing        /autonomous-vs-ride-on                        301

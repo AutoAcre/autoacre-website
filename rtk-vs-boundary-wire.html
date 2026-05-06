@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--
+ PHASE 4 COMPARISON PAGE — DRAFT 2026-05-06
+ URL: /rtk-vs-boundary-wire.html
+ Primary keyword: "RTK vs boundary wire"
+ Word target: 1500-2500.
+-->
+<html lang="en-AU">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>RTK vs Boundary Wire — Why Boundary Wires Don't Work on Acreage | AutoAcre</title>
+ <meta name="description" content="The honest head-to-head between RTK satellite positioning and buried boundary wires for autonomous mowing. Where each makes sense, why boundary wires fail on acreage, and what RTK gets right that wire never could.">
+ <link rel="canonical" href="https://autoacre.com.au/rtk-vs-boundary-wire.html">
+
+ <meta property="og:title" content="RTK vs Boundary Wire | AutoAcre">
+ <meta property="og:description" content="Two ways autonomous mowers know where they are. Why one works on acreage and the other doesn't.">
+ <meta property="og:image" content="./img/og-image.png">
+ <meta property="og:url" content="https://autoacre.com.au/rtk-vs-boundary-wire.html">
+ <meta property="og:type" content="website">
+ <meta property="og:locale" content="en_AU">
+
+ <script type="application/ld+json">
+ {
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+  "@type": "WebPage",
+  "@id": "https://autoacre.com.au/rtk-vs-boundary-wire.html#webpage",
+  "url": "https://autoacre.com.au/rtk-vs-boundary-wire.html",
+  "name": "RTK vs Boundary Wire — Why Boundary Wires Don't Work on Acreage | AutoAcre",
+  "inLanguage": "en-AU",
+  "isPartOf": { "@id": "https://autoacre.com.au/#website" },
+  "about": { "@id": "https://autoacre.com.au/#organization" }
+  },
+  {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoacre.com.au/" },
+   { "@type": "ListItem", "position": 2, "name": "Compare", "item": "https://autoacre.com.au/rtk-vs-boundary-wire.html" }
+  ]
+  },
+  {
+  "@type": "FAQPage",
+  "mainEntity": [
+   {
+   "@type": "Question",
+   "name": "Is boundary wire ever the right choice?",
+   "acceptedAnswer": { "@type": "Answer", "text": "Yes — for properties under about 1 acre with simple geometry, predictable obstacles and no plans to expand. Husqvarna Automower with boundary wire is a perfectly reasonable choice for a quarter-acre suburban yard. The technology fails as you scale up: more area means more wire, more break points, and a longer install. RTK takes over from there." }
+   },
+   {
+   "@type": "Question",
+   "name": "Can boundary wire be cut?",
+   "acceptedAnswer": { "@type": "Answer", "text": "Yes, and that's its biggest practical weakness. Tree roots, gardener's spades, dog digging, paddock erosion, lawn aeration, irrigation install — anything that disturbs the soil along the wire run can break the circuit. When boundary wire breaks, the mower stops and won't operate until the break is found and spliced. On a 5-acre block with 2 km of wire, finding a break can take half a day with a wire-tracing tool." }
+   },
+   {
+   "@type": "Question",
+   "name": "Does RTK work under tree canopy?",
+   "acceptedAnswer": { "@type": "Answer", "text": "Yes, with caveats. Multi-constellation GNSS receivers (used in modern RTK units) work with GPS, GLONASS, Galileo and BeiDou simultaneously, so partial sky obstruction rarely loses fix entirely. If satellite fix degrades momentarily, the mower's onboard inertial measurement unit dead-reckons accurately enough to maintain track until fix recovers. Customers running RTK autonomous mowers under macadamia and avocado canopies in NSW report no operational issues." }
+   }
+  ]
+  }
+ ]
+ }
+ </script>
+
+ <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="./base.css">
+ <link rel="stylesheet" href="./style.css">
+ <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+ <link rel="manifest" href="/site.webmanifest">
+ <meta name="theme-color" content="#7A8B2D">
+</head>
+<body>
+
+ <header class="site-header" role="banner">
+ <div class="header-inner">
+  <a aria-label='AutoAcre home' class='header-logo' href='/'><img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="52" style="height: 52px; width: auto;"></a>
+  <nav class="header-nav" aria-label="Main navigation">
+   <a href='/'>Home</a>
+   <a href='/rtk-robot-mower-installation'>Autonomous Systems</a>
+   <a href='/acreage-robot-mowing-systems'>Acreage Solutions</a>
+   <div class="nav-dropdown"><button class="nav-dropdown-trigger">Locations <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="nav-dropdown-menu">
+     <a href='/robot-mower-installation-bangalow'>Bangalow</a><a href='/robot-mower-installation-byron-bay'>Byron Bay</a><a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a><a href='/service-area'>All locations</a>
+    </div>
+   </div>
+   <div class="nav-dropdown"><button class="nav-dropdown-trigger">Resources <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="nav-dropdown-menu">
+     <a href='/blog'>Blog</a><a href='/faq'>FAQ</a><a href='/glossary'>Glossary</a><a href='/about'>About AutoAcre</a>
+    </div>
+   </div>
+   <a href='/register-interest'>Book Assessment</a>
+  </nav>
+  <div class="header-actions">
+   <a href="tel:0499649094" class="header-phone" aria-label="Call 0499 649 094"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
+   <a class='btn btn--primary header-cta' href='/3-10-acre-autonomous-mowing-systems'>See if your property is suitable</a>
+  </div>
+ </div>
+ </header>
+
+ <main>
+
+ <section class="page-hero">
+  <div class="container">
+   <nav class="breadcrumb" aria-label="Breadcrumb"><a href='/'>Home</a> <span>/</span> Compare <span>/</span> RTK vs Boundary Wire</nav>
+   <div class="page-hero-inner">
+    <div class="page-hero-text">
+     <span class="section-label">Comparison · Navigation technology</span>
+     <h1>RTK vs boundary wire — what works at acreage scale</h1>
+     <p>Two technologies that tell an autonomous mower where it's allowed to be. One was invented for a quarter-acre suburban lawn. The other was invented for surveying. Guess which one belongs on a 5-acre block.</p>
+     <div class="hero-actions">
+      <a class='btn btn--primary btn--large' href='/3-10-acre-autonomous-mowing-systems'>See if your property is suitable</a>
+      <a class='btn btn--secondary btn--large' href='/cost-calculator'>Run the ROI Calculator</a>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="section section--alt" aria-labelledby="boundary-wire-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">Boundary wire</span>
+    <h2 id="boundary-wire-heading">What boundary wire is, and where it came from</h2>
+   </div>
+   <div class="reveal" style="max-width: 760px; margin-inline: auto;">
+    <p>Boundary wire is the navigation method most consumer robot mowers use — a thin insulated wire buried 5–10 cm deep around the perimeter of the area you want mowed. The mower carries a sensor that detects the wire's electrical signal; when it gets close, it turns away. Inside the wire boundary, the mower wanders semi-randomly until it has covered the area.</p>
+    <p>The technology was invented in the 1990s by Husqvarna for the European suburban lawn market — a few hundred square metres of mostly flat grass surrounded by fences and garden beds. For that use case it works. The wire doesn't need to be very long, the install is a Saturday afternoon job, and break points are rare on a small enclosed block.</p>
+    <p>It's been refined for 30+ years and the current generation (Husqvarna Automower X-line, Robomow, Worx Landroid, etc.) is genuinely capable on quarter-acre to one-acre suburban yards. The technology is mature, cheap, and well-supported.</p>
+    <p>What hasn't changed is the underlying constraint: the mower can only be where the wire says it can be. Multi-zone properties need multiple wire loops. Larger areas need longer wire runs. And the wire is a single point of failure for the entire system — break the wire and the mower stops.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="section" aria-labelledby="rtk-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">RTK</span>
+    <h2 id="rtk-heading">What RTK is, and what it changes</h2>
+   </div>
+   <div class="reveal" style="max-width: 760px; margin-inline: auto;">
+    <p>RTK — Real-Time Kinematic positioning — is centimetre-accurate satellite positioning. It came out of the surveying world in the 1990s, where engineers needed positioning accurate enough to peg a building corner from a satellite signal. The same technology now drives autonomous farm machinery, self-driving research vehicles, and the commercial-grade autonomous mowers AutoAcre installs.</p>
+    <p>RTK works by adding a fixed reference station — the base — to your property at a known location. The base sees the same satellite signal errors as the mower (the rover) at the same time, measures them directly, and broadcasts a correction to the rover in real time. The rover applies the correction and resolves its own position to within 2 cm. No buried wire, no perimeter cable, no install of physical infrastructure across the boundary.</p>
+    <p>The boundary becomes a software polygon — a list of GPS coordinates the mower stays inside. Walking the boundary on install day records the polygon at centimetre accuracy. Updating the boundary later (new fence, new garden bed, new exclusion zone) is a 30-minute walk with the rover, not a redig of the perimeter.</p>
+    <p>The technology is more expensive than boundary wire because the hardware is more sophisticated — RTK base station, multi-constellation GNSS receiver on the mower, often LiDAR for obstacle avoidance on top. Where boundary wire is the right technology for a quarter-acre yard, RTK is the right technology for a 3–10 acre property where wire infrastructure becomes impractical.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="section section--alt" aria-labelledby="head-to-head-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">Head to head</span>
+    <h2 id="head-to-head-heading">RTK vs boundary wire on the criteria that matter</h2>
+   </div>
+   <div class="reveal" style="overflow-x: auto;">
+    <table style="width:100%; border-collapse: collapse; margin: var(--space-4) 0;">
+     <thead>
+      <tr style="border-bottom: 2px solid var(--color-text);">
+       <th style="text-align: left; padding: 12px 8px;">Criterion</th>
+       <th style="text-align: left; padding: 12px 8px;">Boundary wire</th>
+       <th style="text-align: left; padding: 12px 8px;">RTK</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr style="border-bottom: 1px solid var(--color-divider);"><td style="padding: 12px 8px;">Install effort on 5 acres</td><td style="padding: 12px 8px;">Days of trenching and wire-laying</td><td style="padding: 12px 8px;">Half-day boundary walk with rover</td></tr>
+      <tr style="border-bottom: 1px solid var(--color-divider);"><td style="padding: 12px 8px;">Boundary precision</td><td style="padding: 12px 8px;">~30 cm tolerance from wire</td><td style="padding: 12px 8px;">2 cm to the recorded polygon</td></tr>
+      <tr style="border-bottom: 1px solid var(--color-divider);"><td style="padding: 12px 8px;">Failure mode</td><td style="padding: 12px 8px;">Wire break stops the entire system</td><td style="padding: 12px 8px;">Brief satellite-fix loss; system continues on inertial nav until fix recovers</td></tr>
+      <tr style="border-bottom: 1px solid var(--color-divider);"><td style="padding: 12px 8px;">Boundary changes</td><td style="padding: 12px 8px;">Re-trench and re-bury wire</td><td style="padding: 12px 8px;">Walk the new boundary; update the polygon</td></tr>
+      <tr style="border-bottom: 1px solid var(--color-divider);"><td style="padding: 12px 8px;">Slope handling</td><td style="padding: 12px 8px;">Limited to ~25° on the best consumer units</td><td style="padding: 12px 8px;">Up to 38° on commercial-grade units</td></tr>
+      <tr style="border-bottom: 1px solid var(--color-divider);"><td style="padding: 12px 8px;">Mowing pattern</td><td style="padding: 12px 8px;">Random walk inside boundary</td><td style="padding: 12px 8px;">Deterministic paths, same lines every cycle</td></tr>
+      <tr style="border-bottom: 1px solid var(--color-divider);"><td style="padding: 12px 8px;">Multi-zone properties</td><td style="padding: 12px 8px;">One wire loop per zone (complex)</td><td style="padding: 12px 8px;">Multiple polygons in one system (trivial)</td></tr>
+      <tr><td style="padding: 12px 8px;">Hardware lifespan</td><td style="padding: 12px 8px;">Wire degrades over years; vulnerable to ground disturbance</td><td style="padding: 12px 8px;">Solid-state base; 10+ year service life</td></tr>
+     </tbody>
+    </table>
+    <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-3);">For the technical detail on RTK installation specifically, read <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="section" aria-labelledby="when-each-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">When each makes sense</span>
+    <h2 id="when-each-heading">The honest answer on which to choose</h2>
+   </div>
+   <div class="content-split reveal">
+    <div>
+     <h3 style="margin-top: 0;">Boundary wire is the right choice when…</h3>
+     <ul class="feature-list">
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your property is under about 1 acre</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Geometry is simple — single zone, no awkward exclusions</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Slopes are gentle (under 25°)</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Capital budget is constrained — boundary wire systems start under $5K</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>You don't expect the property layout to change</li>
+     </ul>
+    </div>
+    <div>
+     <h3 style="margin-top: 0;">RTK is the right choice when…</h3>
+     <ul class="feature-list">
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your property is 3 acres or more</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>You have multiple zones, irregular geometry or careful exclusions</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Slopes exceed 25° anywhere on the block</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Boundary precision matters (paddock fences, garden beds, dam edges)</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The property might change — new fence, new orchard row, new exclusion</li>
+     </ul>
+    </div>
+   </div>
+   <p style="text-align: center; max-width: 720px; margin: var(--space-6) auto 0; color: var(--color-text-muted);">For 3–10 acre Northern Rivers acreage, RTK is the right answer in essentially every case. Boundary wire was never designed for this scale — the constraints stop being annoyances and start being failures. The technology choice is downstream of the property, not upstream of the brand: pick the technology that matches the block, then pick the platform that uses that technology well.</p>
+  </div>
+ </section>
+
+ <section class="section section--alt" aria-labelledby="install-compare-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">Install reality</span>
+    <h2 id="install-compare-heading">What each install actually involves</h2>
+   </div>
+   <div class="content-split reveal">
+    <div>
+     <h3 style="margin-top: 0;">Boundary wire install on 5 acres</h3>
+     <p>About 2 km of perimeter wire, plus internal loops for exclusion zones (garden beds, dam edges, driveways). The wire gets buried 5–10 cm deep — typically with a sub-soiler attachment that creates a slot the wire is pressed into. On undulating ground or around tree roots the slot can't be cut cleanly, and the wire is laid surface-pegged where burial isn't possible.</p>
+     <p>Time: 2–3 days for a single experienced installer on a moderately complex 5-acre block. Cost: a few thousand dollars in wire and labour. Once installed, the wire is essentially a permanent part of the property.</p>
+     <p>Updating the boundary later (new fence, new exclusion zone, expanded mowing area) means re-running and re-burying wire. The original install can't be incrementally edited; it gets supplemented with additional loops.</p>
+    </div>
+    <div>
+     <h3 style="margin-top: 0;">RTK install on 5 acres</h3>
+     <p>One base station mounted on a shed or pole. One walk of the property with the rover, recording boundary points at centimetre accuracy as we go. Done.</p>
+     <p>Time: half a day for the boundary walk plus an hour of zone configuration. The mower's operational by end-of-day. No trenching, no buried infrastructure, no perimeter cabling.</p>
+     <p>Updating the boundary later is a 30-minute re-walk of the changed section. The polygon updates immediately; the mower respects the new boundary on its next cycle. Multi-zone reconfiguration is software, not earthworks.</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="section" aria-labelledby="consumer-gps-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">A third option to know about</span>
+    <h2 id="consumer-gps-heading">What about consumer-grade GPS mowers?</h2>
+   </div>
+   <div class="reveal" style="max-width: 760px; margin-inline: auto;">
+    <p>A handful of consumer-tier mowers (some Mammotion variants, lower-spec wire-free units) use single-receiver GPS without RTK correction. These sit between boundary wire and proper RTK in capability. They don't need a buried wire, and they handle property scale better than wire-bounded units, but their positioning accuracy is 1–3 metres rather than 2 cm.</p>
+    <p>That difference matters more than it sounds. At metre-level accuracy, the mower drifts within its working envelope — it can't trace the same paths every cycle, can't hold paddock fence offsets reliably, can't stop cleanly at a treeline. For a quarter-acre lawn the drift is invisible; for a 5-acre block with paddock fences, garden beds and dam edges, the drift produces missed strips, incursions into exclusion zones, and the gradual erosion of any deterministic mowing pattern.</p>
+    <p>Consumer GPS is a real category, and for some mid-sized suburban yards it's a cost-effective middle ground. For 3–10 acre acreage with real exclusion zones and slope work, it isn't the right tool. RTK or boundary wire are the two genuine options at acreage scale, and as covered above, RTK is the right answer in essentially every case once you cross the 3-acre threshold or have any real terrain complexity to deal with.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="section section--alt" aria-labelledby="faq-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">FAQ</span>
+    <h2 id="faq-heading">Common questions on the technology choice</h2>
+   </div>
+   <div class="faq-list reveal">
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">Is boundary wire ever the right choice?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Yes — for properties under about 1 acre with simple geometry, predictable obstacles and no plans to expand. Husqvarna Automower with boundary wire is a perfectly reasonable choice for a quarter-acre suburban yard. The technology fails as you scale up: more area means more wire, more break points, and a longer install. RTK takes over from there.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">Can boundary wire be cut?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Yes, and that's its biggest practical weakness. Tree roots, gardener's spades, dog digging, paddock erosion, lawn aeration, irrigation install — anything that disturbs the soil along the wire run can break the circuit. When boundary wire breaks, the mower stops and won't operate until the break is found and spliced. On a 5-acre block with 2 km of wire, finding a break can take half a day with a wire-tracing tool.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">Does RTK work under tree canopy?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Yes, with caveats. Multi-constellation GNSS receivers (used in modern RTK units) work with GPS, GLONASS, Galileo and BeiDou simultaneously, so partial sky obstruction rarely loses fix entirely. If satellite fix degrades momentarily, the mower's onboard inertial measurement unit dead-reckons accurately enough to maintain track until fix recovers. Customers running RTK autonomous mowers under macadamia and avocado canopies in NSW report no operational issues.</div></div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="cta-banner" aria-labelledby="cta-heading">
+  <div class="container">
+   <h2 id="cta-heading">See if RTK is the right call for your block</h2>
+   <p>The site assessment establishes whether your property is in the boundary-wire window or genuinely needs RTK. Honest answer either way — if a wire-bounded mower would serve you better, we'll say so.</p>
+   <div class="cta-banner-actions">
+    <a class='btn btn--primary btn--large' href='/3-10-acre-autonomous-mowing-systems'>See if your property is suitable</a>
+    <a class='btn btn--secondary btn--large' href='/register-interest' style='border-color: rgba(255,255,255,0.3); color: #fff;'>Book Site Assessment</a>
+   </div>
+  </div>
+ </section>
+ </main>
+
+ <footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <a aria-label='AutoAcre home' class='header-logo' href='/'><img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);"></a>
+    <p>Autonomous mowing systems for 3–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
+   </div>
+   <div class="footer-col"><h4>Systems</h4><ul><li><a href='/acreage-robot-mowing-systems'>Acreage Solutions hub</a></li><li><a href='/3-10-acre-autonomous-mowing-systems'>3–10 acre Autonomous Systems</a></li><li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li></ul></div>
+   <div class="footer-col"><h4>Compare</h4><ul><li><a href='/best-robot-mower-for-large-properties'>Best for large properties</a></li><li><a href='/rtk-vs-boundary-wire'>RTK vs boundary wire</a></li><li><a href='/autonomous-vs-ride-on'>Robot mower vs ride-on</a></li></ul></div>
+   <div class="footer-col"><h4>Convert</h4><ul><li><a href='/cost-calculator'>ROI Calculator</a></li><li><a href='/register-interest'>Book Site Assessment</a></li></ul></div>
+   <div class="footer-col"><h4>Resources</h4><ul><li><a href='/faq'>FAQ</a></li><li><a href='/glossary'>Glossary</a></li><li><a href='/about'>About</a></li><li><a href='/blog'>Blog</a></li></ul></div>
+   <div class="footer-col">
+    <h4>Contact</h4>
+    <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:0499649094">0499 649 094</a></div>
+    <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Byron Bay &amp; Northern Rivers, NSW</span></div>
+   </div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span><span>ABN pending · Service operations begin Q1 2027</span></div>
+ </div>
+ </footer>
+
+ <script src="./app.js" defer></script>
+</body>
+</html>
