@@ -53,3 +53,9 @@
 /cost-calculator               /robot-mower-roi-calculator        301
 /register-interest.html        /book-site-assessment.html         301
 /register-interest             /book-site-assessment              301
+
+# Cleanup — /residential.html retired (overlapped with Phase 2 acreage hub).
+# /residential redirects to the hub which covers the same content with the new positioning.
+
+/residential.html  /acreage-robot-mowing-systems.html  301
+/residential       /acreage-robot-mowing-systems       301
