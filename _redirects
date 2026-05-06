@@ -5,3 +5,35 @@
 /demo.html          /register-interest.html   301
 /quote              /register-interest.html   301
 /demo               /register-interest.html   301
+
+# Phase 3 pivot — suburb pages renamed from /mowing-X to /robot-mower-installation-X
+# 301 so ranking signal transfers cleanly to the new URLs.
+
+/mowing-bangalow.html       /robot-mower-installation-bangalow.html       301
+/mowing-bangalow            /robot-mower-installation-bangalow            301
+/mowing-ewingsdale.html     /robot-mower-installation-ewingsdale.html     301
+/mowing-ewingsdale          /robot-mower-installation-ewingsdale          301
+/mowing-newrybar.html       /robot-mower-installation-newrybar.html       301
+/mowing-newrybar            /robot-mower-installation-newrybar            301
+/mowing-alstonville.html    /robot-mower-installation-alstonville.html    301
+/mowing-alstonville         /robot-mower-installation-alstonville         301
+/mowing-teven.html          /robot-mower-installation-teven.html          301
+/mowing-teven               /robot-mower-installation-teven               301
+/mowing-tintenbar.html      /robot-mower-installation-tintenbar.html      301
+/mowing-tintenbar           /robot-mower-installation-tintenbar           301
+/mowing-brooklet.html       /robot-mower-installation-brooklet.html       301
+/mowing-brooklet            /robot-mower-installation-brooklet            301
+/mowing-clunes.html         /robot-mower-installation-clunes.html         301
+/mowing-clunes              /robot-mower-installation-clunes              301
+/mowing-nashua.html         /robot-mower-installation-nashua.html         301
+/mowing-nashua              /robot-mower-installation-nashua              301
+/mowing-eureka.html         /robot-mower-installation-eureka.html         301
+/mowing-eureka              /robot-mower-installation-eureka              301
+/mowing-federal.html        /robot-mower-installation-federal.html        301
+/mowing-federal             /robot-mower-installation-federal             301
+/mowing-myocum.html         /robot-mower-installation-myocum.html         301
+/mowing-myocum              /robot-mower-installation-myocum              301
+/mowing-tyagarah.html       /robot-mower-installation-tyagarah.html       301
+/mowing-tyagarah            /robot-mower-installation-tyagarah            301
+/mowing-mullumbimby.html    /robot-mower-installation-mullumbimby.html    301
+/mowing-mullumbimby         /robot-mower-installation-mullumbimby         301
