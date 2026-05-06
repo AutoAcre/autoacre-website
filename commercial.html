@@ -75,29 +75,102 @@
 
  <header class="site-header" role="banner">
  <div class="header-inner">
-  <a aria-label='AutoAcre home' class='header-logo' href='/'><img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="52" style="height: 52px; width: auto;"></a>
+  <a aria-label='AutoAcre home' class='header-logo' href='/'>
+   <img src="/img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="52" style="height: 52px; width: auto;">
+  </a>
   <nav class="header-nav" aria-label="Main navigation">
    <a href='/'>Home</a>
-   <a href='/rtk-robot-mower-installation'>Autonomous Systems</a>
-   <a aria-current='page' href='/acreage-robot-mowing-systems'>Acreage Solutions</a>
-   <div class="nav-dropdown"><button class="nav-dropdown-trigger">Locations <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+   <div class="nav-dropdown">
+    <button class="nav-dropdown-trigger">Autonomous Systems <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
     <div class="nav-dropdown-menu">
-     <a href='/robot-mower-installation-bangalow'>Bangalow</a><a href='/robot-mower-installation-byron-bay'>Byron Bay</a><a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a><a href='/service-area'>All locations</a>
+     <a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a>
+     <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>
+     <a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a>
+     <a href='/commercial'>Commercial Autonomous Mowing</a>
     </div>
    </div>
-   <div class="nav-dropdown"><button class="nav-dropdown-trigger">Resources <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+   <div class="nav-dropdown">
+    <button class="nav-dropdown-trigger">Locations <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
     <div class="nav-dropdown-menu">
-     <a href='/blog'>Blog</a><a href='/faq'>FAQ</a><a href='/glossary'>Glossary</a><a href='/about'>About AutoAcre</a>
+     <a href='/robot-mower-installation-byron-bay'>Byron Bay</a>
+     <a href='/robot-mower-installation-federal'>Federal</a>
+     <a href='/robot-mower-installation-bangalow'>Bangalow</a>
+     <a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a>
+     <a href='/robot-mower-installation-lennox-head'>Lennox Head</a>
+     <a href='/robot-mower-installation-ballina'>Ballina</a>
+     <a href='/service-area'>All locations</a>
     </div>
    </div>
-   <a href='/book-site-assessment'>Book Assessment</a>
+   <div class="nav-dropdown">
+    <button class="nav-dropdown-trigger">Insights <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="nav-dropdown-menu">
+     <a href='/blog'>Robot Mower Guides</a>
+     <a href='/acreage-robot-mowing-systems'>Acreage Automation</a>
+     <a href='/rtk-robot-mower-installation'>RTK Technology</a>
+     <a href='/autonomous-vs-ride-on'>Comparisons</a>
+     <a href='/faq'>Facts &amp; FAQs</a>
+    </div>
+   </div>
+   <a href='/about'>About</a>
   </nav>
   <div class="header-actions">
    <a href="tel:0499649094" class="header-phone" aria-label="Call 0499 649 094"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
-   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Site Assessment</a>
+   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
+   <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"></button>
+   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
   </div>
  </div>
- </header>
+</header>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+ <a class='btn btn--primary btn--large mobile-cta' href='/book-site-assessment' style='margin-bottom: var(--space-4);'>Book Assessment</a>
+ <a href='/'>Home</a>
+ <div class="mobile-nav-areas">
+  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+   Autonomous Systems
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+  <div class="mobile-nav-areas-list">
+   <a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a>
+   <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>
+   <a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a>
+   <a href='/commercial'>Commercial Autonomous Mowing</a>
+  </div>
+ </div>
+ <div class="mobile-nav-areas">
+  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+   Locations
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+  <div class="mobile-nav-areas-list">
+   <a href='/robot-mower-installation-byron-bay'>Byron Bay</a>
+   <a href='/robot-mower-installation-federal'>Federal</a>
+   <a href='/robot-mower-installation-bangalow'>Bangalow</a>
+   <a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a>
+   <a href='/robot-mower-installation-lennox-head'>Lennox Head</a>
+   <a href='/robot-mower-installation-ballina'>Ballina</a>
+   <a href='/service-area'>All locations</a>
+  </div>
+ </div>
+ <div class="mobile-nav-areas">
+  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+   Insights
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+  <div class="mobile-nav-areas-list">
+   <a href='/blog'>Robot Mower Guides</a>
+   <a href='/acreage-robot-mowing-systems'>Acreage Automation</a>
+   <a href='/rtk-robot-mower-installation'>RTK Technology</a>
+   <a href='/autonomous-vs-ride-on'>Comparisons</a>
+   <a href='/faq'>Facts &amp; FAQs</a>
+  </div>
+ </div>
+ <a href='/about'>About</a>
+ <a href="tel:0499649094" class="mobile-nav-phone">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  0499 649 094
+ </a>
+</nav>
 
  <main>
 
@@ -341,22 +414,80 @@
  <div class="container">
   <div class="footer-grid">
    <div class="footer-brand">
-    <a aria-label='AutoAcre home' class='header-logo' href='/'><img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);"></a>
+    <a aria-label='AutoAcre home' class='header-logo' href='/'>
+     <img src="/img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
+    </a>
     <p>Autonomous mowing systems for 3–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
    </div>
-   <div class="footer-col"><h4>Systems</h4><ul><li><a href='/acreage-robot-mowing-systems'>Acreage Solutions hub</a></li><li><a href='/3-10-acre-autonomous-mowing-systems'>3–10 acre Autonomous Systems</a></li><li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li></ul></div>
-   <div class="footer-col"><h4>Compare</h4><ul><li><a href='/best-robot-mower-for-large-properties'>Best for large properties</a></li><li><a href='/rtk-vs-boundary-wire'>RTK vs boundary wire</a></li><li><a href='/autonomous-vs-ride-on'>Robot mower vs ride-on</a></li></ul></div>
-   <div class="footer-col"><h4>Convert</h4><ul><li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li><li><a href='/book-site-assessment'>Book Site Assessment</a></li></ul></div>
-   <div class="footer-col"><h4>Resources</h4><ul><li><a href='/faq'>FAQ</a></li><li><a href='/glossary'>Glossary</a></li><li><a href='/about'>About</a></li><li><a href='/blog'>Blog</a></li></ul></div>
+   <div class="footer-col">
+    <h4>Autonomous Systems</h4>
+    <ul>
+     <li><a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a></li>
+     <li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li>
+     <li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li>
+     <li><a href='/commercial'>Commercial Autonomous Mowing</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Locations</h4>
+    <ul>
+     <li><a href='/robot-mower-installation-byron-bay'>Byron Bay</a></li>
+     <li><a href='/robot-mower-installation-federal'>Federal</a></li>
+     <li><a href='/robot-mower-installation-bangalow'>Bangalow</a></li>
+     <li><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a></li>
+     <li><a href='/robot-mower-installation-lennox-head'>Lennox Head</a></li>
+     <li><a href='/robot-mower-installation-ballina'>Ballina</a></li>
+     <li><a href='/service-area'>All locations</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Insights</h4>
+    <ul>
+     <li><a href='/blog'>Robot Mower Guides</a></li>
+     <li><a href='/acreage-robot-mowing-systems'>Acreage Automation</a></li>
+     <li><a href='/rtk-robot-mower-installation'>RTK Technology</a></li>
+     <li><a href='/autonomous-vs-ride-on'>Comparisons</a></li>
+     <li><a href='/faq'>Facts &amp; FAQs</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Convert</h4>
+    <ul>
+     <li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li>
+     <li><a href='/book-site-assessment'>Book Site Assessment</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+     <li><a href='/about'>About</a></li>
+     <li><a href='/blog'>Blog</a></li>
+     <li><a href='/glossary'>Glossary</a></li>
+     <li><a href='/facts'>Facts &amp; Figures</a></li>
+    </ul>
+   </div>
    <div class="footer-col">
     <h4>Contact</h4>
-    <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:0499649094">0499 649 094</a></div>
-    <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Byron Bay &amp; Northern Rivers, NSW</span></div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+     <a href="tel:0499649094">0499 649 094</a>
+    </div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+     <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>
+    </div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+     <span>Byron Bay &amp; Northern Rivers, NSW</span>
+    </div>
    </div>
   </div>
-  <div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span><span>ABN pending · Service operations begin Q1 2027</span></div>
+  <div class="footer-bottom">
+   <span>&copy; 2026 AutoAcre. All rights reserved.</span>
+   <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
+  </div>
  </div>
- </footer>
+</footer>
 
  <script src="./app.js" defer></script>
 </body>
