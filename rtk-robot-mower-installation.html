@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!--
+ PHASE 2 AUTHORITY PAGE — DRAFT 2026-05-06
+ URL: /rtk-robot-mower-installation.html
+
+ Role: Technology + installation authority — "how does this actually get installed and work?"
+ Primary keyword: "RTK robot mower installation"
+ Intent: Authority — single intent: technology and installation depth.
+ Word target: 1800-3000.
+
+ Distinct from /rtk-vs-boundary-wire (Phase 4 comparison page). This page owns INSTALLATION
+ keyword space; the comparison page owns the head-to-head keyword. Cross-link, don't cannibalise.
+
+ Internal linking (per spec Section 7):
+   - Receives links from: homepage technology section, /rtk-vs-boundary-wire (Phase 4),
+     how-to-prepare-acreage, how-to-assess-if-your-property-is-right, /acreage-robot-mowing-systems
+   - Links to: /acreage-robot-mowing-systems (whole-system view), /rtk-vs-boundary-wire (Phase 4 comparison),
+     ROI Calculator, Book Site Assessment
+
+ Phase dependencies:
+   - /rtk-vs-boundary-wire (Phase 4 comparison — not yet built)
+   - /book-site-assessment (Phase 5 rename — currently /register-interest)
+   - /robot-mower-roi-calculator (Phase 5 rename — currently /cost-calculator)
+-->
+<html lang="en-AU">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>RTK Robot Mower Installation — How RTK Autonomous Mowing Actually Gets Installed | AutoAcre</title>
+ <meta name="description" content="A technical deep dive on RTK robot mower installation for Northern Rivers acreage. What the RTK base station is, what gets installed at your property, the install process step by step, and how the system stays accurate over years of operation.">
+ <link rel="canonical" href="https://autoacre.com.au/rtk-robot-mower-installation.html">
+
+ <meta property="og:title" content="RTK Robot Mower Installation — How It Actually Works | AutoAcre">
+ <meta property="og:description" content="The technical detail on RTK base station, LiDAR sensor stack, boundary mapping, and the autonomous mowing install process for Northern Rivers acreage.">
+ <meta property="og:image" content="./img/og-image.png">
+ <meta property="og:url" content="https://autoacre.com.au/rtk-robot-mower-installation.html">
+ <meta property="og:type" content="website">
+ <meta property="og:locale" content="en_AU">
+
+ <script type="application/ld+json">
+ {
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+  "@type": "WebPage",
+  "@id": "https://autoacre.com.au/rtk-robot-mower-installation.html#webpage",
+  "url": "https://autoacre.com.au/rtk-robot-mower-installation.html",
+  "name": "RTK Robot Mower Installation — How RTK Autonomous Mowing Actually Gets Installed | AutoAcre",
+  "inLanguage": "en-AU",
+  "isPartOf": { "@id": "https://autoacre.com.au/#website" },
+  "about": { "@id": "https://autoacre.com.au/#organization" },
+  "mainEntity": { "@id": "https://autoacre.com.au/#product-platform" }
+  },
+  {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoacre.com.au/" },
+   { "@type": "ListItem", "position": 2, "name": "RTK Robot Mower Installation", "item": "https://autoacre.com.au/rtk-robot-mower-installation.html" }
+  ]
+  },
+  {
+  "@type": "FAQPage",
+  "@id": "https://autoacre.com.au/rtk-robot-mower-installation.html#faq",
+  "mainEntity": [
+   {
+   "@type": "Question",
+   "name": "How accurate is RTK in real-world acreage conditions?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Within 2 cm horizontal accuracy when the base station has good sky view and the rover (the mower) is within around 10 km of the base. On a typical 3–10 acre property, the rover is rarely more than a few hundred metres from the base, so accuracy holds at the centimetre level. RTK degrades gracefully — heavy canopy or temporary satellite-geometry issues drop accuracy to the decimetre level briefly, but the mower's onboard inertial measurement unit fills the gap until the satellite fix recovers."
+   }
+   },
+   {
+   "@type": "Question",
+   "name": "What happens to RTK when there's heavy tree canopy?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Modern RTK + inertial navigation handles closed canopy. The GNSS receiver on the mower works with multiple satellite constellations (GPS, GLONASS, Galileo, BeiDou) so partial sky obstruction rarely loses fix entirely. If satellite fix degrades momentarily, the mower's inertial measurement unit dead-reckons short distances accurately enough to maintain track until the fix recovers. Practical evidence: customers running RTK autonomous mowers under macadamia and avocado canopies in NSW report no operational issues."
+   }
+   },
+   {
+   "@type": "Question",
+   "name": "How long does an RTK installation actually take?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Typical install for a 3–7 acre property is one full day. The 10-acre tier sometimes runs into a second day depending on zone complexity and base station placement. Sequence: morning is base station mounting and initialisation (a few hours of static observation while the base solves its own position); afternoon is mower commissioning, boundary walk, exclusion-zone mapping, and a first supervised mowing run. The system is operational the same day in most cases."
+   }
+   },
+   {
+   "@type": "Question",
+   "name": "Where does the RTK base station get mounted?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "On the highest practical point of your property with clean sky view in all directions — typically a shed roof, a pole next to the charging dock, or the eaves of an outbuilding. The base needs power and an unobstructed view of the sky to receive satellite signals; it doesn't need internet (RTK corrections are sent locally to the rover). Placement is decided during the site assessment based on terrain, line-of-sight to mowing zones, and whether RF obstruction (large structures, dense forest) would degrade the correction signal."
+   }
+   },
+   {
+   "@type": "Question",
+   "name": "How long does the RTK base station last?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The base station is solid-state with no moving parts — service life is typically 10+ years on a sheltered mount with stable power. The mower itself has a service life of roughly 8 years on this duty cycle (~78 mow days/year keeps wear well below daily-use thresholds). Firmware updates extend the system lifespan well beyond hardware service life as new corrections, navigation algorithms, and safety improvements are released."
+   }
+   }
+  ]
+  }
+ ]
+ }
+ </script>
+
+ <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="./base.css">
+ <link rel="stylesheet" href="./style.css">
+
+ <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+ <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+ <link rel="manifest" href="/site.webmanifest">
+ <meta name="theme-color" content="#7A8B2D">
+</head>
+<body>
+
+ <header class="site-header" role="banner">
+ <div class="header-inner">
+  <a aria-label='AutoAcre home' class='header-logo' href='/'><img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="52" style="height: 52px; width: auto;"></a>
+  <nav class="header-nav" aria-label="Main navigation">
+   <a href='/'>Home</a>
+   <a aria-current='page' href='/rtk-robot-mower-installation'>Autonomous Systems</a>
+   <a href='/acreage-robot-mowing-systems'>Acreage Solutions</a>
+   <div class="nav-dropdown">
+    <button class="nav-dropdown-trigger">Locations <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="nav-dropdown-menu">
+     <a href='/mowing-bangalow'>Bangalow</a><a href='/mowing-ewingsdale'>Ewingsdale</a><a href='/mowing-newrybar'>Newrybar</a><a href='/mowing-alstonville'>Alstonville</a><a href='/mowing-brooklet'>Brooklet</a><a href='/mowing-clunes'>Clunes</a><a href='/mowing-federal'>Federal</a><a href='/mowing-mullumbimby'>Mullumbimby</a><a href='/mowing-myocum'>Myocum</a><a href='/mowing-nashua'>Nashua</a><a href='/mowing-teven'>Teven</a><a href='/mowing-tintenbar'>Tintenbar</a><a href='/mowing-tyagarah'>Tyagarah</a><a href='/mowing-eureka'>Eureka</a>
+    </div>
+   </div>
+   <div class="nav-dropdown">
+    <button class="nav-dropdown-trigger">Resources <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="nav-dropdown-menu">
+     <a href='/blog'>Blog</a><a href='/faq'>FAQ</a><a href='/glossary'>Glossary</a><a href='/facts'>Facts &amp; Figures</a><a href='/how-to-assess-if-your-property-is-right-for-autonomous-mowing'>Is your property right for it?</a><a href='/how-to-prepare-acreage-for-autonomous-mowing'>Preparing your acreage</a><a href='/how-to-switch-from-a-fortnightly-contractor'>Switching from a contractor</a><a href='/about'>About AutoAcre</a>
+    </div>
+   </div>
+   <a href='/register-interest'>Book Assessment</a>
+  </nav>
+  <div class="header-actions">
+   <a href="tel:0499649094" class="header-phone" aria-label="Call 0499 649 094"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
+   <a class='btn btn--primary header-cta' href='/register-interest'>Book Site Assessment</a>
+   <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"></button>
+   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
+  </div>
+ </div>
+ </header>
+
+ <main>
+
+ <!-- HERO -->
+ <section class="page-hero">
+  <div class="container">
+   <nav class="breadcrumb" aria-label="Breadcrumb"><a href='/'>Home</a> <span>/</span> RTK Robot Mower Installation</nav>
+   <div class="page-hero-inner">
+    <div class="page-hero-text">
+     <span class="section-label">Authority Page · Technology &amp; Installation</span>
+     <h1>RTK robot mower installation, in technical detail</h1>
+     <p>What an RTK autonomous mowing system actually consists of, what gets physically installed at your property, how the install process unfolds, and how the system holds up over years of operation. The technology depth behind the AutoAcre Buy + Manage offer.</p>
+     <div class="hero-actions">
+      <a class='btn btn--primary btn--large' href='/register-interest'>Book Site Assessment</a>
+      <a class='btn btn--secondary btn--large' href='/cost-calculator'>Run the ROI Calculator</a>
+     </div>
+    </div>
+    <div class="page-hero-image">
+     <img src="./img/aerial-prestige.jpg" alt="Northern Rivers acreage property where an RTK autonomous mowing system is installed" width="800" height="600" loading="eager">
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- WHAT IS RTK -->
+ <section class="section section--alt" aria-labelledby="rtk-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">The technology</span>
+    <h2 id="rtk-heading">What RTK is, and why it matters</h2>
+   </div>
+   <div class="content-split reveal">
+    <div>
+     <p>RTK stands for Real-Time Kinematic positioning. It's a satellite-based positioning technique that achieves centimetre-level accuracy — about 1,000× more precise than the GPS in your phone. RTK is the same positioning technology used in surveying equipment, autonomous farm machinery, and self-driving research vehicles.</p>
+     <p>The headline number for AutoAcre's installations is <strong>2 cm horizontal accuracy</strong>. That number isn't marketing — it's what RTK consistently delivers when the base station has clean sky view and the rover (the mower) is within around 10 km of the base. On a 3–10 acre acreage property, the rover is never more than a few hundred metres from its base; accuracy holds at the centimetre level continuously.</p>
+     <p>For autonomous mowing on real-world acreage, 2 cm matters. That's the precision needed to mow without missed strips, without drift over time, without straying into garden beds, and without needing a buried boundary wire to define the perimeter. Cheaper consumer-grade GPS mowers operate at 1–3 metre accuracy, which doesn't work at acreage scale.</p>
+    </div>
+    <div>
+     <h3 style="margin-top: 0;">How RTK actually works</h3>
+     <p>A standard GPS receiver figures out where it is by triangulating signals from multiple satellites. The accuracy ceiling on a single receiver is about 1–3 metres because of small timing errors in the satellite signals as they pass through the atmosphere.</p>
+     <p>RTK fixes this by adding a second receiver — the <strong>base station</strong> — installed at a known fixed location on your property. Both receivers see the same atmospheric errors at the same time. The base measures the error directly (since it knows exactly where it is), then transmits a correction to the rover in real time. The rover applies the correction and resolves its own position to within 2 cm.</p>
+     <p>The whole correction loop happens at 10–20 Hz — far faster than the mower needs to make navigation decisions. The mower always knows where it is, where it's going, and where the boundaries it shouldn't cross are.</p>
+     <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted);">For a head-to-head comparison of RTK against the older boundary-wire approach, read <a href='/rtk-vs-boundary-wire'>RTK vs Boundary Wire →</a></p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- WHAT GETS INSTALLED -->
+ <section class="section" aria-labelledby="installed-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">What gets installed</span>
+    <h2 id="installed-heading">The physical installation at your property</h2>
+    <p>An RTK autonomous mowing system has four physical components that get installed on your land. Each is durable, low-maintenance, and designed to last well beyond the mower's own service life.</p>
+   </div>
+   <div class="card-grid card-grid--2 reveal">
+    <div class="card">
+     <h3>1. RTK base station</h3>
+     <p>A small ruggedised unit (about the size of a fist) mounted on the highest practical point of your property — typically a shed roof, a pole next to the charging dock, or the eaves of an outbuilding. Needs power and clean sky view; no internet connection required since corrections are broadcast locally to the rover. Solid-state with no moving parts. Service life 10+ years on a sheltered mount.</p>
+    </div>
+    <div class="card">
+     <h3>2. Charging dock</h3>
+     <p>The mower returns to its dock between mowing sessions, recharges, and waits for the next scheduled run. Dock placement matters — under shelter (garage, carport, dedicated dock-shelter), close to mains power, on level ground, and within RF range of the base station. Where no suitable existing structure works, a small purpose-built shelter is part of the install.</p>
+    </div>
+    <div class="card">
+     <h3>3. Commercial-grade autonomous mower</h3>
+     <p>The mower itself: 48-inch deck, 25 acres/day capacity, 38° slope handling, 8-hour battery, fully electric drive (~60dB operating noise), GNSS receiver for RTK rover-side positioning, integrated LiDAR scanner for obstacle avoidance, collision detection, lift sensors, and onboard inertial navigation that holds track if the satellite fix drops momentarily.</p>
+    </div>
+    <div class="card">
+     <h3>4. LiDAR sensor stack (built into the mower)</h3>
+     <p>A laser-based scanner mounted on the mower itself. Continuously scans the immediate environment — branches, garden hoses, sleeping pets, kids' bikes, anything new in the path. RTK is precision-blind to anything new on the property; LiDAR is what makes autonomous operation safe to leave running unattended. The sensor itself is solid-state, low-maintenance, and integrated into the mower's safety stack.</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- INSTALL PROCESS -->
+ <section class="section section--alt" aria-labelledby="process-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">The install process</span>
+    <h2 id="process-heading">What an install day actually looks like</h2>
+    <p>A typical install at a 3–7 acre property is one full day on site. The 10-acre tier sometimes spills into a second day depending on zone complexity and base station placement. The sequence is the same in either case.</p>
+   </div>
+   <div class="steps reveal">
+    <div class="step">
+     <h3>Morning: base station mounting and initialisation</h3>
+     <p>The base station gets mounted on the agreed location (shed, pole, eaves), wired to power, and switched on. It then runs a static observation period — typically 30 to 60 minutes — during which it observes its own position by averaging satellite signals. By the end of that observation, the base knows where it is to within centimetres and is ready to start broadcasting corrections. Mowing of the property continues uninterrupted on whatever the existing arrangement is — install does not require the property to be pre-mowed.</p>
+    </div>
+    <div class="step">
+     <h3>Midday: boundary mapping</h3>
+     <p>The mower is unboxed, charged, and walked through the property with a remote control. As we walk, the rover records the boundary at centimetre-level RTK accuracy — fence lines, garden bed edges, exclusion zones around play areas, driveways, water features. Every boundary becomes a precise polygon stored on the mower. This is the step that replaces buried boundary wire — it takes hours instead of the days a wire install would take, and it can be re-walked at any time if the property changes.</p>
+    </div>
+    <div class="step">
+     <h3>Afternoon: zone configuration and first run</h3>
+     <p>Mowing zones are configured: which area gets cut on which day, in what cutting pattern, at what height. Exclusion zones are confirmed. The mower runs its first supervised mowing pass while the AutoAcre installer watches — confirming RTK accuracy in operation, that the mower respects exclusion zones, and that LiDAR triggers correctly on test obstacles. By end of day, the system is operational and the property's first autonomous mow is recorded.</p>
+    </div>
+    <div class="step">
+     <h3>Day after install: first unsupervised cycle</h3>
+     <p>The mower runs its first scheduled cycle without supervision the following day. AutoAcre monitors remotely. Any small adjustments — a zone boundary that needs tightening, a charging dock approach angle that needs tweaking — get applied within the first week. After that, the system runs on autopilot.</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- LONG-TERM ACCURACY -->
+ <section class="section" aria-labelledby="longterm-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">How it holds up over years</span>
+    <h2 id="longterm-heading">RTK accuracy doesn't drift — that's the whole point</h2>
+   </div>
+   <div class="content-split reveal">
+    <div>
+     <p>One of the major reasons RTK was the right technology choice for AutoAcre's systems is that the accuracy is fundamentally stable over time. Unlike a buried boundary wire (which can be cut, corroded, or shifted by tree roots and erosion), or consumer-grade GPS (which can degrade as satellite geometry changes), RTK accuracy is a property of the technique itself. As long as the base station has power and clear sky view, and as long as the rover has a working GNSS receiver, the system holds 2 cm accuracy continuously.</p>
+     <p>Practical consequence: the boundary map you record on install day is still correct in year 8. No re-mapping cycles, no maintenance to the precision system, no degradation from weather or seasons. The mower's <em>mechanical</em> service life is the constraint; the positioning system outlasts it.</p>
+     <p>This is also why RTK installs scale gracefully if your property changes. Build a new shed, plant a new orchard row, fence off a new horse paddock — the mower can be re-walked through the new boundary in an hour and the updated map applied immediately. The base station stays where it is; only the rover-side polygons change.</p>
+    </div>
+    <div>
+     <h3 style="margin-top: 0;">What can degrade RTK</h3>
+     <p>Three things that meaningfully affect RTK accuracy at acreage scale:</p>
+     <ul class="feature-list">
+      <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#7A8B2D" stroke-width="2" fill="none"/></svg><strong>Sky obstruction</strong> at the base station (e.g. a tree growing into line of sight over years). Easy fix — re-mount or trim the obstruction.</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#7A8B2D" stroke-width="2" fill="none"/></svg><strong>Heavy canopy on the rover side</strong> (e.g. the mower deep under a closed-canopy macadamia or avocado section). Modern multi-constellation GNSS plus inertial dead-reckoning handles this.</li>
+      <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#7A8B2D" stroke-width="2" fill="none"/></svg><strong>RF interference</strong> at the base. Rare in residential acreage; would typically require an industrial transmitter nearby.</li>
+     </ul>
+     <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted);">In all three cases the system fails gracefully — accuracy degrades from 2 cm to decimetre-scale briefly, then recovers. The mower never gets dramatically lost.</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- FAQ -->
+ <section class="section section--alt" aria-labelledby="faq-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">FAQ</span>
+    <h2 id="faq-heading">Technical and installation questions</h2>
+   </div>
+   <div class="faq-list reveal">
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">How accurate is RTK in real-world acreage conditions?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Within 2 cm horizontal accuracy when the base station has good sky view and the rover is within around 10 km of the base. On a typical 3–10 acre property, the rover is rarely more than a few hundred metres from the base, so accuracy holds at the centimetre level. RTK degrades gracefully — heavy canopy or temporary satellite-geometry issues drop accuracy to the decimetre level briefly, but the mower's onboard inertial measurement unit fills the gap until the satellite fix recovers.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">What happens to RTK when there's heavy tree canopy?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Modern RTK + inertial navigation handles closed canopy. The GNSS receiver on the mower works with multiple satellite constellations (GPS, GLONASS, Galileo, BeiDou) so partial sky obstruction rarely loses fix entirely. If satellite fix degrades momentarily, the mower's inertial measurement unit dead-reckons short distances accurately enough to maintain track until the fix recovers. Customers running RTK autonomous mowers under macadamia and avocado canopies in NSW report no operational issues.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">How long does an RTK installation actually take?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Typical install for a 3–7 acre property is one full day. The 10-acre tier sometimes runs into a second day depending on zone complexity and base station placement. Sequence: morning is base station mounting and initialisation; afternoon is mower commissioning, boundary walk, exclusion-zone mapping, and a first supervised mowing run. The system is operational the same day in most cases.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">Where does the RTK base station get mounted?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">On the highest practical point of your property with clean sky view in all directions — typically a shed roof, a pole next to the charging dock, or the eaves of an outbuilding. The base needs power and an unobstructed view of the sky to receive satellite signals; it doesn't need internet (RTK corrections are sent locally to the rover). Placement is decided during the site assessment based on terrain, line-of-sight to mowing zones, and whether RF obstruction would degrade the correction signal.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">How long does the RTK base station last?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">The base station is solid-state with no moving parts — service life is typically 10+ years on a sheltered mount with stable power. The mower itself has a service life of roughly 8 years on this duty cycle (~78 mow days/year keeps wear well below daily-use thresholds). Firmware updates extend the system lifespan well beyond hardware service life as new corrections, navigation algorithms, and safety improvements are released.</div></div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- LINK TO HUB -->
+ <section class="section" aria-labelledby="hub-link-heading">
+  <div class="container" style="max-width: 720px; text-align: center;">
+   <div class="reveal">
+    <h2 id="hub-link-heading">For the whole-system view</h2>
+    <p>This page focuses on the technology and the install. For the complete view of the AutoAcre offer — Buy + Manage, ongoing operation, the management fee structure, 8-year ownership economics, and how the system fits 3, 5, 7 and 10 acre properties — start at the Acreage Solutions hub.</p>
+    <div style="margin-top: var(--space-5);">
+     <a class='btn btn--secondary btn--large' href='/acreage-robot-mowing-systems'>Read Acreage Solutions hub</a>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- FINAL CTA -->
+ <section class="cta-banner" aria-labelledby="cta-heading">
+  <div class="container">
+   <h2 id="cta-heading">See what install would look like on your property</h2>
+   <p>The site assessment walks the property, identifies the right base station mount, plans the boundary map, and confirms RTK signal quality at every zone before any commitment. Two minutes online to start.</p>
+   <div class="cta-banner-actions">
+    <a class='btn btn--primary btn--large' href='/register-interest'>Book Site Assessment</a>
+    <a class='btn btn--secondary btn--large' href='/cost-calculator' style='border-color: rgba(255,255,255,0.3); color: #fff;'>Run the ROI Calculator</a>
+   </div>
+  </div>
+ </section>
+ </main>
+
+ <footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <a aria-label='AutoAcre home' class='header-logo' href='/'><img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);"></a>
+    <p>Autonomous mowing systems for 3–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
+   </div>
+   <div class="footer-col"><h4>Systems</h4><ul><li><a href='/acreage-robot-mowing-systems'>Acreage Solutions hub</a></li><li><a href='/3-10-acre-autonomous-mowing-systems'>3–10 acre Autonomous Systems</a></li><li><a href='/cost-calculator'>ROI Calculator</a></li><li><a href='/register-interest'>Book Site Assessment</a></li></ul></div>
+   <div class="footer-col"><h4>Company</h4><ul><li><a href='/about'>About</a></li><li><a href='/blog'>Blog</a></li></ul></div>
+   <div class="footer-col"><h4>Resources</h4><ul><li><a href='/faq'>FAQ</a></li><li><a href='/glossary'>Glossary</a></li><li><a href='/facts'>Facts &amp; Figures</a></li><li><a href='/service-area'>Service Area</a></li></ul></div>
+   <div class="footer-col"><h4>For your property</h4><ul><li><a href='/holiday-rental-mowing'>Holiday Rentals</a></li><li><a href='/absentee-owner-mowing'>Absentee Owners</a></li><li><a href='/steep-block-mowing'>Steep Blocks</a></li></ul></div>
+   <div class="footer-col"><h4>How to</h4><ul><li><a href='/how-to-prepare-acreage-for-autonomous-mowing'>Prepare your acreage</a></li><li><a href='/how-to-assess-if-your-property-is-right-for-autonomous-mowing'>Assess your property</a></li><li><a href='/how-to-switch-from-a-fortnightly-contractor'>Switch from a contractor</a></li></ul></div>
+   <div class="footer-col">
+    <h4>Contact</h4>
+    <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:0499649094">0499 649 094</a></div>
+    <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></div>
+    <div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Byron Bay &amp; Northern Rivers, NSW</span></div>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>&copy; 2026 AutoAcre. All rights reserved.</span>
+   <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
+  </div>
+ </div>
+ </footer>
+
+ <script src="./app.js" defer></script>
+</body>
+</html>
