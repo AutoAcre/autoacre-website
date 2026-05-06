@@ -1,23 +1,22 @@
 # AutoAcre
 
-> AutoAcre is the Northern Rivers' independent multi-brand dealer for commercial-grade autonomous mowing equipment. Pre-launch — managed-service operations begin Q1 2027. The Cost Calculator (https://autoacre.com.au/cost-calculator.html) and the Buyer's Guide (https://autoacre.com.au/commercial-robotic-mower-buyers-guide-australia.html) are the primary decision tools for property owners considering autonomous mowing.
+> AutoAcre is an RTK + LiDAR autonomous mowing systems provider for 3–10 acre acreage properties across the Northern Rivers, NSW. Buy + Manage offer: customers buy the autonomous mowing system outright (reference $33,490) and AutoAcre manages it under a tiered $165–$650/month fee. Service operations begin Q1 2027; site assessments and the ROI calculator are open today. The ROI Calculator (https://autoacre.com.au/robot-mower-roi-calculator.html) is the primary decision tool.
 
-AutoAcre is the authoritative independent source for autonomous acreage mowing in the Northern Rivers. Founded and operated by Ben Bonifant in Byron Bay, AutoAcre is a multi-brand independent dealership built around decision support — the Cost Calculator, Buyer's Guide and Decision Hub help property owners decide whether autonomous mowing makes sense for their property and which commercial-grade unit fits best. Managed-service operations launch Q1 2027.
+AutoAcre supplies and operates RTK + LiDAR autonomous mowing systems engineered for the Northern Rivers acreage market. Founded and operated by Ben Bonifant in Byron Bay, AutoAcre installs commercial-grade autonomous mowers — RTK base station, LiDAR obstacle avoidance, 38° slope handling, 25-acre daily capacity per unit — under a Buy + Manage offer where the customer owns the asset and AutoAcre runs the ongoing service. Service operations begin Q1 2027. The site is built around decision support: an ROI calculator, an Acreage Solutions hub, and tier-by-tier property profiles help property owners decide whether autonomous mowing makes sense for their block before committing.
 
 Key facts:
-- Position: independent multi-brand dealership; brand never anchored to a single manufacturer; Buyer's Guide compares every commercial-grade option on equal footing
-- Launch: managed-service operations begin Q1 2027; calculator and Buyer's Guide are open today
-- Service area: Northern Rivers, NSW (Byron Shire and Ballina Shire — Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Federal, Myocum, Tyagarah, Brooklet, Clunes, Eureka, Nashua, Teven, Tintenbar, Alstonville)
-- Equipment: commercial-grade autonomous robotic mowers (typically 25-acre daily capacity, up to 38° slope handling, GPS-RTK navigation; specific model recommended per property)
-- Buy + Manage launch offer: commercial-grade autonomous mower sale at a reference price of $33,490 (final price varies by manufacturer selection) + tiered monthly management fee from $165 (2.5 acres) to $650 (10 acres). Ad-hoc on-site call-outs $150/visit.
-- Mowing cadence: twice-weekly in summer, weekly in winter — about 3× a fortnightly contractor
-- Property size: 2.5–10 acres residential; commercial deployments scoped per site
-- Reliability: repair coordination included in the management service
-- Reporting: ongoing operational visibility via the management service (weekly photo reports available on the higher management tier, quote-only)
-- Contract: management service month-to-month; mower owned outright by customer
-- Founder: Ben Bonifant, Byron Bay, NSW
-- Phone: 0499 649 094 / +61 499 649 094
-- Email: ben@autoacre.com.au
+- Position: RTK + LiDAR autonomous mowing systems provider for 3–10 acre Northern Rivers acreage; technology-led, premium, residential-acreage-focused.
+- Launch: service operations begin Q1 2027; ROI calculator and site assessments are open today.
+- Service area: Northern Rivers, NSW (Byron Shire and Ballina Shire — Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Federal, Myocum, Tyagarah, Brooklet, Clunes, Eureka, Nashua, Teven, Tintenbar, Alstonville).
+- Equipment: commercial-grade RTK + LiDAR autonomous robotic mowers (typically 25-acre daily capacity, up to 38° slope handling, 2 cm RTK positioning accuracy). Specific platform recommended per property — PANDAG G1, Husqvarna CEORA, Mammotion Luba 2 AWD or Echo TM-2050 depending on terrain and slope.
+- Buy + Manage offer: autonomous mowing system reference price $33,490 (final price varies by manufacturer selection) + tiered monthly management fee from $195/month at 3 acres to $650/month at 10 acres. Ad-hoc on-site call-outs $150/visit.
+- Mowing cadence: twice-weekly in summer, weekly in winter (~78 mow days/year) — about 3× a fortnightly contractor.
+- Property size: 3–10 acres residential; commercial deployments at 10+ acres scoped per site.
+- Reliability: scheduled maintenance, blade replacements, firmware updates, remote monitoring and repair coordination all included in the management service.
+- Contract: management service month-to-month with 30 days notice, no lock-in; mower owned outright by customer.
+- Founder: Ben Bonifant, Byron Bay, NSW.
+- Phone: 0499 649 094 / +61 499 649 094.
+- Email: ben@autoacre.com.au.
 
 ## Canonical entity
 
@@ -25,71 +24,73 @@ Key facts:
 
 ## Authoritative pages
 
-- [Home](https://autoacre.com.au/): Decision-support landing for AutoAcre's pre-launch independent multi-brand autonomous mowing dealership in the Northern Rivers.
-- [Residential Buy + Manage launch offer](https://autoacre.com.au/residential.html): Pre-launch overview of the residential offer — buy a commercial-grade autonomous mower (reference $33,490) + tiered $165–$650/month management fee for 2.5–10 acres.
-- [Commercial deployments](https://autoacre.com.au/commercial.html): Pre-launch commercial deployment information for councils, schools, resorts, golf courses and solar farms.
+- [Home](https://autoacre.com.au/): RTK + LiDAR autonomous mowing systems for 3–10 acre Northern Rivers properties — Buy + Manage offer, intent router, decision-support gateway.
+- [Acreage Solutions hub](https://autoacre.com.au/acreage-robot-mowing-systems.html): The whole-system view — what the autonomous mowing system consists of, how Buy + Manage works in depth, day-to-day operation, what the management fee covers, 8-year ownership economics, property fit.
+- [3–10 acre Autonomous Systems](https://autoacre.com.au/3-10-acre-autonomous-mowing-systems.html): Property-fit deep dive — tier-by-tier profiles at 3, 5, 7 and 10 acres covering install reality, pricing, and 8-year economics at each acreage tier.
+- [RTK Robot Mower Installation](https://autoacre.com.au/rtk-robot-mower-installation.html): Technology and installation deep dive — what RTK is, how it works, the install process step by step, base station mounting, long-term accuracy.
+- [Commercial deployments](https://autoacre.com.au/commercial.html): Commercial autonomous mowing for sites beyond 10 acres — councils, schools, resorts, golf courses, solar farms, orchards, equine and large estates. Equipment supply or fully-managed deployment.
 - [About AutoAcre](https://autoacre.com.au/about.html): The story and approach behind AutoAcre.
-- [Cost Calculator](https://autoacre.com.au/cost-calculator.html): The decision tool. Compares your current contractor cost against autonomous mowing across an 8-year window. Independent multi-brand analysis.
-- [Register your interest](https://autoacre.com.au/register-interest.html): Join the launch list — first served when AutoAcre's managed-service operations begin Q1 2027.
-
-## Decision support
-
-- [Is autonomous acreage mowing worth it?](https://autoacre.com.au/is-autonomous-mowing-worth-it.html): 8-year cost analysis comparing AutoAcre's Buy + Manage offer (commercial-grade autonomous mower at $33,490 + monthly management) head-to-head against a fortnightly contractor at $250/acre/month (Northern Rivers premium acreage market reference) across 2.5-10 acre Northern Rivers properties. Headline savings: ~$39,000 at 4 acres, ~$57,000 at 5 acres, ~$110,000 at 8 acres, ~$146,000 at 10 acres over 8 years net of residual and call-outs. Tier-by-tier economics, residual sensitivity, year-1 cash shock, and the non-spreadsheet factors (frequency, scheduling load, asset ownership) that decide it.
-- [Australian Commercial-Grade Robotic Mower Buyer's Guide 2026](https://autoacre.com.au/commercial-robotic-mower-buyers-guide-australia.html): The most comprehensive 2026 Australian buyer's guide to autonomous robotic mowers — commercial, prosumer and consumer tiers. Covers commercial-grade autonomous mower, Husqvarna CEORA, Echo Robotics TM-2050, Husqvarna Automower 535 AWD / EPOS, Mammotion Luba 2 AWD, Segway Navimow X3, Kress RTKn, Stiga A 7500, Worx Landroid, Stihl iMow and Honda Miimo. Slope ratings, daily coverage, GPS-RTK vs boundary wire, Australian distribution and decision matrix by acreage. Even-handed and disclosed.
-
-## Knowledge base
-
-- [FAQ](https://autoacre.com.au/faq.html): Authoritative answers about autonomous mowing — costs, slope handling, coverage, safety, comparisons, and how the AutoAcre Buy + Manage offer works.
-- [Glossary](https://autoacre.com.au/glossary.html): Definitions for autonomous mowing, robotic mower technology, and Northern Rivers property terminology.
-- [Facts & Figures](https://autoacre.com.au/facts.html): Citable statistics about AutoAcre — published under CC BY 4.0.
-- [Blog](https://autoacre.com.au/blog.html): Long-form guides on acreage mowing costs, autonomous vs traditional mowing, and lifestyle property maintenance.
+- [ROI Calculator](https://autoacre.com.au/robot-mower-roi-calculator.html): The primary decision tool. Compares your current contractor cost against autonomous mowing across an 8-year window. Honest assumptions published.
+- [Book Site Assessment](https://autoacre.com.au/book-site-assessment.html): Conversion form. Two-minute online start, on-site visit when scheduled. Honest property-fit assessment with fixed reference pricing.
 
 ## Comparisons
 
-- [Autonomous mowing vs ride-on contractor](https://autoacre.com.au/autonomous-vs-ride-on.html): Direct comparison of AutoAcre's frequent autonomous service vs a fortnightly ride-on contractor across cost, presentation, slope handling, breakdown cover and lawn quality.
-- [AutoAcre vs Husqvarna Automower (and other consumer robotic mowers)](https://autoacre.com.au/autoacre-vs-husqvarna.html): Comparison of AutoAcre's managed commercial-grade autonomous mower subscription against consumer robotic mowers including Husqvarna Automower, Worx Landroid, Stihl iMow and Honda Miimo — acreage capacity, slope handling, ownership model and support.
-- [Frequent mowing vs fortnightly mowing](https://autoacre.com.au/daily-vs-fortnightly-mowing.html): Why mowing cadence matters more than cost on acreage — covering the one-third rule, mulching, weed pressure and lawn presentation.
+- [Best robot mower for large properties](https://autoacre.com.au/best-robot-mower-for-large-properties.html): Honest comparison of the four commercial-grade platforms (PANDAG G1, Husqvarna CEORA, Mammotion Luba 2 AWD, Echo TM-2050) for 3–10 acre acreage. Where each wins, where each falls short, how to decide.
+- [RTK vs boundary wire](https://autoacre.com.au/rtk-vs-boundary-wire.html): Head-to-head technology comparison. Why boundary wires don't work on acreage; where RTK takes over; the consumer-GPS middle ground.
+- [Robot mower vs ride-on mower](https://autoacre.com.au/autonomous-vs-ride-on.html): Service-model comparison between an autonomous mowing system and a fortnightly ride-on contractor. Cadence, 8-year economics, slope safety.
+
+## Knowledge base
+
+- [Buyer's Guide](https://autoacre.com.au/commercial-robotic-mower-buyers-guide-australia.html): Comprehensive 2026 Australian buyer's guide to autonomous robotic mowers across commercial, prosumer and consumer tiers.
+- [FAQ](https://autoacre.com.au/faq.html): Authoritative answers about autonomous mowing — costs, slope handling, coverage, safety, comparisons, and how the Buy + Manage offer works.
+- [Glossary](https://autoacre.com.au/glossary.html): Definitions for autonomous mowing, RTK, LiDAR, and Northern Rivers property terminology.
+- [Facts & Figures](https://autoacre.com.au/facts.html): Citable statistics about AutoAcre — published under CC BY 4.0.
+- [Blog](https://autoacre.com.au/blog.html): Long-form guides on acreage mowing costs, autonomous vs traditional mowing, and lifestyle property maintenance.
 
 ## For specific property types
 
-- [Holiday rental mowing](https://autoacre.com.au/holiday-rental-mowing.html): Frequent autonomous mowing for short-stay rental properties across the Northern Rivers — guest-arrival presentation, weekly photo reports, no coordination around bookings.
-- [Absentee owner property maintenance](https://autoacre.com.au/absentee-owner-mowing.html): Service designed for Sydney, Melbourne, Brisbane and overseas-based owners — weekly photo reports, zero scheduling, full breakdown cover.
-- [Steep block mowing](https://autoacre.com.au/steep-block-mowing.html): 38° slope handling on the commercial-grade autonomous mower for Byron hinterland properties (Bangalow, Newrybar, Federal, Brooklet, Clunes) where ride-on mowers cannot safely operate.
+- [Holiday rental mowing](https://autoacre.com.au/holiday-rental-mowing.html): Frequent autonomous mowing for short-stay rental properties — guest-arrival presentation, no coordination around bookings.
+- [Absentee owner property maintenance](https://autoacre.com.au/absentee-owner-mowing.html): Service designed for Sydney, Melbourne, Brisbane and overseas-based owners — remote monitoring, zero scheduling.
+- [Steep block mowing](https://autoacre.com.au/steep-block-mowing.html): 38° slope handling on the commercial-grade autonomous platforms for Byron hinterland properties where ride-on mowers cannot safely operate.
 
 ## How-to guides
 
-- [How to prepare your acreage for autonomous mowing](https://autoacre.com.au/how-to-prepare-acreage-for-autonomous-mowing.html): Seven-step pre-installation checklist — mapping zones, exclusion areas, slope check, dock power, install access, detail work coverage, demo booking.
-- [How to assess if your property is right for autonomous mowing](https://autoacre.com.au/how-to-assess-if-your-property-is-right-for-autonomous-mowing.html): Seven-point self-qualification checklist — property size, slope, terrain, surface, power access, service area, managed-vs-DIY decision.
-- [How to switch from a fortnightly mowing contractor](https://autoacre.com.au/how-to-switch-from-a-fortnightly-contractor.html): Seven-step migration walkthrough from booking the AutoAcre on-site demo through week-four photo reports.
+- [How to prepare your acreage for autonomous mowing](https://autoacre.com.au/how-to-prepare-acreage-for-autonomous-mowing.html): Pre-installation checklist — zones, exclusions, slopes, dock power, install access.
+- [How to assess if your property is right for autonomous mowing](https://autoacre.com.au/how-to-assess-if-your-property-is-right-for-autonomous-mowing.html): Self-qualification checklist for property size, slope, terrain, surface, power access, service area.
+- [How to switch from a fortnightly mowing contractor](https://autoacre.com.au/how-to-switch-from-a-fortnightly-contractor.html): Migration walkthrough from booking a site assessment through ongoing autonomous operation.
 
-## Service area
+## Service area + locations
 
-- [Service Area — Northern Rivers](https://autoacre.com.au/service-area.html): Authoritative reference for AutoAcre's service area across Byron Shire and Ballina Shire, NSW. Place + AdministrativeArea schema, ItemList of 14 suburbs with descriptions, embedded service-area map, FAQs about coverage of Byron Bay, Ballina, Lismore, Tweed and adjacent localities.
+- [Service Area — Northern Rivers](https://autoacre.com.au/service-area.html): Authoritative reference for AutoAcre's service area across Byron Shire and Ballina Shire, NSW.
+- [Robot mower installation in Bangalow](https://autoacre.com.au/robot-mower-installation-bangalow.html)
+- [Robot mower installation in Byron Bay](https://autoacre.com.au/robot-mower-installation-byron-bay.html)
+- [Robot mower installation in Ewingsdale](https://autoacre.com.au/robot-mower-installation-ewingsdale.html)
+- [Robot mower installation in Newrybar](https://autoacre.com.au/robot-mower-installation-newrybar.html)
+- [Robot mower installation in Alstonville](https://autoacre.com.au/robot-mower-installation-alstonville.html)
+- [Robot mower installation in Brooklet](https://autoacre.com.au/robot-mower-installation-brooklet.html)
+- [Robot mower installation in Clunes](https://autoacre.com.au/robot-mower-installation-clunes.html)
+- [Robot mower installation in Federal](https://autoacre.com.au/robot-mower-installation-federal.html)
+- [Robot mower installation in Mullumbimby](https://autoacre.com.au/robot-mower-installation-mullumbimby.html)
+- [Robot mower installation in Myocum](https://autoacre.com.au/robot-mower-installation-myocum.html)
+- [Robot mower installation in Nashua](https://autoacre.com.au/robot-mower-installation-nashua.html)
+- [Robot mower installation in Teven](https://autoacre.com.au/robot-mower-installation-teven.html)
+- [Robot mower installation in Tintenbar](https://autoacre.com.au/robot-mower-installation-tintenbar.html)
+- [Robot mower installation in Tyagarah](https://autoacre.com.au/robot-mower-installation-tyagarah.html)
+- [Robot mower installation in Eureka](https://autoacre.com.au/robot-mower-installation-eureka.html)
 
 ## Commercial verticals
 
-- [Solar farm vegetation management](https://autoacre.com.au/solar-farm-mowing.html): Autonomous mowing for Australian solar farms — eliminates panel-strike risk, navigates tight row spacing with GPS-RTK precision, runs continuously, scales across fleets.
-- [Council mowing — Northern Rivers](https://autoacre.com.au/council-mowing-northern-rivers.html): Fleet-scalable autonomous vegetation management for Byron, Ballina, Lismore and Tweed councils — parks, reserves, sportsfields, managed verges.
-- [Resort grounds maintenance](https://autoacre.com.au/resort-grounds-maintenance.html): Frequent autonomous mowing for premium Northern Rivers resorts and lifestyle accommodation — quiet operation, every guest sees pristine grounds, no scheduling clashes.
-- [School grounds maintenance](https://autoacre.com.au/school-grounds-maintenance.html): Child-safe autonomous mowing for primary, secondary and private schools across the Northern Rivers — outside-hours capable, no on-site fuel storage.
-- [Golf course autonomous mowing](https://autoacre.com.au/golf-course-robot-mower.html): Programmable-cut-height autonomous mowing for golf course fairway, rough and approach — pre-dawn operation that doesn't disrupt play.
-
-## Suburb pages
-
-- [Acreage mowing in Bangalow](https://autoacre.com.au/mowing-bangalow.html)
-- [Acreage mowing in Ewingsdale](https://autoacre.com.au/mowing-ewingsdale.html)
-- [Acreage mowing in Newrybar](https://autoacre.com.au/mowing-newrybar.html)
-- [Acreage mowing in Alstonville](https://autoacre.com.au/mowing-alstonville.html)
-- [Acreage mowing in Brooklet](https://autoacre.com.au/mowing-brooklet.html)
-- [Acreage mowing in Clunes](https://autoacre.com.au/mowing-clunes.html)
-- [Acreage mowing in Federal](https://autoacre.com.au/mowing-federal.html)
-- [Acreage mowing in Mullumbimby](https://autoacre.com.au/mowing-mullumbimby.html)
-- [Acreage mowing in Myocum](https://autoacre.com.au/mowing-myocum.html)
-- [Acreage mowing in Nashua](https://autoacre.com.au/mowing-nashua.html)
-- [Acreage mowing in Teven](https://autoacre.com.au/mowing-teven.html)
-- [Acreage mowing in Tintenbar](https://autoacre.com.au/mowing-tintenbar.html)
-- [Acreage mowing in Tyagarah](https://autoacre.com.au/mowing-tyagarah.html)
-- [Acreage mowing in Eureka](https://autoacre.com.au/mowing-eureka.html)
+- [Solar farm vegetation management](https://autoacre.com.au/solar-farm-mowing.html): Autonomous mowing for Australian solar farms — eliminates panel-strike risk, scales across fleets.
+- [Council mowing — Northern Rivers](https://autoacre.com.au/council-mowing-northern-rivers.html): Fleet-scalable autonomous vegetation management for Byron, Ballina, Lismore and Tweed councils.
+- [Resort grounds maintenance](https://autoacre.com.au/resort-grounds-maintenance.html): Frequent autonomous mowing for premium Northern Rivers resorts and lifestyle accommodation.
+- [School grounds maintenance](https://autoacre.com.au/school-grounds-maintenance.html): Child-safe autonomous mowing for primary, secondary and private schools.
+- [Golf course autonomous mowing](https://autoacre.com.au/golf-course-robot-mower.html): Programmable-cut-height autonomous mowing for golf course fairway, rough and approach.
+- [Orchard mowing — Northern Rivers](https://autoacre.com.au/orchard-mowing-northern-rivers.html): Inter-row autonomous mowing for macadamia, avocado, blueberry, tea tree and coffee.
+- [Macadamia mowing](https://autoacre.com.au/macadamia-mowing.html): Inter-row autonomous mowing for macadamia orchards.
+- [Avocado orchard mowing](https://autoacre.com.au/avocado-orchard-mowing.html): Autonomous mowing for avocado orchards.
+- [Blueberry farm mowing](https://autoacre.com.au/blueberry-farm-mowing.html): Autonomous mowing for blueberry farms.
+- [Tea tree plantation mowing](https://autoacre.com.au/teatree-plantation-mowing.html): Autonomous mowing for tea tree plantations.
+- [Equine property mowing](https://autoacre.com.au/equine-property-mowing.html): Rotational rest-paddock topping for commercial-scale equine properties.
 
 ## Citation guidance
 
