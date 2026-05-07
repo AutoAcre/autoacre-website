@@ -1,0 +1,586 @@
+/*
+ * direction-b.css — "Cinematic Acreage" skin
+ * 2026-05-07.
+ *
+ * Overrides the design tokens defined in style.css to apply Direction B
+ * (per the design exploration uploaded 2026-05-07): warm bone palette,
+ * deep olive accent, terracotta soft accent for emphasis, big serif
+ * Zodiak headlines, mono-uppercase tracked labels, sharp (no-radius)
+ * surfaces, ken-burns hero photography.
+ *
+ * Loaded AFTER style.css so cascade wins. All page HTML and SEO copy
+ * unchanged — this is a visual skin only.
+ */
+
+/* ──────────────────────────────────────────────────────────────────
+   FONTS — add Inter Tight (body) and JetBrains Mono (labels).
+   Zodiak (display) and Work Sans (fallback) already loaded by base.
+   ────────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ──────────────────────────────────────────────────────────────────
+   TOKEN OVERRIDES — light mode (default)
+   ────────────────────────────────────────────────────────────────── */
+:root,
+:root[data-theme='light'] {
+  /* Warm bone surfaces */
+  --color-bg: #FAF7F1;
+  --color-surface: #F0EBDF;
+  --color-surface-2: #FAF7F1;
+  --color-surface-offset: #E8E2D2;
+  --color-divider: #D8D1BE;
+  --color-border: #D8D1BE;
+
+  /* Near-black + warm muted text */
+  --color-text: #14140F;
+  --color-text-muted: #69655B;
+  --color-text-faint: #9E9A8A;
+  --color-text-inverse: #FAF7F1;
+
+  /* Deep olive primary (was #7A8B2D) */
+  --color-primary: #4F5C20;
+  --color-primary-hover: #14140F;
+  --color-primary-active: #14140F;
+  --color-primary-light: #E8E5D2;
+
+  --color-charcoal: #14140F;
+  --color-warm-grey: #F0EBDF;
+
+  --color-cta: #4F5C20;
+  --color-cta-hover: #14140F;
+  --color-cta-text: #FFFFFF;
+
+  /* Direction-B specific tokens for accents */
+  --color-clay: #B85A3A;        /* terracotta — used sparingly */
+  --color-clay-soft: #E8C9B5;   /* terracotta soft — italic emphasis */
+
+  /* Fonts */
+  --font-body: 'Inter Tight', 'Work Sans', system-ui, sans-serif;
+  --font-display: 'Zodiak', 'Fraunces', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Sharp surfaces — no rounded corners */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  /* Keep radius-full for icon-pills */
+
+  /* Softer shadows in editorial palette */
+  --shadow-sm: 0 1px 2px rgba(20, 20, 15, 0.04);
+  --shadow-md: 0 4px 16px rgba(20, 20, 15, 0.06);
+  --shadow-lg: 0 12px 36px rgba(20, 20, 15, 0.10);
+}
+
+[data-theme='dark'] {
+  --color-bg: #14140F;
+  --color-surface: #1F1F18;
+  --color-surface-2: #1A1A14;
+  --color-surface-offset: #221F18;
+  --color-divider: #2D2A22;
+  --color-border: #3A3528;
+
+  --color-text: #FAF7F1;
+  --color-text-muted: #A8A294;
+  --color-text-faint: #6B6658;
+  --color-text-inverse: #14140F;
+
+  --color-primary: #6F8030;
+  --color-primary-hover: #FAF7F1;
+  --color-primary-active: #FAF7F1;
+  --color-primary-light: #2A2D1E;
+
+  --color-charcoal: #FAF7F1;
+  --color-warm-grey: #1F1F18;
+
+  --color-cta: #6F8030;
+  --color-cta-hover: #FAF7F1;
+  --color-cta-text: #14140F;
+
+  --color-clay: #C76B48;
+  --color-clay-soft: #B85A3A;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   TYPOGRAPHY — Zodiak display, Inter Tight body, mono labels
+   ────────────────────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  font-feature-settings: 'ss01', 'cv11';
+  letter-spacing: -0.005em;
+}
+
+h1, h2, h3, h4,
+.display,
+.page-hero h1,
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: 1.05;
+}
+
+h1, .page-hero h1, .hero-content h1 {
+  line-height: 0.95;
+}
+
+/* Make h1 substantially bigger on hero — editorial scale */
+.page-hero h1,
+.hero-content h1,
+.hero h1 {
+  font-size: clamp(2.75rem, 5.5vw, 5.5rem);
+  letter-spacing: -0.018em;
+}
+
+/* Section-label → mono uppercase tracked */
+.section-label {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: var(--color-text-muted) !important;
+}
+
+/* Hero badge — same mono treatment */
+.hero-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid currentColor;
+  padding: 6px 12px;
+  display: inline-block;
+  background: transparent;
+}
+
+/* Breadcrumb — mono small caps */
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Stat values — serif display in editorial */
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   BUTTONS — sharp, uppercase, tracked
+   ────────────────────────────────────────────────────────────────── */
+.btn,
+.btn--primary,
+.btn--secondary,
+.btn--large,
+.btn--small,
+.header-cta {
+  border-radius: 0 !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background 220ms var(--ease-out), color 220ms var(--ease-out), border-color 220ms var(--ease-out);
+}
+
+.btn--primary,
+.header-cta {
+  background: var(--color-primary);
+  color: #fff;
+  border: 1px solid var(--color-primary);
+}
+.btn--primary:hover,
+.header-cta:hover {
+  background: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+  color: #fff;
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-charcoal);
+  border: 1px solid var(--color-charcoal);
+}
+.btn--secondary:hover {
+  background: var(--color-charcoal);
+  color: var(--color-bg);
+}
+
+/* Hero CTAs (over photo) get inverse treatment */
+.hero .btn--primary,
+.page-hero .btn--primary {
+  background: #fff;
+  color: var(--color-charcoal);
+  border-color: #fff;
+}
+.hero .btn--primary:hover,
+.page-hero .btn--primary:hover {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+.hero .btn--secondary,
+.page-hero .btn--secondary {
+  color: #fff;
+  border-color: #fff;
+}
+.hero .btn--secondary:hover,
+.page-hero .btn--secondary:hover {
+  background: #fff;
+  color: var(--color-charcoal);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   HERO — full-bleed image with ken-burns + dark gradient
+   ────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  animation: db-kenburns 22s ease-out infinite alternate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg,
+      rgba(20, 20, 15, 0.55) 0%,
+      rgba(20, 20, 15, 0.10) 35%,
+      rgba(20, 20, 15, 0.05) 55%,
+      rgba(20, 20, 15, 0.85) 100%);
+}
+
+.hero-content {
+  position: relative;
+  padding: 12vh 0 10vh;
+}
+
+@keyframes db-kenburns {
+  0%   { transform: scale(1.06) translate(0, 0); }
+  100% { transform: scale(1.13) translate(-1.2%, -1.6%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image img { animation: none; }
+}
+
+/* Hero subtitle copy */
+.hero-content p {
+  font-size: clamp(1rem, 1.1vw + 0.6rem, 1.25rem);
+  max-width: 52ch;
+  opacity: 0.94;
+}
+
+/* Hero italic emphasis hook (used in JSX with <em>) — terracotta soft */
+.hero h1 em {
+  font-style: italic;
+  color: var(--color-clay-soft);
+  font-weight: 500;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   PAGE HERO (non-homepage) — gentler inverse, still editorial
+   ────────────────────────────────────────────────────────────────── */
+.page-hero {
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: clamp(3rem, 8vh, 6rem) 0 clamp(2rem, 5vh, 4rem);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   SECTIONS, CARDS, SURFACES — sharp edges, bone surfaces
+   ────────────────────────────────────────────────────────────────── */
+.section {
+  padding: clamp(3rem, 8vh, 7rem) 0;
+}
+
+.section--alt {
+  background: var(--color-surface);
+}
+
+.card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  transition: transform 240ms var(--ease-out), border-color 220ms var(--ease-out);
+  padding: var(--space-6);
+}
+.card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Step blocks (used in How-it-works sections) */
+.step,
+.steps .step {
+  border-left: 2px solid var(--color-border);
+  padding-left: var(--space-5);
+  background: transparent;
+  border-radius: 0;
+}
+.step h3 {
+  margin-top: 0;
+}
+
+/* Comparison/figcaption photo blocks */
+.comparison-item,
+.section-image {
+  border-radius: 0;
+}
+
+/* Pricing card override */
+.pricing-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: var(--space-8);
+}
+.pricing-card--featured {
+  border: 1px solid var(--color-primary);
+  background: var(--color-bg);
+}
+
+/* Tables — editorial */
+table {
+  font-family: var(--font-body);
+}
+table thead th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Faq items — editorial dividers */
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+.faq-question {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.4vw + 0.5rem, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  padding: var(--space-6) 0;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   STATS BAND — dark inverse strip (when class .stats appears alone)
+   ────────────────────────────────────────────────────────────────── */
+section[aria-labelledby$="stats-heading"] {
+  background: var(--color-charcoal);
+  color: var(--color-bg);
+  padding: clamp(2.5rem, 6vh, 4.5rem) 0;
+}
+section[aria-labelledby$="stats-heading"] .stat-value {
+  color: var(--color-clay-soft);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+}
+section[aria-labelledby$="stats-heading"] .stat-label {
+  color: rgba(250, 247, 241, 0.72);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   CTA BANNERS — dark editorial
+   ────────────────────────────────────────────────────────────────── */
+.cta-banner {
+  background: var(--color-charcoal);
+  color: var(--color-bg);
+  padding: clamp(3rem, 8vh, 6rem) 0;
+}
+.cta-banner h2 {
+  color: var(--color-bg);
+}
+.cta-banner p {
+  color: rgba(250, 247, 241, 0.85);
+  max-width: 60ch;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   HEADER — refined, editorial weights
+   ────────────────────────────────────────────────────────────────── */
+.site-header {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+.header-nav a {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+.header-nav a:hover,
+.header-nav a.active,
+.header-nav a[aria-current='page'] {
+  color: var(--color-primary);
+}
+
+.nav-dropdown-trigger {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+}
+.nav-dropdown-menu {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: var(--space-2);
+  box-shadow: var(--shadow-md);
+}
+.nav-dropdown-menu a {
+  padding: var(--space-2) var(--space-3);
+  font-size: 14px;
+}
+.nav-dropdown-menu a:hover {
+  background: var(--color-surface);
+  color: var(--color-primary);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   FOOTER — editorial, generous spacing
+   ────────────────────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--color-charcoal);
+  color: var(--color-bg);
+  padding: clamp(3rem, 6vh, 5rem) 0 var(--space-8);
+}
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 241, 0.65);
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+}
+.footer-col a {
+  color: rgba(250, 247, 241, 0.88);
+}
+.footer-col a:hover {
+  color: var(--color-clay-soft);
+}
+.footer-bottom {
+  border-top: 1px solid rgba(250, 247, 241, 0.12);
+  padding-top: var(--space-5);
+  margin-top: var(--space-8);
+  color: rgba(250, 247, 241, 0.5);
+  font-size: 13px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   FORM ELEMENTS — sharp inputs
+   ────────────────────────────────────────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+  border-radius: 0 !important;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  background: var(--color-bg);
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 92, 32, 0.18);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   PRELAUNCH BANNER — only if it ever returns; muted bone strip
+   ────────────────────────────────────────────────────────────────── */
+.prelaunch-banner {
+  background: var(--color-charcoal);
+  color: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   IMAGES — soft inset, no rounded corners
+   ────────────────────────────────────────────────────────────────── */
+img,
+.section-image img,
+.page-hero-image img,
+.comparison-item img,
+.testimonial img {
+  border-radius: 0 !important;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   ACCENTS — hyperlinks, focus rings
+   ────────────────────────────────────────────────────────────────── */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  text-underline-offset: 0.18em;
+  transition: color 200ms var(--ease-out);
+}
+a:hover {
+  color: var(--color-charcoal);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+/* But nav links/footer cols/headers don't auto-underline */
+.header-nav a,
+.nav-dropdown-menu a,
+.footer-col a,
+.mobile-nav a,
+.btn,
+.cta-banner a,
+.header-cta {
+  text-decoration: none !important;
+}
+.header-nav a:hover,
+.nav-dropdown-menu a:hover,
+.footer-col a:hover,
+.mobile-nav a:hover {
+  text-decoration: none !important;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
