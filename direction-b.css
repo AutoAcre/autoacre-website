@@ -128,8 +128,20 @@ h1, .page-hero h1, .hero-content h1 {
 .page-hero h1,
 .hero-content h1,
 .hero h1 {
-  font-size: clamp(2.75rem, 5.5vw, 5.5rem);
-  letter-spacing: -0.018em;
+  font-size: clamp(3rem, 7.5vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.022em;
+  max-width: 16ch;
+  font-weight: 500;
+}
+
+/* Terracotta soft italic emphasis on hero word */
+.hero h1 em,
+.hero-content h1 em,
+.page-hero h1 em {
+  font-style: italic;
+  color: var(--color-clay-soft);
+  font-weight: 500;
 }
 
 /* Section-label → mono uppercase tracked */
@@ -280,7 +292,33 @@ h1, .page-hero h1, .hero-content h1 {
 
 .hero-content {
   position: relative;
-  padding: 12vh 0 10vh;
+  padding: 14vh 0 9vh;
+  max-width: none;
+}
+
+/* Hero badge — pin it above the headline, not bottom-floating */
+.hero-content .hero-badge {
+  display: inline-block;
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Hero subhead beneath h1 — generous space, narrower line */
+.hero-content > p {
+  margin-top: clamp(1.5rem, 3vh, 2rem);
+  max-width: 44ch;
+  opacity: 0.94;
+  font-size: clamp(1rem, 1vw + 0.55rem, 1.2rem);
+}
+
+/* Hero CTA row sits at bottom-left */
+.hero-content .hero-actions {
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+  gap: var(--space-3);
+  flex-wrap: wrap;
 }
 
 @keyframes db-kenburns {
