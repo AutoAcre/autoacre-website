@@ -253,6 +253,201 @@ h1, .page-hero h1, .hero-content h1 {
 }
 
 /* ──────────────────────────────────────────────────────────────────
+   HOMEPAGE-ONLY OVERRIDES (body.home)
+   Editorial Direction B layout — transparent overlay header,
+   full-viewport hero, bottom-left CTA stack.
+   ────────────────────────────────────────────────────────────────── */
+body.home {
+  /* prevent the header taking layout space — hero starts at top of viewport */
+}
+
+body.home .site-header--home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: transparent !important;
+  border-bottom: none !important;
+  padding: clamp(1.25rem, 2.5vh, 2rem) 0;
+}
+
+body.home .site-header--home .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 5vw, 4rem);
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3.5rem);
+}
+
+/* Wordmark — Zodiak serif + mono region tag */
+body.home .header-wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  text-decoration: none !important;
+}
+body.home .wordmark-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1.8vw + 0.6rem, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1;
+}
+body.home .wordmark-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Simple flat nav — 5 items, no dropdowns, white on photo */
+body.home .header-nav--simple {
+  display: flex;
+  gap: clamp(1.5rem, 2.2vw, 2rem);
+  flex: 1;
+  justify-content: center;
+}
+body.home .header-nav--simple a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none !important;
+  transition: opacity 200ms var(--ease-out);
+}
+body.home .header-nav--simple a:hover {
+  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Header CTA — solid white pill (sharp), dark text */
+body.home .site-header--home .header-cta {
+  background: #fff !important;
+  color: var(--color-charcoal) !important;
+  border: 1px solid #fff !important;
+  padding: 14px 28px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+body.home .site-header--home .header-cta:hover {
+  background: var(--color-clay-soft) !important;
+  border-color: var(--color-clay-soft) !important;
+  color: var(--color-charcoal) !important;
+}
+
+/* Hide phone number + theme toggle on homepage hero header (Direction B mock has no phone) */
+body.home .site-header--home .header-phone,
+body.home .site-header--home .theme-toggle { display: none; }
+
+/* Mobile-menu button still present for narrow viewports */
+body.home .mobile-menu-btn { color: #fff; }
+
+/* Hide nav at narrow viewports, show hamburger */
+@media (max-width: 880px) {
+  body.home .header-nav--simple { display: none; }
+  body.home .site-header--home .header-cta { padding: 10px 18px; font-size: 11px; }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   HOMEPAGE HERO — full viewport, bottom-aligned content
+   ────────────────────────────────────────────────────────────────── */
+body.home .hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 0;
+}
+
+body.home .hero-content {
+  position: relative;
+  padding: clamp(8rem, 18vh, 12rem) 0 clamp(2.5rem, 6vh, 4rem);
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+body.home .hero-badge {
+  display: inline-block;
+  margin-bottom: clamp(1.5rem, 3vh, 2.25rem);
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+body.home .hero h1 {
+  font-size: clamp(2.75rem, 8vw, 8.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.022em;
+  font-weight: 500;
+  color: #fff;
+  max-width: 14ch;
+  margin: 0 0 clamp(1.5rem, 3vh, 2rem) 0;
+}
+body.home .hero h1 em {
+  font-style: italic;
+  color: var(--color-clay-soft);
+  font-weight: 500;
+}
+
+body.home .hero-content > p {
+  font-size: clamp(1rem, 0.8vw + 0.7rem, 1.2rem);
+  max-width: 44ch;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 clamp(2rem, 5vh, 3rem) 0;
+  line-height: 1.55;
+}
+
+body.home .hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+body.home .hero .btn--primary {
+  background: #fff;
+  color: var(--color-charcoal);
+  border: 1px solid #fff;
+  padding: 18px 36px;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+body.home .hero .btn--primary:hover {
+  background: var(--color-clay-soft);
+  border-color: var(--color-clay-soft);
+}
+body.home .hero .btn--secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 18px 36px;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+body.home .hero .btn--secondary:hover {
+  background: #fff;
+  color: var(--color-charcoal);
+}
+
+/* ──────────────────────────────────────────────────────────────────
    HERO — full-bleed image with ken-burns + dark gradient
    ────────────────────────────────────────────────────────────────── */
 .hero {
