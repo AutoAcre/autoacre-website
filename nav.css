@@ -265,7 +265,10 @@ body.has-light-header .site-header {
 }
 
 .nav-cream-item.is-open .nav-cream-drawer {
-  max-height: 480px;
+  /* 720px fits Locations' 3 regions (8 + 5 + 4 villages in 3-col grids,
+     plus the 3 region labels and 2 separators). Systems / Insights are
+     much shorter and just don't reach this height. */
+  max-height: 720px;
   opacity: 1;
   pointer-events: auto;
 }
@@ -274,6 +277,27 @@ body.has-light-header .site-header {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 48px 40px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Region break inside a drawer (used by Locations: Byron Shire /
+   Ballina Shire / Inland). Other drawers have a single grid and
+   don't render any .nav-cream-region wrappers.
+   ────────────────────────────────────────────────────────────────── */
+.nav-cream-region + .nav-cream-region {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(20,20,15,0.10);
+}
+
+.nav-cream-region-label {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted, #69655B);
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
 /* Top strip: eyebrow + item count */
@@ -413,7 +437,7 @@ body.has-light-header .site-header {
     transition: none !important;
   }
   .nav-cream-item.is-open .nav-cream-drawer {
-    max-height: 480px;
+    max-height: 720px;
     opacity: 1;
   }
 }
