@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <!--
- Homepage promote — Direction B "Cinematic Acreage" merged onto production.
-
- Body content: v2 verbatim (9 bands — hero, stats, two-systems, image break,
- property dial + ROI, Buy + Manage cards, FAQ, final CTA).
-
- Header + footer + scroll-banner: production markup preserved (full nav with
- dropdowns, mobile drawer, schema-aware footer columns, Convert/Insights/etc.).
-
- Only header markup changes from production:
-   - <img> logo → Zodiak wordmark + JetBrains Mono "Northern Rivers" eyebrow.
-   - <button class="theme-toggle"> removed (no dark-mode tokens for Direction B yet).
-
- Stylesheets: /base.css + /style.css + /direction-b.css (production) +
- /homepage.css (this homepage's Direction B aesthetic + sticky-on-scroll).
- Scripts: /app.js (production handlers) + /js/app.js (dial, ROI, header sticky).
+ AutoAcre Homepage v2 — Direction B (Cinematic Acreage)
+ Staging build at /v2/. Not for production until reviewed and promoted.
+ Vanilla HTML/CSS/JS. Self-hosted Inter Tight + JetBrains Mono. Zodiak via
+ Fontshare CDN (TODO: download woff2 manually for offline reliability).
+ The <head> JSON-LD + meta tags are preserved verbatim from the production
+ index.html so the schema graph stays referentially consistent across pages.
 -->
 <html lang="en-AU">
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="robots" content="noindex, nofollow">
  <title>Autonomous Mowing Systems for 3–10 Acre Northern Rivers Properties | AutoAcre</title>
  <meta name="description" content="RTK and LiDAR autonomous mowing systems for 3–10 acre Northern Rivers acreage. Buy + Manage: buy the system outright (ref. $33,490), AutoAcre manages it under a tiered $165–$650/month fee. Book a site assessment or run the ROI calculator.">
  <link rel="canonical" href="https://autoacre.com.au/">
@@ -27,7 +19,7 @@
  <!-- Open Graph -->
  <meta property="og:title" content="AutoAcre — RTK + LiDAR Autonomous Mowing Systems · Buy + Manage for Northern Rivers Acreage">
  <meta property="og:description" content="Buy + Manage offer: buy the RTK + LiDAR autonomous mowing system outright, AutoAcre manages it ongoing. 3–10 acre Northern Rivers acreage.">
- <meta property="og:image" content="./img/og-image.png">
+ <meta property="og:image" content="/img/og-image.png">
  <meta property="og:url" content="https://autoacre.com.au/">
  <meta property="og:type" content="website">
  <meta property="og:locale" content="en_AU">
@@ -316,17 +308,11 @@
  }
  </script>
 
- <!-- Hero LCP preload -->
+ <!-- Hero preload (above-the-fold LCP image) -->
  <link rel="preload" as="image" href="/img/hero.jpg">
 
- <!-- Fonts: Zodiak from Fontshare CDN; Inter Tight + JetBrains Mono self-hosted via /homepage.css @font-face. -->
- <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&display=swap" rel="stylesheet">
-
- <!-- Stylesheets — production base + Direction B homepage layer -->
- <link rel="stylesheet" href="/base.css">
- <link rel="stylesheet" href="/style.css">
- <link rel="stylesheet" href="/direction-b.css">
- <link rel="stylesheet" href="/homepage.css">
+ <!-- Stylesheet (fonts declared inside via @font-face / @import) -->
+ <link rel="stylesheet" href="style.css">
 
  <!-- Favicons -->
  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
@@ -336,114 +322,23 @@
  <link rel="manifest" href="/site.webmanifest">
  <meta name="theme-color" content="#14140F">
 </head>
-<body class="home">
+<body>
 
- <!-- HEADER (transparent over hero, solid after scroll) -->
+ <!-- HEADER (overlays the hero) -->
  <header class="site-header" role="banner">
- <div class="header-inner">
-  <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
-   <span class="wordmark-name">AutoAcre</span>
-   <span class="wordmark-tag">Northern Rivers</span>
+  <a class="brand" href="/" aria-label="AutoAcre — home">
+   <span class="brand-mark">AutoAcre</span>
+   <span class="brand-region">Northern Rivers</span>
   </a>
-  <nav class="header-nav" aria-label="Main navigation">
-   <a href='/'>Home</a>
-   <div class="nav-dropdown">
-    <button class="nav-dropdown-trigger">Autonomous Systems <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
-    <div class="nav-dropdown-menu">
-     <a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a>
-     <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>
-     <a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a>
-     <a href='/commercial'>Commercial Autonomous Mowing</a>
-    </div>
-   </div>
-   <div class="nav-dropdown">
-    <button class="nav-dropdown-trigger">Locations <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
-    <div class="nav-dropdown-menu">
-     <a href='/robot-mower-installation-byron-bay'>Byron Bay</a>
-     <a href='/robot-mower-installation-federal'>Federal</a>
-     <a href='/robot-mower-installation-bangalow'>Bangalow</a>
-     <a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a>
-     <a href='/robot-mower-installation-newrybar'>Newrybar</a>
-     <a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a>
-     <a href='/robot-mower-installation-myocum'>Myocum</a>
-     <a href='/robot-mower-installation-brooklet'>Brooklet</a>
-     <a href='/service-area'>All locations</a>
-    </div>
-   </div>
-   <div class="nav-dropdown">
-    <button class="nav-dropdown-trigger">Insights <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
-    <div class="nav-dropdown-menu">
-     <a href='/blog'>Robot Mower Guides</a>
-     <a href='/acreage-robot-mowing-systems'>Acreage Automation</a>
-     <a href='/rtk-robot-mower-installation'>RTK Technology</a>
-     <a href='/autonomous-vs-ride-on'>Comparisons</a>
-     <a href='/robot-mower-roi-calculator'>ROI Calculator</a>
-     <a href='/faq'>Facts &amp; FAQs</a>
-    </div>
-   </div>
-   <a href='/about'>About</a>
+  <nav class="site-nav" aria-label="Main">
+   <a href="#buy-manage">Systems</a>
+   <a href="#technology">Technology</a>
+   <a href="#numbers">Approach</a>
+   <a href="/service-area">Locations</a>
+   <a href="/about">About</a>
   </nav>
-  <div class="header-actions">
-   <a href="tel:0499649094" class="header-phone" aria-label="Call 0499 649 094"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
-   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
-   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
-  </div>
- </div>
-</header>
-
- <!-- Mobile Nav (production markup, unchanged) -->
- <nav class="mobile-nav" aria-label="Mobile navigation">
- <a class='btn btn--primary btn--large mobile-cta' href='/book-site-assessment' style='margin-bottom: var(--space-4);'>Book Assessment</a>
- <a href='/'>Home</a>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-   Autonomous Systems
-   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-  <div class="mobile-nav-areas-list">
-   <a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a>
-   <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>
-   <a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a>
-   <a href='/commercial'>Commercial Autonomous Mowing</a>
-  </div>
- </div>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-   Locations
-   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-  <div class="mobile-nav-areas-list">
-   <a href='/robot-mower-installation-byron-bay'>Byron Bay</a>
-   <a href='/robot-mower-installation-federal'>Federal</a>
-   <a href='/robot-mower-installation-bangalow'>Bangalow</a>
-   <a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a>
-   <a href='/robot-mower-installation-newrybar'>Newrybar</a>
-   <a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a>
-   <a href='/robot-mower-installation-myocum'>Myocum</a>
-   <a href='/robot-mower-installation-brooklet'>Brooklet</a>
-   <a href='/service-area'>All locations</a>
-  </div>
- </div>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-   Insights
-   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-  <div class="mobile-nav-areas-list">
-   <a href='/blog'>Robot Mower Guides</a>
-   <a href='/acreage-robot-mowing-systems'>Acreage Automation</a>
-   <a href='/rtk-robot-mower-installation'>RTK Technology</a>
-   <a href='/autonomous-vs-ride-on'>Comparisons</a>
-   <a href='/robot-mower-roi-calculator'>ROI Calculator</a>
-   <a href='/faq'>Facts &amp; FAQs</a>
-  </div>
- </div>
- <a href='/about'>About</a>
- <a href="tel:0499649094" class="mobile-nav-phone">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-  0499 649 094
- </a>
-</nav>
+  <a class="btn-pill" href="/book-site-assessment">Book assessment</a>
+ </header>
 
  <main>
 
@@ -486,15 +381,14 @@
   </section>
 
   <!-- 3. TECHNOLOGY (dark) -->
-  <a id="technology" aria-hidden="true" class="anchor-alias"></a>
-  <section class="section section--dark" aria-labelledby="tech-heading">
-   <div class="tech-header reveal">
+  <section id="technology" class="section section--dark" aria-labelledby="tech-heading">
+   <div class="tech-header" data-reveal>
     <div class="label">Fig. 01 — Technology stack</div>
     <h2 id="tech-heading">Two systems, <em>calibrated</em> together.</h2>
    </div>
    <div class="tech-grid">
     <!-- α — RTK panel -->
-    <div class="tech-panel reveal">
+    <div class="tech-panel" data-reveal>
      <div class="tech-heading">
       <span class="tech-glyph">α</span>
       <h3 class="tech-h3">RTK precision positioning</h3>
@@ -522,7 +416,7 @@
     </div>
 
     <!-- β — LiDAR panel -->
-    <div class="tech-panel reveal">
+    <div class="tech-panel" data-reveal>
      <div class="tech-heading">
       <span class="tech-glyph">β</span>
       <h3 class="tech-h3">LiDAR obstacle avoidance</h3>
@@ -552,7 +446,7 @@
     </div>
    </div>
 
-   <div class="tech-footer reveal">
+   <div class="tech-footer" data-reveal>
     <div class="label">Together</div>
     <p>A mower that knows where it is, where it should be, and what's in front of it. The dividing line between a robotic toy and an autonomous system that handles acreage.</p>
    </div>
@@ -570,9 +464,8 @@
   </section>
 
   <!-- 5. PROPERTY DIAL + ROI -->
-  <a id="pricing" aria-hidden="true" class="anchor-alias"></a>
   <section id="numbers" class="section section--alt" aria-labelledby="numbers-heading">
-   <div class="numbers-header reveal">
+   <div class="numbers-header" data-reveal>
     <div>
      <div class="label">The numbers</div>
      <h2 id="numbers-heading">Pick your acreage. We'll do the eight-year <em>maths</em>.</h2>
@@ -580,7 +473,7 @@
     <p>Buy the system once at $33,490. Pay one tiered monthly fee. Compare it against a fortnightly contractor across eight years.</p>
    </div>
 
-   <div class="dial-card reveal">
+   <div class="dial-card" data-reveal>
     <div class="dial">
      <div class="dial-visual">
       <svg viewBox="0 0 240 240" aria-hidden="true">
@@ -609,7 +502,7 @@
     </div>
    </div>
 
-   <div class="roi reveal">
+   <div class="roi" data-reveal>
     <div class="roi-header">
      <div class="label-strong">ROI · 8-year window</div>
      <div class="roi-live">live</div>
@@ -654,14 +547,13 @@
   </section>
 
   <!-- 6. BUY + MANAGE -->
-  <a id="how-it-works" aria-hidden="true" class="anchor-alias"></a>
   <section id="buy-manage" class="section" aria-labelledby="bm-heading">
-   <div class="steps-header reveal">
+   <div class="steps-header" data-reveal>
     <div class="label">Buy + Manage</div>
     <h2 id="bm-heading">The system is yours. The service is <em>ours</em>.</h2>
    </div>
    <div class="steps-grid">
-    <article class="step-card reveal">
+    <article class="step-card" data-reveal>
      <div class="step-photo" style="background-image: url('/img/hinterland-aerial.jpg');" aria-hidden="true"></div>
      <div class="step-body">
       <div class="step-meta"><span class="step-num">Step 01</span><span class="step-when">Open today</span></div>
@@ -669,7 +561,7 @@
       <p>On-site walk of your property. Mowing zones, RTK base station siting, slope and access. Honest verdict on suitability.</p>
      </div>
     </article>
-    <article class="step-card reveal">
+    <article class="step-card" data-reveal>
      <div class="step-photo" style="background-image: url('/img/g1-wide-paddock.jpg');" aria-hidden="true"></div>
      <div class="step-body">
       <div class="step-meta"><span class="step-num">Step 02</span><span class="step-when">Q1 2027</span></div>
@@ -677,7 +569,7 @@
       <p>Reference launch price $33,490. Base station commissioned, mower configured, boundaries mapped. The system becomes yours.</p>
      </div>
     </article>
-    <article class="step-card reveal">
+    <article class="step-card" data-reveal>
      <div class="step-photo" style="background-image: url('/img/hilux-trailer.jpg');" aria-hidden="true"></div>
      <div class="step-body">
       <div class="step-meta"><span class="step-num">Step 03</span><span class="step-when">Q1 2027</span></div>
@@ -689,17 +581,16 @@
   </section>
 
   <!-- 7. FAQ -->
-  <a id="faq" aria-hidden="true" class="anchor-alias"></a>
-  <section class="section section--alt" aria-labelledby="faq-heading">
-   <div class="faq-header reveal">
+  <section id="faq" class="section section--alt" aria-labelledby="faq-heading">
+   <div class="faq-header" data-reveal>
     <div>
      <div class="label">Common questions</div>
      <h2 id="faq-heading">The plain answers, on the <em>record</em>.</h2>
     </div>
     <p>We're a small operation in the Northern Rivers building something specific. If you've got a question that isn't covered here, the site assessment is the right place to ask it.</p>
    </div>
-   <div class="faq reveal">
-    <div class="faq-item active">
+   <div class="faq" data-reveal>
+    <div class="faq-item">
      <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-1" id="faq-q-1">
       <span class="faq-question-text">What does "RTK + LiDAR" actually mean for my property?</span>
       <span class="faq-icon" aria-hidden="true">+</span>
@@ -757,8 +648,6 @@
   </section>
 
   <!-- 8. FINAL CTA -->
-  <a id="booking" aria-hidden="true" class="anchor-alias"></a>
-  <a id="about" aria-hidden="true" class="anchor-alias"></a>
   <section class="cta" aria-labelledby="cta-heading">
    <div class="cta-bg" role="img" aria-label="View from a covered veranda over autonomously mowed acreage"></div>
    <div class="cta-content">
@@ -774,103 +663,15 @@
 
  </main>
 
- <!-- FOOTER (production markup, restyled by /homepage.css) -->
- <a id="contact" aria-hidden="true" class="anchor-alias"></a>
+ <!-- 9. FOOTER -->
  <footer class="site-footer" role="contentinfo">
- <div class="container">
-  <div class="footer-grid">
-   <div class="footer-brand">
-    <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
-     <span class="wordmark-name">AutoAcre</span>
-     <span class="wordmark-tag">Northern Rivers</span>
-    </a>
-    <p>Autonomous mowing systems for 3–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
-   </div>
-   <div class="footer-col">
-    <h4>Autonomous Systems</h4>
-    <ul>
-     <li><a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a></li>
-     <li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li>
-     <li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li>
-     <li><a href='/commercial'>Commercial Autonomous Mowing</a></li>
-    </ul>
-   </div>
-   <div class="footer-col">
-    <h4>Locations</h4>
-    <ul>
-     <li><a href='/robot-mower-installation-byron-bay'>Byron Bay</a></li>
-     <li><a href='/robot-mower-installation-federal'>Federal</a></li>
-     <li><a href='/robot-mower-installation-bangalow'>Bangalow</a></li>
-     <li><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a></li>
-     <li><a href='/robot-mower-installation-newrybar'>Newrybar</a></li>
-     <li><a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a></li>
-     <li><a href='/robot-mower-installation-myocum'>Myocum</a></li>
-     <li><a href='/robot-mower-installation-brooklet'>Brooklet</a></li>
-     <li><a href='/service-area'>All locations</a></li>
-    </ul>
-   </div>
-   <div class="footer-col">
-    <h4>Insights</h4>
-    <ul>
-     <li><a href='/blog'>Robot Mower Guides</a></li>
-     <li><a href='/acreage-robot-mowing-systems'>Acreage Automation</a></li>
-     <li><a href='/rtk-robot-mower-installation'>RTK Technology</a></li>
-     <li><a href='/autonomous-vs-ride-on'>Comparisons</a></li>
-     <li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li>
-     <li><a href='/faq'>Facts &amp; FAQs</a></li>
-    </ul>
-   </div>
-   <div class="footer-col">
-    <h4>Convert</h4>
-    <ul>
-     <li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li>
-     <li><a href='/book-site-assessment'>Book Site Assessment</a></li>
-    </ul>
-   </div>
-   <div class="footer-col">
-    <h4>Company</h4>
-    <ul>
-     <li><a href='/about'>About</a></li>
-     <li><a href='/blog'>Blog</a></li>
-     <li><a href='/glossary'>Glossary</a></li>
-     <li><a href='/facts'>Facts &amp; Figures</a></li>
-    </ul>
-   </div>
-   <div class="footer-col">
-    <h4>Contact</h4>
-    <div class="footer-contact-item">
-     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-     <a href="tel:0499649094">0499 649 094</a>
-    </div>
-    <div class="footer-contact-item">
-     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-     <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>
-    </div>
-    <div class="footer-contact-item">
-     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-     <span>Byron Bay &amp; Northern Rivers, NSW</span>
-    </div>
-   </div>
+  <div class="footer-row">
+   <span>AutoAcre · Byron Bay · NSW 2481</span>
+   <span><a href="tel:0499649094">0499 649 094</a> · <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></span>
+   <span>Ops begin Q1 2027</span>
   </div>
-  <div class="footer-bottom">
-   <span>&copy; 2026 AutoAcre. All rights reserved.</span>
-   <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
-  </div>
- </div>
-</footer>
+ </footer>
 
- <!-- Scroll CTA Banner (production) -->
- <div class="scroll-banner" role="complementary" aria-label="Promotion">
-  <div class="scroll-banner-inner">
-   <p>3–10 acres? <strong>Run the 8-year cost comparison in 60 seconds</strong></p>
-   <a class='btn btn--primary btn--small' href='/robot-mower-roi-calculator'>Run Calculator</a>
-   <button class="scroll-banner-close" aria-label="Close banner">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-   </button>
-  </div>
- </div>
-
- <script src="/app.js" defer></script>
- <script src="/js/app.js" defer></script>
+ <script src="js/app.js" defer></script>
 </body>
 </html>
