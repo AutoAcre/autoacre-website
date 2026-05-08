@@ -505,13 +505,21 @@ body.home .hero-actions {
   body.home .hero-row p { font-size: 16px; }
 
   /* Tweaks #1 + #2: stack the AutoAcre wordmark + 'Northern Rivers' tag
-     vertically inside the floating nav bar, 30px gap between them
-     (per "30px padding off the bottom of the logo"). The tag was previously
-     hidden on mobile — this makes it visible AND stacked. */
+     vertically inside the floating nav bar. 14px gap (was 30px, reduced
+     by 16px so the tag sits closer to the wordmark). */
   body.home .site-header .header-logo--wordmark {
     flex-direction: column;
     align-items: flex-start;
-    gap: 30px;
+    gap: 14px;
+  }
+
+  /* When the brand stacks vertically on mobile, the hamburger button
+     was vertically centred against the (now taller) brand block, so it
+     ended up sitting between the wordmark and the 'NORTHERN RIVERS'
+     tag. Pin all header items to the top so the hamburger lines up
+     with the AutoAcre wordmark line. */
+  body.home .site-header .header-inner {
+    align-items: flex-start;
   }
 
   /* Tweak #1 (alt): also give the hero eyebrow 30px breathing room above it,
