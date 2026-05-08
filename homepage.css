@@ -115,9 +115,12 @@ body.home .label {
   color: var(--muted);
 }
 body.home .section--dark .label,
-body.home .hero .label,
 body.home .image-break .label,
 body.home .cta .label { color: var(--clay-soft); }
+
+/* Hero eyebrow stays near-white per Direction B prototype
+   (rgba(255,255,255,0.85), distinct from the clay-soft labels above). */
+body.home .hero .label { color: rgba(255,255,255,0.85); }
 
 /* Anchor aliases — invisible scroll targets (#about, #contact etc.) */
 body.home .anchor-alias {
@@ -420,6 +423,11 @@ body.home .hero-image {
   z-index: 1;
 }
 
+/* /style.css ships a .hero-image::after that paints a left-to-right white/cream
+   wash designed for production's two-column hero. Kill it here so the photo
+   reads dark + cinematic — our overlay lives on .hero::after instead. */
+body.home .hero-image::after { display: none; }
+
 body.home .hero::after {
   content: '';
   position: absolute;
@@ -435,6 +443,9 @@ body.home .hero::after {
 }
 
 body.home .hero-content {
+  /* /direction-b.css sets .hero-content { position: relative; padding: clamp(8rem,18vh,12rem)…;
+     display: flex; flex-direction: column; width: 100% }. Override the lot so content
+     lands at the bottom-left of the hero, not pushed in by 8rem of top padding. */
   position: absolute;
   bottom: 80px;
   left: 56px;
@@ -442,6 +453,9 @@ body.home .hero-content {
   z-index: 3;
   max-width: 1400px;
   margin-inline: auto;
+  padding: 0;
+  width: auto;
+  display: block;
 }
 
 body.home .hero-content h1 {
