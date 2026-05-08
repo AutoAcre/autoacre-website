@@ -335,6 +335,7 @@
  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
  <link rel="manifest" href="/site.webmanifest">
  <meta name="theme-color" content="#14140F">
+ <link rel="stylesheet" href="/nav.css">
 </head>
 <body class="home">
 
@@ -347,10 +348,10 @@
   </a>
   <nav class="header-nav header-nav--cream-index" aria-label="Main navigation">
    <ul class="nav-list" role="list">
-    <li class="nav-item"><a href='/' class="nav-link">Home</a></li>
+    <li class="nav-item"><a href='/' class="nav-link" data-section="home" aria-current="page">Home</a></li>
 
     <li class="nav-item nav-cream-item">
-     <button type="button" class="nav-cream-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-systems">
+     <button type="button" class="nav-cream-trigger" data-section="systems" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-systems">
       <span class="nav-cream-trigger-label">Autonomous Systems</span>
       <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
      </button>
@@ -371,7 +372,7 @@
     </li>
 
     <li class="nav-item nav-cream-item">
-     <button type="button" class="nav-cream-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-locations">
+     <button type="button" class="nav-cream-trigger" data-section="locations" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-locations">
       <span class="nav-cream-trigger-label">Locations</span>
       <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
      </button>
@@ -397,7 +398,7 @@
     </li>
 
     <li class="nav-item nav-cream-item">
-     <button type="button" class="nav-cream-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-insights">
+     <button type="button" class="nav-cream-trigger" data-section="insights" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-insights">
       <span class="nav-cream-trigger-label">Insights</span>
       <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
      </button>
@@ -419,7 +420,7 @@
      </div>
     </li>
 
-    <li class="nav-item"><a href='/about' class="nav-link">About</a></li>
+    <li class="nav-item"><a href='/about' class="nav-link" data-section="about">About</a></li>
    </ul>
   </nav>
   <div class="header-actions">
@@ -910,5 +911,6 @@
 
  <script src="/app.js" defer></script>
  <script src="/js/app.js" defer></script>
+ <script src="/nav.js" defer></script>
 </body>
 </html>

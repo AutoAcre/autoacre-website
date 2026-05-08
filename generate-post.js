@@ -2,6 +2,104 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
+// ── Shared cream-index header (matches /nav.css + /nav.js contract) ─────────
+// Used by both buildPostHtml() and buildBlogHtml(). Blog content lives in the
+// Insights section, so the Insights trigger gets aria-current="page".
+const SHARED_NAV_HEADER = `<header class="site-header" role="banner">
+ <div class="header-inner">
+  <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
+   <span class="wordmark-name">AutoAcre</span>
+   <span class="wordmark-tag">Northern Rivers</span>
+  </a>
+  <nav class="header-nav header-nav--cream-index" aria-label="Main navigation">
+   <ul class="nav-list" role="list">
+    <li class="nav-item"><a href='/' class="nav-link" data-section="home">Home</a></li>
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="systems" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-systems">
+      <span class="nav-cream-trigger-label">Autonomous Systems</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-systems" role="region" aria-label="Autonomous Systems" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip"><span class="nav-cream-drawer-eyebrow">What we install</span><span class="nav-cream-drawer-count">04 ITEMS</span></div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/3-10-acre-autonomous-mowing-systems'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">3–10 Acre Systems</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">RTK Robot Mower Installation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Acreage Robot Mowing</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/commercial'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Commercial Autonomous Mowing</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="locations" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-locations">
+      <span class="nav-cream-trigger-label">Locations</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-locations" role="region" aria-label="Locations" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip"><span class="nav-cream-drawer-eyebrow">Where we work</span><span class="nav-cream-drawer-count">09 ITEMS</span></div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-byron-bay'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Byron Bay</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-federal'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Federal</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-bangalow'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Bangalow</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-mullumbimby'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Mullumbimby</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-newrybar'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Newrybar</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-ewingsdale'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Ewingsdale</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-myocum'><span class="nav-cream-drawer-num">07</span><span class="nav-cream-drawer-label">Myocum</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-brooklet'><span class="nav-cream-drawer-num">08</span><span class="nav-cream-drawer-label">Brooklet</span></a></li>
+        <li class="nav-cream-drawer-item nav-cream-drawer-item--all"><a href='/service-area'><span class="nav-cream-drawer-num">09</span><span class="nav-cream-drawer-label">All locations →</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="insights" aria-current="page" aria-haspopup="true" aria-expanded="false" aria-controls="nav-drawer-insights">
+      <span class="nav-cream-trigger-label">Insights</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-insights" role="region" aria-label="Insights" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip"><span class="nav-cream-drawer-eyebrow">Field notes</span><span class="nav-cream-drawer-count">06 ITEMS</span></div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/blog'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Robot Mower Guides</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Acreage Automation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">RTK Technology</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/autonomous-vs-ride-on'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Comparisons</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-roi-calculator'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">ROI Calculator</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/faq'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Facts &amp; FAQs</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+    <li class="nav-item"><a href='/about' class="nav-link" data-section="about">About</a></li>
+   </ul>
+  </nav>
+  <div class="header-actions">
+   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
+   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
+  </div>
+ </div>
+</header>
+<nav class="mobile-nav" aria-label="Mobile navigation">
+ <a class='btn btn--primary btn--large mobile-cta' href='/book-site-assessment' style='margin-bottom: var(--space-4);'>Book Assessment</a>
+ <a href='/'>Home</a>
+ <div class="mobile-nav-areas">
+  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Autonomous Systems <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+  <div class="mobile-nav-areas-list"><a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a><a href='/commercial'>Commercial Autonomous Mowing</a></div>
+ </div>
+ <div class="mobile-nav-areas">
+  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Locations <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+  <div class="mobile-nav-areas-list"><a href='/robot-mower-installation-byron-bay'>Byron Bay</a><a href='/robot-mower-installation-federal'>Federal</a><a href='/robot-mower-installation-bangalow'>Bangalow</a><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a><a href='/robot-mower-installation-newrybar'>Newrybar</a><a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a><a href='/robot-mower-installation-myocum'>Myocum</a><a href='/robot-mower-installation-brooklet'>Brooklet</a><a href='/service-area'>All locations</a></div>
+ </div>
+ <div class="mobile-nav-areas">
+  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Insights <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+  <div class="mobile-nav-areas-list"><a href='/blog'>Robot Mower Guides</a><a href='/acreage-robot-mowing-systems'>Acreage Automation</a><a href='/rtk-robot-mower-installation'>RTK Technology</a><a href='/autonomous-vs-ride-on'>Comparisons</a><a href='/robot-mower-roi-calculator'>ROI Calculator</a><a href='/faq'>Facts &amp; FAQs</a></div>
+ </div>
+ <a href='/about'>About</a>
+ <a href="tel:0499649094" class="mobile-nav-phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
+</nav>`;
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function slugify(title) {
   return 'blog-' + title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -123,31 +221,6 @@ async function generateContent(topic) {
 
 // ── Build blog post HTML ──────────────────────────────────────────────────────
 function buildPostHtml(post) {
-  const SITE_HEADER = `  <div class="prelaunch-banner" role="region" aria-label="Pre-launch announcement">
-    <p>AutoAcre is launching managed-service operations in Q1 2027. The calculator and Buyer's Guide are open now — <a href="register-interest.html">join the launch list</a>.</p>
-  </div>
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a href="index.html" class="header-logo" aria-label="AutoAcre home">
-        <img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Management" height="52" style="height:52px;width:auto;">
-      </a>
-      <nav class="header-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="residential.html">Residential</a>
-        <a href="commercial.html">Commercial</a>
-        <a href="about.html">About</a>
-        <a href="blog.html" class="active">Blog</a>
-      </nav>
-      <div class="header-actions">
-        <a href="tel:0499649094" class="header-phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
-        <a href="demo.html" class="btn btn--primary header-cta">Book a Demo</a>
-        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"></button>
-        <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
-      </div>
-    </div>
-  </header>
-  <nav class="mobile-nav"><a href="index.html">Home</a><a href="residential.html">Residential</a><a href="commercial.html">Commercial</a><a href="about.html">About</a><a href="blog.html">Blog</a><div class="mobile-nav-cta"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large">Get a Quote</a></div></nav>`;
-
   const SITE_FOOTER = `  <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -242,10 +315,10 @@ function buildPostHtml(post) {
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="/nav.css">
 </head>
-<body>
-${SITE_HEADER}
+<body class="has-light-header">
+${SHARED_NAV_HEADER}
   <main>
     <section class="page-hero"><div class="container">
       <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="blog.html">Blog</a> <span>/</span> ${post.title}</nav>
@@ -283,6 +356,7 @@ ${SITE_HEADER}
     </div></section>
   </main>
 ${SITE_FOOTER}
+<script src="/nav.js" defer></script>
 </body></html>`;
 }
 
@@ -322,11 +396,10 @@ function buildBlogHtml(published) {
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="/nav.css">
 </head>
-<body>
-  <header class="site-header"><div class="header-inner"><a href="index.html" class="header-logo"><img src="./img/logo.png" alt="AutoAcre" height="52" style="height:52px;width:auto;"></a><nav class="header-nav"><a href="index.html">Home</a><a href="residential.html">Residential</a><a href="commercial.html">Commercial</a><a href="about.html">About</a><a href="blog.html" class="active">Blog</a></nav><div class="header-actions"><a href="demo.html" class="btn btn--primary header-cta">Book a Demo</a><button class="theme-toggle" data-theme-toggle></button><button class="mobile-menu-btn"><span></span></button></div></div></header>
-  <nav class="mobile-nav"><a href="index.html">Home</a><a href="residential.html">Residential</a><a href="commercial.html">Commercial</a><a href="about.html">About</a><a href="blog.html">Blog</a><div class="mobile-nav-cta"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large">Get a Quote</a></div></nav>
+<body class="has-light-header">
+${SHARED_NAV_HEADER}
   <main>
     <section class="page-hero"><div class="container">
       <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Blog</nav>
@@ -345,6 +418,7 @@ function buildBlogHtml(published) {
   </main>
   <footer class="site-footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span></div></div></footer>
   <script src="./app.js" defer></script>
+  <script src="/nav.js" defer></script>
 </body></html>`;
 }
 
