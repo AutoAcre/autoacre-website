@@ -162,10 +162,15 @@ em {
 }
 
 .section--dark .label,
-.hero .label,
 .image-break .label,
 .cta .label {
   color: var(--clay-soft);
+}
+
+/* Hero eyebrow stays near-white per the prototype (matches
+   direction-b-standalone.jsx: color rgba(255,255,255,0.85)). */
+.hero .label {
+  color: rgba(255,255,255,0.85);
 }
 
 /* ─── Buttons ───────────────────────────────────────────────────── */
