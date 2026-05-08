@@ -164,6 +164,96 @@
     observer.observe(hero);
   }
 
+  /* ─── Cream Index nav drawers ─────────────────────────────────────
+     Three nav items (Autonomous Systems / Locations / Insights) each have
+     a button + drawer. Hover any to open. Mouseleave the entire header to
+     close. Click for keyboard/touch. Esc closes. Adds body.is-nav-open
+     when any drawer is open so CSS can flip header colours.
+     ───────────────────────────────────────────────────────────────── */
+  function setupCreamNav() {
+    var header = document.querySelector('.site-header');
+    var items = document.querySelectorAll('.nav-cream-item');
+    if (!header || !items.length) return;
+
+    var closeTimer = null;
+    var openItem = null;
+
+    function closeAll() {
+      items.forEach(function (item) {
+        item.classList.remove('is-open');
+        var trigger = item.querySelector('.nav-cream-trigger');
+        var drawer = item.querySelector('.nav-cream-drawer');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        if (drawer) drawer.setAttribute('hidden', '');
+      });
+      document.body.classList.remove('is-nav-open');
+      openItem = null;
+    }
+
+    function openOne(item) {
+      if (openItem && openItem !== item) {
+        openItem.classList.remove('is-open');
+        var oldTrig = openItem.querySelector('.nav-cream-trigger');
+        var oldDraw = openItem.querySelector('.nav-cream-drawer');
+        if (oldTrig) oldTrig.setAttribute('aria-expanded', 'false');
+        if (oldDraw) oldDraw.setAttribute('hidden', '');
+      }
+      item.classList.add('is-open');
+      var trig = item.querySelector('.nav-cream-trigger');
+      var draw = item.querySelector('.nav-cream-drawer');
+      if (trig) trig.setAttribute('aria-expanded', 'true');
+      if (draw) draw.removeAttribute('hidden');
+      document.body.classList.add('is-nav-open');
+      openItem = item;
+    }
+
+    function cancelClose() { if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; } }
+    function scheduleClose() {
+      cancelClose();
+      closeTimer = setTimeout(closeAll, 120);
+    }
+
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.nav-cream-trigger');
+      if (!trigger) return;
+
+      // Hover: open
+      item.addEventListener('mouseenter', function () { cancelClose(); openOne(item); });
+
+      // Click (keyboard/touch): toggle this item
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        cancelClose();
+        if (item.classList.contains('is-open')) {
+          closeAll();
+        } else {
+          openOne(item);
+        }
+      });
+    });
+
+    // Mouseleave the whole header region (header + drawers, since drawers are
+    // positioned absolute below the header, leaving the bottom of the drawer
+    // also leaves the header's hover region) — schedule close.
+    header.addEventListener('mouseleave', scheduleClose);
+    header.addEventListener('mouseenter', cancelClose);
+
+    // Esc closes
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && openItem) {
+        closeAll();
+        // restore focus to the trigger that was open
+        var trigger = openItem && openItem.querySelector('.nav-cream-trigger');
+        if (trigger) trigger.focus();
+      }
+    });
+
+    // Click outside the header → close
+    document.addEventListener('click', function (e) {
+      if (!header.contains(e.target) && openItem) closeAll();
+    });
+  }
+
   /* ─── Init ─── */
   function init() {
     document.body.classList.add('js-enhanced');
@@ -172,6 +262,7 @@
     setupDial();
     setupROI();
     setupStickyHeader();
+    setupCreamNav();
   }
 
   if (document.readyState === 'loading') {

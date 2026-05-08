@@ -473,11 +473,13 @@ body.home .hero-content h1 {
 }
 
 body.home .hero-row {
+  /* Stack paragraph above buttons, both left-aligned. Was previously a
+     row with justify-content: space-between, which on wider widths
+     floated the CTAs right and obscured the mower in the photo. */
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 40px;
-  flex-wrap: wrap;
 }
 
 body.home .hero-row p {
@@ -1332,5 +1334,250 @@ body.home .site-header.site-header--hidden {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+   CREAM INDEX NAV DROPDOWNS — design 09
+   Editorial drawer that expands DOWN from the header. Cream panel,
+   numbered index of items inside, header colour flips when open.
+
+   Markup contract (in /index.html):
+     header.site-header
+       └ nav.header-nav.header-nav--cream-index
+           └ ul.nav-list
+               ├ li.nav-item                  (flat: Home / About)
+               └ li.nav-item.nav-cream-item   (with drawer)
+                   ├ button.nav-cream-trigger
+                   │   ├ .nav-cream-trigger-label
+                   │   └ svg.nav-cream-chevron
+                   └ div.nav-cream-drawer (positioned absolute below header)
+                       └ .nav-cream-drawer-inner
+                           ├ .nav-cream-drawer-strip
+                           │   ├ .nav-cream-drawer-eyebrow
+                           │   └ .nav-cream-drawer-count
+                           └ ul.nav-cream-drawer-grid (--2col / --3col)
+                               └ li.nav-cream-drawer-item > a
+                                   ├ .nav-cream-drawer-num
+                                   └ .nav-cream-drawer-label
+
+   State: body.is-nav-open is added/removed by /js/app.js.
+   Transitions: 280ms colour flip on header, 360ms max-height on drawer.
+   Mobile: invisible — these only render at the existing 1024px+ desktop
+   breakpoint where .header-nav becomes display: flex.
+   ──────────────────────────────────────────────────────────────────── */
+
+/* List + flat items reset */
+body.home .header-nav .nav-list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.home .header-nav .nav-list .nav-item {
+  position: static; /* drawers position absolute relative to .site-header */
+}
+body.home .header-nav .nav-list .nav-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: color 280ms var(--ease-out);
+}
+body.home .header-nav .nav-list .nav-link:hover { color: #fff; }
+
+/* Trigger buttons (Autonomous Systems / Locations / Insights) */
+body.home .nav-cream-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0;
+  transition: color 280ms var(--ease-out);
+}
+body.home .nav-cream-trigger:hover { color: #fff; }
+body.home .nav-cream-chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform 280ms var(--ease-out);
+}
+body.home .nav-cream-trigger[aria-expanded="true"] .nav-cream-chevron {
+  transform: rotate(180deg);
+}
+
+/* The drawer itself — full-width below the header */
+body.home .nav-cream-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  overflow: hidden;
+  max-height: 0;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(20,20,15,0.10);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    max-height 360ms var(--ease-out),
+    opacity 280ms var(--ease-out),
+    background-color 280ms var(--ease-out);
+}
+body.home .nav-cream-drawer:not([hidden]) {
+  /* hidden attribute removed by JS when opening; even before max-height
+     animates in, the drawer is in the DOM ready to receive transitions. */
+}
+body.home .nav-cream-item.is-open .nav-cream-drawer {
+  max-height: 480px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Drawer inner column — centred, padded */
+body.home .nav-cream-drawer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px 40px;
+}
+
+/* Top strip: eyebrow + item count */
+body.home .nav-cream-drawer-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0 14px;
+  border-bottom: 1px solid rgba(20,20,15,0.18);
+  margin-bottom: 18px;
+}
+body.home .nav-cream-drawer-eyebrow,
+body.home .nav-cream-drawer-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Grid of items */
+body.home .nav-cream-drawer-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  column-gap: 48px;
+}
+body.home .nav-cream-drawer-grid--2col { grid-template-columns: 1fr 1fr; }
+body.home .nav-cream-drawer-grid--3col { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Individual item rows */
+body.home .nav-cream-drawer-item > a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(20,20,15,0.08);
+  text-decoration: none;
+  color: var(--text);
+}
+body.home .nav-cream-drawer-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  min-width: 22px;
+  flex-shrink: 0;
+}
+body.home .nav-cream-drawer-label {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--text);
+  transition: color 160ms var(--ease-out);
+}
+body.home .nav-cream-drawer-item > a:hover .nav-cream-drawer-label {
+  color: var(--accent);
+}
+/* "All locations →" gets weight 600 + olive default */
+body.home .nav-cream-drawer-item--all .nav-cream-drawer-label {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Header colour flip when ANY drawer is open */
+body.home.is-nav-open .site-header {
+  background: var(--bg);
+  border-bottom-color: var(--border);
+  color: var(--text);
+}
+body.home.is-nav-open .header-logo--wordmark .wordmark-name { color: var(--text); }
+body.home.is-nav-open .header-logo--wordmark .wordmark-tag { color: var(--muted); }
+body.home.is-nav-open .header-nav .nav-list .nav-link {
+  color: var(--text);
+  opacity: 0.78;
+}
+body.home.is-nav-open .header-nav .nav-list .nav-link:hover { opacity: 1; }
+body.home.is-nav-open .nav-cream-trigger {
+  color: var(--text);
+  opacity: 0.78;
+}
+body.home.is-nav-open .nav-cream-trigger:hover { opacity: 1; }
+body.home.is-nav-open .nav-cream-trigger[aria-expanded="true"] {
+  color: var(--text);
+  opacity: 1;
+}
+body.home.is-nav-open .site-header .header-cta {
+  background: var(--accent);
+  color: #fff;
+}
+body.home.is-nav-open .site-header .header-cta:hover {
+  background: var(--surface-deep);
+  color: #fff;
+}
+body.home.is-nav-open .mobile-menu-btn span,
+body.home.is-nav-open .mobile-menu-btn span::before,
+body.home.is-nav-open .mobile-menu-btn span::after {
+  background: var(--text);
+}
+
+/* Below 1024px the existing /style.css already sets .header-nav { display: none }
+   and shows the mobile drawer. The cream-index drawers ride that — when the
+   nav itself is hidden, no triggers can be hovered, no drawers open. Belt
+   and braces: explicitly hide the drawer below the breakpoint. */
+@media (max-width: 1023px) {
+  body.home .nav-cream-drawer { display: none !important; }
+  body.home .nav-cream-item .nav-cream-trigger { display: none !important; }
+}
+
+/* Reduced motion: skip the height + colour transitions */
+@media (prefers-reduced-motion: reduce) {
+  body.home .nav-cream-drawer,
+  body.home .nav-cream-trigger,
+  body.home .nav-cream-chevron,
+  body.home .header-logo--wordmark .wordmark-name,
+  body.home .header-logo--wordmark .wordmark-tag,
+  body.home .site-header,
+  body.home .site-header .header-cta {
+    transition: none !important;
+  }
+  body.home .nav-cream-drawer {
+    transition: none !important;
+  }
+  body.home .nav-cream-item.is-open .nav-cream-drawer {
+    /* no animation — just appear/disappear */
+    max-height: 480px;
+    opacity: 1;
   }
 }
