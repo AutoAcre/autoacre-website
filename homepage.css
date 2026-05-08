@@ -445,7 +445,10 @@ body.home .hero::after {
 body.home .hero-content {
   /* /direction-b.css sets .hero-content { position: relative; padding: clamp(8rem,18vh,12rem)…;
      display: flex; flex-direction: column; width: 100% }. Override the lot so content
-     lands at the bottom-left of the hero, not pushed in by 8rem of top padding. */
+     lands at the bottom-left of the hero, not pushed in by 8rem of top padding.
+     Also override /style.css's mobile-only `.hero-content { min-height: 90vh }`
+     which was stretching this absolutely-positioned block from bottom to top of
+     the hero on mobile, colliding with the floating header. */
   position: absolute;
   bottom: 80px;
   left: 56px;
@@ -456,6 +459,7 @@ body.home .hero-content {
   padding: 0;
   width: auto;
   display: block;
+  min-height: 0;
 }
 
 body.home .hero-content h1 {
