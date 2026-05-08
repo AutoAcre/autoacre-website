@@ -499,7 +499,33 @@ body.home .hero-actions {
   body.home .hero-content { bottom: 32px; left: 24px; right: 24px; }
   body.home .hero-content h1 { margin: 24px 0; }
   body.home .hero-row p { font-size: 16px; }
-  body.home .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
+
+  /* Tweaks #1 + #2: stack the AutoAcre wordmark + 'Northern Rivers' tag
+     vertically inside the floating nav bar, 30px gap between them
+     (per "30px padding off the bottom of the logo"). The tag was previously
+     hidden on mobile — this makes it visible AND stacked. */
+  body.home .site-header .header-logo--wordmark {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  /* Tweak #1 (alt): also give the hero eyebrow 30px breathing room above it,
+     in case 'tag line under the logo' meant the hero's eyebrow text rather
+     than the brand-region tag. Cheap, doesn't hurt either reading. */
+  body.home .hero-content > .label:first-child {
+    margin-top: 30px;
+  }
+
+  /* Tweak #3: drop the hero buttons 100px lower so the mower in the photo
+     reads through above them (was hidden behind the buttons). Pushes the
+     button row down from the paragraph above it. */
+  body.home .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 100px;
+  }
 }
 
 /* Buttons (homepage-specific Direction B style) */
