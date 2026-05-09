@@ -23,7 +23,7 @@ const SHARED_NAV_HEADER = `<header class="site-header" role="banner">
       <div class="nav-cream-drawer-inner">
        <div class="nav-cream-drawer-strip"><span class="nav-cream-drawer-eyebrow">What we install</span><span class="nav-cream-drawer-count">04 ITEMS</span></div>
        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
-        <li class="nav-cream-drawer-item"><a href='/3-10-acre-autonomous-mowing-systems'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">3–10 Acre Systems</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/3-10-acre-autonomous-mowing-systems'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">2.5–10 Acre Systems</span></a></li>
         <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">RTK Robot Mower Installation</span></a></li>
         <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Acreage Robot Mowing</span></a></li>
         <li class="nav-cream-drawer-item"><a href='/commercial'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Commercial Autonomous Mowing</span></a></li>
@@ -110,7 +110,7 @@ const SHARED_NAV_HEADER = `<header class="site-header" role="banner">
  <a href='/'>Home</a>
  <div class="mobile-nav-areas">
   <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Autonomous Systems <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-  <div class="mobile-nav-areas-list"><a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a><a href='/commercial'>Commercial Autonomous Mowing</a></div>
+  <div class="mobile-nav-areas-list"><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a><a href='/commercial'>Commercial Autonomous Mowing</a></div>
  </div>
  <div class="mobile-nav-areas">
   <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Locations <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>

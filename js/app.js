@@ -18,6 +18,7 @@
   /* ─── Constants ─── */
   var SYSTEM_PRICE = 33490;
   var MGMT_FEES = {
+    2.5: 165,
     3: 195, 4: 260, 5: 330, 6: 390,
     7: 455, 8: 520, 9: 585, 10: 650
   };
@@ -34,6 +35,7 @@
   });
 
   function feeForAcres(acres) {
+    if (acres < 3) return 165;
     var rounded = Math.max(3, Math.min(10, Math.round(acres)));
     return MGMT_FEES[rounded];
   }
