@@ -249,7 +249,7 @@ function buildPostHtml(post) {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand"><a href="index.html"><img src="./img/logo.png" alt="AutoAcre" height="48" style="height:48px;width:auto;filter:brightness(0) invert(1);"></a><p>Autonomous grounds management across the Northern Rivers.</p></div>
-        <div class="footer-col"><h4>Services</h4><ul><li><a href="residential.html">Residential</a></li><li><a href="commercial.html">Commercial</a></li><li><a href="demo.html">Book a Demo</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="acreage-robot-mowing-systems.html">Residential</a></li><li><a href="commercial.html">Commercial</a></li><li><a href="demo.html">Book a Demo</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
         <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li></ul></div>
         <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><a href="tel:0499649094">0499 649 094</a></div><div class="footer-contact-item"><a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></div></div>
       </div>
@@ -451,7 +451,7 @@ function buildSitemap(published) {
   const today = new Date().toISOString().split('T')[0];
   const staticUrls = [
     ['https://autoacre.com.au/', '1.0', 'weekly'],
-    ['https://autoacre.com.au/residential.html', '0.9', 'monthly'],
+    ['https://autoacre.com.au/acreage-robot-mowing-systems.html', '0.9', 'monthly'],
     ['https://autoacre.com.au/commercial.html', '0.9', 'monthly'],
     ['https://autoacre.com.au/about.html', '0.8', 'monthly'],
     ['https://autoacre.com.au/blog.html', '0.9', 'weekly'],
@@ -461,8 +461,8 @@ function buildSitemap(published) {
     ['https://autoacre.com.au/glossary.html', '0.8', 'monthly'],
     ['https://autoacre.com.au/facts.html', '0.8', 'monthly'],
     ['https://autoacre.com.au/autonomous-vs-ride-on.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/autoacre-vs-husqvarna.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/daily-vs-fortnightly-mowing.html', '0.85', 'monthly'],
+    ['https://autoacre.com.au/commercial-robotic-mower-buyers-guide-australia.html', '0.85', 'monthly'],
+    ['https://autoacre.com.au/autonomous-vs-ride-on.html', '0.85', 'monthly'],
     ['https://autoacre.com.au/holiday-rental-mowing.html', '0.85', 'monthly'],
     ['https://autoacre.com.au/absentee-owner-mowing.html', '0.85', 'monthly'],
     ['https://autoacre.com.au/steep-block-mowing.html', '0.85', 'monthly'],
