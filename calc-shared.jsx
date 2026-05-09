@@ -58,7 +58,7 @@ function calcScenarios({ acres, terrain, frequency, hourlyValue }) {
   return {
     diy:        { key:'diy',        label:'DIY zero-turn',        capital: diyCapital,  y1: diyY1,        total8: diy8yr,        hours: diyHoursPerYear, residual: diyResidual,    opex: diyOpex },
     contractor: { key:'contractor', label:'Contractor',           capital: 0,           y1: contractorY1, total8: contractor8yr, hours: 0,               residual: 0,              opex: contractorAnnual },
-    byo:        { key:'byo',        label: isMammotion ? 'Buy your own — Mammotion' : 'Buy your own — Husqvarna CEORA', capital: byoCapital, y1: byoY1, total8: byo8yr, hours: byoSupportHours, residual: byoResidual, opex: byoOpex, isMammotion },
+    byo:        { key:'byo',        label:'Buy your own — RTK-LiDAR autonomous mowing system', capital: byoCapital, y1: byoY1, total8: byo8yr, hours: byoSupportHours, residual: byoResidual, opex: byoOpex, isMammotion },
     aa:         { key:'aa',         label:'Buy + AutoAcre Manage', capital: aaCapital,   y1: aaY1,         total8: aa8yr,         hours: 0,               residual: aaResidual,     opex: aaOpex,  monthly: aaMonthly }
   };
 }
