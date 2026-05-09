@@ -538,26 +538,10 @@ a:hover {
   box-shadow: var(--shadow-sm);
 }
 
-.btn--primary {
-  background: var(--color-cta);
-  color: var(--color-cta-text);
-}
-
-.btn--primary:hover {
-  background: var(--color-cta-hover);
-  color: var(--color-cta-text);
-}
-
-.btn--secondary {
-  background: transparent;
-  color: var(--color-text);
-  border: 1.5px solid var(--color-border);
-}
-
-.btn--secondary:hover {
-  border-color: var(--color-text);
-  color: var(--color-text);
-}
+/* .btn--primary / .btn--secondary skin (colors, borders, hover states)
+   lives in direction-b.css. This file owns structural rules only:
+   .btn (base), .btn--large / .btn--small (size variants), and the
+   higher-specificity contexts further down (.cta-banner, .scroll-banner). */
 
 .btn--large {
   padding: var(--space-4) var(--space-8);
