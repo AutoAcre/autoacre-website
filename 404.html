@@ -189,68 +189,113 @@
  <main>
  <section class="page-hero">
   <div class="container">
-   <nav class="breadcrumb"><a href='/'>Home</a> <span>/</span> 404</nav>
-   <div class="page-hero-inner" style="grid-template-columns:1fr;max-width:820px;">
+   <nav class="breadcrumb" aria-label="Breadcrumb"><a href='/'>Home</a> <span>/</span> 404</nav>
+   <div class="page-hero-inner">
     <div class="page-hero-text">
      <span class="section-label">Error 404 · Page not found</span>
      <h1>This page wandered off.</h1>
-     <p style="font-size:var(--text-lg);color:var(--color-text-muted);line-height:1.7;">The page you were looking for has either moved, been retired, or never existed in the first place. You'll find what you came for below — or jump straight back to the homepage.</p>
+     <p>The page you were looking for has either moved, been retired, or never existed in the first place. You'll find what you came for below — or jump straight back to the homepage.</p>
      <div class="hero-actions">
       <a class='btn btn--primary btn--large' href='/'>Back to home</a>
       <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator'>Run the ROI Calculator</a>
      </div>
     </div>
+    <div class="page-hero-image">
+     <img src="./img/hinterland-aerial.jpg" alt="Aerial perspective of the Byron Bay hinterland — the region this site covers" width="800" height="600" loading="eager">
+    </div>
    </div>
   </div>
  </section>
 
- <section class="section section--alt">
+ <section class="section section--alt" aria-labelledby="recover-heading">
   <div class="container">
-   <div class="section-header">
+   <div class="section-header reveal">
     <span class="section-label">Try one of these</span>
-    <h2>Most-visited pages</h2>
+    <h2 id="recover-heading">Most-visited pages</h2>
    </div>
-   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-6);margin-top:var(--space-8);">
+   <div class="not-found-grid reveal">
     <div>
-     <h3 style="font-size:var(--text-base);margin-bottom:var(--space-2);">Authority guides</h3>
-     <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-      <li><a href='/3-10-acre-autonomous-mowing-systems' style="color:var(--color-text);">2.5–10 Acre Systems</a></li>
-      <li><a href='/acreage-robot-mowing-systems' style="color:var(--color-text);">Acreage Robot Mowing</a></li>
-      <li><a href='/rtk-robot-mower-installation' style="color:var(--color-text);">RTK Robot Mower Installation</a></li>
-      <li><a href='/commercial' style="color:var(--color-text);">Commercial Autonomous Mowing</a></li>
+     <h3>Authority guides</h3>
+     <ul>
+      <li><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a></li>
+      <li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li>
+      <li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li>
+      <li><a href='/commercial'>Commercial Autonomous Mowing</a></li>
      </ul>
     </div>
     <div>
-     <h3 style="font-size:var(--text-base);margin-bottom:var(--space-2);">Decide</h3>
-     <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-      <li><a href='/robot-mower-roi-calculator' style="color:var(--color-text);">ROI Calculator</a></li>
-      <li><a href='/is-autonomous-mowing-worth-it' style="color:var(--color-text);">Is autonomous mowing worth it?</a></li>
-      <li><a href='/autonomous-vs-ride-on' style="color:var(--color-text);">Robot vs ride-on mower</a></li>
-      <li><a href='/faq' style="color:var(--color-text);">Frequently asked questions</a></li>
+     <h3>Decide</h3>
+     <ul>
+      <li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li>
+      <li><a href='/is-autonomous-mowing-worth-it'>Is autonomous mowing worth it?</a></li>
+      <li><a href='/autonomous-vs-ride-on'>Robot vs ride-on mower</a></li>
+      <li><a href='/faq'>Frequently asked questions</a></li>
      </ul>
     </div>
     <div>
-     <h3 style="font-size:var(--text-base);margin-bottom:var(--space-2);">Locations</h3>
-     <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-      <li><a href='/robot-mower-installation-byron-bay' style="color:var(--color-text);">Byron Bay</a></li>
-      <li><a href='/robot-mower-installation-bangalow' style="color:var(--color-text);">Bangalow</a></li>
-      <li><a href='/robot-mower-installation-mullumbimby' style="color:var(--color-text);">Mullumbimby</a></li>
-      <li><a href='/service-area' style="color:var(--color-text);"><strong>All 17 service areas →</strong></a></li>
+     <h3>Locations</h3>
+     <ul>
+      <li><a href='/robot-mower-installation-byron-bay'>Byron Bay</a></li>
+      <li><a href='/robot-mower-installation-bangalow'>Bangalow</a></li>
+      <li><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a></li>
+      <li><a href='/service-area'><strong>All 17 service areas →</strong></a></li>
      </ul>
     </div>
     <div>
-     <h3 style="font-size:var(--text-base);margin-bottom:var(--space-2);">Get in touch</h3>
-     <ul style="list-style:none;padding:0;margin:0;line-height:2;">
-      <li><a href='/book-site-assessment' style="color:var(--color-text);">Book a site assessment</a></li>
-      <li><a href='/quote' style="color:var(--color-text);">Get a quote</a></li>
-      <li><a href='/about' style="color:var(--color-text);">About AutoAcre</a></li>
-      <li><a href='/blog' style="color:var(--color-text);">Blog</a></li>
+     <h3>Get in touch</h3>
+     <ul>
+      <li><a href='/book-site-assessment'>Book a site assessment</a></li>
+      <li><a href='/quote'>Get a quote</a></li>
+      <li><a href='/about'>About AutoAcre</a></li>
+      <li><a href='/blog'>Blog</a></li>
      </ul>
     </div>
    </div>
   </div>
  </section>
  </main>
+
+ <style>
+  /* 404-only: column grid for the recovery link groups. Uses Direction B
+     typography defaults for h3/a — no inline overrides. */
+  .not-found-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   gap: var(--space-8);
+   margin-top: var(--space-8);
+  }
+  .not-found-grid h3 {
+   font-family: var(--font-mono);
+   font-size: 11px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   font-weight: 500;
+   color: var(--color-text-muted);
+   margin: 0 0 var(--space-3);
+   padding-bottom: var(--space-2);
+   border-bottom: 1px solid var(--color-divider);
+  }
+  .not-found-grid ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+  }
+  .not-found-grid li {
+   font-family: var(--font-display);
+   font-size: var(--text-lg);
+   line-height: 1.45;
+   margin-bottom: var(--space-2);
+  }
+  .not-found-grid a {
+   color: var(--color-text);
+   text-decoration: none;
+   border-bottom: 1px solid transparent;
+   transition: border-color 200ms;
+  }
+  .not-found-grid a:hover {
+   border-bottom-color: var(--color-primary);
+  }
+ </style>
 
  <footer class="site-footer" role="contentinfo">
  <div class="container">
