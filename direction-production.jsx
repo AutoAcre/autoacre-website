@@ -53,7 +53,7 @@ function MethodologyDrawer({ open, onClose, t, accent, inputs, s }) {
             <Kv label="Terrain" v={inputs.terrain} t={t}/>
             <Kv label="Frequency" v={`${inputs.frequency} (${FREQ_VISITS[inputs.frequency]} visits/yr)`} t={t}/>
             <Kv label="Hours/acre/visit" v={HOURS_PER_ACRE[inputs.terrain].toFixed(2)} t={t}/>
-            <Kv label="Your time" v={`$${inputs.hourlyValue}/hr`} t={t}/>
+            <Kv label="Your time" v="$50/hr (fixed)" t={t}/>
           </Section>
 
           <Section title="DIY zero-turn" t={t} accent={accent}>
@@ -313,8 +313,8 @@ function ProductionCalculator({ accent, gating, initialMode }) {
         <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'8px 28px'}}>
           <ProdSlider t={t} label="ACRES" value={inputs.acres} min={2.5} max={10} step={0.1}
             format={v=>`${v.toFixed(1)}`} onChange={v=>set('acres', v)} accent={accent}/>
-          <ProdSlider t={t} label="$/HR (TIME)" value={inputs.hourlyValue} min={20} max={150} step={5}
-            format={v=>`$${v}`} onChange={v=>set('hourlyValue', v)} accent={accent}/>
+          <ProdSlider t={t} label="CONTRACTOR $/MO" value={inputs.contractorMonthly} min={300} max={3500} step={50}
+            format={v=>`$${v.toLocaleString('en-AU')}`} onChange={v=>set('contractorMonthly', v)} accent={accent}/>
           <ProdSeg t={t} label="TERRAIN" value={inputs.terrain}
             options={[{value:'flat',label:'FLAT'},{value:'rolling',label:'ROLL'},{value:'steep',label:'STEEP'}]}
             onChange={v=>set('terrain', v)} accent={accent}/>
