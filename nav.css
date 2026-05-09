@@ -426,6 +426,21 @@ body.has-light-header .site-header {
 }
 
 /* ──────────────────────────────────────────────────────────────────
+   9b. KEYBOARD FOCUS — visible :focus-visible rings on every
+       interactive nav element. Mouse users see no ring (UA default
+       only triggers on keyboard tab); keyboard users get a 2px olive
+       outline with 2px offset against whatever header background is
+       currently active.
+   ────────────────────────────────────────────────────────────────── */
+.nav-link:focus-visible,
+.nav-cream-trigger:focus-visible,
+.nav-cream-drawer-item > a:focus-visible {
+  outline: 2px solid var(--color-primary, #7A8B2D);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
    10. REDUCED MOTION
    ────────────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
