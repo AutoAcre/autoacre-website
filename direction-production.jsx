@@ -198,7 +198,7 @@ function ProdChart({ scenarios, cheapKey, accent, t, height = 240 }) {
 }
 
 function ProductionCalculator({ accent, gating, initialMode }) {
-  const [mode, setMode] = React.useState(initialMode || 'dark');
+  const [mode, setMode] = React.useState(initialMode || 'light');
   const [inputs, setInputs] = React.useState(DEFAULT_INPUTS);
   const [unlocked, setUnlocked] = React.useState(gating === 'off');
   const [showLeadForm, setShowLeadForm] = React.useState(false);
@@ -208,7 +208,7 @@ function ProductionCalculator({ accent, gating, initialMode }) {
   const heroRef = React.useRef(null);
 
   React.useEffect(()=>{ setUnlocked(gating==='off'); }, [gating]);
-  React.useEffect(()=>{ setMode(initialMode || 'dark'); }, [initialMode]);
+  React.useEffect(()=>{ setMode(initialMode || 'light'); }, [initialMode]);
 
   React.useEffect(() => {
     const onScroll = () => {
@@ -263,17 +263,6 @@ function ProductionCalculator({ accent, gating, initialMode }) {
         <div style={{display:'flex', alignItems:'center', gap:14}}>
           <span>{tier===1?<span style={{color:accent}}>● TIER-1 SERVICE</span>:tier===2?<span style={{color:'#C2A06B'}}>● TIER-2 EXPANSION</span>:'● TIER-3 REFERRAL'}</span>
           <button onClick={()=>setMethodOpen(true)} style={{background:'none', border:`1px solid ${t.line}`, color:t.text, padding:'5px 10px', fontFamily:PROD_MONO, fontSize:10, letterSpacing:'0.14em', cursor:'pointer', textTransform:'uppercase'}}>METHODOLOGY</button>
-          <div style={{display:'inline-flex', border:`1px solid ${t.line}`}}>
-            {['dark','light'].map((m,i) => (
-              <button key={m} onClick={()=>setMode(m)} style={{
-                padding:'5px 10px', background: mode===m ? t.text : 'transparent',
-                color: mode===m ? t.bg : t.textDim, border:'none',
-                fontFamily:PROD_MONO, fontSize:10, letterSpacing:'0.14em', textTransform:'uppercase',
-                fontWeight:600, cursor:'pointer',
-                borderRight: i===0 ? `1px solid ${t.line}` : 'none'
-              }}>{m}</button>
-            ))}
-          </div>
         </div>
       </div>
 
