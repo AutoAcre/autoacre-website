@@ -25,8 +25,11 @@ function mgmtFee(acres) {
 const FREQ_VISITS = { weekly: 52, fortnightly: 26, monthly: 12, seasonal: 4 };
 const HOURS_PER_ACRE = { flat: 0.67, rolling: 1.0, steep: 1.33 };
 
-function calcScenarios({ acres, terrain, frequency, hourlyValue }) {
+function calcScenarios({ acres, terrain, frequency, contractorMonthly }) {
   const visits = FREQ_VISITS[frequency];
+  // $/hr value of the user's time — fixed in the background. Used to weight
+  // DIY zero-turn and BYO self-support hours into a dollar opex line.
+  const hourlyValue = 50;
 
   const diyHoursPerYear = acres * HOURS_PER_ACRE[terrain] * visits;
   const diyCapital = 9000;
@@ -35,9 +38,14 @@ function calcScenarios({ acres, terrain, frequency, hourlyValue }) {
   const diyY1 = diyCapital + diyOpex;
   const diy8yr = diyCapital + (diyOpex * 8) - diyResidual;
 
-  const contractorAnnual = 250 * acres * 12 * (visits / 26);
-  const contractorY1 = contractorAnnual;
-  const contractor8yr = contractorAnnual * 8;
+  // Contractor cost is now driven directly by the user's stated monthly bill
+  // — their actual reality, not a derived $/acre/month formula. The previous
+  // formula (250 * acres * 12 * visits/26) is preserved as a fallback default
+  // when contractorMonthly is missing, so first-render still yields a sensible
+  // number even before the slider is touched.
+  const contractorAnnualValue = (contractorMonthly ?? (250 * acres * (visits / 26))) * 12;
+  const contractorY1 = contractorAnnualValue;
+  const contractor8yr = contractorAnnualValue * 8;
 
   const isMammotion = acres < 5;
   const byoMowerPrice = isMammotion ? 16000 : 54000;
@@ -57,8 +65,8 @@ function calcScenarios({ acres, terrain, frequency, hourlyValue }) {
 
   return {
     diy:        { key:'diy',        label:'DIY zero-turn',        capital: diyCapital,  y1: diyY1,        total8: diy8yr,        hours: diyHoursPerYear, residual: diyResidual,    opex: diyOpex },
-    contractor: { key:'contractor', label:'Contractor',           capital: 0,           y1: contractorY1, total8: contractor8yr, hours: 0,               residual: 0,              opex: contractorAnnual },
-    byo:        { key:'byo',        label: isMammotion ? 'Buy your own — Mammotion' : 'Buy your own — Husqvarna CEORA', capital: byoCapital, y1: byoY1, total8: byo8yr, hours: byoSupportHours, residual: byoResidual, opex: byoOpex, isMammotion },
+    contractor: { key:'contractor', label:'Contractor',           capital: 0,           y1: contractorY1, total8: contractor8yr, hours: 0,               residual: 0,              opex: contractorAnnualValue },
+    byo:        { key:'byo',        label:'Buy your own — RTK-LiDAR autonomous mowing system', capital: byoCapital, y1: byoY1, total8: byo8yr, hours: byoSupportHours, residual: byoResidual, opex: byoOpex, isMammotion },
     aa:         { key:'aa',         label:'Buy + AutoAcre Manage', capital: aaCapital,   y1: aaY1,         total8: aa8yr,         hours: 0,               residual: aaResidual,     opex: aaOpex,  monthly: aaMonthly }
   };
 }
@@ -114,7 +122,10 @@ const DEFAULT_INPUTS = {
   postcode: '2478',
   terrain: 'rolling',
   frequency: 'fortnightly',
-  hourlyValue: 35
+  // Default contractor bill = 5 acres × $250/acre/month at fortnightly cadence.
+  // User can drag the slider to their actual number; once moved, this value
+  // stays put — Acres/Frequency changes don't recompute it.
+  contractorMonthly: 1250
 };
 
 Object.assign(window, {

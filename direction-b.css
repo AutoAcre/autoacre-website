@@ -13,10 +13,13 @@
  */
 
 /* ──────────────────────────────────────────────────────────────────
-   FONTS — add Inter Tight (body) and JetBrains Mono (labels).
-   Zodiak (display) and Work Sans (fallback) already loaded by base.
+   FONTS — Inter Tight (body) + JetBrains Mono (labels) load via a
+   <link rel="stylesheet"> in each page's <head>, NOT via @import.
+   @import inside CSS forces a sequential round-trip: browser must
+   download + parse direction-b.css before it discovers the @import
+   and fires a second request. A <link> in HTML lets that font CSS
+   download in parallel with direction-b.css.
    ────────────────────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ──────────────────────────────────────────────────────────────────
    TOKEN OVERRIDES — light mode (default)
@@ -37,7 +40,7 @@
   --color-text-faint: #9E9A8A;
   --color-text-inverse: #FAF7F1;
 
-  /* Deep olive primary (was #7A8B2D) */
+  /* Deep olive primary (was #4F5C20) */
   --color-primary: #4F5C20;
   --color-primary-hover: #14140F;
   --color-primary-active: #14140F;
@@ -228,26 +231,25 @@ h1, .page-hero h1, .hero-content h1 {
   color: var(--color-bg);
 }
 
-/* Hero CTAs (over photo) get inverse treatment */
-.hero .btn--primary,
-.page-hero .btn--primary {
+/* Hero CTAs (over the homepage cinematic photo) get inverse treatment.
+   .page-hero is intentionally NOT scoped here — page-heroes have a cream
+   background (see .page-hero rule below) so the default CTA styles read
+   correctly without the white-on-light override. */
+.hero .btn--primary {
   background: #fff;
   color: var(--color-charcoal);
   border-color: #fff;
 }
-.hero .btn--primary:hover,
-.page-hero .btn--primary:hover {
+.hero .btn--primary:hover {
   background: var(--color-primary);
   color: #fff;
   border-color: var(--color-primary);
 }
-.hero .btn--secondary,
-.page-hero .btn--secondary {
+.hero .btn--secondary {
   color: #fff;
   border-color: #fff;
 }
-.hero .btn--secondary:hover,
-.page-hero .btn--secondary:hover {
+.hero .btn--secondary:hover {
   background: #fff;
   color: var(--color-charcoal);
 }
@@ -514,6 +516,37 @@ body.home .hero .btn--secondary:hover {
   margin-top: clamp(2rem, 5vh, 3.5rem);
   gap: var(--space-3);
   flex-wrap: wrap;
+}
+
+/* Page-hero CTA row: side-by-side at desktop. The base .hero-actions
+   rule wraps when buttons overflow — at desktop with the 1fr 1fr
+   page-hero-inner grid the text column is narrow enough that two
+   .btn--large CTAs occasionally tip over. Forcing nowrap keeps them
+   on one line; flex-shrink lets them share the available width. */
+@media (min-width: 768px) {
+  .page-hero .hero-actions {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
+
+/* Fluid CTA scaling inside .page-hero. Token-based padding/font-size
+   stays constant at every viewport, which is why the buttons "snap"
+   from fitting to wrapping. clamp() interpolates against viewport
+   width so the buttons shrink smoothly as the column narrows.
+
+   Values map to:
+     320px viewport: ~13.6px font, 9.6px × 19.2px padding (compact)
+    1280px viewport: ~16px font,   16px × 32px padding (= current desktop)
+   Above 1280px: clamps at the desktop max (no further growth).
+
+   Letter-spacing is em-relative (0.12em from the base .btn rule), so
+   it scales with the font-size automatically. */
+.page-hero .btn--large {
+  font-size: clamp(0.85rem, 0.4vw + 0.72rem, 1rem);
+  padding:
+    clamp(0.6rem, 0.5vw + 0.45rem, 1rem)
+    clamp(1.2rem, 1vw + 0.9rem, 2rem);
 }
 
 @keyframes db-kenburns {

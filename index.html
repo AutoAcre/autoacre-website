@@ -1,49 +1,33 @@
 <!DOCTYPE html>
 <!--
- PHASE 1 HOMEPAGE REBUILD — DRAFT 2026-05-06.
+ Homepage promote — Direction B "Cinematic Acreage" merged onto production.
 
- Drop-in replacement for the live index.html. Preserves the existing CSS class
- structure (base.css + style.css) so no stylesheet changes are required to ship.
+ Body content: v2 verbatim (9 bands — hero, stats, two-systems, image break,
+ property dial + ROI, Buy + Manage cards, FAQ, final CTA).
 
- Major changes from the live homepage (per website-transformation-spec.md, 2026-05-06):
+ Header + footer + scroll-banner: production markup preserved (full nav with
+ dropdowns, mobile drawer, schema-aware footer columns, Convert/Insights/etc.).
 
- - Removed: pre-launch banner across the top
- - Removed: "Independent multi-brand dealer" framing from title, hero, schema, FAQ
- - Kept (load-bearing): "Buy + Manage" as the offer model — calculator economics depend on it
- - Added: RTK + LiDAR technology authority section (the spec's core Phase 1 ask)
- - Added: residential vs commercial intent-split block
- - Changed: nav from Home/Residential/Commercial/About/Blog/Calculator
-            to Home / Autonomous Systems / Acreage Solutions / Locations / Resources / Book Assessment
- - Changed: primary CTA from "Join Launch List" → "Book Site Assessment"
- - Schema: rewritten to drop multi-brand-dealer language; positioning is now
-   "RTK + LiDAR autonomous mowing systems for 3–10 acre acreage."
- - Footer: multi-brand disclosure line removed; Q1 2027 disclosure kept (small)
+ Only header markup changes from production:
+   - <img> logo → Zodiak wordmark + JetBrains Mono "Northern Rivers" eyebrow.
+   - <button class="theme-toggle"> removed (no dark-mode tokens for Direction B yet).
 
- Phase 2 authority pages NOW LINKED DIRECTLY (apply with Phase 2 batch):
- - /rtk-robot-mower-installation        ← Phase 2 page (new file in this batch)
- - /acreage-robot-mowing-systems        ← Phase 2 page (new file in this batch)
- - /3-10-acre-autonomous-mowing-systems ← Phase 2 page (new file in this batch)
-
- Phase 5 dependencies (still placeholder until Phase 5 ships):
- - /book-site-assessment             ← currently /book-site-assessment (Phase 5 renames it)
- - /robot-mower-roi-calculator       ← currently /robot-mower-roi-calculator (Phase 5 renames it)
-
- Once Phase 2 builds the authority pages and Phase 5 renames the calculator and
- site-assessment form, the placeholder hrefs in this file get updated in one
- sweep. Until then, every link resolves to a live page.
+ Stylesheets: /base.css + /style.css + /direction-b.css (production) +
+ /homepage.css (this homepage's Direction B aesthetic + sticky-on-scroll).
+ Scripts: /app.js (production handlers) + /js/app.js (dial, ROI, header sticky).
 -->
 <html lang="en-AU">
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Autonomous Mowing Systems for 3–10 Acre Northern Rivers Properties | AutoAcre</title>
- <meta name="description" content="RTK and LiDAR autonomous mowing systems for 3–10 acre Northern Rivers acreage. Buy + Manage: buy the system outright (ref. $33,490), AutoAcre manages it under a tiered $165–$650/month fee. Book a site assessment or run the ROI calculator.">
+ <title>Autonomous Mowing Systems for 2.5–10 Acre Northern Rivers Properties | AutoAcre</title>
+ <meta name="description" content="RTK and LiDAR autonomous mowing systems for 2.5–10 acre Northern Rivers acreage. Buy + Manage: buy the system outright (ref. $33,490), AutoAcre manages it under a tiered $165–$650/month fee. Book a site assessment or run the ROI calculator.">
  <link rel="canonical" href="https://autoacre.com.au/">
 
  <!-- Open Graph -->
  <meta property="og:title" content="AutoAcre — RTK + LiDAR Autonomous Mowing Systems · Buy + Manage for Northern Rivers Acreage">
- <meta property="og:description" content="Buy + Manage offer: buy the RTK + LiDAR autonomous mowing system outright, AutoAcre manages it ongoing. 3–10 acre Northern Rivers acreage.">
- <meta property="og:image" content="./img/og-image.png">
+ <meta property="og:description" content="Buy + Manage offer: buy the RTK + LiDAR autonomous mowing system outright, AutoAcre manages it ongoing. 2.5–10 acre Northern Rivers acreage.">
+ <meta property="og:image" content="https://autoacre.com.au/img/hero.jpg">
  <meta property="og:url" content="https://autoacre.com.au/">
  <meta property="og:type" content="website">
  <meta property="og:locale" content="en_AU">
@@ -60,7 +44,7 @@
   "name": "AutoAcre",
   "alternateName": "AutoAcre — Autonomous Acreage Mowing Systems",
   "legalName": "AutoAcre",
-  "description": "AutoAcre is an autonomous mowing systems provider specialising in RTK and LiDAR robotic mowing for 3–10 acre acreage properties across the Northern Rivers, NSW. Property-scale automation engineered for the lifestyle acreage that ride-on contractors can't keep up with. Service operations begin Q1 2027; site assessments and the ROI calculator are open today.",
+  "description": "AutoAcre is an autonomous mowing systems provider specialising in RTK and LiDAR robotic mowing for 2.5–10 acre acreage properties across the Northern Rivers, NSW. Property-scale automation engineered for the lifestyle acreage that ride-on contractors can't keep up with. Service operations begin Q1 2027; site assessments and the ROI calculator are open today.",
   "url": "https://autoacre.com.au/",
   "logo": {
    "@type": "ImageObject",
@@ -85,7 +69,7 @@
    "Northern Rivers NSW acreage",
    "Byron Bay hinterland",
    "premium lifestyle acreage",
-   "3 to 10 acre property maintenance",
+   "2.5 to 10 acre property maintenance",
    "RTK base station installation",
    "autonomous land maintenance"
   ],
@@ -97,7 +81,6 @@
    { "@type": "City", "name": "Newrybar", "containedInPlace": "Byron Shire, NSW" },
    { "@type": "City", "name": "Ewingsdale", "containedInPlace": "Byron Shire, NSW" },
    { "@type": "City", "name": "Mullumbimby", "containedInPlace": "Byron Shire, NSW" },
-   { "@type": "City", "name": "Brunswick Heads", "containedInPlace": "Byron Shire, NSW" },
    { "@type": "City", "name": "Federal", "containedInPlace": "Byron Shire, NSW" },
    { "@type": "City", "name": "Myocum", "containedInPlace": "Byron Shire, NSW" },
    { "@type": "City", "name": "Tyagarah", "containedInPlace": "Byron Shire, NSW" },
@@ -151,7 +134,7 @@
   "@id": "https://autoacre.com.au/#website",
   "url": "https://autoacre.com.au/",
   "name": "AutoAcre",
-  "description": "RTK and LiDAR autonomous mowing systems for 3–10 acre acreage in the Northern Rivers, NSW. Service operations begin Q1 2027.",
+  "description": "RTK and LiDAR autonomous mowing systems for 2.5–10 acre acreage in the Northern Rivers, NSW. Service operations begin Q1 2027.",
   "publisher": { "@id": "https://autoacre.com.au/#organization" },
   "inLanguage": "en-AU",
   "potentialAction": {
@@ -167,14 +150,14 @@
   "@type": "WebPage",
   "@id": "https://autoacre.com.au/#webpage",
   "url": "https://autoacre.com.au/",
-  "name": "Autonomous Mowing Systems for 3–10 Acre Northern Rivers Properties | AutoAcre",
+  "name": "Autonomous Mowing Systems for 2.5–10 Acre Northern Rivers Properties | AutoAcre",
   "isPartOf": { "@id": "https://autoacre.com.au/#website" },
   "about": { "@id": "https://autoacre.com.au/#organization" },
   "primaryImageOfPage": { "@id": "https://autoacre.com.au/#logo" },
   "inLanguage": "en-AU",
   "speakable": {
    "@type": "SpeakableSpecification",
-   "cssSelector": [".hero-content", "#technology-heading", "#how-heading"]
+   "cssSelector": [".hero-content", "#technology", "#buy-manage"]
   }
   },
   {
@@ -195,21 +178,21 @@
   {
   "@type": "Service",
   "@id": "https://autoacre.com.au/#service-residential",
-  "name": "Buy + Manage — RTK + LiDAR autonomous mowing system for 3–10 acre acreage",
+  "name": "Buy + Manage — RTK + LiDAR autonomous mowing system for 2.5–10 acre acreage",
   "serviceType": "Autonomous Mowing System Sale and Ongoing Management",
   "category": "Robotic Mower Supply and Managed Service",
   "provider": { "@id": "https://autoacre.com.au/#organization" },
   "availabilityStarts": "2027-03-01",
   "serviceOutput": {
    "@type": "Thing",
-   "description": "Autonomous mowing system installed on a 3–10 acre acreage property — RTK base station, commercial-grade autonomous mower with LiDAR obstacle avoidance, mapped boundaries and exclusion zones, plus ongoing managed service."
+   "description": "Autonomous mowing system installed on a 2.5–10 acre acreage property — RTK base station, commercial-grade autonomous mower with LiDAR obstacle avoidance, mapped boundaries and exclusion zones, plus ongoing managed service."
   },
   "areaServed": [{ "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" }],
   "audience": {
    "@type": "PeopleAudience",
-   "audienceType": "Lifestyle acreage property owners (3–10 acres) buying an RTK + LiDAR autonomous mowing system under AutoAcre's Buy + Manage offer (buy the system outright, AutoAcre manages it ongoing)"
+   "audienceType": "Lifestyle acreage property owners (2.5–10 acres) buying an RTK + LiDAR autonomous mowing system under AutoAcre's Buy + Manage offer (buy the system outright, AutoAcre manages it ongoing)"
   },
-  "description": "Buy + Manage — RTK + LiDAR autonomous mowing system for 3–10 acre acreage properties in the Northern Rivers, NSW. The offer is two parts. (1) BUY: customers purchase the autonomous mowing system outright at reference launch price $33,490 AUD — RTK base station, commercial-grade autonomous mower with LiDAR obstacle avoidance, professional installation, mapped boundaries and exclusion zones. (2) MANAGE: AutoAcre handles ongoing operation under a tiered monthly management fee scaling with acreage: $195/month at 3 acres, $260 at 4 acres, $330 at 5 acres, $390 at 6 acres, $455 at 7 acres, $520 at 8 acres, $585 at 9 acres, $650 at 10 acres. The fee covers scheduled maintenance, blade replacements, firmware updates, remote monitoring and repair coordination. Mowing cadence is twice-weekly in summer and weekly in winter — about 3× a fortnightly contractor. Service operations begin Q1 2027. The system is the customer's; the ongoing service is AutoAcre's.",
+  "description": "Buy + Manage — RTK + LiDAR autonomous mowing system for 2.5–10 acre acreage properties in the Northern Rivers, NSW. The offer is two parts. (1) BUY: customers purchase the autonomous mowing system outright at reference launch price $33,490 AUD — RTK base station, commercial-grade autonomous mower with LiDAR obstacle avoidance, professional installation, mapped boundaries and exclusion zones. (2) MANAGE: AutoAcre handles ongoing operation under a tiered monthly management fee scaling with acreage: $165/month at 2.5 acres, $195 at 3 acres, $260 at 4 acres, $330 at 5 acres, $390 at 6 acres, $455 at 7 acres, $520 at 8 acres, $585 at 9 acres, $650 at 10 acres. The fee covers scheduled maintenance, blade replacements, firmware updates, remote monitoring and repair coordination. Mowing cadence is twice-weekly in summer and weekly in winter — about 3× a fortnightly contractor. Service operations begin Q1 2027. The system is the customer's; the ongoing service is AutoAcre's.",
   "isRelatedTo": { "@id": "https://autoacre.com.au/#product-platform" },
   "offers": [{
    "@type": "Offer",
@@ -253,7 +236,7 @@
   "@id": "https://autoacre.com.au/#product-platform",
   "name": "RTK + LiDAR autonomous mowing system",
   "category": "Autonomous Robotic Mower",
-  "description": "Commercial-grade autonomous mowing system with RTK centimetre-accurate positioning, LiDAR obstacle avoidance, 25-acre daily capacity, and slope handling to 38 degrees. Engineered for 3–10 acre lifestyle acreage and larger commercial deployments across the Northern Rivers, NSW.",
+  "description": "Commercial-grade autonomous mowing system with RTK centimetre-accurate positioning, LiDAR obstacle avoidance, 25-acre daily capacity, and slope handling to 38 degrees. Engineered for 2.5–10 acre lifestyle acreage and larger commercial deployments across the Northern Rivers, NSW.",
   "brand": { "@type": "Brand", "name": "Commercial-grade" },
   "offers": {
    "@type": "Offer",
@@ -283,7 +266,7 @@
    "name": "How does the Buy + Manage offer work?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "AutoAcre's offer is two parts. You BUY the autonomous mowing system outright at launch (reference launch price $33,490 AUD) — that includes the RTK base station, the commercial-grade autonomous mower with LiDAR obstacle avoidance, professional installation, and boundary mapping for your property. From there, AutoAcre handles ongoing operation under a tiered monthly MANAGEMENT fee scaling with acreage: $195/month at 3 acres, $260 at 4 acres, $330 at 5 acres, $390 at 6 acres, $455 at 7 acres, $520 at 8 acres, $585 at 9 acres, $650 at 10 acres. The management fee covers scheduled maintenance, blade replacements, firmware updates, remote monitoring and repair coordination. Mowing cadence is twice-weekly in summer and weekly in winter — about 3× a fortnightly contractor. The system is yours; the service is ours."
+    "text": "AutoAcre's offer is two parts. You BUY the autonomous mowing system outright at launch (reference launch price $33,490 AUD) — that includes the RTK base station, the commercial-grade autonomous mower with LiDAR obstacle avoidance, professional installation, and boundary mapping for your property. From there, AutoAcre handles ongoing operation under a tiered monthly MANAGEMENT fee scaling with acreage: $165/month at 2.5 acres, $195 at 3 acres, $260 at 4 acres, $330 at 5 acres, $390 at 6 acres, $455 at 7 acres, $520 at 8 acres, $585 at 9 acres, $650 at 10 acres. The management fee covers scheduled maintenance, blade replacements, firmware updates, remote monitoring and repair coordination. Mowing cadence is twice-weekly in summer and weekly in winter — about 3× a fortnightly contractor. The system is yours; the service is ours."
    }
    },
    {
@@ -291,7 +274,7 @@
    "name": "What property size is this for?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "AutoAcre's autonomous mowing systems are engineered for 3 to 10 acre acreage properties — premium lifestyle acreage, rural residential estates, and larger landowners seeking automation. Properties below 3 acres are usually better served by a consumer wire-bounded mower. Properties beyond 10 acres are scoped as commercial deployments and quoted individually."
+    "text": "AutoAcre's autonomous mowing systems are engineered for 2.5 to 10 acre acreage properties — premium lifestyle acreage, rural residential estates, and larger landowners seeking automation. Properties below 2.5 acres are usually better served by a consumer wire-bounded mower. Properties beyond 10 acres are scoped as commercial deployments and quoted individually."
    }
    },
    {
@@ -332,15 +315,18 @@
  }
  </script>
 
- <!-- Fonts -->
- <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <!-- Hero LCP preload -->
+ <link rel="preload" as="image" href="/img/hero.jpg">
 
- <link rel="stylesheet" href="./base.css">
- <link rel="stylesheet" href="./style.css">
+ <!-- Fonts: Zodiak from Fontshare CDN; Inter Tight + JetBrains Mono self-hosted via /homepage.css @font-face. -->
+ <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600,700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+ <!-- Stylesheets — production base + Direction B homepage layer -->
+ <link rel="stylesheet" href="/base.css">
+ <link rel="stylesheet" href="/style.css">
  <link rel="stylesheet" href="/direction-b.css">
+ <link rel="stylesheet" href="/homepage.css">
 
  <!-- Favicons -->
  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
@@ -348,32 +334,124 @@
  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
  <link rel="manifest" href="/site.webmanifest">
- <meta name="theme-color" content="#7A8B2D">
+ <meta name="theme-color" content="#14140F">
+ <link rel="stylesheet" href="/nav.css">
 </head>
 <body class="home">
 
- <!-- HEADER — Direction B editorial overlay (homepage only). Transparent, on top of hero photo. -->
- <header class="site-header site-header--home" role="banner">
-  <div class="header-inner">
-   <a aria-label='AutoAcre home' class='header-logo header-wordmark' href='/'>
-    <span class="wordmark-name">AutoAcre</span>
-    <span class="wordmark-tag">Northern Rivers</span>
-   </a>
-   <nav class="header-nav header-nav--simple" aria-label="Main navigation">
-    <a href='/3-10-acre-autonomous-mowing-systems'>Systems</a>
-    <a href='/rtk-robot-mower-installation'>Technology</a>
-    <a href='/acreage-robot-mowing-systems'>Approach</a>
-    <a href='/service-area'>Locations</a>
-    <a href='/about'>About</a>
-   </nav>
-   <div class="header-actions">
-    <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
-    <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
-   </div>
-  </div>
- </header>
+ <!-- HEADER (transparent over hero, solid after scroll) -->
+ <header class="site-header" role="banner">
+ <div class="header-inner">
+  <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
+   <span class="wordmark-name">AutoAcre</span>
+   <span class="wordmark-tag">Northern Rivers</span>
+  </a>
+  <nav class="header-nav header-nav--cream-index" aria-label="Main navigation">
+   <ul class="nav-list" role="list">
+    <li class="nav-item"><a href='/' class="nav-link" data-section="home" aria-current="page">Home</a></li>
 
- <!-- Mobile Nav -->
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="systems" aria-expanded="false" aria-controls="nav-drawer-systems">
+      <span class="nav-cream-trigger-label">Autonomous Systems</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-systems" role="region" aria-label="Autonomous Systems" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">What we install</span>
+        <span class="nav-cream-drawer-count">04 ITEMS</span>
+       </div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/3-10-acre-autonomous-mowing-systems'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">2.5–10 Acre Systems</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">RTK Robot Mower Installation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Acreage Robot Mowing</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/commercial'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Commercial Autonomous Mowing</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="locations" aria-expanded="false" aria-controls="nav-drawer-locations">
+      <span class="nav-cream-trigger-label">Locations</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-locations" role="region" aria-label="Locations" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">Where we work</span>
+        <span class="nav-cream-drawer-count">17 ITEMS</span>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Byron Shire — 8</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-byron-bay'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Byron Bay</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-bangalow'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Bangalow</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-mullumbimby'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Mullumbimby</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-ewingsdale'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Ewingsdale</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-federal'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Federal</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-myocum'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Myocum</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-newrybar'><span class="nav-cream-drawer-num">07</span><span class="nav-cream-drawer-label">Newrybar</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-tyagarah'><span class="nav-cream-drawer-num">08</span><span class="nav-cream-drawer-label">Tyagarah</span></a></li>
+        </ul>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Ballina Shire — 5</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-ballina'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Ballina</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-lennox-head'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Lennox Head</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-alstonville'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Alstonville</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-tintenbar'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Tintenbar</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-teven'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Teven</span></a></li>
+        </ul>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Inland — 4</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-brooklet'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Brooklet</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-clunes'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Clunes</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-eureka'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Eureka</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-nashua'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Nashua</span></a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </li>
+
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="insights" aria-expanded="false" aria-controls="nav-drawer-insights">
+      <span class="nav-cream-trigger-label">Insights</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-insights" role="region" aria-label="Insights" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">Field notes</span>
+        <span class="nav-cream-drawer-count">06 ITEMS</span>
+       </div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/blog'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Robot Mower Guides</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Acreage Automation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">RTK Technology</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/autonomous-vs-ride-on'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Comparisons</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-roi-calculator'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">ROI Calculator</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/faq'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Facts &amp; FAQs</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+
+    <li class="nav-item"><a href='/about' class="nav-link" data-section="about">About</a></li>
+   </ul>
+  </nav>
+  <div class="header-actions">
+   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
+   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
+  </div>
+ </div>
+</header>
+
+ <!-- Mobile Nav (production markup, unchanged) -->
  <nav class="mobile-nav" aria-label="Mobile navigation">
  <a class='btn btn--primary btn--large mobile-cta' href='/book-site-assessment' style='margin-bottom: var(--space-4);'>Book Assessment</a>
  <a href='/'>Home</a>
@@ -383,7 +461,7 @@
    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
   </button>
   <div class="mobile-nav-areas-list">
-   <a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a>
+   <a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a>
    <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>
    <a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a>
    <a href='/commercial'>Commercial Autonomous Mowing</a>
@@ -395,15 +473,27 @@
    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
   </button>
   <div class="mobile-nav-areas-list">
+   <span class="mobile-nav-region-label">Byron Shire — 8</span>
    <a href='/robot-mower-installation-byron-bay'>Byron Bay</a>
-   <a href='/robot-mower-installation-federal'>Federal</a>
    <a href='/robot-mower-installation-bangalow'>Bangalow</a>
    <a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a>
-   <a href='/robot-mower-installation-newrybar'>Newrybar</a>
    <a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a>
+   <a href='/robot-mower-installation-federal'>Federal</a>
    <a href='/robot-mower-installation-myocum'>Myocum</a>
+   <a href='/robot-mower-installation-newrybar'>Newrybar</a>
+   <a href='/robot-mower-installation-tyagarah'>Tyagarah</a>
+   <span class="mobile-nav-region-label">Ballina Shire — 5</span>
+   <a href='/robot-mower-installation-ballina'>Ballina</a>
+   <a href='/robot-mower-installation-lennox-head'>Lennox Head</a>
+   <a href='/robot-mower-installation-alstonville'>Alstonville</a>
+   <a href='/robot-mower-installation-tintenbar'>Tintenbar</a>
+   <a href='/robot-mower-installation-teven'>Teven</a>
+   <span class="mobile-nav-region-label">Inland — 4</span>
    <a href='/robot-mower-installation-brooklet'>Brooklet</a>
-   <a href='/service-area'>All locations</a>
+   <a href='/robot-mower-installation-clunes'>Clunes</a>
+   <a href='/robot-mower-installation-eureka'>Eureka</a>
+   <a href='/robot-mower-installation-nashua'>Nashua</a>
+   <a href='/service-area' class="mobile-nav-all-locations">All service areas →</a>
   </div>
  </div>
  <div class="mobile-nav-areas">
@@ -429,267 +519,349 @@
 
  <main>
 
- <!-- HERO -->
- <section class="hero">
-  <div class="hero-image">
-   <img src="./img/hero.jpg" alt="Autonomous mowing system maintaining a 5-acre Byron Bay hinterland property" width="1200" height="675" loading="eager">
-  </div>
-  <div class="container hero-content">
-   <span class="hero-badge">Buy + Manage · 3–10 acres · Northern Rivers</span>
-   <h1>Acreage that looks tended <em>every</em> day of the year.</h1>
-   <p>RTK + LiDAR autonomous mowing systems for three to ten acre Northern Rivers properties. The lawn never has a bad day.</p>
-   <div class="hero-actions">
-    <a class='btn btn--primary btn--large' href='/book-site-assessment'>Book Site Assessment</a>
-    <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator'>Run Calculator</a>
-   </div>
-  </div>
- </section>
-
- <!-- INTENT SPLIT — residential vs commercial -->
- <section class="section" aria-labelledby="intent-heading">
-  <div class="container">
-  <div class="section-header reveal">
-   <span class="section-label">What kind of property?</span>
-   <h2 id="intent-heading">Two paths, depending on your acreage</h2>
-   <p>AutoAcre is built around a single technology stack — RTK precision navigation plus LiDAR obstacle avoidance — but the offer is shaped differently for residential acreage and larger commercial sites. Pick the one that fits your property.</p>
-  </div>
-  <div class="card-grid card-grid--2 reveal">
-   <a class='card' href='/3-10-acre-autonomous-mowing-systems'>
-    <div class="card-icon">
-     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  <!-- 1. HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+   <div class="hero-image" role="img" aria-label="Autonomous mower maintaining a Byron Bay hinterland acreage property"></div>
+   <div class="hero-content">
+    <div class="label">Buy + Manage · 3—10 acres · Northern Rivers</div>
+    <h1 id="hero-heading">Acreage that looks tended <em>every</em> day of the year.</h1>
+    <div class="hero-row">
+     <p>RTK + LiDAR autonomous mowing systems for 2.5 to 10 acre Northern Rivers properties. The lawn never has a bad day.</p>
+     <div class="hero-actions">
+      <a class="btn-primary" href="/book-site-assessment">Book site assessment</a>
+      <a class="btn-ghost" href="/robot-mower-roi-calculator">Run calculator</a>
+     </div>
     </div>
-    <h3>3–10 acre lifestyle acreage</h3>
-    <p>Buy + Manage offer for lifestyle acreage. Buy the RTK + LiDAR autonomous mowing system outright (reference $33,490). Pay a tiered $165–$650/month management fee for everything else — scheduled maintenance, monitoring, repairs, twice-weekly summer cadence.</p>
-   </a>
-   <a class='card' href='/commercial'>
-    <div class="card-icon">
-     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="23 7 16 12 16 16 23 21 23 7"/></svg>
+   </div>
+  </section>
+
+  <!-- 2. STATS BAND (dark) -->
+  <section class="stats-band" aria-label="By the numbers">
+   <div class="stats-grid">
+    <div class="stat">
+     <div class="stat-value">±2 cm</div>
+     <div class="stat-label">RTK satellite positioning</div>
     </div>
-    <h3>Beyond 10 acres &amp; commercial</h3>
-    <p>Multi-acre commercial deployments — councils, schools, resorts, golf courses, solar farms, orchards, equine properties and large estates. Scoped per site, quoted individually.</p>
-   </a>
-  </div>
-  </div>
- </section>
+    <div class="stat">
+     <div class="stat-value">38°</div>
+     <div class="stat-label">Slope handling, commercial-grade</div>
+    </div>
+    <div class="stat">
+     <div class="stat-value">3×</div>
+     <div class="stat-label">Mow cadence vs fortnightly contractor</div>
+    </div>
+    <div class="stat">
+     <div class="stat-value">Q1 2027</div>
+     <div class="stat-label">Service operations begin</div>
+    </div>
+   </div>
+  </section>
 
- <!-- THE TECHNOLOGY — RTK + LiDAR authority -->
- <section class="section section--alt" aria-labelledby="technology-heading">
-  <div class="container">
-  <div class="section-header reveal">
-   <span class="section-label">The Technology</span>
-   <h2 id="technology-heading">What lets autonomous mowing actually work on acreage</h2>
-   <p>Most "robot mowers" are engineered for a quarter-acre suburban lawn. They use a buried boundary wire and dead reckoning. They drift. They miss strips. They can't handle a real slope. AutoAcre's systems are commercial-grade — built around two pieces of technology that change what's possible at acreage scale.</p>
-  </div>
-  <div class="steps reveal">
-   <div class="step">
-    <h3>GPS-RTK precision</h3>
-    <p>RTK is centimetre-accurate satellite positioning — about 1,000× more precise than the GPS in your phone. The mower knows exactly where it is on your property to within 2 cm. It mows the same paths every time, no missed strips, no drift, no buried boundary wire to cut or replace. Property mapped once, maintained forever.</p>
+  <!-- 3. TECHNOLOGY (dark) -->
+  <a id="technology" aria-hidden="true" class="anchor-alias"></a>
+  <section class="section section--dark" aria-labelledby="tech-heading">
+   <div class="tech-header reveal">
+    <div class="label">Fig. 01 — Technology stack</div>
+    <h2 id="tech-heading">Two systems, <em>calibrated</em> together.</h2>
    </div>
-   <div class="step">
-    <h3>LiDAR obstacle avoidance</h3>
-    <p>LiDAR is the laser-based sensing system used in autonomous vehicles. The mower scans its surroundings in real time and stops or routes around obstacles dynamically — fallen branches, garden hoses, sleeping dogs, kids' bikes left in the grass. Acreage isn't a controlled environment; LiDAR is what makes autonomous operation safe in a real-world property.</p>
-   </div>
-   <div class="step">
-    <h3>Why both together</h3>
-    <p>RTK without LiDAR is precision blind to anything new. LiDAR without RTK is reactive but loses position. Combined, you get a mower that knows where it is, where it should be, and what's in front of it — the dividing line between a robotic toy and an autonomous system that genuinely handles acreage. That's what every commercial-grade unit AutoAcre installs is built around.</p>
-   </div>
-  </div>
-  </div>
- </section>
+   <div class="tech-grid">
+    <!-- α — RTK panel -->
+    <div class="tech-panel reveal">
+     <div class="tech-heading">
+      <span class="tech-glyph">α</span>
+      <h3 class="tech-h3">RTK precision positioning</h3>
+     </div>
+     <svg class="tech-svg" viewBox="0 0 380 200" aria-hidden="true">
+      <g><circle cx="60" cy="30" r="3" fill="#E8C9B5"/><line x1="60" y1="33" x2="190" y2="140" stroke="#E8C9B5" stroke-width="0.5" stroke-opacity="0.6" stroke-dasharray="2 3"/></g>
+      <g><circle cx="180" cy="30" r="3" fill="#E8C9B5"/><line x1="180" y1="33" x2="190" y2="140" stroke="#E8C9B5" stroke-width="0.5" stroke-opacity="0.6" stroke-dasharray="2 3"/></g>
+      <g><circle cx="300" cy="30" r="3" fill="#E8C9B5"/><line x1="300" y1="33" x2="190" y2="140" stroke="#E8C9B5" stroke-width="0.5" stroke-opacity="0.6" stroke-dasharray="2 3"/></g>
+      <text x="20" y="22" font-size="9" fill="#E8C9B5" font-family="JetBrains Mono, monospace">GNSS</text>
+      <g transform="translate(190, 140)">
+       <rect x="-6" y="-12" width="12" height="14" fill="#E8C9B5"/>
+       <polygon points="0,-20 -8,-12 8,-12" fill="#E8C9B5"/>
+       <text y="22" text-anchor="middle" font-size="9" fill="#FAF7F1" font-family="JetBrains Mono, monospace">RTK BASE</text>
+      </g>
+      <line x1="190" y1="160" x2="190" y2="180" stroke="#E8C9B5" stroke-width="0.5" stroke-dasharray="2 3"/>
+      <rect x="180" y="180" width="20" height="8" fill="#E8C9B5" fill-opacity="0.4"/>
+      <text x="190" y="198" text-anchor="middle" font-size="9" fill="#69655B" font-family="JetBrains Mono, monospace">±2 CM POS</text>
+     </svg>
+     <p class="tech-body">Real-Time Kinematic — satellite positioning roughly a thousand times more precise than your phone. The mower mows the same paths every cycle. No buried boundary wire.</p>
+     <ul class="tech-bullets">
+      <li>→ NO BOUNDARY WIRE TO CUT</li>
+      <li>→ ZERO DRIFT, NO MISSED STRIPS</li>
+      <li>→ MAPPED ONCE, HELD FOREVER</li>
+     </ul>
+    </div>
 
- <!-- HOW IT WORKS — Buy + Manage -->
- <section class="section" aria-labelledby="how-heading">
-  <div class="container">
-  <div class="section-header reveal">
-   <span class="section-label">How Buy + Manage works</span>
-   <h2 id="how-heading">Buy the system, AutoAcre manages it</h2>
-   <p>The offer is two parts. You buy the autonomous mowing system outright (reference launch price $33,490) — the RTK base station, the commercial-grade autonomous mower, professional installation. From there, AutoAcre handles ongoing operation under one tiered monthly management fee from $165 (3 acres) to $650 (10 acres). The system is yours; the service is ours.</p>
-  </div>
-  <div class="steps reveal">
-   <div class="step">
-    <h3>1. Site assessment</h3>
-    <p>An on-site visit to walk your property, identify mowing zones, plan the RTK base station location, and assess slope, terrain and obstacles. We'll tell you honestly whether your property is suitable. If it is, you leave with a fixed reference price and the option to lock in a Q1 2027 installation slot. <strong>Open today.</strong></p>
+    <!-- β — LiDAR panel -->
+    <div class="tech-panel reveal">
+     <div class="tech-heading">
+      <span class="tech-glyph">β</span>
+      <h3 class="tech-h3">LiDAR obstacle avoidance</h3>
+     </div>
+     <svg class="tech-svg" viewBox="0 0 380 200" aria-hidden="true">
+      <g transform="translate(80, 130)">
+       <circle r="60" fill="#E8C9B5" fill-opacity="0.08"/>
+       <circle r="40" fill="#E8C9B5" fill-opacity="0.14"/>
+       <circle r="22" fill="#E8C9B5" fill-opacity="0.22"/>
+       <rect x="-8" y="-6" width="16" height="12" fill="#E8C9B5" rx="2"/>
+       <line class="lidar-sweep" x1="0" y1="0" x2="60" y2="0" stroke="#E8C9B5" stroke-width="1"/>
+       <text y="80" text-anchor="middle" font-size="9" fill="#FAF7F1" font-family="JetBrains Mono, monospace">MOWER</text>
+      </g>
+      <circle cx="220" cy="80" r="12" fill="none" stroke="#69655B" stroke-width="1"/>
+      <text x="220" y="105" font-size="9" fill="#69655B" text-anchor="middle" font-family="JetBrains Mono, monospace">TREE</text>
+      <circle cx="290" cy="150" r="6" fill="none" stroke="#69655B" stroke-width="1"/>
+      <text x="290" y="170" font-size="9" fill="#69655B" text-anchor="middle" font-family="JetBrains Mono, monospace">DOG</text>
+      <rect x="320" y="100" width="16" height="8" fill="none" stroke="#69655B" stroke-width="1"/>
+      <text x="328" y="124" font-size="9" fill="#69655B" text-anchor="middle" font-family="JetBrains Mono, monospace">HOSE</text>
+     </svg>
+     <p class="tech-body">Laser-based sensing scanning the world in real time — the same family of technology used in autonomous vehicles. The mower stops or routes around dynamically.</p>
+     <ul class="tech-bullets">
+      <li>→ SEES BRANCHES, HOSES, TOYS</li>
+      <li>→ STOPS FOR DOGS, KIDS, WILDLIFE</li>
+      <li>→ DYNAMIC RE-ROUTING, NOT JUST HALT</li>
+     </ul>
+    </div>
    </div>
-   <div class="step">
-    <h3>2. Buy + install the system</h3>
-    <p>Purchase the autonomous mowing system outright — reference launch price $33,490. RTK base station commissioned for your property, autonomous mower configured, boundary maps and exclusion zones set, charging dock placed under shelter with mains power. Professionally installed for your terrain. The system becomes yours. <strong>Begins Q1 2027.</strong></p>
-   </div>
-   <div class="step">
-    <h3>3. AutoAcre manages it</h3>
-    <p>Tiered monthly management fee from $165 (3 acres) to $650 (10 acres) covers scheduled maintenance, blade replacements, firmware updates, remote monitoring and repair coordination. Twice-weekly mowing in summer, weekly in winter — roughly 3× a fortnightly contractor. Ad-hoc on-site call-outs $150/visit when needed. <strong>Begins Q1 2027.</strong></p>
-   </div>
-  </div>
-  <div style="text-align: center; margin-top: var(--space-10);">
-   <a class='btn btn--primary btn--large' href='/book-site-assessment'>Book Site Assessment</a>
-   <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator' style='margin-left: var(--space-3);'>Run the ROI Calculator</a>
-  </div>
-  </div>
- </section>
 
- <!-- AERIAL DIVIDER -->
- <div class="section-image reveal">
-  <img src="./img/aerial-prestige.jpg" alt="Aerial view of a Byron Bay hinterland acreage property with mowing stripes" width="1200" height="400" loading="lazy">
- </div>
+   <div class="tech-footer reveal">
+    <div class="label">Together</div>
+    <p>A mower that knows where it is, where it should be, and what's in front of it. The dividing line between a robotic toy and an autonomous system that handles acreage.</p>
+   </div>
+  </section>
 
- <!-- SOCIAL PROOF -->
- <section class="section section--alt" aria-labelledby="proof-heading">
-  <div class="container">
-  <div class="section-header reveal">
-   <span class="section-label">Why property owners go autonomous</span>
-   <h2 id="proof-heading">Built for people who expect more from their acreage</h2>
-  </div>
-  <div class="testimonials reveal">
-   <div class="testimonial">
-    <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
-    <blockquote>"We spent years paying a bloke fortnightly and never being happy with how the place looked between visits. Once we mapped the block with the autonomous system, the property looks like a resort week-in, week-out — completely different cycle from a contractor."</blockquote>
-    <cite>— Property owner, Ewingsdale</cite>
+  <!-- 4. IMAGE BREAK -->
+  <section class="image-break" aria-label="What it looks like">
+   <div class="image-break-bg" role="img" aria-label="Autonomous mower stripe pattern across a Byron Bay hinterland paddock"></div>
+   <div class="image-break-content">
+    <div>
+     <div class="label">What it looks like</div>
+     <p class="image-break-quote">Striped passes. Same line, every cycle. The kind of finish a contractor used to charge a premium for — except it happens twice a week.</p>
+    </div>
    </div>
-   <div class="testimonial">
-    <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
-    <blockquote>"We manage several holiday rentals and the grounds were always a problem. Guests notice. Switching to an autonomous mowing system meant the feedback flipped — consistently positive, every booking."</blockquote>
-    <cite>— Property manager, Bangalow</cite>
-   </div>
-   <div class="testimonial">
-    <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
-    <blockquote>"Owning the system made the maths obvious. The monthly management fee is half what we used to pay our contractor — and the lawn never has a bad day."</blockquote>
-    <cite>— Absentee owner, Newrybar</cite>
-   </div>
-  </div>
-  </div>
- </section>
+  </section>
 
- <!-- STATS -->
- <section class="section" aria-labelledby="stats-heading">
-  <div class="container">
-  <h2 id="stats-heading" class="sr-only">AutoAcre by the numbers</h2>
-  <div class="stats reveal">
-   <div class="stat">
-    <div class="stat-value">3×</div>
-    <div class="stat-label">Mow frequency vs fortnightly contractor</div>
+  <!-- 5. PROPERTY DIAL + ROI -->
+  <a id="pricing" aria-hidden="true" class="anchor-alias"></a>
+  <section id="numbers" class="section section--alt" aria-labelledby="numbers-heading">
+   <div class="numbers-header reveal">
+    <div>
+     <div class="label">The numbers</div>
+     <h2 id="numbers-heading">Pick your acreage. We'll do the eight-year <em>maths</em>.</h2>
+    </div>
+    <p>Buy the system once at $33,490. Pay one tiered monthly fee. Compare it against a fortnightly contractor across eight years.</p>
    </div>
-   <div class="stat">
-    <div class="stat-value">2cm</div>
-    <div class="stat-label">RTK positioning accuracy</div>
-   </div>
-   <div class="stat">
-    <div class="stat-value">38°</div>
-    <div class="stat-label">Slope handling on commercial-grade units</div>
-   </div>
-   <div class="stat">
-    <div class="stat-value">8yr</div>
-    <div class="stat-label">Cost analysis window in the calculator</div>
-   </div>
-  </div>
-  </div>
- </section>
 
- <!-- FAQ -->
- <section class="section section--alt" aria-labelledby="faq-heading">
-  <div class="container">
-  <div class="section-header reveal">
-   <span class="section-label">FAQ</span>
-   <h2 id="faq-heading">Common questions</h2>
-  </div>
-  <div class="faq-list reveal">
-   <div class="faq-item">
-    <button class="faq-question" aria-expanded="false">
-     What does "RTK + LiDAR" actually mean for my property?
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-answer"><div class="faq-answer-inner">
-     RTK is centimetre-accurate satellite positioning. The autonomous mower knows exactly where it is on your property, so it can mow without a buried boundary wire and follow the same paths every time — no missed strips, no drift, slope handling that consumer mowers can't match. LiDAR is the obstacle-avoidance system: it scans the world in real time and stops or routes around things — fallen branches, garden hoses, sleeping dogs, kids' bikes left out. Together they're the dividing line between a robotic mower for a quarter-acre suburban lawn and an autonomous mowing system that genuinely handles acreage.
-    </div></div>
+   <div class="dial-card reveal">
+    <div class="dial">
+     <div class="dial-visual">
+      <svg viewBox="0 0 240 240" aria-hidden="true">
+       <defs>
+        <pattern id="grid-prop" width="20" height="20" patternUnits="userSpaceOnUse">
+         <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#D8D1BE" stroke-width="0.5"/>
+        </pattern>
+       </defs>
+       <rect width="240" height="240" fill="url(#grid-prop)"/>
+       <rect class="dial-square" id="dial-square" x="60" y="60" width="120" height="120"/>
+       <circle cx="120" cy="120" r="3" fill="#4F5C20"/>
+       <text x="120" y="14" text-anchor="middle" font-size="9" fill="#69655B" font-family="JetBrains Mono, monospace">N</text>
+      </svg>
+     </div>
+     <div class="dial-info">
+      <span class="label">Your property</span>
+      <div class="dial-acres"><span id="dial-acres-value">5</span><span class="dial-acres-unit">acres</span></div>
+      <div class="dial-meta" id="dial-meta">≈ 20,235 m² · 142m × 142m</div>
+      <input type="range" id="acreage-slider" min="2.5" max="10" step="0.5" value="5" aria-label="Property acreage in acres">
+      <div class="dial-ticks"><span>2.5 ac</span><span>5 ac</span><span>7 ac</span><span>10 ac</span></div>
+      <div class="dial-fee">
+       <span class="label">Mgmt/mo</span>
+       <span class="dial-fee-value">$<span id="dial-fee-value">330</span></span>
+      </div>
+     </div>
+    </div>
    </div>
-   <div class="faq-item">
-    <button class="faq-question" aria-expanded="false">
-     How does the Buy + Manage offer work?
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-answer"><div class="faq-answer-inner">
-     The offer is two parts. You <strong>BUY</strong> the autonomous mowing system outright at launch — reference price $33,490. That includes the RTK base station, the commercial-grade autonomous mower with LiDAR obstacle avoidance, professional installation, and boundary mapping for your property. From there, AutoAcre handles ongoing operation under a tiered monthly <strong>MANAGEMENT</strong> fee scaling with acreage: $195 at 3 acres up to $650 at 10 acres. The fee covers scheduled maintenance, blade replacements, firmware updates, remote monitoring and repair coordination. Mowing cadence is twice-weekly in summer and weekly in winter — about 3× a fortnightly contractor. The system is yours; the service is ours.
-    </div></div>
-   </div>
-   <div class="faq-item">
-    <button class="faq-question" aria-expanded="false">
-     What property size is this for?
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-answer"><div class="faq-answer-inner">
-     AutoAcre's autonomous mowing systems are engineered for 3 to 10 acre acreage properties — premium lifestyle acreage, rural residential estates, and larger landowners seeking automation. Properties below 3 acres are usually better served by a consumer wire-bounded mower. Properties beyond 10 acres are scoped as commercial deployments and quoted individually.
-    </div></div>
-   </div>
-   <div class="faq-item">
-    <button class="faq-question" aria-expanded="false">
-     When does AutoAcre start operating?
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-answer"><div class="faq-answer-inner">
-     Service operations begin Q1 2027. Site assessments, the ROI calculator, and the property-fit conversation are open today. Book a site assessment now and we'll lock in your installation slot for when service begins.
-    </div></div>
-   </div>
-   <div class="faq-item">
-    <button class="faq-question" aria-expanded="false">
-     What does the ROI calculator tell me?
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-answer"><div class="faq-answer-inner">
-     The calculator compares your current contractor cost against an autonomous mowing system across an 8-year window. It uses your property size, your current monthly mowing cost, and the AutoAcre reference pricing to produce a side-by-side cost gap, with the assumptions visible. Run it in 60 seconds — no phone number required to see your result.
-    </div></div>
-   </div>
-   <div class="faq-item">
-    <button class="faq-question" aria-expanded="false">
-     What happens at the site assessment?
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-answer"><div class="faq-answer-inner">
-     An on-site visit to walk your property, identify mowing zones, plan the RTK base station location, map the autonomous routes, and assess slope, terrain, obstacles and access. We're honest about whether your property is suitable — if it isn't, we'll tell you. If it is, you leave with a plan, a fixed reference price, and the option to lock in a Q1 2027 installation slot.
-    </div></div>
-   </div>
-   <div class="faq-item">
-    <button class="faq-question" aria-expanded="false">
-     What areas does AutoAcre cover?
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-    <div class="faq-answer"><div class="faq-answer-inner">
-     Initial service area at launch is Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Federal, Myocum, Tyagarah, Brooklet, Clunes, Eureka, Nashua, Teven, Tintenbar, Alstonville, and the broader Northern Rivers hinterland in NSW. If you're outside that footprint, book a site assessment anyway — we'll tell you whether your property is reachable.
-    </div></div>
-   </div>
-  </div>
-  </div>
- </section>
 
- <!-- VERANDA LIFESTYLE IMAGE -->
- <div class="section-image reveal">
-  <img src="./img/veranda-view.jpg" alt="View from a covered veranda over autonomously mowed acreage with hinterland hills in the distance" width="1200" height="400" loading="lazy">
- </div>
-
- <!-- FINAL CTA -->
- <section class="cta-banner" aria-labelledby="cta-heading">
-  <div class="container">
-   <h2 id="cta-heading">Book your site assessment</h2>
-   <p>Two minutes online to start, on-site visit when scheduled. We'll tell you whether your property is suitable for an autonomous mowing system and what one on your block actually costs over 8 years — honest numbers, honest assessment.</p>
-   <div class="cta-banner-actions">
-    <a class='btn btn--primary btn--large' href='/book-site-assessment'>Book Site Assessment</a><!-- Phase 5: → /book-site-assessment -->
-    <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator' style='border-color: rgba(255,255,255,0.3); color: #fff;'>Run the ROI Calculator</a><!-- Phase 5: → /robot-mower-roi-calculator -->
+   <div class="roi reveal">
+    <div class="roi-header">
+     <div class="label-strong">ROI · 8-year window</div>
+     <div class="roi-live">live</div>
+    </div>
+    <div class="roi-controls">
+     <div class="roi-control">
+      <label for="roi-contractor-visit">Contractor $/visit — $<span id="roi-contractor-display">800</span></label>
+      <input type="range" id="roi-contractor-visit" min="200" max="1500" step="25" value="800">
+     </div>
+     <div class="roi-control">
+      <label for="roi-visits-year">Visits/yr — <span id="roi-visits-display">26</span></label>
+      <input type="range" id="roi-visits-year" min="12" max="52" step="1" value="26">
+     </div>
+    </div>
+    <div class="roi-readouts">
+     <div class="roi-readout">
+      <div class="roi-readout-label">Yr 1 — AutoAcre</div>
+      <div class="roi-readout-value" id="roi-aa-yr1">$37,450</div>
+      <div class="roi-readout-hint">$33,490 + 12 mo fee</div>
+     </div>
+     <div class="roi-readout">
+      <div class="roi-readout-label">Yr 1 — Contractor</div>
+      <div class="roi-readout-value" id="roi-ctr-yr1">$20,800</div>
+      <div class="roi-readout-hint">26 × $800</div>
+     </div>
+     <div class="roi-readout roi-readout--accent">
+      <div class="roi-readout-label">8-yr difference</div>
+      <div class="roi-readout-value" id="roi-diff-8yr">$101,230</div>
+      <div class="roi-readout-hint">contractor − AutoAcre</div>
+     </div>
+     <div class="roi-readout">
+      <div class="roi-readout-label">Break-even</div>
+      <div class="roi-readout-value" id="roi-be-month">24 mo</div>
+      <div class="roi-readout-hint">at current settings</div>
+     </div>
+    </div>
+    <div class="roi-savings" id="roi-savings">
+     <div class="roi-savings-label" id="roi-savings-label">YOU SAVE</div>
+     <div class="roi-savings-value" id="roi-savings-value">$101,230</div>
+    </div>
    </div>
-  </div>
- </section>
+  </section>
+
+  <!-- 6. BUY + MANAGE -->
+  <a id="how-it-works" aria-hidden="true" class="anchor-alias"></a>
+  <section id="buy-manage" class="section" aria-labelledby="bm-heading">
+   <div class="steps-header reveal">
+    <div class="label">Buy + Manage</div>
+    <h2 id="bm-heading">The system is yours. The service is <em>ours</em>.</h2>
+   </div>
+   <div class="steps-grid">
+    <article class="step-card reveal">
+     <div class="step-photo" style="background-image: url('/img/hinterland-aerial.jpg');" aria-hidden="true"></div>
+     <div class="step-body">
+      <div class="step-meta"><span class="step-num">Step 01</span><span class="step-when">Open today</span></div>
+      <h3>Site assessment</h3>
+      <p>On-site walk of your property. Mowing zones, RTK base station siting, slope and access. Honest verdict on suitability.</p>
+     </div>
+    </article>
+    <article class="step-card reveal">
+     <div class="step-photo" style="background-image: url('/img/g1-wide-paddock.jpg');" aria-hidden="true"></div>
+     <div class="step-body">
+      <div class="step-meta"><span class="step-num">Step 02</span><span class="step-when">Q1 2027</span></div>
+      <h3>Buy and install</h3>
+      <p>Reference launch price $33,490. Base station commissioned, mower configured, boundaries mapped. The system becomes yours.</p>
+     </div>
+    </article>
+    <article class="step-card reveal">
+     <div class="step-photo" style="background-image: url('/img/hilux-trailer.jpg');" aria-hidden="true"></div>
+     <div class="step-body">
+      <div class="step-meta"><span class="step-num">Step 03</span><span class="step-when">Q1 2027</span></div>
+      <h3>AutoAcre tends it</h3>
+      <p>$165–$650 monthly tiered fee. Twice-weekly summer mowing. Maintenance, blades, firmware, monitoring — included.</p>
+     </div>
+    </article>
+   </div>
+  </section>
+
+  <!-- 7. FAQ -->
+  <a id="faq" aria-hidden="true" class="anchor-alias"></a>
+  <section class="section section--alt" aria-labelledby="faq-heading">
+   <div class="faq-header reveal">
+    <div>
+     <div class="label">Common questions</div>
+     <h2 id="faq-heading">The plain answers, on the <em>record</em>.</h2>
+    </div>
+    <p>We're a small operation in the Northern Rivers building something specific. If you've got a question that isn't covered here, the site assessment is the right place to ask it.</p>
+   </div>
+   <div class="faq reveal">
+    <div class="faq-item active">
+     <button class="faq-question" aria-expanded="true" aria-controls="faq-answer-1" id="faq-q-1">
+      <span class="faq-question-text">What does "RTK + LiDAR" actually mean for my property?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+     </button>
+     <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-q-1">
+      <div class="faq-answer-inner">RTK is centimetre-accurate satellite positioning. The mower knows where it is to within two centimetres — same paths every cycle, no buried boundary wire, no missed strips. LiDAR is the laser-based obstacle-avoidance system: fallen branches, garden hoses, sleeping dogs, kids' bikes — the system stops or routes around. Together they're the dividing line between a robotic toy for a quarter-acre lawn and an autonomous system that actually handles acreage.</div>
+     </div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-q-2">
+      <span class="faq-question-text">How does the Buy + Manage offer work?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+     </button>
+     <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-q-2">
+      <div class="faq-answer-inner">Two parts. You BUY the autonomous mowing system outright — reference launch price $33,490. RTK base, mower, professional install, boundary mapping. From there, AutoAcre handles ongoing operation under a tiered monthly MANAGEMENT fee — $165 at 2.5 acres up to $650 at ten. Maintenance, blades, firmware, monitoring. Twice-weekly summer mowing, weekly winter — about three times a fortnightly contractor. The system is yours; the service is ours.</div>
+     </div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-q-3">
+      <span class="faq-question-text">What property size is this for?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+     </button>
+     <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-q-3">
+      <div class="faq-answer-inner">Engineered for 2.5 to 10 acre acreage — premium lifestyle properties, rural residential estates, larger landowners. Below 2.5 acres, a consumer wire-bounded mower is usually a better fit. Beyond ten acres, scoped as commercial deployments and quoted individually.</div>
+     </div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-q-4">
+      <span class="faq-question-text">When do you start operating?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+     </button>
+     <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-q-4">
+      <div class="faq-answer-inner">Service operations begin Q1 2027. Site assessments, the ROI calculator, and the property-fit conversation are open today — book now and we lock in your installation slot for when service begins.</div>
+     </div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5" id="faq-q-5">
+      <span class="faq-question-text">What happens at the site assessment?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+     </button>
+     <div class="faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-q-5">
+      <div class="faq-answer-inner">On-site visit to walk your property — mowing zones identified, RTK base station sited, autonomous routes mapped, slope and access assessed. We're honest about whether your property is suitable. If it isn't, we tell you. If it is, you leave with a plan, a fixed reference price, and the option to lock in a Q1 2027 installation slot.</div>
+     </div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6" id="faq-q-6">
+      <span class="faq-question-text">What areas do you cover?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+     </button>
+     <div class="faq-answer" id="faq-answer-6" role="region" aria-labelledby="faq-q-6">
+      <div class="faq-answer-inner">Initial service area: Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Federal, Myocum, Tyagarah, Brooklet, Clunes, Eureka, Nashua, Teven, Tintenbar, Alstonville, and the broader Northern Rivers hinterland. Outside the footprint? Book anyway — we'll be honest about whether your property is reachable.</div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- 8. FINAL CTA -->
+  <a id="booking" aria-hidden="true" class="anchor-alias"></a>
+  <a id="about" aria-hidden="true" class="anchor-alias"></a>
+  <section class="cta" aria-labelledby="cta-heading">
+   <div class="cta-bg" role="img" aria-label="View from a covered veranda over autonomously mowed acreage"></div>
+   <div class="cta-content">
+    <div class="label">Begin here</div>
+    <h2 id="cta-heading">Book a walk of your block.</h2>
+    <p>Two minutes online. On-site visit when scheduled. Honest verdict on suitability and an eight-year cost picture against your block.</p>
+    <div class="cta-actions">
+     <a class="btn-primary" href="/book-site-assessment">Book site assessment</a>
+     <a class="btn-ghost" href="/robot-mower-roi-calculator">Run calculator</a>
+    </div>
+   </div>
+  </section>
+
  </main>
 
- <!-- FOOTER -->
+ <!-- FOOTER (production markup, restyled by /homepage.css) -->
+ <a id="contact" aria-hidden="true" class="anchor-alias"></a>
  <footer class="site-footer" role="contentinfo">
  <div class="container">
   <div class="footer-grid">
    <div class="footer-brand">
-    <a aria-label='AutoAcre home' class='header-logo' href='/'>
-     <img src="/img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
+    <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
+     <span class="wordmark-name">AutoAcre</span>
+     <span class="wordmark-tag">Northern Rivers</span>
     </a>
-    <p>Autonomous mowing systems for 3–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
+    <p>Autonomous mowing systems for 2.5–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
    </div>
    <div class="footer-col">
     <h4>Autonomous Systems</h4>
     <ul>
-     <li><a href='/3-10-acre-autonomous-mowing-systems'>3–10 Acre Systems</a></li>
+     <li><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a></li>
      <li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li>
      <li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li>
      <li><a href='/commercial'>Commercial Autonomous Mowing</a></li>
@@ -755,14 +927,15 @@
   <div class="footer-bottom">
    <span>&copy; 2026 AutoAcre. All rights reserved.</span>
    <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
+   <span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span>
   </div>
  </div>
 </footer>
 
- <!-- Scroll CTA Banner -->
+ <!-- Scroll CTA Banner (production) -->
  <div class="scroll-banner" role="complementary" aria-label="Promotion">
   <div class="scroll-banner-inner">
-   <p>3–10 acres? <strong>Run the 8-year cost comparison in 60 seconds</strong></p>
+   <p>2.5–10 acres? <strong>Run the 8-year cost comparison in 60 seconds</strong></p>
    <a class='btn btn--primary btn--small' href='/robot-mower-roi-calculator'>Run Calculator</a>
    <button class="scroll-banner-close" aria-label="Close banner">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -770,6 +943,8 @@
   </div>
  </div>
 
- <script src="./app.js" defer></script>
+ <script src="/app.js" defer></script>
+ <script src="/js/app.js" defer></script>
+ <script src="/nav.js" defer></script>
 </body>
 </html>

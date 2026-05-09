@@ -1,0 +1,458 @@
+/* /nav.css — Site-wide cream-index navigation
+ *
+ * Single source of truth for the shared header used on every page.
+ * Loaded after /base.css + /style.css + /direction-b.css; on the homepage
+ * it loads alongside /homepage.css.
+ *
+ * Body-class contract:
+ *   body.home              — transparent header over a dark hero photo;
+ *                            colour flips to cream + dark text when any
+ *                            drawer opens (.is-nav-open class via /nav.js).
+ *   body.has-light-header  — header sits in the cream + dark text state
+ *                            by default; drawer just opens, no colour flip
+ *                            needed (header is already in the "open" state).
+ *
+ * Active-state contract:
+ *   The matching top-level <button> or <a> for the current section gets
+ *   aria-current="page". A small olive dot renders after the label.
+ *
+ * Mobile (<1024px): the existing nav breakpoint hides .header-nav and
+ * shows the mobile drawer. Cream-index drawers don't render below the
+ * breakpoint — same behaviour as before.
+ */
+
+/* ──────────────────────────────────────────────────────────────────
+   1. HEADER COLOUR TOKENS — switch via body class
+   ────────────────────────────────────────────────────────────────── */
+:root {
+  /* Default = transparent over dark hero (homepage) */
+  --header-bg:               transparent;
+  --header-border:           transparent;
+  --header-text:             rgba(255,255,255,0.85);
+  --header-text-strong:      #fff;
+  --header-text-muted:       rgba(255,255,255,0.7);
+  --header-cta-bg:           rgba(255,255,255,0.95);
+  --header-cta-text:         var(--surface-deep, #14140F);
+  --header-cta-bg-hover:     #fff;
+  --hamburger-line:          #fff;
+}
+
+/* Pages with light heroes default to the cream + dark state */
+body.has-light-header {
+  --header-bg:               var(--bg, #FAF7F1);
+  --header-border:           var(--border, #D8D1BE);
+  --header-text:             var(--text, #14140F);
+  --header-text-strong:      var(--text, #14140F);
+  --header-text-muted:       var(--muted, #69655B);
+  --header-cta-bg:           var(--accent, #4F5C20);
+  --header-cta-text:         #fff;
+  --header-cta-bg-hover:     var(--surface-deep, #14140F);
+  --hamburger-line:          var(--text, #14140F);
+}
+
+/* When a drawer is open on body.home, flip into the same cream state.
+   body.has-light-header is already in this state — no flip needed. */
+body.home.is-nav-open {
+  --header-bg:               var(--bg, #FAF7F1);
+  --header-border:           var(--border, #D8D1BE);
+  --header-text:             var(--text, #14140F);
+  --header-text-strong:      var(--text, #14140F);
+  --header-text-muted:       var(--muted, #69655B);
+  --header-cta-bg:           var(--accent, #4F5C20);
+  --header-cta-text:         #fff;
+  --header-cta-bg-hover:     var(--surface-deep, #14140F);
+  --hamburger-line:          var(--text, #14140F);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   2. HEADER SHELL
+   ────────────────────────────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  color: var(--header-text);
+  padding: 24px 56px;
+  transition:
+    background 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-bottom-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* On body.has-light-header, tighten padding a touch (the cream header
+   doesn't need the airy hero-overlay padding). */
+body.has-light-header .site-header {
+  padding: 16px 56px;
+}
+
+@media (max-width: 720px) {
+  .site-header { padding: 20px 24px; }
+  body.has-light-header .site-header { padding: 14px 24px; }
+}
+
+.site-header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 0;
+  height: auto;
+}
+
+/* Mobile: items stack-aware so hamburger lines up with wordmark */
+@media (max-width: 720px) {
+  .site-header .header-inner { align-items: flex-start; }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   3. WORDMARK LOGO (replaces the <img> on the homepage; usable on
+   every page once the markup is shared)
+   ────────────────────────────────────────────────────────────────── */
+.site-header .header-logo--wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-header .header-logo--wordmark .wordmark-name {
+  font-family: var(--font-display, 'Zodiak', Georgia, serif);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--header-text-strong);
+  line-height: 1;
+  transition: color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header .header-logo--wordmark .wordmark-tag {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--header-text-muted);
+  transition: color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile lockup: stack vertically with 14px gap */
+@media (max-width: 720px) {
+  .site-header .header-logo--wordmark {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+/* If a page still ships the old <img> logo inside .header-logo, hide it
+   (safety net during the rollout — once every page is on the new partial,
+   this is moot). */
+.site-header .header-logo--wordmark > img { display: none; }
+
+/* ──────────────────────────────────────────────────────────────────
+   4. NAV LIST + FLAT LINKS
+   ────────────────────────────────────────────────────────────────── */
+.header-nav.header-nav--cream-index { display: none; }
+
+@media (min-width: 1024px) {
+  .header-nav.header-nav--cream-index { display: flex; }
+}
+
+.header-nav .nav-list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav .nav-list .nav-item {
+  position: static; /* drawers position absolute relative to .site-header */
+}
+
+.header-nav .nav-list .nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 6px 0;
+  font-family: var(--font-body, 'Inter Tight', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--header-text);
+  text-decoration: none;
+  transition: color 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms;
+}
+
+.header-nav .nav-list .nav-link:hover {
+  color: var(--header-text-strong);
+  opacity: 1;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   5. DROPDOWN TRIGGER BUTTONS
+   ────────────────────────────────────────────────────────────────── */
+.nav-cream-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  font-family: var(--font-body, 'Inter Tight', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--header-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0;
+  transition: color 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms;
+}
+
+.nav-cream-trigger:hover { color: var(--header-text-strong); }
+
+.nav-cream-chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-cream-trigger[aria-expanded="true"] .nav-cream-chevron {
+  transform: rotate(180deg);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   6. ACTIVE STATE (aria-current="page") — small olive dot after label
+   ────────────────────────────────────────────────────────────────── */
+.header-nav .nav-list .nav-link[aria-current="page"]::after,
+.nav-cream-trigger[aria-current="page"]::after {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent, #4F5C20);
+  margin-left: 8px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   7. THE DRAWER — full-width cream panel below the header
+   ────────────────────────────────────────────────────────────────── */
+.nav-cream-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  overflow: hidden;
+  max-height: 0;
+  background: var(--bg, #FAF7F1);
+  border-bottom: 1px solid rgba(20,20,15,0.10);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    max-height 360ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-cream-item.is-open .nav-cream-drawer {
+  /* 720px fits Locations' 3 regions (8 + 5 + 4 villages in 3-col grids,
+     plus the 3 region labels and 2 separators). Systems / Insights are
+     much shorter and just don't reach this height. */
+  max-height: 720px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-cream-drawer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px 40px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Region break inside a drawer (used by Locations: Byron Shire /
+   Ballina Shire / Inland). Other drawers have a single grid and
+   don't render any .nav-cream-region wrappers.
+   ────────────────────────────────────────────────────────────────── */
+.nav-cream-region + .nav-cream-region {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(20,20,15,0.10);
+}
+
+.nav-cream-region-label {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted, #69655B);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+/* Top strip: eyebrow + item count */
+.nav-cream-drawer-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0 14px;
+  border-bottom: 1px solid rgba(20,20,15,0.18);
+  margin-bottom: 18px;
+}
+
+.nav-cream-drawer-eyebrow,
+.nav-cream-drawer-count {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted, #69655B);
+  font-weight: 500;
+}
+
+/* Grid of items — 2 cols by default, 3 cols when the variant class is set */
+.nav-cream-drawer-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  column-gap: 48px;
+}
+.nav-cream-drawer-grid--2col { grid-template-columns: 1fr 1fr; }
+.nav-cream-drawer-grid--3col { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Individual item rows */
+.nav-cream-drawer-item > a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(20,20,15,0.08);
+  text-decoration: none;
+  color: var(--text, #14140F);
+}
+
+.nav-cream-drawer-num {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted, #69655B);
+  min-width: 22px;
+  flex-shrink: 0;
+}
+
+.nav-cream-drawer-label {
+  font-family: var(--font-display, 'Zodiak', Georgia, serif);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--text, #14140F);
+  transition: color 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-cream-drawer-item > a:hover .nav-cream-drawer-label {
+  color: var(--accent, #4F5C20);
+}
+
+/* "All locations →" — weight 600 + olive default */
+.nav-cream-drawer-item--all .nav-cream-drawer-label {
+  font-weight: 600;
+  color: var(--accent, #4F5C20);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   8. HEADER ACTIONS (CTA + hamburger)
+   ────────────────────────────────────────────────────────────────── */
+.site-header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.site-header .header-cta,
+.site-header .btn--primary.header-cta {
+  display: inline-block;
+  padding: 10px 22px !important;
+  background: var(--header-cta-bg);
+  color: var(--header-cta-text);
+  font-family: var(--font-body, 'Inter Tight', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  transition:
+    background 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-header .header-cta:hover {
+  background: var(--header-cta-bg-hover);
+  color: var(--header-cta-text);
+}
+
+/* Recolour the hamburger lines to match header text colour token */
+.site-header .mobile-menu-btn span,
+.site-header .mobile-menu-btn span::before,
+.site-header .mobile-menu-btn span::after {
+  background: var(--hamburger-line);
+  transition: background 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Production CSS hides .theme-toggle on the homepage; we already removed
+   the markup from the new shared header so this is a no-op there, but
+   on pages still shipping the old <img>+theme-toggle markup during
+   rollout, defensively hide it. */
+.site-header .theme-toggle { display: none !important; }
+
+/* ──────────────────────────────────────────────────────────────────
+   9. BELT-AND-BRACES MOBILE: drawers don't render below 1024px
+   ────────────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .nav-cream-drawer { display: none !important; }
+  .nav-cream-item .nav-cream-trigger { display: none !important; }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   9b. KEYBOARD FOCUS — visible :focus-visible rings on every
+       interactive nav element. Mouse users see no ring (UA default
+       only triggers on keyboard tab); keyboard users get a 2px olive
+       outline with 2px offset against whatever header background is
+       currently active.
+   ────────────────────────────────────────────────────────────────── */
+.nav-link:focus-visible,
+.nav-cream-trigger:focus-visible,
+.nav-cream-drawer-item > a:focus-visible {
+  outline: 2px solid var(--color-primary, #4F5C20);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   10. REDUCED MOTION
+   ────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header *,
+  .nav-cream-drawer,
+  .nav-cream-trigger,
+  .nav-cream-chevron {
+    transition: none !important;
+  }
+  .nav-cream-item.is-open .nav-cream-drawer {
+    max-height: 720px;
+    opacity: 1;
+  }
+}

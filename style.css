@@ -78,10 +78,10 @@
   --color-text-inverse: #FFFFFF;
 
   /* Primary — Olive Green */
-  --color-primary: #7A8B2D;
-  --color-primary-hover: #667525;
-  --color-primary-active: #52601D;
-  --color-primary-light: #EEF1DF;
+  --color-primary: #4F5C20;
+  --color-primary-hover: #14140F;
+  --color-primary-active: #14140F;
+  --color-primary-light: #E8E5D2;
 
   /* Charcoal (headings, wordmark) */
   --color-charcoal: #2D2D2D;
@@ -90,8 +90,8 @@
   --color-warm-grey: #F5F5F0;
 
   /* CTA */
-  --color-cta: #7A8B2D;
-  --color-cta-hover: #667525;
+  --color-cta: #4F5C20;
+  --color-cta-hover: #14140F;
   --color-cta-text: #FFFFFF;
 
   /* Error / Warning */
@@ -116,16 +116,16 @@
   --color-text-faint: #707068;
   --color-text-inverse: #1A1A18;
 
-  --color-primary: #9BAD45;
-  --color-primary-hover: #B0C45A;
-  --color-primary-active: #7A8B2D;
+  --color-primary: #6F8030;
+  --color-primary-hover: #FAF7F1;
+  --color-primary-active: #4F5C20;
   --color-primary-light: #2D3020;
 
   --color-charcoal: #E8E8E0;
   --color-warm-grey: #222220;
 
-  --color-cta: #9BAD45;
-  --color-cta-hover: #B0C45A;
+  --color-cta: #6F8030;
+  --color-cta-hover: #FAF7F1;
   --color-cta-text: #1A1A18;
 
   --color-error: #E74C3C;
@@ -148,14 +148,14 @@
     --color-text-muted: #A0A098;
     --color-text-faint: #707068;
     --color-text-inverse: #1A1A18;
-    --color-primary: #9BAD45;
-    --color-primary-hover: #B0C45A;
-    --color-primary-active: #7A8B2D;
+    --color-primary: #6F8030;
+    --color-primary-hover: #FAF7F1;
+    --color-primary-active: #4F5C20;
     --color-primary-light: #2D3020;
     --color-charcoal: #E8E8E0;
     --color-warm-grey: #222220;
-    --color-cta: #9BAD45;
-    --color-cta-hover: #B0C45A;
+    --color-cta: #6F8030;
+    --color-cta-hover: #FAF7F1;
     --color-cta-text: #1A1A18;
     --color-error: #E74C3C;
     --color-success: #2ECC71;
@@ -538,26 +538,10 @@ a:hover {
   box-shadow: var(--shadow-sm);
 }
 
-.btn--primary {
-  background: var(--color-cta);
-  color: var(--color-cta-text);
-}
-
-.btn--primary:hover {
-  background: var(--color-cta-hover);
-  color: var(--color-cta-text);
-}
-
-.btn--secondary {
-  background: transparent;
-  color: var(--color-text);
-  border: 1.5px solid var(--color-border);
-}
-
-.btn--secondary:hover {
-  border-color: var(--color-text);
-  color: var(--color-text);
-}
+/* .btn--primary / .btn--secondary skin (colors, borders, hover states)
+   lives in direction-b.css. This file owns structural rules only:
+   .btn (base), .btn--large / .btn--small (size variants), and the
+   higher-specificity contexts further down (.cta-banner, .scroll-banner). */
 
 .btn--large {
   padding: var(--space-4) var(--space-8);
@@ -1258,6 +1242,18 @@ a.card:active,
   color: var(--color-text-faint);
 }
 
+/* Privacy / Terms legal links — small, muted, inline-spaced. The
+   footer-bottom flex layout already handles wrap on narrow screens. */
+.footer-bottom-legal a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms;
+}
+.footer-bottom-legal a:hover {
+  border-bottom-color: currentColor;
+}
+
 /* =============================================
    FORMS
    ============================================= */
@@ -1740,7 +1736,7 @@ a.card:active,
 }
 
 .use-case-card:hover h4 {
-  color: var(--color-accent, #7A8B2D);
+  color: var(--color-accent, #4F5C20);
 }
 
 .use-case-card img {
@@ -1811,6 +1807,7 @@ a.card:active,
   font-size: var(--text-xs);
   color: var(--color-text-faint);
   padding-top: var(--space-2);
+  margin-top: 15px;
 }
 
 .breadcrumb a {
@@ -1961,4 +1958,71 @@ a.card:active,
   color: var(--color-text-muted);
   border-bottom: none;
   break-inside: avoid;
+}
+
+/* Quick-fact strip at the top of each location page (postcode, council,
+   distance from Byron, typical mowable area, dominant terrain). Sits below
+   the page-hero — scannable, friendly to featured-snippet extraction. */
+.location-quickfacts-wrap {
+  padding: var(--space-4) 0;
+}
+.location-quickfacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: var(--space-5) var(--space-6);
+  background: var(--color-surface, #F0EBDF);
+  border: 1px solid var(--color-divider, #D8D1BE);
+  max-width: 920px;
+  margin-inline: auto;
+}
+.location-quickfacts > div {
+  min-width: 0;
+}
+.location-quickfacts dt {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.location-quickfacts dd {
+  font-family: var(--font-display, serif);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Region labels inside the mobile Locations drawer (Byron Shire / Ballina
+   Shire / Inland). Visually distinct from the link rows — mono-uppercase,
+   smaller, muted, with breathing room above. Not interactive. */
+.mobile-nav-areas-list .mobile-nav-region-label {
+  display: block;
+  padding: 12px 8px 4px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-faint, #9E9A8A);
+  font-weight: 500;
+}
+
+/* First region label has no leading padding (drawer already has top padding). */
+.mobile-nav-areas-list .mobile-nav-region-label:first-child {
+  padding-top: 4px;
+}
+
+/* "All service areas →" link sits at the bottom of the Locations drawer
+   with a subtle top border to separate it from the regional groups. */
+.mobile-nav-areas-list .mobile-nav-all-locations {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-divider, #D8D1BE);
+  font-weight: 500;
+  color: var(--color-text);
 }

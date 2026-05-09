@@ -53,7 +53,7 @@ function MethodologyDrawer({ open, onClose, t, accent, inputs, s }) {
             <Kv label="Terrain" v={inputs.terrain} t={t}/>
             <Kv label="Frequency" v={`${inputs.frequency} (${FREQ_VISITS[inputs.frequency]} visits/yr)`} t={t}/>
             <Kv label="Hours/acre/visit" v={HOURS_PER_ACRE[inputs.terrain].toFixed(2)} t={t}/>
-            <Kv label="Your time" v={`$${inputs.hourlyValue}/hr`} t={t}/>
+            <Kv label="Your time" v="$50/hr (fixed)" t={t}/>
           </Section>
 
           <Section title="DIY zero-turn" t={t} accent={accent}>
@@ -70,7 +70,7 @@ function MethodologyDrawer({ open, onClose, t, accent, inputs, s }) {
           </Section>
 
           <Section title="Buy your own robot" t={t} accent={accent}>
-            <Kv label="Mower" v={s.byo.isMammotion ? 'Mammotion ($16k, &lt;5 acres)' : 'Husqvarna CEORA ($54k, ≥5 acres)'} t={t}/>
+            <Kv label="Mower" v={s.byo.isMammotion ? 'RTK-LiDAR system ($16k, <5 acres)' : 'RTK-LiDAR system ($54k, ≥5 acres)'} t={t}/>
             <Kv label="Install/setup" v="$2,000" t={t}/>
             <Kv label="Self-support hrs/yr" v={`${Math.round(s.byo.hours)} hrs`} t={t}/>
             <Kv label="Failure buffer" v="5% of mower price/yr" t={t}/>
@@ -198,7 +198,7 @@ function ProdChart({ scenarios, cheapKey, accent, t, height = 240 }) {
 }
 
 function ProductionCalculator({ accent, gating, initialMode }) {
-  const [mode, setMode] = React.useState(initialMode || 'dark');
+  const [mode, setMode] = React.useState(initialMode || 'light');
   const [inputs, setInputs] = React.useState(DEFAULT_INPUTS);
   const [unlocked, setUnlocked] = React.useState(gating === 'off');
   const [showLeadForm, setShowLeadForm] = React.useState(false);
@@ -208,7 +208,7 @@ function ProductionCalculator({ accent, gating, initialMode }) {
   const heroRef = React.useRef(null);
 
   React.useEffect(()=>{ setUnlocked(gating==='off'); }, [gating]);
-  React.useEffect(()=>{ setMode(initialMode || 'dark'); }, [initialMode]);
+  React.useEffect(()=>{ setMode(initialMode || 'light'); }, [initialMode]);
 
   React.useEffect(() => {
     const onScroll = () => {
@@ -254,32 +254,23 @@ function ProductionCalculator({ accent, gating, initialMode }) {
 
   return (
     <div style={{fontFamily:PROD_SANS, background:t.bg, color:t.text, minHeight:'100vh'}}>
-      {/* Top bar */}
+      {/* Top bar — sticks below the site-fixed header (which is ~58-78px tall
+          across desktop/mobile breakpoints in nav.css). 80px covers both. */}
       <div style={{padding:'14px 24px', borderBottom:`1px solid ${t.line}`,
         display:'flex', justifyContent:'space-between', alignItems:'center',
         fontFamily:PROD_MONO, fontSize:11, letterSpacing:'0.1em', textTransform:'uppercase', color:t.textFaint, flexWrap:'wrap', gap:8,
-        position:'sticky', top:0, background:t.bg, zIndex:50}}>
+        position:'sticky', top:80, background:t.bg, zIndex:50}}>
         <div><span style={{color:accent}}>◼</span> AUTOACRE / COST.CALC / v4.2</div>
         <div style={{display:'flex', alignItems:'center', gap:14}}>
           <span>{tier===1?<span style={{color:accent}}>● TIER-1 SERVICE</span>:tier===2?<span style={{color:'#C2A06B'}}>● TIER-2 EXPANSION</span>:'● TIER-3 REFERRAL'}</span>
           <button onClick={()=>setMethodOpen(true)} style={{background:'none', border:`1px solid ${t.line}`, color:t.text, padding:'5px 10px', fontFamily:PROD_MONO, fontSize:10, letterSpacing:'0.14em', cursor:'pointer', textTransform:'uppercase'}}>METHODOLOGY</button>
-          <div style={{display:'inline-flex', border:`1px solid ${t.line}`}}>
-            {['dark','light'].map((m,i) => (
-              <button key={m} onClick={()=>setMode(m)} style={{
-                padding:'5px 10px', background: mode===m ? t.text : 'transparent',
-                color: mode===m ? t.bg : t.textDim, border:'none',
-                fontFamily:PROD_MONO, fontSize:10, letterSpacing:'0.14em', textTransform:'uppercase',
-                fontWeight:600, cursor:'pointer',
-                borderRight: i===0 ? `1px solid ${t.line}` : 'none'
-              }}>{m}</button>
-            ))}
-          </div>
         </div>
       </div>
 
-      {/* Sticky result strip */}
+      {/* Sticky result strip — sits below the site header (80px) AND the
+          calc top bar (~48px tall). top: 128 = 80 + 48. */}
       <div style={{
-        position:'sticky', top:48, zIndex:40,
+        position:'sticky', top:128, zIndex:40,
         padding:'10px 24px', background: t.bg,
         borderBottom: stickyVisible ? `1px solid ${accent}` : `1px solid transparent`,
         boxShadow: stickyVisible ? `0 0 0 1px ${t.line}` : 'none',
@@ -313,8 +304,8 @@ function ProductionCalculator({ accent, gating, initialMode }) {
         <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'8px 28px'}}>
           <ProdSlider t={t} label="ACRES" value={inputs.acres} min={2.5} max={10} step={0.1}
             format={v=>`${v.toFixed(1)}`} onChange={v=>set('acres', v)} accent={accent}/>
-          <ProdSlider t={t} label="$/HR (TIME)" value={inputs.hourlyValue} min={20} max={150} step={5}
-            format={v=>`$${v}`} onChange={v=>set('hourlyValue', v)} accent={accent}/>
+          <ProdSlider t={t} label="CONTRACTOR $/MO" value={inputs.contractorMonthly} min={300} max={3500} step={50}
+            format={v=>`$${v.toLocaleString('en-AU')}`} onChange={v=>set('contractorMonthly', v)} accent={accent}/>
           <ProdSeg t={t} label="TERRAIN" value={inputs.terrain}
             options={[{value:'flat',label:'FLAT'},{value:'rolling',label:'ROLL'},{value:'steep',label:'STEEP'}]}
             onChange={v=>set('terrain', v)} accent={accent}/>

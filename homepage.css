@@ -1,0 +1,1386 @@
+/* /homepage.css — Direction B aesthetic for the new homepage.
+ *
+ * Layered AFTER /base.css + /style.css + /direction-b.css. We use the
+ * production header/footer/dropdown markup as-is and override only the
+ * visual surface here. Other pages don't load this file, so their
+ * existing look is unchanged.
+ *
+ * Sections:
+ *   1. Tokens
+ *   2. Self-hosted fonts (Inter Tight + JetBrains Mono)
+ *   3. Body type + label utility
+ *   4. Header — transparent over hero, solid after .is-scrolled
+ *   5. Dropdown menu restyle
+ *   6. Mobile drawer restyle
+ *   7. Hero (cinematic)
+ *   8. Stats band, dark sections, image break
+ *   9. Property dial + ROI
+ *  10. Buy + Manage cards
+ *  11. FAQ accordion (uses production .faq-item.active pattern)
+ *  12. Final CTA
+ *  13. Footer + scroll-banner restyle
+ *  14. Reveal-on-scroll
+ *  15. prefers-reduced-motion + neutralise prod's hide-on-scroll-down
+ */
+
+/* ─── 1. Tokens (override /style.css's tokens for this page) ─── */
+body.home {
+  --bg:           #FAF7F1;
+  --surface:      #F0EBDF;
+  --surface-deep: #14140F;
+  --text:         #14140F;
+  --muted:        #69655B;
+  --border:       #D8D1BE;
+  --accent:       #4F5C20;
+  --clay-soft:    #E8C9B5;
+
+  --font-display: 'Zodiak', Georgia, 'Times New Roman', serif;
+  --font-body:    'Inter Tight', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  --fs-hero:   clamp(60px, 7vw, 120px);
+  --fs-h2:     clamp(40px, 4.5vw, 64px);
+  --fs-h3:     30px;
+  --fs-lead:   19px;
+  --fs-body:   16px;
+  --fs-mono:   11px;
+
+  --pad-section: 120px 56px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+}
+
+@media (max-width: 720px) {
+  body.home { --pad-section: 72px 24px; }
+}
+
+/* ─── 2. Self-hosted fonts ─── */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/inter-tight-latin.woff2') format('woff2-variations'),
+       url('/fonts/inter-tight-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2-variations'),
+       url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ─── 3. Type ─── */
+body.home h1,
+body.home h2,
+body.home h3,
+body.home .display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  margin: 0;
+  color: var(--text);
+}
+body.home h1 { line-height: 0.92; }
+body.home h2 { line-height: 0.95; }
+body.home h3 { line-height: 1.15; font-size: var(--fs-h3); }
+body.home p  { margin: 0; }
+
+body.home em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: inherit;
+}
+body.home .section--dark em,
+body.home .hero em,
+body.home .image-break em,
+body.home .cta em { color: var(--clay-soft); }
+
+body.home .label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted);
+}
+body.home .section--dark .label,
+body.home .image-break .label,
+body.home .cta .label { color: var(--clay-soft); }
+
+/* Hero eyebrow stays near-white per Direction B prototype
+   (rgba(255,255,255,0.85), distinct from the clay-soft labels above). */
+body.home .hero .label { color: rgba(255,255,255,0.85); }
+
+/* Anchor aliases — invisible scroll targets (#about, #contact etc.) */
+body.home .anchor-alias {
+  display: block;
+  position: relative;
+  top: -80px;
+  visibility: hidden;
+}
+
+/* ─── 4. Header (transparent over hero → solid after scroll) ─── */
+body.home .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 56px;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  color: #fff;
+  transition: background 280ms var(--ease-out), border-color 280ms var(--ease-out), padding 280ms var(--ease-out);
+}
+
+body.home .site-header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 0;
+}
+
+/* Wordmark logo — replaces production <img> on home */
+body.home .header-logo--wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  text-decoration: none;
+  color: #fff;
+}
+
+body.home .header-logo--wordmark .wordmark-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1;
+}
+body.home .header-logo--wordmark .wordmark-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Nav links over hero */
+body.home .header-nav {
+  display: none;
+  align-items: center;
+  gap: 28px;
+}
+@media (min-width: 1024px) {
+  body.home .header-nav { display: flex; }
+}
+body.home .header-nav a,
+body.home .nav-dropdown-trigger {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 200ms var(--ease-out), opacity 200ms var(--ease-out);
+}
+body.home .header-nav a:hover,
+body.home .nav-dropdown-trigger:hover { color: #fff; }
+
+body.home .nav-dropdown-trigger svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 200ms var(--ease-out);
+}
+body.home .nav-dropdown.open .nav-dropdown-trigger svg { transform: rotate(180deg); }
+
+/* Header right side */
+body.home .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+body.home .header-phone {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+}
+@media (min-width: 1024px) {
+  body.home .header-phone { display: inline-flex; }
+}
+body.home .header-phone svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+body.home .site-header .btn--primary.header-cta,
+body.home .site-header .header-cta {
+  display: inline-block;
+  padding: 10px 22px !important;
+  background: rgba(255,255,255,0.95);
+  color: var(--surface-deep);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  transition: background 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+body.home .site-header .header-cta:hover {
+  background: var(--clay-soft);
+  color: var(--surface-deep);
+}
+
+/* Sticky/scrolled state — solid cream + dark text */
+body.home.is-scrolled .site-header {
+  background: var(--bg);
+  border-bottom-color: var(--border);
+  padding: 16px 56px;
+  color: var(--text);
+}
+body.home.is-scrolled .header-logo--wordmark .wordmark-name { color: var(--text); }
+body.home.is-scrolled .header-logo--wordmark .wordmark-tag { color: var(--muted); }
+body.home.is-scrolled .header-nav a,
+body.home.is-scrolled .nav-dropdown-trigger,
+body.home.is-scrolled .nav-cream-trigger { color: var(--text); opacity: 0.78; }
+body.home.is-scrolled .header-nav a:hover,
+body.home.is-scrolled .nav-dropdown-trigger:hover,
+body.home.is-scrolled .nav-cream-trigger:hover { color: var(--text); opacity: 1; }
+body.home.is-scrolled .nav-cream-trigger[aria-expanded="true"] {
+  color: var(--text);
+  opacity: 1;
+}
+body.home.is-scrolled .header-phone { color: var(--text); opacity: 0.78; }
+body.home.is-scrolled .header-phone:hover { opacity: 1; }
+body.home.is-scrolled .site-header .header-cta {
+  background: var(--accent);
+  color: #fff;
+}
+body.home.is-scrolled .site-header .header-cta:hover {
+  background: var(--surface-deep);
+  color: #fff;
+}
+
+/* Mobile menu button — keep its production behaviour, restyle colour */
+body.home .mobile-menu-btn span,
+body.home .mobile-menu-btn span::before,
+body.home .mobile-menu-btn span::after {
+  background: #fff;
+}
+body.home.is-scrolled .mobile-menu-btn span,
+body.home.is-scrolled .mobile-menu-btn span::before,
+body.home.is-scrolled .mobile-menu-btn span::after {
+  background: var(--text);
+}
+
+/* Hide production theme-toggle in case any inner page CSS shows it on home */
+body.home .theme-toggle { display: none !important; }
+
+/* ─── 5. Dropdown menus — Direction B styling ─── */
+body.home .nav-dropdown { position: relative; }
+
+body.home .nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  margin-top: 12px;
+  padding: 8px 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: 0 8px 24px rgba(20,20,15,0.06);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out), visibility 200ms;
+  z-index: 99;
+}
+
+body.home .nav-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body.home .nav-dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  background: none;
+  text-decoration: none;
+  transition: background 160ms var(--ease-out);
+}
+body.home .nav-dropdown-menu a:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* ─── 6. Mobile drawer ─── */
+body.home .mobile-nav {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  padding: 24px;
+}
+body.home .mobile-nav a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+body.home .mobile-nav-areas-toggle {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+body.home .mobile-nav-areas-list a {
+  font-size: 14px;
+  color: var(--muted);
+  border-bottom: none;
+  padding: 8px 0 8px 12px;
+}
+body.home .mobile-cta {
+  display: block;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  padding: 14px;
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+body.home .mobile-nav-phone {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── 7. Hero (cinematic) ─── */
+body.home .hero {
+  position: relative;
+  height: 100vh;
+  min-height: 760px;
+  color: #fff;
+  overflow: hidden;
+  padding: 0;
+  margin-top: 0;
+}
+
+body.home .hero-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/hero.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  animation: kenburns-home 18s ease-out infinite alternate;
+  transform-origin: center;
+  z-index: 1;
+}
+
+/* /style.css ships a .hero-image::after that paints a left-to-right white/cream
+   wash designed for production's two-column hero. Kill it here so the photo
+   reads dark + cinematic — our overlay lives on .hero::after instead. */
+body.home .hero-image::after { display: none; }
+
+body.home .hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20,20,15,0.6) 0%,
+    rgba(20,20,15,0.1) 35%,
+    rgba(20,20,15,0.05) 60%,
+    rgba(20,20,15,0.85) 100%
+  );
+  z-index: 2;
+}
+
+body.home .hero-content {
+  /* /direction-b.css sets .hero-content { position: relative; padding: clamp(8rem,18vh,12rem)…;
+     display: flex; flex-direction: column; width: 100% }. Override the lot so content
+     lands at the bottom-left of the hero, not pushed in by 8rem of top padding.
+     Also override /style.css's mobile-only `.hero-content { min-height: 90vh }`
+     which was stretching this absolutely-positioned block from bottom to top of
+     the hero on mobile, colliding with the floating header. */
+  position: absolute;
+  bottom: 80px;
+  left: 56px;
+  right: 56px;
+  z-index: 3;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 0;
+  width: auto;
+  display: block;
+  min-height: 0;
+}
+
+body.home .hero-content h1 {
+  font-size: var(--fs-hero);
+  line-height: 0.92;
+  margin: 32px 0;
+  max-width: 14ch;
+  color: #fff;
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+body.home .hero-row {
+  /* Stack paragraph above buttons, both left-aligned. Was previously a
+     row with justify-content: space-between, which on wider widths
+     floated the CTAs right and obscured the mower in the photo. */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+body.home .hero-row p {
+  font-size: var(--fs-lead);
+  max-width: 46ch;
+  opacity: 0.92;
+  color: #fff;
+}
+
+body.home .hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+@keyframes kenburns-home {
+  0%   { transform: scale(1.05) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-1%, -1.5%); }
+}
+
+@media (max-width: 720px) {
+  body.home .hero { min-height: 100dvh; }
+  body.home .hero-content { bottom: 32px; left: 24px; right: 24px; }
+  body.home .hero-content h1 { margin: 24px 0; }
+  body.home .hero-row p { font-size: 16px; }
+
+  /* Tweaks #1 + #2: stack the AutoAcre wordmark + 'Northern Rivers' tag
+     vertically inside the floating nav bar. 14px gap (was 30px, reduced
+     by 16px so the tag sits closer to the wordmark). */
+  body.home .site-header .header-logo--wordmark {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  /* When the brand stacks vertically on mobile, the hamburger button
+     was vertically centred against the (now taller) brand block, so it
+     ended up sitting between the wordmark and the 'NORTHERN RIVERS'
+     tag. Pin all header items to the top so the hamburger lines up
+     with the AutoAcre wordmark line. */
+  body.home .site-header .header-inner {
+    align-items: flex-start;
+  }
+
+  /* Tweak #1 (alt): also give the hero eyebrow 30px breathing room above it,
+     in case 'tag line under the logo' meant the hero's eyebrow text rather
+     than the brand-region tag. Cheap, doesn't hurt either reading. */
+  body.home .hero-content > .label:first-child {
+    margin-top: 30px;
+  }
+
+  /* Tweak #3: drop the hero buttons 100px lower so the mower in the photo
+     reads through above them (was hidden behind the buttons). Pushes the
+     button row down from the paragraph above it. */
+  body.home .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 100px;
+  }
+}
+
+/* Buttons (homepage-specific Direction B style) */
+body.home .btn-primary,
+body.home .btn-ghost {
+  display: inline-block;
+  padding: 16px 32px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+body.home .btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+body.home .btn-primary:hover { background: var(--surface-deep); color: #fff; }
+body.home .btn-ghost {
+  background: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+}
+
+body.home .hero .btn-primary,
+body.home .cta .btn-primary {
+  background: #fff;
+  color: var(--surface-deep);
+}
+body.home .hero .btn-primary:hover,
+body.home .cta .btn-primary:hover { background: var(--clay-soft); color: var(--surface-deep); }
+
+body.home .hero .btn-ghost,
+body.home .cta .btn-ghost {
+  color: #fff;
+  border-color: rgba(255,255,255,0.6);
+}
+body.home .hero .btn-ghost:hover,
+body.home .cta .btn-ghost:hover {
+  background: #fff;
+  color: var(--surface-deep);
+  border-color: #fff;
+}
+
+/* ─── 8. Stats band, dark sections, image break ─── */
+body.home .stats-band {
+  background: var(--surface-deep);
+  color: var(--bg);
+  padding: 56px;
+}
+body.home .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .stat-value {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 500;
+  color: var(--clay-soft);
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+body.home .stat-label {
+  font-size: 13px;
+  opacity: 0.75;
+  line-height: 1.4;
+}
+@media (max-width: 720px) {
+  body.home .stats-band { padding: 48px 24px; }
+  body.home .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  body.home .stat-value { font-size: 40px; }
+}
+
+body.home .section {
+  padding: 120px 56px;
+  background: var(--bg);
+}
+body.home .section--dark {
+  background: var(--surface-deep);
+  color: var(--bg);
+}
+body.home .section--dark h1,
+body.home .section--dark h2,
+body.home .section--dark h3 { color: var(--bg); }
+body.home .section--alt { background: var(--surface); }
+@media (max-width: 720px) {
+  body.home .section { padding: 72px 24px; }
+}
+
+/* Technology */
+body.home .tech-header { margin-bottom: 56px; max-width: 1400px; margin-inline: auto; }
+body.home .tech-header h2 {
+  font-size: var(--fs-h2);
+  max-width: 20ch;
+  margin-top: 16px;
+}
+body.home .tech-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--muted);
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .tech-panel { padding: 48px; min-height: 520px; }
+body.home .tech-panel + .tech-panel { border-left: 1px solid var(--muted); }
+body.home .tech-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+body.home .tech-glyph {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-style: italic;
+  color: var(--clay-soft);
+  line-height: 1;
+}
+body.home .tech-h3 { color: var(--bg); font-size: var(--fs-h3); }
+body.home .tech-svg { width: 100%; margin-bottom: 24px; display: block; }
+body.home .tech-body { font-size: 15px; opacity: 0.85; margin-bottom: 20px; }
+body.home .tech-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--clay-soft);
+  letter-spacing: 0.1em;
+}
+body.home .tech-bullets li {
+  padding: 10px 0;
+  border-top: 1px solid var(--muted);
+}
+body.home .tech-footer {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--muted);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: baseline;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .tech-footer p {
+  font-size: 20px;
+  font-family: var(--font-display);
+  line-height: 1.4;
+  max-width: 60ch;
+  color: var(--bg);
+}
+@media (max-width: 720px) {
+  body.home .tech-grid { grid-template-columns: 1fr; }
+  body.home .tech-panel + .tech-panel { border-left: none; border-top: 1px solid var(--muted); }
+  body.home .tech-panel { padding: 32px 24px; min-height: 0; }
+  body.home .tech-footer { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* LiDAR sweep */
+@keyframes lidar-sweep-home {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+body.home .lidar-sweep {
+  transform-origin: 0 0;
+  animation: lidar-sweep-home 3s linear infinite;
+}
+
+/* Image break */
+body.home .image-break {
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+body.home .image-break-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/g1-striping.jpg');
+  background-size: cover;
+  background-position: center;
+}
+body.home .image-break::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20,20,15,0.65), rgba(20,20,15,0));
+}
+body.home .image-break-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 56px;
+  color: #fff;
+  max-width: 720px;
+}
+body.home .image-break-quote {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1.25;
+  font-weight: 500;
+  margin-top: 24px;
+  color: #fff;
+}
+@media (max-width: 720px) {
+  body.home .image-break { height: 520px; }
+  body.home .image-break-content { padding: 0 24px; }
+  body.home .image-break-quote { font-size: 28px; }
+}
+
+/* ─── 9. Property dial + ROI ─── */
+body.home .numbers-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .numbers-header h2 {
+  font-size: var(--fs-h2);
+  max-width: 18ch;
+  margin-top: 16px;
+}
+body.home .numbers-header p {
+  max-width: 32ch;
+  color: var(--muted);
+  padding-top: 16px;
+}
+
+body.home .dial-card {
+  background: var(--bg);
+  padding: 40px;
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .dial {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+body.home .dial-visual {
+  width: 240px;
+  height: 240px;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+body.home .dial-visual svg { position: absolute; inset: 0; }
+body.home .dial-square {
+  fill: var(--accent);
+  fill-opacity: 0.18;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  transition: all 320ms var(--ease-out);
+}
+body.home .dial-info > .label { margin-bottom: 8px; display: block; }
+body.home .dial-acres {
+  font-size: 56px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+body.home .dial-acres-unit {
+  font-size: 24px;
+  color: var(--muted);
+  margin-left: 6px;
+  font-weight: 500;
+}
+body.home .dial-meta { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+body.home .dial-fee {
+  margin-top: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body.home .dial-fee-value {
+  font-size: 22px;
+  font-family: var(--font-display);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Range slider */
+body.home input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  margin: 8px 0;
+}
+body.home input[type="range"]:focus { outline: none; }
+body.home input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 0;
+}
+body.home input[type="range"]::-moz-range-track {
+  height: 4px;
+  background: var(--border);
+  border: none;
+}
+body.home input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-top: -7px;
+  border: 2px solid var(--bg);
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out);
+}
+body.home input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  cursor: pointer;
+}
+body.home input[type="range"]:hover::-webkit-slider-thumb { transform: scale(1.1); }
+
+body.home .dial-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 6px;
+  font-family: var(--font-mono);
+}
+
+/* ROI */
+body.home .roi {
+  background: var(--bg);
+  padding: 32px;
+  border: 1px solid var(--border);
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .roi-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+body.home .roi-header .label-strong {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+body.home .roi-live {
+  font-size: var(--fs-mono);
+  font-family: var(--font-mono);
+  color: var(--muted);
+}
+body.home .roi-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+body.home .roi-control label {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+body.home .roi-readouts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 16px;
+}
+body.home .roi-readout {
+  background: var(--bg);
+  padding: 20px 16px;
+}
+body.home .roi-readout-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+body.home .roi-readout-value {
+  font-size: 24px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+body.home .roi-readout--accent .roi-readout-value { color: var(--accent); }
+body.home .roi-readout-hint { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+body.home .roi-savings {
+  padding: 16px 20px;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+body.home .roi-savings--neg { background: #3a3a35; }
+body.home .roi-savings-label {
+  font-size: var(--fs-mono);
+  letter-spacing: 0.18em;
+  font-family: var(--font-mono);
+}
+body.home .roi-savings-value {
+  font-size: 26px;
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  body.home .dial { grid-template-columns: 1fr; }
+  body.home .dial-visual { width: 100%; max-width: 320px; height: auto; aspect-ratio: 1; margin: 0 auto; }
+  body.home .roi-controls { grid-template-columns: 1fr; }
+  body.home .roi-readouts { grid-template-columns: repeat(2, 1fr); }
+  body.home .dial-card, body.home .roi { padding: 24px; }
+  body.home .numbers-header { flex-direction: column; }
+}
+
+/* ─── 10. Buy + Manage cards ─── */
+body.home .steps-header { margin-bottom: 64px; max-width: 1400px; margin-inline: auto; }
+body.home .steps-header h2 {
+  font-size: var(--fs-h2);
+  max-width: 20ch;
+  margin-top: 16px;
+}
+body.home .steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .step-card {
+  background: var(--surface-deep);
+  color: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+body.home .step-photo {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.85) brightness(0.95);
+}
+body.home .step-body {
+  padding: 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+body.home .step-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+body.home .step-meta .step-num { color: var(--clay-soft); }
+body.home .step-meta .step-when { color: rgba(255,255,255,0.5); letter-spacing: 0.15em; font-size: 10px; }
+body.home .step-body h3 { font-size: 28px; color: #fff; margin-bottom: 16px; }
+body.home .step-body p { font-size: 15px; opacity: 0.78; flex: 1; line-height: 1.6; color: var(--bg); }
+@media (max-width: 720px) {
+  body.home .steps-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ─── 11. FAQ accordion (production .faq-item.active pattern) ─── */
+body.home .faq-header {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  margin-bottom: 48px;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .faq-header h2 { font-size: var(--fs-h2); line-height: 0.95; }
+body.home .faq-header p {
+  font-size: 17px;
+  color: var(--muted);
+  align-self: end;
+  max-width: 52ch;
+}
+body.home .faq {
+  border-top: 1px solid var(--border);
+  max-width: 1400px;
+  margin-inline: auto;
+}
+body.home .faq-item { border-bottom: 1px solid var(--border); border-top: none; }
+body.home .faq-item:first-child { border-top: none; }
+
+body.home .faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: background 200ms var(--ease-out);
+}
+body.home .faq-question:hover { background: rgba(20,20,15,0.02); }
+body.home .faq-question-text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  color: var(--text);
+}
+
+body.home .faq-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: transform 240ms var(--ease-out), border-color 240ms var(--ease-out), color 240ms var(--ease-out);
+  font-family: var(--font-body);
+  line-height: 1;
+}
+body.home .faq-item.active .faq-icon {
+  transform: rotate(45deg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Default (no JS): every answer visible. */
+body.home .faq-answer { overflow: hidden; }
+
+/* With JS active, body gets .js-enhanced — only .faq-item.active expands. */
+body.home.js-enhanced .faq-answer {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 360ms var(--ease-out), opacity 280ms var(--ease-out);
+}
+body.home.js-enhanced .faq-item.active .faq-answer {
+  max-height: 1200px;
+  opacity: 1;
+}
+
+body.home .faq-answer-inner {
+  font-size: 16px;
+  color: var(--muted);
+  padding-bottom: 28px;
+  max-width: 70ch;
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  body.home .faq-header { grid-template-columns: 1fr; gap: 24px; }
+  body.home .faq-question-text { font-size: 19px; }
+}
+
+/* ─── 12. Final CTA ─── */
+body.home .cta {
+  position: relative;
+  height: 640px;
+  color: #fff;
+  overflow: hidden;
+}
+body.home .cta-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/img/veranda-view.jpg');
+  background-size: cover;
+  background-position: center;
+}
+body.home .cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,20,15,0.45), rgba(20,20,15,0.85));
+}
+body.home .cta-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 56px;
+  max-width: 900px;
+}
+body.home .cta-content h2 {
+  font-size: clamp(56px, 6vw, 96px);
+  line-height: 0.95;
+  color: #fff;
+  margin: 24px 0 32px;
+}
+body.home .cta-content p {
+  font-size: var(--fs-lead);
+  margin-bottom: 40px;
+  max-width: 50ch;
+  opacity: 0.88;
+  color: #fff;
+}
+body.home .cta-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+@media (max-width: 720px) {
+  body.home .cta { height: auto; padding: 96px 0; }
+  body.home .cta-content { padding: 0 24px; }
+  body.home .cta-actions { flex-direction: column; align-items: stretch; }
+}
+
+/* ─── 13. Footer + scroll-banner restyle ─── */
+body.home .site-footer {
+  background: var(--surface-deep);
+  color: var(--clay-soft);
+  padding-block: 64px 32px;
+}
+body.home .site-footer .container {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 56px;
+}
+@media (max-width: 720px) {
+  body.home .site-footer .container { padding-inline: 24px; }
+}
+body.home .site-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+@media (max-width: 1024px) {
+  body.home .site-footer .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  body.home .site-footer .footer-grid { grid-template-columns: 1fr; }
+}
+body.home .site-footer .footer-brand p {
+  color: rgba(232,201,181,0.7);
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  max-width: 30ch;
+}
+body.home .site-footer .footer-brand .header-logo--wordmark .wordmark-name {
+  color: #fff;
+  font-size: 28px;
+}
+body.home .site-footer .footer-brand .header-logo--wordmark .wordmark-tag {
+  color: var(--clay-soft);
+}
+body.home .site-footer .footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--clay-soft);
+  margin-bottom: 16px;
+  text-shadow: none;
+}
+body.home .site-footer .footer-col ul { list-style: none; padding: 0; margin: 0; }
+body.home .site-footer .footer-col li { margin-bottom: 8px; }
+body.home .site-footer .footer-col a {
+  color: rgba(250,247,241,0.65);
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 180ms var(--ease-out);
+}
+body.home .site-footer .footer-col a:hover { color: #fff; }
+body.home .site-footer .footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: rgba(250,247,241,0.7);
+}
+body.home .site-footer .footer-contact-item svg { width: 14px; height: 14px; }
+body.home .site-footer .footer-contact-item a { color: inherit; }
+body.home .site-footer .footer-bottom {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232,201,181,0.6);
+  border-top: 1px solid rgba(232,201,181,0.15);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+body.home .scroll-banner {
+  background: var(--surface-deep);
+  color: var(--bg);
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+}
+body.home .scroll-banner-inner { font-family: var(--font-body); }
+body.home .scroll-banner p { color: var(--bg); }
+body.home .scroll-banner strong { color: var(--clay-soft); font-weight: 500; }
+body.home .scroll-banner .btn--primary {
+  background: var(--clay-soft);
+  color: var(--surface-deep);
+  border-radius: 0;
+}
+body.home .scroll-banner .btn--primary:hover {
+  background: #fff;
+  color: var(--surface-deep);
+}
+
+/* ─── 14. Reveal-on-scroll ─── */
+body.home .reveal {
+  /* Default (no JS): visible. */
+}
+body.home.js-enhanced .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+}
+body.home.js-enhanced .reveal.visible,
+body.home.js-enhanced .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── 15. Reduced motion + neutralise prod's hide-on-scroll-down ─── */
+/* Production's /app.js adds .site-header--hidden on scroll-down to slide the
+   header up. On the new homepage we don't want that — we want a transparent→
+   solid transition instead, handled via .is-scrolled on body. Cancel the slide. */
+body.home .site-header.site-header--hidden {
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.home .hero-image {
+    animation: none;
+    transform: scale(1.05);
+  }
+  body.home .lidar-sweep { animation: none; }
+  body.home .reveal,
+  body.home.js-enhanced .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─── 16. Cream-drawer flip — homepage-specific overrides ─────────
+   Structural drawer rules now live in /nav.css. But this file's
+   body.home base rules target .site-header / wordmark / .header-cta
+   at higher specificity than /nav.css's token-based defaults can
+   override. So when the drawer opens (body.is-nav-open), we restore
+   the cream + dark text flip explicitly here. */
+body.home.is-nav-open .site-header {
+  background: var(--bg);
+  border-bottom-color: var(--border);
+  color: var(--text);
+}
+body.home.is-nav-open .header-logo--wordmark .wordmark-name { color: var(--text); }
+body.home.is-nav-open .header-logo--wordmark .wordmark-tag { color: var(--muted); }
+body.home.is-nav-open .header-nav .nav-list .nav-link {
+  color: var(--text);
+  opacity: 0.78;
+}
+body.home.is-nav-open .header-nav .nav-list .nav-link:hover { opacity: 1; }
+body.home.is-nav-open .nav-cream-trigger {
+  color: var(--text);
+  opacity: 0.78;
+}
+body.home.is-nav-open .nav-cream-trigger:hover { opacity: 1; }
+body.home.is-nav-open .nav-cream-trigger[aria-expanded="true"] {
+  color: var(--text);
+  opacity: 1;
+}
+body.home.is-nav-open .site-header .header-cta {
+  background: var(--accent);
+  color: #fff;
+}
+body.home.is-nav-open .site-header .header-cta:hover {
+  background: var(--surface-deep);
+  color: #fff;
+}
+body.home.is-nav-open .mobile-menu-btn span,
+body.home.is-nav-open .mobile-menu-btn span::before,
+body.home.is-nav-open .mobile-menu-btn span::after {
+  background: var(--text);
+}
+
