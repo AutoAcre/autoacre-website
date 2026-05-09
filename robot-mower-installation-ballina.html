@@ -23,37 +23,117 @@
  "@context": "https://schema.org",
  "@graph": [
   {
-  "@type": "WebPage",
-  "@id": "https://autoacre.com.au/robot-mower-installation-ballina.html#webpage",
-  "url": "https://autoacre.com.au/robot-mower-installation-ballina.html",
-  "name": "Robot Mower Installation in Ballina | AutoAcre",
-  "inLanguage": "en-AU",
-  "isPartOf": { "@id": "https://autoacre.com.au/#website" },
-  "about": { "@id": "https://autoacre.com.au/#organization" }
+   "@type": "WebPage",
+   "@id": "https://autoacre.com.au/robot-mower-installation-ballina.html#webpage",
+   "url": "https://autoacre.com.au/robot-mower-installation-ballina.html",
+   "name": "Robot Mower Installation in Ballina | AutoAcre",
+   "inLanguage": "en-AU",
+   "isPartOf": {
+    "@id": "https://autoacre.com.au/#website"
+   },
+   "about": {
+    "@id": "https://autoacre.com.au/#organization"
+   }
   },
   {
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoacre.com.au/" },
-   { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://autoacre.com.au/service-area.html" },
-   { "@type": "ListItem", "position": 3, "name": "Ballina", "item": "https://autoacre.com.au/robot-mower-installation-ballina.html" }
-  ]
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://autoacre.com.au/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Locations",
+     "item": "https://autoacre.com.au/service-area.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Ballina",
+     "item": "https://autoacre.com.au/robot-mower-installation-ballina.html"
+    }
+   ]
   },
   {
-  "@type": "FAQPage",
-  "mainEntity": [
-   { "@type": "Question", "name": "My block floods after big rain. Does that break the system?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No, with adjustment. Genuinely waterlogged ground triggers an automatic skip — the autonomous unit reads conditions remotely and pauses cycles until the ground is mowable again. You don't lose mowing time to flooding so much as compress two cycles into the dry days that follow. The system also doesn't compact or rut wet ground the way a contractor's heavier ride-on does, so wet-cycle damage is minimal even if a cycle catches the tail end of a wet event." } },
-   { "@type": "Question", "name": "Is Ballina within the standard service area?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Ballina is within the Ballina Shire footprint AutoAcre serves, including Wollongbar, Tabletop, Lennox Head, Alstonville, Tintenbar and Wardell. Larger rural holdings further west toward Lismore are evaluated case-by-case during site assessment." } },
-   { "@type": "Question", "name": "What does Buy + Manage cost in Ballina?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Reference launch price for the autonomous mowing system is $33,490 — RTK base station, commercial-grade autonomous mower with LiDAR, and professional installation included. Tiered monthly management fee scales from $165/month at 2.5 acres to $650/month at 10 acres." } },
-   { "@type": "Question", "name": "When does service start?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Service operations begin Q1 2027. Site assessments and the ROI calculator are open today. Book a site assessment now to lock in your installation slot." } }
-  ]
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "My block floods after big rain. Does that break the system?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No, with adjustment. Genuinely waterlogged ground triggers an automatic skip — the autonomous unit reads conditions remotely and pauses cycles until the ground is mowable again. You don't lose mowing time to flooding so much as compress two cycles into the dry days that follow. The system also doesn't compact or rut wet ground the way a contractor's heavier ride-on does, so wet-cycle damage is minimal even if a cycle catches the tail end of a wet event."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is Ballina within the standard service area?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Ballina is within the Ballina Shire footprint AutoAcre serves, including Wollongbar, Tabletop, Lennox Head, Alstonville, Tintenbar and Wardell. Larger rural holdings further west toward Lismore are evaluated case-by-case during site assessment."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does Buy + Manage cost in Ballina?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Reference launch price for the autonomous mowing system is $33,490 — RTK base station, commercial-grade autonomous mower with LiDAR, and professional installation included. Tiered monthly management fee scales from $165/month at 2.5 acres to $650/month at 10 acres."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "When does service start?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Service operations begin Q1 2027. Site assessments and the ROI calculator are open today. Book a site assessment now to lock in your installation slot."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "Service",
+   "@id": "https://autoacre.com.au/robot-mower-installation-ballina.html#service",
+   "name": "Autonomous Mowing Installation in Ballina",
+   "serviceType": "RTK + LiDAR autonomous mowing system installation and ongoing management",
+   "provider": {
+    "@id": "https://autoacre.com.au/#organization"
+   },
+   "areaServed": {
+    "@type": "City",
+    "name": "Ballina",
+    "containedInPlace": {
+     "@type": "AdministrativeArea",
+     "name": "Ballina Shire, NSW"
+    }
+   },
+   "description": "AutoAcre installs commercial-grade RTK + LiDAR autonomous mowing systems on lifestyle acreage across Ballina (Ballina Shire, postcode 2478). Buy + Manage offer: $33,490 reference launch price for the system, $165–$650/month management depending on acreage. Flat (Richmond River delta); typical mowable area 2–10 acres.",
+   "offers": {
+    "@type": "Offer",
+    "@id": "https://autoacre.com.au/robot-mower-installation-ballina.html#offer",
+    "price": "33490",
+    "priceCurrency": "AUD",
+    "priceSpecification": {
+     "@type": "PriceSpecification",
+     "price": "33490",
+     "priceCurrency": "AUD",
+     "valueAddedTaxIncluded": false,
+     "description": "$33,490 reference launch price for the autonomous mowing system. Tiered $165–$650/month management fee depending on mowable acreage."
+    },
+    "availability": "https://schema.org/PreOrder",
+    "availabilityStarts": "2027-03-01",
+    "areaServed": {
+     "@type": "City",
+     "name": "Ballina"
+    }
+   }
   }
  ]
- }
+}
  </script>
 
  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
@@ -268,6 +348,18 @@
    </div>
   </div>
  </section>
+ <section class="location-quickfacts-wrap" aria-label="Ballina quick facts">
+  <div class="container">
+   <dl class="location-quickfacts">
+    <div><dt>Postcode</dt><dd>2478</dd></div>
+    <div><dt>Council</dt><dd>Ballina Shire</dd></div>
+    <div><dt>From Byron Bay</dt><dd>30 km S</dd></div>
+    <div><dt>Typical mowable area</dt><dd>2–10 acres</dd></div>
+    <div><dt>Dominant terrain</dt><dd>Flat (Richmond River delta)</dd></div>
+   </dl>
+  </div>
+ </section>
+
 
  <section class="section section--alt" aria-labelledby="local-context-heading">
   <div class="container">
