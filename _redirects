@@ -58,3 +58,10 @@
 
 /residential.html  /acreage-robot-mowing-systems.html  301
 /residential       /acreage-robot-mowing-systems       301
+
+# Catch-all 404 — must be the LAST rule. Any path not matched above
+# (and with no real file on disk) gets the styled /404.html served at
+# a real 404 status. Without this, Netlify can serve /foo.html as a
+# 200 OK soft-404, which Google treats worse than a normal 404.
+
+/*  /404.html  404

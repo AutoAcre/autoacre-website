@@ -199,6 +199,7 @@
       <a class='btn btn--primary btn--large' href='/'>Back to home</a>
       <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator'>Run the ROI Calculator</a>
      </div>
+     <p class="not-found-direct">Looking for something specific? Call <a href="tel:0499649094">0499 649 094</a> or email <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>.</p>
     </div>
     <div class="page-hero-image">
      <img src="./img/hinterland-aerial.jpg" alt="Aerial perspective of the Byron Bay hinterland — the region this site covers" width="800" height="600" loading="eager">
@@ -293,6 +294,26 @@
    transition: border-color 200ms;
   }
   .not-found-grid a:hover {
+   border-bottom-color: var(--color-primary);
+  }
+
+  /* Direct-contact line under the hero CTAs — small, mono, editorial.
+     Sits below the buttons so it doesn't compete; intended for high-
+     intent users whose actual question isn't on the recovery grid. */
+  .not-found-direct {
+   margin-top: var(--space-5);
+   font-family: var(--font-mono);
+   font-size: 12px;
+   letter-spacing: 0.04em;
+   color: var(--color-text-muted);
+  }
+  .not-found-direct a {
+   color: var(--color-text);
+   text-decoration: none;
+   border-bottom: 1px solid var(--color-divider);
+   transition: border-color 200ms;
+  }
+  .not-found-direct a:hover {
    border-bottom-color: var(--color-primary);
   }
  </style>
