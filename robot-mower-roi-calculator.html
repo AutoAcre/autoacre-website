@@ -36,8 +36,17 @@
 
 <style>
   *, *::before, *::after { box-sizing: border-box; }
-  /* Calculator container — keeps its own dark theme without affecting site chrome */
-  .calc-page-wrap { background: #0E120F; min-height: 60vh; font-family: 'Inter', system-ui, sans-serif; }
+  /* Calculator container — keeps its own dark theme without affecting site chrome.
+     padding-x is fluid so the calculator gets desktop breathing room without
+     crowding mobile (the inner React sections each carry their own 24px gutter,
+     so clamp() min stays small to avoid compounding too much on small screens). */
+  .calc-page-wrap {
+    background: #0E120F;
+    min-height: 60vh;
+    font-family: 'Inter', system-ui, sans-serif;
+    padding-left: clamp(16px, 3vw, 48px);
+    padding-right: clamp(16px, 3vw, 48px);
+  }
 
   /* Defeat base.css interference with the calculator's invisible-overlay range inputs.
      Without these overrides base.css applies a transition + focus-visible outline + border-radius
