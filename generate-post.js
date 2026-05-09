@@ -253,7 +253,7 @@ function buildPostHtml(post) {
         <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li></ul></div>
         <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><a href="tel:0499649094">0499 649 094</a></div><div class="footer-contact-item"><a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></div></div>
       </div>
-      <div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span></div>
+      <div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span><span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span></div>
     </div>
   </footer>
   <script src="./app.js" defer></script>`;
@@ -441,7 +441,7 @@ ${SHARED_NAV_HEADER}
       <div class="cta-banner-actions"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large" style="border-color:rgba(255,255,255,0.3);color:#fff;">Get a Quote</a></div>
     </div></section>
   </main>
-  <footer class="site-footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span></div></div></footer>
+  <footer class="site-footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span><span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span></div></div></footer>
   <script src="./app.js" defer></script>
   <script src="/nav.js" defer></script>
 </body></html>`;

@@ -1242,6 +1242,18 @@ a.card:active,
   color: var(--color-text-faint);
 }
 
+/* Privacy / Terms legal links — small, muted, inline-spaced. The
+   footer-bottom flex layout already handles wrap on narrow screens. */
+.footer-bottom-legal a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms;
+}
+.footer-bottom-legal a:hover {
+  border-bottom-color: currentColor;
+}
+
 /* =============================================
    FORMS
    ============================================= */
