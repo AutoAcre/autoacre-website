@@ -337,6 +337,7 @@ function buildPostHtml(post) {
     return JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
   })()}<\/script>
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="/nav.css">
@@ -358,7 +359,7 @@ ${SHARED_NAV_HEADER}
         </div>
       </div>
     </div></section>
-    <div class="section-image"><img src="./img/${post.img}" alt="${post.title}" width="1200" height="400" loading="eager"></div>
+    <div class="section-image"><img src="./img/${post.img}" alt="${post.title}" width="1200" height="400" loading="eager" fetchpriority="high"></div>
     <section class="section"><div class="container">
       <div style="max-width:740px;margin:0 auto;line-height:1.85;font-size:17px;">
         <style>.pb h2{font-size:22px;font-weight:700;margin:2em 0 0.5em;line-height:1.3;color:#2D2D2D}.pb p{margin:0 0 1.3em;line-height:1.85}.pb ul{margin:0 0 1.3em 1.5em}.pb li{margin-bottom:0.5em;line-height:1.7}.pb a{color:#4F5C20}.pb strong{font-weight:600}</style>

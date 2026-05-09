@@ -13,10 +13,13 @@
  */
 
 /* ──────────────────────────────────────────────────────────────────
-   FONTS — add Inter Tight (body) and JetBrains Mono (labels).
-   Zodiak (display) and Work Sans (fallback) already loaded by base.
+   FONTS — Inter Tight (body) + JetBrains Mono (labels) load via a
+   <link rel="stylesheet"> in each page's <head>, NOT via @import.
+   @import inside CSS forces a sequential round-trip: browser must
+   download + parse direction-b.css before it discovers the @import
+   and fires a second request. A <link> in HTML lets that font CSS
+   download in parallel with direction-b.css.
    ────────────────────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ──────────────────────────────────────────────────────────────────
    TOKEN OVERRIDES — light mode (default)
