@@ -1811,6 +1811,7 @@ a.card:active,
   font-size: var(--text-xs);
   color: var(--color-text-faint);
   padding-top: var(--space-2);
+  margin-top: 15px;
 }
 
 .breadcrumb a {
