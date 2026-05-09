@@ -254,11 +254,12 @@ function ProductionCalculator({ accent, gating, initialMode }) {
 
   return (
     <div style={{fontFamily:PROD_SANS, background:t.bg, color:t.text, minHeight:'100vh'}}>
-      {/* Top bar */}
+      {/* Top bar — sticks below the site-fixed header (which is ~58-78px tall
+          across desktop/mobile breakpoints in nav.css). 80px covers both. */}
       <div style={{padding:'14px 24px', borderBottom:`1px solid ${t.line}`,
         display:'flex', justifyContent:'space-between', alignItems:'center',
         fontFamily:PROD_MONO, fontSize:11, letterSpacing:'0.1em', textTransform:'uppercase', color:t.textFaint, flexWrap:'wrap', gap:8,
-        position:'sticky', top:0, background:t.bg, zIndex:50}}>
+        position:'sticky', top:80, background:t.bg, zIndex:50}}>
         <div><span style={{color:accent}}>◼</span> AUTOACRE / COST.CALC / v4.2</div>
         <div style={{display:'flex', alignItems:'center', gap:14}}>
           <span>{tier===1?<span style={{color:accent}}>● TIER-1 SERVICE</span>:tier===2?<span style={{color:'#C2A06B'}}>● TIER-2 EXPANSION</span>:'● TIER-3 REFERRAL'}</span>
@@ -266,9 +267,10 @@ function ProductionCalculator({ accent, gating, initialMode }) {
         </div>
       </div>
 
-      {/* Sticky result strip */}
+      {/* Sticky result strip — sits below the site header (80px) AND the
+          calc top bar (~48px tall). top: 128 = 80 + 48. */}
       <div style={{
-        position:'sticky', top:48, zIndex:40,
+        position:'sticky', top:128, zIndex:40,
         padding:'10px 24px', background: t.bg,
         borderBottom: stickyVisible ? `1px solid ${accent}` : `1px solid transparent`,
         boxShadow: stickyVisible ? `0 0 0 1px ${t.line}` : 'none',
