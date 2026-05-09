@@ -1,7 +1,7 @@
 {
-  "nextIndex": 3,
-  "lastPublished": 2,
-  "lastPublishedDate": "2026-05-01",
+  "nextIndex": 4,
+  "lastPublished": 3,
+  "lastPublishedDate": "2026-05-08",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -17,6 +17,11 @@
       "slug": "blog-managing-holiday-rental-grounds-without-a-contractor",
       "date": "2026-05-01",
       "title": "Managing Holiday Rental Grounds Without a Contractor"
+    },
+    {
+      "slug": "blog-why-councils-are-switching-to-autonomous-mowing",
+      "date": "2026-05-08",
+      "title": "Why Councils Are Switching to Autonomous Mowing"
     }
   ],
   "topics": [
