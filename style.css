@@ -1947,3 +1947,32 @@ a.card:active,
   border-bottom: none;
   break-inside: avoid;
 }
+
+/* Region labels inside the mobile Locations drawer (Byron Shire / Ballina
+   Shire / Inland). Visually distinct from the link rows — mono-uppercase,
+   smaller, muted, with breathing room above. Not interactive. */
+.mobile-nav-areas-list .mobile-nav-region-label {
+  display: block;
+  padding: 12px 8px 4px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-faint, #9E9A8A);
+  font-weight: 500;
+}
+
+/* First region label has no leading padding (drawer already has top padding). */
+.mobile-nav-areas-list .mobile-nav-region-label:first-child {
+  padding-top: 4px;
+}
+
+/* "All service areas →" link sits at the bottom of the Locations drawer
+   with a subtle top border to separate it from the regional groups. */
+.mobile-nav-areas-list .mobile-nav-all-locations {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-divider, #D8D1BE);
+  font-weight: 500;
+  color: var(--color-text);
+}
