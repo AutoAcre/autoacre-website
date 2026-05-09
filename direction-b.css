@@ -515,6 +515,18 @@ body.home .hero .btn--secondary:hover {
   flex-wrap: wrap;
 }
 
+/* Page-hero CTA row: side-by-side at desktop. The base .hero-actions
+   rule wraps when buttons overflow — at desktop with the 1fr 1fr
+   page-hero-inner grid the text column is narrow enough that two
+   .btn--large CTAs occasionally tip over. Forcing nowrap keeps them
+   on one line; flex-shrink lets them share the available width. */
+@media (min-width: 768px) {
+  .page-hero .hero-actions {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
+
 @keyframes db-kenburns {
   0%   { transform: scale(1.06) translate(0, 0); }
   100% { transform: scale(1.13) translate(-1.2%, -1.6%); }
