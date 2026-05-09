@@ -17,7 +17,7 @@
 
 <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#7A8B2D">
+<meta name="theme-color" content="#4F5C20">
 
 <!-- Site fonts -->
 <link rel="preconnect" href="https://api.fontshare.com">
@@ -44,8 +44,8 @@
     background: #0E120F;
     min-height: 60vh;
     font-family: 'Inter', system-ui, sans-serif;
-    padding-left: clamp(16px, 3vw, 48px);
-    padding-right: clamp(16px, 3vw, 48px);
+    padding-left: clamp(24px, 5vw, 96px);
+    padding-right: clamp(24px, 5vw, 96px);
   }
 
   /* Defeat base.css interference with the calculator's invisible-overlay range inputs.
@@ -420,7 +420,7 @@
       <TweakSection title="Accent">
        <TweakColor label="Accent" value={tweaks.accent} onChange={v=>setTweak('accent', v)}/>
        <TweakButton label="Lime" onClick={()=>setTweak('accent', '#B8E04C')}/>
-       <TweakButton label="Olive" onClick={()=>setTweak('accent', '#7A8B2D')}/>
+       <TweakButton label="Olive" onClick={()=>setTweak('accent', '#4F5C20')}/>
        <TweakButton label="Cyan terminal" onClick={()=>setTweak('accent', '#5CD8C8')}/>
        <TweakButton label="Amber" onClick={()=>setTweak('accent', '#E8A547')}/>
       </TweakSection>

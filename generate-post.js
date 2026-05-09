@@ -361,7 +361,7 @@ ${SHARED_NAV_HEADER}
     <div class="section-image"><img src="./img/${post.img}" alt="${post.title}" width="1200" height="400" loading="eager"></div>
     <section class="section"><div class="container">
       <div style="max-width:740px;margin:0 auto;line-height:1.85;font-size:17px;">
-        <style>.pb h2{font-size:22px;font-weight:700;margin:2em 0 0.5em;line-height:1.3;color:#2D2D2D}.pb p{margin:0 0 1.3em;line-height:1.85}.pb ul{margin:0 0 1.3em 1.5em}.pb li{margin-bottom:0.5em;line-height:1.7}.pb a{color:#7A8B2D}.pb strong{font-weight:600}</style>
+        <style>.pb h2{font-size:22px;font-weight:700;margin:2em 0 0.5em;line-height:1.3;color:#2D2D2D}.pb p{margin:0 0 1.3em;line-height:1.85}.pb ul{margin:0 0 1.3em 1.5em}.pb li{margin-bottom:0.5em;line-height:1.7}.pb a{color:#4F5C20}.pb strong{font-weight:600}</style>
         <div class="pb">${post.content}</div>
       </div>
     </div></section>
@@ -370,7 +370,7 @@ ${SHARED_NAV_HEADER}
         <h2 style="font-size:26px;font-weight:600;margin:0 0 1em;color:#2D2D2D;">Frequently asked questions</h2>
         <style>.post-faq{padding:1.3em 0;border-bottom:1px solid #E8E8E0}.post-faq:last-child{border-bottom:none}.post-faq .q{font-size:18px;font-weight:600;margin:0 0 0.4em;color:#2D2D2D}.post-faq .a{font-size:16px;line-height:1.7;color:#444;margin:0}</style>
         ${post.faqs.map(f => `<div class="post-faq"><p class="q">${f.q}</p><p class="a">${f.a}</p></div>`).join('')}
-        <p style="margin-top:1.6em;font-size:15px;color:#666;">More answers in the <a href="faq.html" style="color:#7A8B2D;">AutoAcre FAQ</a>, or browse the <a href="glossary.html" style="color:#7A8B2D;">glossary</a>.</p>
+        <p style="margin-top:1.6em;font-size:15px;color:#666;">More answers in the <a href="faq.html" style="color:#4F5C20;">AutoAcre FAQ</a>, or browse the <a href="glossary.html" style="color:#4F5C20;">glossary</a>.</p>
       </div>
     </div></section>` : ''}
     <section class="cta-banner"><div class="container">

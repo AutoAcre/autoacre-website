@@ -435,7 +435,7 @@ body.has-light-header .site-header {
 .nav-link:focus-visible,
 .nav-cream-trigger:focus-visible,
 .nav-cream-drawer-item > a:focus-visible {
-  outline: 2px solid var(--color-primary, #7A8B2D);
+  outline: 2px solid var(--color-primary, #4F5C20);
   outline-offset: 2px;
   border-radius: 2px;
 }

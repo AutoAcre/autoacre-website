@@ -30,7 +30,7 @@
  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
  <link rel="manifest" href="/site.webmanifest">
- <meta name="theme-color" content="#7A8B2D">
+ <meta name="theme-color" content="#4F5C20">
  <link rel="stylesheet" href="/nav.css">
 </head>
 <body class="has-light-header"><header class="site-header" role="banner">
@@ -218,26 +218,26 @@
    <style>
     /* === MAP CARD === */
   .map-card { background: #fff; border: 1px solid #E8E8E0; border-radius: 12px; padding: 1.8em; margin-bottom: var(--space-6); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .map-card.map-label { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; color: #7A8B2D; margin-bottom: 0.4em; }
+  .map-card.map-label { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; color: #4F5C20; margin-bottom: 0.4em; }
   .map-card h3 { font-size: 22px; font-weight: 600; margin: 0 0 0.5em; color: #2D2D2D; line-height: 1.3; }
   .map-card.sub { font-size: 14.5px; color: #555; line-height: 1.6; margin-bottom: 1.4em; }
   .map-search-row { display: flex; gap: 0.5em; margin-bottom: 0.9em; }
   .map-search-row input { flex: 1; min-width: 0; padding: 0.65em 0.8em; border: 1px solid #DDDDD8; border-radius: 6px; font-size: 14px; font-family: inherit; }
-  .map-search-row input:focus { outline: none; border-color: #7A8B2D; }
+  .map-search-row input:focus { outline: none; border-color: #4F5C20; }
   .map-search-row button { padding: 0.65em 1.1em; background: #2D2D2D; color: #fff; border: none; border-radius: 6px; font-weight: 600; font-size: 13.5px; cursor: pointer; font-family: inherit; }
   .map-search-row button:hover { background: #444; }
     #map-canvas { width: 100%; height: 380px; border-radius: 8px; border: 1px solid #DDDDD8; margin-bottom: 0.9em; background: #F5F5F0; }
   .map-controls { display: flex; flex-wrap: wrap; gap: 0.5em; align-items: center; margin-bottom: 1em; }
   .map-controls button { padding: 0.55em 1em; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; border: 1px solid #DDDDD8; background: #fff; color: #2D2D2D; }
-  .map-controls button.primary { background: #7A8B2D; color: #fff; border-color: #7A8B2D; }
+  .map-controls button.primary { background: #4F5C20; color: #fff; border-color: #4F5C20; }
   .map-controls button.primary:hover { background: #6B7A26; }
   .map-controls button:hover { background: #F5F5F0; }
   .map-controls button:disabled { opacity: 0.4; cursor: not-allowed; }
   .map-readout { margin-left: auto; font-family: 'Zodiak', serif; font-size: 18px; color: #2D2D2D; font-weight: 600; }
-  .map-readout.map-readout-num { color: #7A8B2D; font-size: 24px; }
+  .map-readout.map-readout-num { color: #4F5C20; font-size: 24px; }
   .map-readout.map-readout-unit { font-size: 14px; color: #666; font-weight: 400; margin-left: 0.2em; }
   .map-readout.map-readout-secondary { display: block; font-size: 12px; color: #888; font-weight: 400; font-family: 'Work Sans', sans-serif; margin-top: 0.1em; text-align: right; }
-    #map-use-btn { display: block; width: 100%; padding: 0.85em; background: #7A8B2D; color: #fff; border: none; border-radius: 6px; font-weight: 600; font-size: 15px; cursor: pointer; font-family: inherit; margin-bottom: 0.6em; }
+    #map-use-btn { display: block; width: 100%; padding: 0.85em; background: #4F5C20; color: #fff; border: none; border-radius: 6px; font-weight: 600; font-size: 15px; cursor: pointer; font-family: inherit; margin-bottom: 0.6em; }
     #map-use-btn:hover { background: #6B7A26; }
     #map-use-btn:disabled { background: #DDDDD8; color: #888; cursor: not-allowed; }
   .map-finep { font-size: 12.5px; color: #777; line-height: 1.55; margin: 0; }
@@ -250,22 +250,22 @@
 
     /* === EST CARD (existing) === */
   .est-card { background: #fff; border: 1px solid #E8E8E0; border-radius: 12px; padding: 1.8em; margin-bottom: var(--space-8); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .est-label { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; color: #7A8B2D; margin-bottom: 0.4em; }
+  .est-label { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; color: #4F5C20; margin-bottom: 0.4em; }
   .est-card h3 { font-size: 22px; font-weight: 600; margin: 0 0 0.5em; color: #2D2D2D; line-height: 1.3; }
   .est-card.sub { font-size: 14.5px; color: #555; line-height: 1.6; margin-bottom: 1.6em; }
   .est-slider-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; font-weight: 600; color: #2D2D2D; margin-bottom: 0.6em; }
-  .est-slider-row.val { color: #7A8B2D; font-family: 'Zodiak', serif; font-size: 18px; }
+  .est-slider-row.val { color: #4F5C20; font-family: 'Zodiak', serif; font-size: 18px; }
   .est-slider { width: 100%; -webkit-appearance: none; appearance: none; background: transparent; height: 24px; }
   .est-slider:focus { outline: none; }
   .est-slider::-webkit-slider-runnable-track { height: 6px; background: #E8E8E0; border-radius: 3px; }
   .est-slider::-moz-range-track { height: 6px; background: #E8E8E0; border-radius: 3px; }
-  .est-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #7A8B2D; border-radius: 50%; margin-top: -8px; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: transform 0.1s; }
-  .est-slider::-moz-range-thumb { width: 22px; height: 22px; background: #7A8B2D; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .est-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #4F5C20; border-radius: 50%; margin-top: -8px; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: transform 0.1s; }
+  .est-slider::-moz-range-thumb { width: 22px; height: 22px; background: #4F5C20; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
   .est-slider:active::-webkit-slider-thumb { transform: scale(1.15); }
   .est-ticks { display: flex; justify-content: space-between; font-size: 12px; color: #888; margin-top: 0.3em; }
   .est-pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; margin: 1.6em 0 1em; }
-  .est-tile { background: #F5F5F0; padding: 0.9em 1em; border-radius: 6px; border-left: 3px solid #7A8B2D; }
-  .est-tile.lab { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: #7A8B2D; font-weight: 600; margin-bottom: 0.25em; }
+  .est-tile { background: #F5F5F0; padding: 0.9em 1em; border-radius: 6px; border-left: 3px solid #4F5C20; }
+  .est-tile.lab { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: #4F5C20; font-weight: 600; margin-bottom: 0.25em; }
   .est-tile.num { font-family: 'Zodiak', serif; font-size: 24px; font-weight: 600; color: #2D2D2D; line-height: 1.1; }
   .est-tile.num.unit { font-size: 13px; font-weight: 400; color: #666; font-family: 'Work Sans', sans-serif; }
   .est-totals { background: #2D2D2D; color: #fff; padding: 1.2em 1.4em; border-radius: 8px; margin-bottom: 1em; }
@@ -274,8 +274,8 @@
   .est-totals.num { font-family: 'Zodiak', serif; font-size: 26px; font-weight: 600; }
   .est-compare { background: #FFF8EB; border-left: 3px solid #C8A028; padding: 0.95em 1.15em; border-radius: 4px; font-size: 14px; line-height: 1.65; color: #444; margin-bottom: 1.2em; }
   .est-compare strong { color: #2D2D2D; }
-  .est-compare em { font-style: normal; color: #7A8B2D; font-weight: 600; }
-  .est-cta { display: block; width: 100%; padding: 0.95em; background: #7A8B2D; color: #fff; border: none; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; transition: background 0.15s; text-align: center; font-family: inherit; }
+  .est-compare em { font-style: normal; color: #4F5C20; font-weight: 600; }
+  .est-cta { display: block; width: 100%; padding: 0.95em; background: #4F5C20; color: #fff; border: none; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; transition: background 0.15s; text-align: center; font-family: inherit; }
   .est-cta:hover { background: #6B7A26; }
   .est-finep { font-size: 12.5px; color: #777; margin-top: 0.8em; line-height: 1.55; text-align: center; }
    </style>
@@ -388,10 +388,10 @@
     // Custom polygon drawer (we'll trigger it from our own button)
     var polygonDrawer = new L.Draw.Polygon(map, {
      shapeOptions: {
-     color: '#7A8B2D',
+     color: '#4F5C20',
      weight: 3,
      fillOpacity: 0.25,
-     fillColor: '#7A8B2D'
+     fillColor: '#4F5C20'
      },
      showArea: false,
      allowIntersection: false
@@ -697,15 +697,15 @@
     <h3 style="margin-bottom: var(--space-4);">Pricing guide</h3>
     <ul class="feature-list">
     <li>
-     <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+     <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
      <strong>Residential:</strong>&nbsp;$165–$650/month management fee for properties 2.5–10 acres
     </li>
     <li>
-     <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+     <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
      <strong>Commercial:</strong>&nbsp;Custom pricing based on site size, terrain, and deployment type
     </li>
     <li>
-     <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#7A8B2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+     <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
      No lock-in contracts on <a href="residential.html">Buy + Manage offers</a>
     </li>
     </ul>
