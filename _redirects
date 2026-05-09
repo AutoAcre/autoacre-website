@@ -1,11 +1,3 @@
-# Stage 1 pivot — quote/demo deprecated, redirect to register-interest waitlist.
-# Permanent (301) so any inbound links pass ranking signal to the new page.
-
-/quote.html         /register-interest.html   301
-/demo.html          /register-interest.html   301
-/quote              /register-interest.html   301
-/demo               /register-interest.html   301
-
 # Phase 3 pivot — suburb pages renamed from /mowing-X to /robot-mower-installation-X
 # 301 so ranking signal transfers cleanly to the new URLs.
 
@@ -45,11 +37,12 @@
 /mowing-ballina             /robot-mower-installation-ballina             301
 
 # Phase 4 — retire two superseded comparison pages.
-# autoacre-vs-husqvarna folds into the new "best robot mower for large properties" page.
+# autoacre-vs-husqvarna folds into the commercial robotic mower buyer's guide,
+# which carries the brand-by-brand comparison content.
 # daily-vs-fortnightly-mowing folds into the rewritten autonomous-vs-ride-on page.
 
-/autoacre-vs-husqvarna.html         /best-robot-mower-for-large-properties.html   301
-/autoacre-vs-husqvarna              /best-robot-mower-for-large-properties        301
+/autoacre-vs-husqvarna.html         /commercial-robotic-mower-buyers-guide-australia.html   301
+/autoacre-vs-husqvarna              /commercial-robotic-mower-buyers-guide-australia        301
 /daily-vs-fortnightly-mowing.html   /autonomous-vs-ride-on.html                   301
 /daily-vs-fortnightly-mowing        /autonomous-vs-ride-on                        301
 
