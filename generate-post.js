@@ -124,6 +124,47 @@ const SHARED_NAV_HEADER = `<header class="site-header" role="banner">
  <a href="tel:0499649094" class="mobile-nav-phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
 </nav>`;
 
+// ── Shared head links (CSS + fonts) — must match what the rest of the site loads
+// so blog content renders consistently with authority pages. Adding direction-b.css
+// is critical: without it posts render with no Direction B skin (no olive primary,
+// rounded corners come back, Zodiak headlines disappear). Inter Tight + JetBrains
+// Mono load via direct <link> for parallel font-CSS download (matching the perf
+// hoist applied to all other pages). ────────────────────────────────────────────
+const SHARED_HEAD_LINKS = `<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css">
+ <link rel="stylesheet" href="/direction-b.css">
+ <link rel="stylesheet" href="/nav.css">`;
+
+// ── Shared 6-column footer matching the canonical site footer (Autonomous Systems
+// / Locations / Insights / Convert / Company / Contact). Used by both buildPostHtml
+// and buildBlogHtml so blog content sits consistently with authority pages.
+const SITE_FOOTER = ` <footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <a aria-label='AutoAcre home' class='header-logo' href='/'>
+     <img src="/img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
+    </a>
+    <p>Autonomous mowing systems for 2.5–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
+   </div>
+   <div class="footer-col"><h4>Autonomous Systems</h4><ul><li><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a></li><li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li><li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li><li><a href='/commercial'>Commercial Autonomous Mowing</a></li></ul></div>
+   <div class="footer-col"><h4>Locations</h4><ul><li><a href='/robot-mower-installation-byron-bay'>Byron Bay</a></li><li><a href='/robot-mower-installation-federal'>Federal</a></li><li><a href='/robot-mower-installation-bangalow'>Bangalow</a></li><li><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a></li><li><a href='/robot-mower-installation-newrybar'>Newrybar</a></li><li><a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a></li><li><a href='/robot-mower-installation-myocum'>Myocum</a></li><li><a href='/robot-mower-installation-brooklet'>Brooklet</a></li><li><a href='/service-area'>All locations</a></li></ul></div>
+   <div class="footer-col"><h4>Insights</h4><ul><li><a href='/blog'>Robot Mower Guides</a></li><li><a href='/acreage-robot-mowing-systems'>Acreage Automation</a></li><li><a href='/rtk-robot-mower-installation'>RTK Technology</a></li><li><a href='/autonomous-vs-ride-on'>Comparisons</a></li><li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li><li><a href='/faq'>Facts &amp; FAQs</a></li></ul></div>
+   <div class="footer-col"><h4>Convert</h4><ul><li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li><li><a href='/book-site-assessment'>Book Site Assessment</a></li></ul></div>
+   <div class="footer-col"><h4>Company</h4><ul><li><a href='/about'>About</a></li><li><a href='/blog'>Blog</a></li><li><a href='/glossary'>Glossary</a></li><li><a href='/facts'>Facts &amp; Figures</a></li></ul></div>
+   <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><a href="tel:0499649094">0499 649 094</a></div><div class="footer-contact-item"><a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></div><div class="footer-contact-item"><span>Byron Bay &amp; Northern Rivers, NSW</span></div></div>
+  </div>
+  <div class="footer-bottom">
+   <span>&copy; 2026 AutoAcre. All rights reserved.</span>
+   <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
+   <span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span>
+  </div>
+ </div>
+</footer>`;
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function slugify(title) {
   return 'blog-' + title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -245,19 +286,6 @@ async function generateContent(topic) {
 
 // ── Build blog post HTML ──────────────────────────────────────────────────────
 function buildPostHtml(post) {
-  const SITE_FOOTER = `  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand"><a href="index.html"><img src="./img/logo.png" alt="AutoAcre" height="48" style="height:48px;width:auto;filter:brightness(0) invert(1);"></a><p>Autonomous grounds management across the Northern Rivers.</p></div>
-        <div class="footer-col"><h4>Services</h4><ul><li><a href="acreage-robot-mowing-systems.html">Residential</a></li><li><a href="commercial.html">Commercial</a></li><li><a href="demo.html">Book a Demo</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
-        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li></ul></div>
-        <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><a href="tel:0499649094">0499 649 094</a></div><div class="footer-contact-item"><a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></div></div>
-      </div>
-      <div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span><span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span></div>
-    </div>
-  </footer>
-  <script src="./app.js" defer></script>`;
-
   return `<!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -266,7 +294,7 @@ function buildPostHtml(post) {
   <meta name="description" content="${post.excerpt}">
   <link rel="canonical" href="https://autoacre.com.au/${post.slug}.html">
   <meta property="og:title" content="${post.title}"><meta property="og:description" content="${post.excerpt}">
-  <meta property="og:image" content="./img/og-image.png"><meta property="og:url" content="https://autoacre.com.au/${post.slug}.html"><meta property="og:type" content="article">
+  <meta property="og:image" content="https://autoacre.com.au/img/${post.img}"><meta property="og:url" content="https://autoacre.com.au/${post.slug}.html"><meta property="og:type" content="article">
   <script type="application/ld+json">${(() => {
     const articleId = `https://autoacre.com.au/${post.slug}.html#article`;
     const pageId = `https://autoacre.com.au/${post.slug}.html#webpage`;
@@ -309,7 +337,7 @@ function buildPostHtml(post) {
           { "@id": orgId },
           { "@id": "https://autoacre.com.au/#service-residential" },
           { "@id": "https://autoacre.com.au/#service-commercial" },
-          { "@id": "https://autoacre.com.au/#product-pandag-g1" }
+          { "@id": "https://autoacre.com.au/#product-platform" }
         ]
       },
       {
@@ -336,11 +364,7 @@ function buildPostHtml(post) {
     }
     return JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
   })()}<\/script>
-  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="/nav.css">
+  ${SHARED_HEAD_LINKS}
 </head>
 <body class="has-light-header">
 ${SHARED_NAV_HEADER}
@@ -381,6 +405,7 @@ ${SHARED_NAV_HEADER}
     </div></section>
   </main>
 ${SITE_FOOTER}
+<script src="./app.js" defer></script>
 <script src="/nav.js" defer></script>
 </body></html>`;
 }
@@ -418,17 +443,14 @@ function buildBlogHtml(published) {
   <title>Blog — Acreage Mowing &amp; Property Maintenance | AutoAcre</title>
   <meta name="description" content="Expert guides on acreage mowing costs, autonomous vs traditional mowing, and lifestyle property maintenance across Byron Bay and the Northern Rivers.">
   <link rel="canonical" href="https://autoacre.com.au/blog.html">
-  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="/nav.css">
+  ${SHARED_HEAD_LINKS}
 </head>
 <body class="has-light-header">
 ${SHARED_NAV_HEADER}
   <main>
     <section class="page-hero"><div class="container">
       <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Blog</nav>
-      <div class="page-hero-inner" style="grid-template-columns:1fr;"><div class="page-hero-text"><span class="section-label">Knowledge Base</span><h1>Guides for acreage property owners</h1><p>Practical advice on autonomous mowing, grounds management, and getting the most from your Northern Rivers lifestyle property.</p></div></div>
+      <div class="page-hero-inner"><div class="page-hero-text"><span class="section-label">Knowledge Base</span><h1>Guides for acreage property owners</h1><p>Practical advice on autonomous mowing, grounds management, and getting the most from your Northern Rivers lifestyle property.</p></div><div class="page-hero-image"><img src="./img/hinterland-aerial.jpg" alt="Aerial perspective across the Byron Bay hinterland — the lifestyle-acreage region these guides cover" width="800" height="600" loading="eager" fetchpriority="high"></div></div>
     </div></section>
     <section class="section"><div class="container">
       <h2 class="sr-only">Articles</h2>
@@ -441,9 +463,9 @@ ${SHARED_NAV_HEADER}
       <div class="cta-banner-actions"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large" style="border-color:rgba(255,255,255,0.3);color:#fff;">Get a Quote</a></div>
     </div></section>
   </main>
-  <footer class="site-footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span><span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span></div></div></footer>
-  <script src="./app.js" defer></script>
-  <script src="/nav.js" defer></script>
+${SITE_FOOTER}
+<script src="./app.js" defer></script>
+<script src="/nav.js" defer></script>
 </body></html>`;
 }
 
