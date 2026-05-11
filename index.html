@@ -674,7 +674,7 @@
       <input type="range" id="acreage-slider" min="2.5" max="10" step="0.5" value="5" aria-label="Property acreage in acres">
       <div class="dial-ticks"><span>2.5 ac</span><span>5 ac</span><span>7 ac</span><span>10 ac</span></div>
       <div class="dial-fee">
-       <span class="label">Mgmt/mo</span>
+       <span class="label">Management fee / month</span>
        <span class="dial-fee-value">$<span id="dial-fee-value">330</span></span>
       </div>
      </div>
@@ -688,34 +688,36 @@
     </div>
     <div class="roi-controls">
      <div class="roi-control">
-      <label for="roi-contractor-visit">Contractor $/visit — $<span id="roi-contractor-display">800</span></label>
+      <label for="roi-contractor-visit">Cost per contractor visit — $<span id="roi-contractor-display">800</span></label>
+      <div class="roi-control-hint">What your fortnightly mowing contractor charges each visit.</div>
       <input type="range" id="roi-contractor-visit" min="200" max="1500" step="25" value="800">
      </div>
      <div class="roi-control">
-      <label for="roi-visits-year">Visits/yr — <span id="roi-visits-display">26</span></label>
+      <label for="roi-visits-year">Contractor visits per year — <span id="roi-visits-display">26</span></label>
+      <div class="roi-control-hint">26 = fortnightly · 52 = weekly · 12 = monthly</div>
       <input type="range" id="roi-visits-year" min="12" max="52" step="1" value="26">
      </div>
     </div>
     <div class="roi-readouts">
      <div class="roi-readout">
-      <div class="roi-readout-label">Yr 1 — AutoAcre</div>
+      <div class="roi-readout-label">Year 1 — AutoAcre</div>
       <div class="roi-readout-value" id="roi-aa-yr1">$37,450</div>
-      <div class="roi-readout-hint">$33,490 + 12 mo fee</div>
+      <div class="roi-readout-hint">$33,490 system + 12 months management fee</div>
      </div>
      <div class="roi-readout">
-      <div class="roi-readout-label">Yr 1 — Contractor</div>
+      <div class="roi-readout-label">Year 1 — Contractor</div>
       <div class="roi-readout-value" id="roi-ctr-yr1">$20,800</div>
-      <div class="roi-readout-hint">26 × $800</div>
+      <div class="roi-readout-hint">26 visits × $800</div>
      </div>
      <div class="roi-readout roi-readout--accent">
-      <div class="roi-readout-label">8-yr difference</div>
+      <div class="roi-readout-label">8-year cost difference</div>
       <div class="roi-readout-value" id="roi-diff-8yr">$101,230</div>
-      <div class="roi-readout-hint">contractor − AutoAcre</div>
+      <div class="roi-readout-hint">contractor total − AutoAcre total</div>
      </div>
      <div class="roi-readout">
-      <div class="roi-readout-label">Break-even</div>
+      <div class="roi-readout-label">Break-even month</div>
       <div class="roi-readout-value" id="roi-be-month">24 mo</div>
-      <div class="roi-readout-hint">at current settings</div>
+      <div class="roi-readout-hint">when AutoAcre catches up to contractor cost</div>
      </div>
     </div>
     <div class="roi-savings" id="roi-savings">

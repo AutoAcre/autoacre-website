@@ -938,9 +938,18 @@ body.home .roi-control label {
   display: block;
   font-size: 12px;
   color: var(--muted);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-family: var(--font-mono);
   letter-spacing: 0.05em;
+}
+body.home .roi-control-hint {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.75;
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
 body.home .roi-readouts {
   display: grid;
