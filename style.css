@@ -418,6 +418,14 @@ a:hover {
   .mobile-menu-btn {
     display: none;
   }
+  /* Force-hide the mobile drawer at desktop widths regardless of any
+     .active class. Without this, a drawer opened on a narrow viewport
+     stays visible if the user resizes the window wider, because
+     .mobile-nav.active sets display:block unconditionally. */
+  .mobile-nav,
+  .mobile-nav.active {
+    display: none !important;
+  }
 }
 
 .mobile-menu-btn span {
