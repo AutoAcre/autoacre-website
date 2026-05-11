@@ -483,6 +483,22 @@ a:hover {
   border-bottom: 1px solid var(--color-divider);
 }
 
+/* Mobile-drawer CTA button — exempt from the .mobile-nav a full-width
+   block treatment so it renders as a real button (content-width with
+   comfortable padding), not a stretched bar. display:block + width:
+   fit-content lets auto margins centre it in the drawer; no bottom
+   border (the .btn--primary background is its own visual frame). */
+.mobile-nav .mobile-cta {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--space-4) var(--space-8);
+  text-align: center;
+  border-bottom: none;
+}
+
 .mobile-nav a:last-child {
   border-bottom: none;
 }
