@@ -476,7 +476,7 @@ a:hover {
 .mobile-nav a {
   display: block;
   padding: var(--space-3) 0;
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 500;
   color: var(--color-text);
   text-decoration: none;
@@ -1921,7 +1921,7 @@ a.card:active,
   justify-content: space-between;
   width: 100%;
   padding: var(--space-3) 0;
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 500;
   color: var(--color-text);
   background: none;
