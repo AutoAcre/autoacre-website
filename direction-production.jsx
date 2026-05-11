@@ -142,12 +142,13 @@ function ProdSeg({ label, hint, value, options, onChange, accent, t }) {
           const active = o.value === value;
           return (
             <button key={o.value} type="button" onClick={()=>onChange(o.value)}
-              style={{flex:1, minWidth:60, padding:'10px 8px',
+              style={{flex:'1 1 auto', minWidth:60, padding:'10px 12px',
                 borderRight: i < options.length-1 ? `1px solid ${t.line}` : 'none',
                 background: active ? accent : 'transparent',
                 color: active ? '#0E120F' : t.text,
                 fontSize:12, fontWeight: active ? 700 : 500, letterSpacing:'0.05em',
                 fontFamily:PROD_MONO, textTransform:'uppercase',
+                whiteSpace:'nowrap',
                 cursor:'pointer', border:'none', transition:'all 0.12s'}}>{o.label}</button>
           );
         })}
