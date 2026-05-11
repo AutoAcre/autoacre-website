@@ -112,14 +112,15 @@ function Kv({ label, v, t }) {
   );
 }
 
-function ProdSlider({ label, value, min, max, step, format, onChange, accent, t }) {
+function ProdSlider({ label, hint, value, min, max, step, format, onChange, accent, t }) {
   const pct = ((value - min) / (max - min)) * 100;
   return (
     <div style={{padding:'14px 0'}}>
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', marginBottom:8}}>
+      <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', marginBottom: hint ? 2 : 8}}>
         <div style={{fontSize:11, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500}}>{label}</div>
         <div style={{fontFamily:PROD_MONO, fontSize:18, fontWeight:600, color:accent, fontVariantNumeric:'tabular-nums'}}>{format(value)}</div>
       </div>
+      {hint && <div style={{fontSize:11, color:t.textFaint, marginBottom:10, lineHeight:1.4, fontStyle:'italic', opacity:0.85}}>{hint}</div>}
       <div style={{position:'relative', height:24, display:'flex', alignItems:'center'}}>
         <div style={{position:'absolute', inset:'11px 0', background:t.line, borderRadius:1}}/>
         <div style={{position:'absolute', left:0, top:11, height:2, width:`${pct}%`, background:accent}}/>
@@ -131,10 +132,11 @@ function ProdSlider({ label, value, min, max, step, format, onChange, accent, t 
     </div>
   );
 }
-function ProdSeg({ label, value, options, onChange, accent, t }) {
+function ProdSeg({ label, hint, value, options, onChange, accent, t }) {
   return (
     <div style={{padding:'14px 0'}}>
-      <div style={{fontSize:11, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:8}}>{label}</div>
+      <div style={{fontSize:11, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom: hint ? 2 : 8}}>{label}</div>
+      {hint && <div style={{fontSize:11, color:t.textFaint, marginBottom:10, lineHeight:1.4, fontStyle:'italic', opacity:0.85}}>{hint}</div>}
       <div style={{display:'flex', flexWrap:'wrap', gap:0, border:`1px solid ${t.line}`}}>
         {options.map((o, i) => {
           const active = o.value === value;
@@ -302,19 +304,24 @@ function ProductionCalculator({ accent, gating, initialMode }) {
       {/* Inputs */}
       <div style={{margin:'0 24px', padding:'20px', border:`1px solid ${t.line}`, background:t.surfaceDim}}>
         <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'8px 28px'}}>
-          <ProdSlider t={t} label="ACRES" value={inputs.acres} min={2.5} max={10} step={0.1}
-            format={v=>`${v.toFixed(1)}`} onChange={v=>set('acres', v)} accent={accent}/>
-          <ProdSlider t={t} label="CONTRACTOR $/MO" value={inputs.contractorMonthly} min={300} max={3500} step={50}
+          <ProdSlider t={t} label="YOUR MOWABLE ACRES" hint="The area you actually mow — not the total property size."
+            value={inputs.acres} min={2.5} max={10} step={0.1}
+            format={v=>`${v.toFixed(1)} ac`} onChange={v=>set('acres', v)} accent={accent}/>
+          <ProdSlider t={t} label="CURRENT MONTHLY MOWING SPEND" hint="Contractor bill, fuel, or both — whatever you pay today."
+            value={inputs.contractorMonthly} min={300} max={3500} step={50}
             format={v=>`$${v.toLocaleString('en-AU')}`} onChange={v=>set('contractorMonthly', v)} accent={accent}/>
-          <ProdSeg t={t} label="TERRAIN" value={inputs.terrain}
-            options={[{value:'flat',label:'FLAT'},{value:'rolling',label:'ROLL'},{value:'steep',label:'STEEP'}]}
+          <ProdSeg t={t} label="TERRAIN" hint="The dominant grade across most of the mowable area."
+            value={inputs.terrain}
+            options={[{value:'flat',label:'FLAT'},{value:'rolling',label:'ROLLING'},{value:'steep',label:'STEEP'}]}
             onChange={v=>set('terrain', v)} accent={accent}/>
-          <ProdSeg t={t} label="FREQUENCY" value={inputs.frequency}
-            options={[{value:'weekly',label:'WK'},{value:'fortnightly',label:'2WK'},{value:'monthly',label:'MO'},{value:'seasonal',label:'SSN'}]}
+          <ProdSeg t={t} label="HOW OFTEN IT'S MOWED NOW" hint="Your current mowing rhythm, not the one you wish you had."
+            value={inputs.frequency}
+            options={[{value:'weekly',label:'WEEKLY'},{value:'fortnightly',label:'FORTNIGHTLY'},{value:'monthly',label:'MONTHLY'},{value:'seasonal',label:'SEASONAL'}]}
             onChange={v=>set('frequency', v)} accent={accent}/>
         </div>
-        <div style={{marginTop:12, display:'flex', alignItems:'center', gap:18, flexWrap:'wrap'}}>
-          <div style={{fontSize:11, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500}}>POSTCODE</div>
+        <div style={{marginTop:16}}>
+          <div style={{fontSize:11, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:2}}>YOUR POSTCODE</div>
+          <div style={{fontSize:11, color:t.textFaint, marginBottom:10, lineHeight:1.4, fontStyle:'italic', opacity:0.85}}>4 digits — determines local service tier.</div>
           <input value={inputs.postcode} onChange={e=>set('postcode', e.target.value.replace(/\D/g,'').slice(0,4))}
             inputMode="numeric"
             style={{width:160, padding:'10px 12px', background:t.surface, border:`1px solid ${t.line}`, color:t.text,
