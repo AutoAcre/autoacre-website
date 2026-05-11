@@ -59,7 +59,13 @@
     menuBtn.addEventListener('click', function () {
       menuBtn.classList.toggle('active');
       mobileNav.classList.toggle('active');
-      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+      var isOpen = mobileNav.classList.contains('active');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      // Flip body.is-nav-open in sync so the cream-nav header tokens
+      // (nav.css) switch from transparent-over-hero to cream while the
+      // drawer is open. Without this, body.home shows the dark hero
+      // photo bleeding through the top of the mobile drawer.
+      document.body.classList.toggle('is-nav-open', isOpen);
     });
 
     // Close on link click
@@ -68,6 +74,7 @@
         menuBtn.classList.remove('active');
         mobileNav.classList.remove('active');
         document.body.style.overflow = '';
+        document.body.classList.remove('is-nav-open');
       });
     });
   }
