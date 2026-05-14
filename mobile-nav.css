@@ -1,0 +1,360 @@
+/* mobile-nav.css — AutoAcre mobile drawer v2 (Editorial Stack)
+ *
+ * Drop into the cascade AFTER style.css and nav.css. Targets the
+ * existing .mobile-nav overlay that app.js already toggles via .active
+ * + .mobile-menu-btn — no JS changes required for open/close.
+ *
+ * Replaces the v1 mobile drawer markup (.mobile-nav-areas, .mobile-cta,
+ * .mobile-nav-phone). The v1 rules in style.css can be deleted once
+ * every page ships the new partial; they're cleanly overridden here
+ * in the meantime via :where() resets at the top of section 1.
+ *
+ * Open/close of each expandable section: handled by inline onclick on
+ * the .mn-section-toggle button (mirrors the existing
+ * .mobile-nav-areas-toggle pattern — no nav.js coupling).
+ */
+
+/* ── 1. SHELL ────────────────────────────────────────────────────── */
+.mobile-nav {
+ display: none;
+ position: fixed;
+ inset: 4rem 0 0 0;
+ z-index: 99;
+ background: var(--color-bg, #FAF7F1);
+ color: var(--color-text, #14140F);
+ font-family: var(--font-body, 'Inter Tight', sans-serif);
+ padding: 0;
+ overflow: hidden;
+ flex-direction: column;
+}
+.mobile-nav.active { display: flex; }
+
+/* Reset v1 rules that targeted bare `.mobile-nav a` so they don't
+   leak through to the new markup. (Old style.css gave every <a> a
+   block layout + heavy bottom border.) */
+.mobile-nav :where(a) {
+ display: revert;
+ padding: revert;
+ border-bottom: 0;
+}
+
+/* Scrollable interior; CTA + footer pin to the bottom edge */
+.mobile-nav .mn-scroll {
+ flex: 1;
+ min-height: 0;
+ overflow-y: auto;
+ -webkit-overflow-scrolling: touch;
+ padding-bottom: var(--space-2, 0.5rem);
+}
+
+/* ── 2. QUICK-LINKS ROW (primary nav: Home + About) ──────────────── */
+.mobile-nav .mn-quicklinks {
+ display: flex;
+ align-items: center;
+ gap: var(--space-5, 1.25rem);
+ padding: var(--space-3, 0.75rem) var(--space-5, 1.25rem) var(--space-5, 1.25rem);
+ list-style: none;
+ margin: 0;
+}
+.mobile-nav .mn-quicklinks li {
+ display: inline-flex;
+ align-items: center;
+ gap: var(--space-5, 1.25rem);
+}
+.mobile-nav .mn-quicklinks li + li::before {
+ content: '';
+ width: 3px;
+ height: 3px;
+ border-radius: 50%;
+ background: var(--color-text-faint, #9E9A8A);
+ flex-shrink: 0;
+}
+.mobile-nav .mn-quicklinks a {
+ font-size: 0.875rem;
+ font-weight: 500;
+ color: var(--color-text-muted, #69655B);
+ text-decoration: none;
+ letter-spacing: 0.02em;
+}
+.mobile-nav .mn-quicklinks a[aria-current="page"] {
+ color: var(--color-primary, #4F5C20);
+}
+
+/* ── 3. SECTION STRIP ────────────────────────────────────────────── */
+.mobile-nav .mn-strip {
+ display: flex;
+ align-items: baseline;
+ justify-content: space-between;
+ padding: var(--space-4, 1rem) var(--space-5, 1.25rem) var(--space-3, 0.75rem);
+ border-top: 1px solid rgba(20,20,15,0.14);
+ font-family: var(--font-mono, 'JetBrains Mono', monospace);
+ font-size: 10px;
+ letter-spacing: 0.22em;
+ text-transform: uppercase;
+ color: var(--color-text-muted, #69655B);
+ font-weight: 500;
+}
+.mobile-nav .mn-strip-count {
+ letter-spacing: 0.18em;
+ color: var(--color-text-faint, #9E9A8A);
+}
+
+/* ── 4. EXPANDABLE SECTIONS ──────────────────────────────────────── */
+.mobile-nav .mn-sections {
+ padding: 0 var(--space-5, 1.25rem);
+}
+
+.mobile-nav .mn-section-toggle {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: var(--space-4, 1rem);
+ width: 100%;
+ padding: var(--space-3, 0.75rem) 0;
+ background: none;
+ border: 0;
+ cursor: pointer;
+ font-family: inherit;
+ text-align: left;
+ color: inherit;
+}
+
+.mobile-nav .mn-section-head {
+ display: inline-flex;
+ align-items: baseline;
+ gap: 14px;
+ min-width: 0;
+}
+.mobile-nav .mn-section-num,
+.mobile-nav .mn-section-count {
+ font-family: var(--font-mono, monospace);
+ font-size: 10px;
+ letter-spacing: 0.1em;
+ color: var(--color-text-faint, #9E9A8A);
+ font-weight: 500;
+}
+.mobile-nav .mn-section-label {
+ font-family: var(--font-display, 'Zodiak', Georgia, serif);
+ font-size: 1.375rem;
+ font-weight: 500;
+ letter-spacing: -0.012em;
+ line-height: 1.15;
+ color: var(--color-text, #14140F);
+}
+
+.mobile-nav .mn-section-meta {
+ display: inline-flex;
+ align-items: center;
+ gap: 12px;
+ color: var(--color-text-muted, #69655B);
+ flex-shrink: 0;
+}
+.mobile-nav .mn-section-chev {
+ transition: transform 240ms cubic-bezier(.16,1,.3,1);
+}
+.mobile-nav .mn-section.is-open .mn-section-chev {
+ transform: rotate(180deg);
+}
+.mobile-nav .mn-section.is-open .mn-section-meta {
+ color: var(--color-primary, #4F5C20);
+}
+.mobile-nav .mn-section.is-open .mn-section-count {
+ color: var(--color-primary, #4F5C20);
+}
+
+/* Expanded list — animated max-height collapse */
+.mobile-nav .mn-section-list {
+ list-style: none;
+ margin: 0 0 0 4px;
+ padding: 0;
+ max-height: 0;
+ overflow: hidden;
+ border-left: 1px solid rgba(20,20,15,0.14);
+ transition: max-height 360ms cubic-bezier(.16,1,.3,1);
+}
+.mobile-nav .mn-section.is-open .mn-section-list {
+ max-height: 800px;
+}
+.mobile-nav .mn-section-list > li > a {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 0.5rem 0 0.5rem 18px;
+ font-size: 14px;
+ font-weight: 400;
+ color: var(--color-text, #14140F);
+ text-decoration: none;
+ letter-spacing: 0.005em;
+ border: 0;
+ line-height: 1.4;
+}
+.mobile-nav .mn-section-list > li:first-child > a { padding-top: 0.4rem; }
+.mobile-nav .mn-section-list > li:last-child > a { padding-bottom: 0.6rem; }
+
+.mobile-nav .mn-section-list .is-strong > a {
+ color: var(--color-primary, #4F5C20);
+ font-weight: 600;
+}
+
+/* ── 5. FOOTER BLOCK ─────────────────────────────────────────────── */
+.mobile-nav .mn-footer {
+ padding: var(--space-5, 1.25rem) var(--space-5, 1.25rem) var(--space-4, 1rem);
+ border-top: 1px solid rgba(20,20,15,0.14);
+ display: flex;
+ flex-direction: column;
+ gap: var(--space-3, 0.75rem);
+ flex-shrink: 0;
+}
+
+.mobile-nav .mn-phone {
+ display: inline-flex;
+ align-items: center;
+ gap: var(--space-3, 0.75rem);
+ text-decoration: none;
+ color: var(--color-text, #14140F);
+ border: 0;
+ padding: 0;
+}
+.mobile-nav .mn-phone-icon {
+ width: 36px;
+ height: 36px;
+ background: var(--color-primary, #4F5C20);
+ color: #fff;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ flex-shrink: 0;
+}
+.mobile-nav .mn-phone-icon svg { color: #fff; }
+.mobile-nav .mn-phone-text {
+ display: inline-flex;
+ flex-direction: column;
+ gap: 2px;
+}
+.mobile-nav .mn-phone-eyebrow {
+ font-family: var(--font-mono, monospace);
+ font-size: 9px;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: var(--color-text-muted, #69655B);
+ font-weight: 500;
+}
+.mobile-nav .mn-phone-number {
+ font-family: var(--font-display, 'Zodiak', serif);
+ font-size: 1.25rem;
+ font-weight: 500;
+ letter-spacing: -0.005em;
+ line-height: 1;
+}
+
+.mobile-nav .mn-meta {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 8px 14px;
+ margin: 2px 0 0;
+ padding: 0;
+ list-style: none;
+}
+.mobile-nav .mn-meta li {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ color: var(--color-text-muted, #69655B);
+ font-size: 12.5px;
+ line-height: 1.4;
+}
+.mobile-nav .mn-meta .mn-meta-wide {
+ grid-column: 1 / -1;
+}
+.mobile-nav .mn-meta a {
+ color: inherit;
+ text-decoration: none;
+ border: 0;
+}
+
+.mobile-nav .mn-footer-bottom {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ margin-top: 4px;
+ gap: var(--space-3, 0.75rem);
+}
+.mobile-nav .mn-social {
+ display: inline-flex;
+ gap: 10px;
+}
+.mobile-nav .mn-social a {
+ width: 38px;
+ height: 38px;
+ border: 1px solid rgba(20,20,15,0.14);
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ color: var(--color-text, #14140F);
+ text-decoration: none;
+ padding: 0;
+ transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.mobile-nav .mn-social a:hover {
+ background: var(--color-text, #14140F);
+ color: var(--color-bg, #FAF7F1);
+ border-color: var(--color-text, #14140F);
+}
+.mobile-nav .mn-footer-meta {
+ font-family: var(--font-mono, monospace);
+ font-size: 9px;
+ letter-spacing: 0.18em;
+ text-transform: uppercase;
+ color: var(--color-text-faint, #9E9A8A);
+ font-weight: 500;
+ text-align: right;
+}
+
+/* ── 6. CTA BAR (pinned bottom) ──────────────────────────────────── */
+.mobile-nav .mn-cta {
+ padding: var(--space-4, 1rem) var(--space-5, 1.25rem) calc(var(--space-4, 1rem) + env(safe-area-inset-bottom, 0px));
+ background: var(--color-bg, #FAF7F1);
+ border-top: 1px solid rgba(20,20,15,0.14);
+ flex-shrink: 0;
+}
+.mobile-nav .mn-cta-btn {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 10px;
+ width: 100%;
+ background: var(--color-primary, #4F5C20);
+ color: #fff;
+ padding: 16px 20px;
+ font-family: var(--font-body, sans-serif);
+ font-size: 12px;
+ font-weight: 600;
+ letter-spacing: 0.18em;
+ text-transform: uppercase;
+ text-decoration: none;
+ border: 0;
+ box-sizing: border-box;
+ transition: background 220ms cubic-bezier(.16,1,.3,1);
+}
+.mobile-nav .mn-cta-btn:hover {
+ background: var(--color-primary-hover, var(--color-text, #14140F));
+ color: #fff;
+}
+
+/* ── 7. KEYBOARD FOCUS ──────────────────────────────────────────── */
+.mobile-nav .mn-section-toggle:focus-visible,
+.mobile-nav .mn-quicklinks a:focus-visible,
+.mobile-nav .mn-section-list a:focus-visible,
+.mobile-nav .mn-phone:focus-visible,
+.mobile-nav .mn-meta a:focus-visible,
+.mobile-nav .mn-social a:focus-visible,
+.mobile-nav .mn-cta-btn:focus-visible {
+ outline: 2px solid var(--color-primary, #4F5C20);
+ outline-offset: 3px;
+ border-radius: 2px;
+}
+
+/* ── 8. REDUCED MOTION ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+ .mobile-nav * { transition: none !important; }
+}

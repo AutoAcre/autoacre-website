@@ -73,6 +73,7 @@
  <link rel="manifest" href="/site.webmanifest">
  <meta name="theme-color" content="#4F5C20">
  <link rel="stylesheet" href="/nav.css">
+ <link rel="stylesheet" href="/mobile-nav.css">
 </head>
 <body class="has-light-header">
 
@@ -189,71 +190,136 @@
 </header>
 
 <nav class="mobile-nav" aria-label="Mobile navigation">
- <a class='btn btn--primary btn--large mobile-cta' href='/book-site-assessment' style='margin-bottom: var(--space-4);'>Book Assessment</a>
- <a href='/'>Home</a>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-   Autonomous Systems
-   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-  <div class="mobile-nav-areas-list">
-   <a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a>
-   <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>
-   <a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a>
-   <a href='/commercial'>Commercial Autonomous Mowing</a>
-  </div>
- </div>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-   Locations
-   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-  <div class="mobile-nav-areas-list">
-   <span class="mobile-nav-region-label">Byron Shire — 8</span>
-   <a href='/robot-mower-installation-byron-bay'>Byron Bay</a>
-   <a href='/robot-mower-installation-bangalow'>Bangalow</a>
-   <a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a>
-   <a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a>
-   <a href='/robot-mower-installation-federal'>Federal</a>
-   <a href='/robot-mower-installation-myocum'>Myocum</a>
-   <a href='/robot-mower-installation-newrybar'>Newrybar</a>
-   <a href='/robot-mower-installation-tyagarah'>Tyagarah</a>
-   <span class="mobile-nav-region-label">Ballina Shire — 5</span>
-   <a href='/robot-mower-installation-ballina'>Ballina</a>
-   <a href='/robot-mower-installation-lennox-head'>Lennox Head</a>
-   <a href='/robot-mower-installation-alstonville'>Alstonville</a>
-   <a href='/robot-mower-installation-tintenbar'>Tintenbar</a>
-   <a href='/robot-mower-installation-teven'>Teven</a>
-   <span class="mobile-nav-region-label">Inland — 4</span>
-   <a href='/robot-mower-installation-brooklet'>Brooklet</a>
-   <a href='/robot-mower-installation-clunes'>Clunes</a>
-   <a href='/robot-mower-installation-eureka'>Eureka</a>
-   <a href='/robot-mower-installation-nashua'>Nashua</a>
-   <a href='/service-area' class="mobile-nav-all-locations">All service areas →</a>
-  </div>
- </div>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-   Insights
-   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-  <div class="mobile-nav-areas-list">
-   <a href='/blog'>Robot Mower Guides</a>
-   <a href='/acreage-robot-mowing-systems'>Acreage Automation</a>
-   <a href='/rtk-robot-mower-installation'>RTK Technology</a>
-   <a href='/autonomous-vs-ride-on'>Comparisons</a>
-   <a href='/robot-mower-roi-calculator'>ROI Calculator</a>
-   <a href='/faq'>Facts &amp; FAQs</a>
-  </div>
- </div>
- <a href='/about'>About</a>
- <a href="tel:0499649094" class="mobile-nav-phone">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-  0499 649 094
- </a>
-</nav>
 
- <main>
+ <div class="mn-scroll">
+
+  <!-- Primary quick-links -->
+  <ul class="mn-quicklinks" role="list">
+   <li><a href="/">Home</a></li>
+   <li><a href="/about">About</a></li>
+  </ul>
+
+  <!-- Section strip -->
+  <div class="mn-strip">
+   <span class="mn-strip-label">Explore</span>
+   <span class="mn-strip-count">03 SECTIONS</span>
+  </div>
+
+  <!-- Expandable sections -->
+  <div class="mn-sections">
+
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-systems"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o);">
+     <span class="mn-section-head">
+      <span class="mn-section-num">01</span>
+      <span class="mn-section-label">Autonomous Systems</span>
+     </span>
+     <span class="mn-section-meta">
+      <span class="mn-section-count">04</span>
+      <svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </span>
+    </button>
+    <ul id="mn-list-systems" class="mn-section-list" role="list">
+     <li><a href="/3-10-acre-autonomous-mowing-systems">2.5–10 Acre Systems</a></li>
+     <li><a href="/rtk-robot-mower-installation">RTK Robot Mower Installation</a></li>
+     <li><a href="/acreage-robot-mowing-systems">Acreage Robot Mowing</a></li>
+     <li><a href="/commercial" aria-current="page">Commercial Autonomous Mowing</a></li>
+    </ul>
+   </div>
+
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-locations"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o);">
+     <span class="mn-section-head">
+      <span class="mn-section-num">02</span>
+      <span class="mn-section-label">Locations</span>
+     </span>
+     <span class="mn-section-meta">
+      <span class="mn-section-count">17</span>
+      <svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </span>
+    </button>
+    <ul id="mn-list-locations" class="mn-section-list" role="list">
+     <li><a href="/robot-mower-installation-byron-bay">Byron Bay</a></li>
+     <li><a href="/robot-mower-installation-bangalow">Bangalow</a></li>
+     <li><a href="/robot-mower-installation-mullumbimby">Mullumbimby</a></li>
+     <li><a href="/robot-mower-installation-ballina">Ballina</a></li>
+     <li><a href="/robot-mower-installation-lennox-head">Lennox Head</a></li>
+     <li class="is-strong"><a href="/service-area">All locations →</a></li>
+    </ul>
+   </div>
+
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-insights"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o);">
+     <span class="mn-section-head">
+      <span class="mn-section-num">03</span>
+      <span class="mn-section-label">Insights</span>
+     </span>
+     <span class="mn-section-meta">
+      <span class="mn-section-count">07</span>
+      <svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </span>
+    </button>
+    <ul id="mn-list-insights" class="mn-section-list" role="list">
+     <li><a href="/blog">Robot Mower Guides</a></li>
+     <li><a href="/acreage-robot-mowing-systems">Acreage Automation</a></li>
+     <li><a href="/rtk-robot-mower-installation">RTK Technology</a></li>
+     <li><a href="/autonomous-vs-ride-on">Comparisons</a></li>
+     <li><a href="/robot-mower-roi-calculator">ROI Calculator</a></li>
+     <li><a href="/faq">Facts &amp; FAQs</a></li>
+     <li><a href="/resources">Free Guides</a></li>
+    </ul>
+   </div>
+
+  </div>
+ </div>
+
+ <!-- Footer block: phone · hours · location · email · social -->
+ <div class="mn-footer">
+  <a href="tel:0499649094" class="mn-phone">
+   <span class="mn-phone-icon">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+   </span>
+   <span class="mn-phone-text">
+    <span class="mn-phone-eyebrow">Call us</span>
+    <span class="mn-phone-number">0499 649 094</span>
+   </span>
+  </a>
+  <ul class="mn-meta" role="list">
+   <li>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+    <span>Mon–Fri · 7am–5pm</span>
+   </li>
+   <li>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span>Byron Bay, NSW</span>
+   </li>
+   <li class="mn-meta-wide">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><polyline points="3 7 12 13 21 7"/></svg>
+    <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>
+   </li>
+  </ul>
+  <div class="mn-footer-bottom">
+   <div class="mn-social">
+    <a href="https://instagram.com/autoacre" aria-label="AutoAcre on Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+    <a href="https://facebook.com/autoacre" aria-label="AutoAcre on Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+   </div>
+   <span class="mn-footer-meta">ABN pending · est. 2026</span>
+  </div>
+ </div>
+
+ <!-- Full-width CTA pinned to bottom -->
+ <div class="mn-cta">
+  <a class="mn-cta-btn" href="/book-site-assessment">
+   <span>Book Site Assessment</span>
+   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+  </a>
+ </div>
+
+</nav>
+<main>
 
  <section class="page-hero">
   <div class="container">
