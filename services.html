@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<!--
+ SERVICES — PRODUCTION 2026-05-14
+ URL: /services.html
+ Audience: Northern Rivers acreage owners, 2.5–10 acres, considering AutoAcre's
+ management-fee offer over fortnightly contractor / DIY ride-on.
+ Tone: dry, industrial, no marketing fluff. Mirrors Resources.html pattern.
+
+ Nine [CONFIRM:] placeholders are baked in with the most likely value, marked
+ inline with <mark class="confirm"> (dotted-underline draft). See the
+ .svc-pending block above the footer for the canonical checklist. DELETE
+ that block once every value is confirmed.
+-->
+<html lang="en-AU">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Acreage management for Northern Rivers properties | AutoAcre</title>
+ <meta name="description" content="Mowing, slope, fire compliance and holiday-rental presentation for 2.5–10 acre Northern Rivers acreage. One management fee, year-round. Service operations begin Q1 2027.">
+ <link rel="canonical" href="https://autoacre.com.au/services.html">
+
+ <meta property="og:title" content="Acreage management for Northern Rivers properties | AutoAcre">
+ <meta property="og:description" content="Mowing, slope, fire compliance and holiday-rental presentation for 2.5–10 acre Northern Rivers acreage. One management fee, year-round.">
+ <meta property="og:image" content="https://autoacre.com.au/img/hinterland-aerial.jpg">
+ <meta property="og:url" content="https://autoacre.com.au/services.html">
+ <meta property="og:type" content="website">
+ <meta property="og:locale" content="en_AU">
+
+ <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+ <!-- Production stylesheet chain (matches commercial.html / about.html etc.) -->
+ <link rel="stylesheet" href="./base.css">
+ <link rel="stylesheet" href="./style.css">
+ <link rel="stylesheet" href="/direction-b.css">
+ <link rel="stylesheet" href="/nav.css">
+ <link rel="stylesheet" href="/mobile-nav.css">
+
+ <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+ <link rel="manifest" href="/site.webmanifest">
+ <meta name="theme-color" content="#14140F">
+
+ <style>
+  /* ──────────────────────────────────────────────────────────────────
+     SERVICES — page-specific industrial spec-sheet treatment.
+     Reuses Direction B tokens. Charcoal hero + closing band, dense mono
+     metadata, numbered pillar cards with sharp edges, four-step
+     timeline for How It Works.
+     ────────────────────────────────────────────────────────────────── */
+
+  /* Inline draft placeholders — Ben sees them in body copy; the listing
+     at the bottom is the canonical checklist. */
+  mark.confirm {
+   background: transparent;
+   color: inherit;
+   border-bottom: 1px dotted var(--color-primary, #4F5C20);
+   padding-bottom: 1px;
+  }
+  @media print {
+   mark.confirm { border-bottom: 0; }
+  }
+
+  /* ── HERO — charcoal inverse band ─────────────────────────────── */
+  .svc-hero {
+   background: var(--color-charcoal);
+   color: var(--color-bg);
+   padding: clamp(4rem, 11vh, 8rem) 0 0;
+   border-bottom: 1px solid rgba(250, 247, 241, 0.08);
+   position: relative;
+   overflow: hidden;
+  }
+  .svc-hero::after {
+   content: "";
+   position: absolute;
+   inset: auto 0 0 0;
+   height: 1px;
+   background: linear-gradient(90deg, transparent, rgba(250,247,241,0.18) 20%, rgba(250,247,241,0.18) 80%, transparent);
+  }
+  .svc-hero .container { position: relative; z-index: 1; }
+  .svc-hero .breadcrumb,
+  .svc-hero .breadcrumb a {
+   color: rgba(250, 247, 241, 0.55);
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+  }
+  .svc-hero .breadcrumb a:hover { color: var(--color-clay-soft, #C8B79C); }
+  .svc-hero .breadcrumb span { color: rgba(250, 247, 241, 0.3); padding: 0 0.5rem; }
+
+  .svc-hero-eyebrow {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.55);
+   display: inline-flex;
+   align-items: center;
+   gap: 0.75rem;
+   margin: clamp(2rem, 5vh, 3rem) 0 var(--space-5);
+  }
+  .svc-hero-eyebrow::before {
+   content: "";
+   display: inline-block;
+   width: 28px;
+   height: 1px;
+   background: var(--color-clay-soft, #C8B79C);
+  }
+  .svc-hero h1 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(2.2rem, 5.6vw, 4.6rem);
+   line-height: 1.04;
+   letter-spacing: -0.02em;
+   color: var(--color-bg);
+   margin: 0 0 var(--space-6);
+   max-width: 20ch;
+  }
+  .svc-hero h1 em {
+   font-style: italic;
+   color: var(--color-clay-soft, #C8B79C);
+   font-weight: 500;
+  }
+  .svc-hero-lede {
+   font-size: clamp(1.05rem, 1.3vw + 0.4rem, 1.3rem);
+   line-height: 1.55;
+   color: rgba(250, 247, 241, 0.78);
+   max-width: 60ch;
+   margin: 0 0 clamp(3rem, 6vh, 4.5rem);
+  }
+  .svc-hero-lede mark.confirm { border-bottom-color: rgba(200,183,156,0.7); color: var(--color-clay-soft, #C8B79C); }
+
+  .svc-hero-strip {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 0;
+   border-top: 1px solid rgba(250, 247, 241, 0.12);
+   padding-top: var(--space-5);
+   padding-bottom: var(--space-8);
+  }
+  .svc-hero-strip > div {
+   padding: 0 var(--space-5);
+   border-right: 1px solid rgba(250, 247, 241, 0.08);
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-2);
+  }
+  .svc-hero-strip > div:first-child { padding-left: 0; }
+  .svc-hero-strip > div:last-child { border-right: none; padding-right: 0; }
+  .svc-hero-strip dt {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.45);
+   margin: 0;
+  }
+  .svc-hero-strip dd {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 15px;
+   font-weight: 500;
+   color: var(--color-bg);
+   margin: 0;
+   letter-spacing: 0.02em;
+  }
+  @media (max-width: 720px) {
+   .svc-hero-strip { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-5); }
+   .svc-hero-strip > div { padding: 0 var(--space-4); border-right: 1px solid rgba(250,247,241,0.08); }
+   .svc-hero-strip > div:nth-child(2n) { border-right: none; padding-right: 0; }
+   .svc-hero-strip > div:nth-child(2n+1) { padding-left: 0; }
+  }
+
+  /* ── HERO SHOT — full-bleed mower-at-work between hero and pillars ── */
+  .svc-hero-shot {
+   background: var(--color-charcoal, #14140F);
+   margin: 0;
+   padding: 0;
+   position: relative;
+   border-top: 1px solid rgba(250, 247, 241, 0.08);
+  }
+  .svc-hero-shot img {
+   display: block;
+   width: 100%;
+   height: auto;
+   max-height: 78vh;
+   object-fit: cover;
+   object-position: center 60%;
+  }
+  .svc-hero-shot figcaption {
+   display: grid;
+   grid-template-columns: max-content 1fr max-content;
+   align-items: baseline;
+   gap: clamp(1rem, 3vw, 2.5rem);
+   padding-top: var(--space-5);
+   padding-bottom: var(--space-6);
+   border-top: 1px solid rgba(250, 247, 241, 0.12);
+   margin-top: 0;
+  }
+  .svc-hero-shot .svc-shot-tag {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 11px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--color-clay-soft, #C8B79C);
+   font-weight: 500;
+   white-space: nowrap;
+   display: inline-flex;
+   align-items: center;
+   gap: 0.75rem;
+  }
+  .svc-hero-shot .svc-shot-tag::before {
+   content: "";
+   display: inline-block;
+   width: 22px;
+   height: 1px;
+   background: var(--color-clay-soft, #C8B79C);
+  }
+  .svc-hero-shot .svc-shot-text {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12.5px;
+   letter-spacing: 0.04em;
+   color: rgba(250, 247, 241, 0.7);
+   line-height: 1.55;
+   max-width: 78ch;
+  }
+  .svc-hero-shot .svc-shot-coord {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.4);
+   font-weight: 500;
+   white-space: nowrap;
+  }
+  @media (max-width: 820px) {
+   .svc-hero-shot figcaption {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+   }
+   .svc-hero-shot .svc-shot-coord { display: none; }
+   .svc-hero-shot img { max-height: 60vh; }
+  }
+
+  /* ── Section heads — shared across page ───────────────────────── */
+  .svc-section-head {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr) auto;
+   align-items: end;
+   gap: var(--space-6);
+   margin-bottom: var(--space-8);
+   padding-bottom: var(--space-5);
+   border-bottom: 1px solid var(--color-divider, #D8D1BE);
+  }
+  .svc-section-head h2 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(1.8rem, 2.4vw + 0.6rem, 2.75rem);
+   line-height: 1.1;
+   letter-spacing: -0.01em;
+   color: var(--color-charcoal, #14140F);
+   margin: 0;
+   max-width: 24ch;
+  }
+  .svc-section-head .svc-count {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+   white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+   .svc-section-head { grid-template-columns: 1fr; }
+   .svc-section-head .svc-count { justify-self: start; }
+  }
+
+  /* ── PILLARS GRID — cream + sharp gridlines ───────────────────── */
+  .svc-pillars-section { background: var(--color-bg); }
+  /* 3 + 3 grid — six pillars laid out evenly. Collapses to 2-col at
+     tablet widths and 1-col on phones. */
+  .svc-pillar-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 1px;
+   background: var(--color-divider, #D8D1BE);
+   border: 1px solid var(--color-divider, #D8D1BE);
+  }
+  @media (max-width: 1100px) {
+   .svc-pillar-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+   .svc-pillar-grid { grid-template-columns: 1fr; }
+  }
+  .svc-pillar {
+   background: var(--color-bg);
+   padding: clamp(1.75rem, 3vw, 2.75rem);
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-5);
+   position: relative;
+   transition: background 220ms var(--ease-out, ease);
+  }
+  .svc-pillar:hover { background: var(--color-surface, #F0EBDF); }
+  .svc-pillar-head {
+   display: flex;
+   align-items: baseline;
+   justify-content: space-between;
+   gap: var(--space-4);
+   padding-bottom: var(--space-4);
+   border-bottom: 1px solid var(--color-divider, #D8D1BE);
+  }
+  .svc-pillar-index {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 13px;
+   font-weight: 600;
+   letter-spacing: 0.12em;
+   color: var(--color-charcoal, #14140F);
+  }
+  .svc-pillar-topic {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+  }
+  .svc-pillar h3 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(1.5rem, 1.4vw + 1rem, 2rem);
+   line-height: 1.15;
+   letter-spacing: -0.01em;
+   color: var(--color-charcoal, #14140F);
+   margin: 0;
+  }
+  .svc-pillar-blurb {
+   color: var(--color-text, #14140F);
+   line-height: 1.6;
+   margin: 0;
+   font-size: 15.5px;
+  }
+  .svc-pillar-spec {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-2);
+  }
+  .svc-pillar-spec li {
+   display: grid;
+   grid-template-columns: 18px 1fr;
+   gap: var(--space-3);
+   align-items: baseline;
+   font-size: 14px;
+   line-height: 1.5;
+   color: var(--color-text, #14140F);
+  }
+  .svc-pillar-spec li::before {
+   content: "+";
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 13px;
+   color: var(--color-primary, #4F5C20);
+   font-weight: 600;
+  }
+  .svc-pillar-foot {
+   margin-top: auto;
+   padding-top: var(--space-4);
+   border-top: 1px solid var(--color-divider, #D8D1BE);
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 11px;
+   letter-spacing: 0.16em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+   display: flex;
+   align-items: center;
+   gap: 0.6rem;
+  }
+  .svc-pillar-foot .dot {
+   width: 4px;
+   height: 4px;
+   background: var(--color-primary, #4F5C20);
+   border-radius: 50%;
+  }
+
+  /* ── HOW IT WORKS — surface band + vertical timeline ──────────── */
+  .svc-how-section {
+   background: var(--color-surface, #F0EBDF);
+   border-top: 1px solid var(--color-divider, #D8D1BE);
+   border-bottom: 1px solid var(--color-divider, #D8D1BE);
+  }
+  .svc-how-section .svc-section-head { border-bottom-color: rgba(20,20,15,0.18); }
+
+  .svc-flow {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 0;
+   position: relative;
+   border-top: 1px solid rgba(20,20,15,0.18);
+  }
+  .svc-step {
+   display: grid;
+   grid-template-columns: 96px minmax(0, 1.05fr) minmax(0, 1fr);
+   gap: clamp(1.5rem, 4vw, 3rem);
+   align-items: start;
+   padding: clamp(2rem, 4vw, 3rem) 0;
+   border-bottom: 1px solid rgba(20,20,15,0.18);
+   position: relative;
+  }
+  .svc-step:last-child { border-bottom: none; }
+  @media (max-width: 880px) {
+   .svc-step {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: clamp(1.75rem, 5vw, 2.5rem) 0;
+   }
+  }
+
+  .svc-step-num {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: clamp(2.5rem, 4.5vw, 4rem);
+   font-weight: 400;
+   letter-spacing: -0.02em;
+   color: var(--color-primary, #4F5C20);
+   line-height: 0.85;
+   font-feature-settings: "tnum";
+   display: flex;
+   align-items: flex-start;
+  }
+  .svc-step-num sup {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 11px;
+   letter-spacing: 0.18em;
+   color: var(--color-text-muted, #69655B);
+   font-weight: 500;
+   margin-left: 8px;
+   margin-top: 6px;
+   text-transform: uppercase;
+  }
+  .svc-step-body h3 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(1.4rem, 1.4vw + 0.85rem, 1.9rem);
+   line-height: 1.15;
+   letter-spacing: -0.01em;
+   color: var(--color-charcoal, #14140F);
+   margin: 0 0 var(--space-3);
+   max-width: 24ch;
+  }
+  .svc-step-body p {
+   color: var(--color-text, #14140F);
+   line-height: 1.65;
+   margin: 0;
+   font-size: 15.5px;
+   max-width: 56ch;
+  }
+  .svc-step-meta {
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-4);
+   align-self: stretch;
+   padding-left: clamp(1rem, 2vw, 2rem);
+   border-left: 1px solid rgba(20,20,15,0.18);
+  }
+  @media (max-width: 880px) {
+   .svc-step-meta { border-left: 0; padding-left: 0; border-top: 1px solid rgba(20,20,15,0.18); padding-top: var(--space-4); }
+  }
+  .svc-step-meta-row {
+   display: grid;
+   grid-template-columns: max-content 1fr;
+   gap: 0.4rem 1rem;
+  }
+  .svc-step-meta-row dt {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+   margin: 0;
+   align-self: baseline;
+   padding-top: 2px;
+  }
+  .svc-step-meta-row dd {
+   margin: 0;
+   font-size: 14px;
+   line-height: 1.5;
+   color: var(--color-text, #14140F);
+   font-weight: 500;
+  }
+  .svc-step-meta-row dd strong {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-weight: 600;
+   color: var(--color-charcoal, #14140F);
+   letter-spacing: 0.02em;
+  }
+
+  /* ── WHO IT'S FOR — split intro + numbered conversations ──────── */
+  .svc-who-section { background: var(--color-bg); }
+  .svc-who-grid {
+   display: grid;
+   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+   gap: clamp(2rem, 5vw, 4rem);
+   align-items: start;
+   margin-bottom: var(--space-8);
+  }
+  @media (max-width: 880px) {
+   .svc-who-grid { grid-template-columns: 1fr; }
+  }
+  .svc-who-intro p {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-size: clamp(1.35rem, 1.4vw + 0.75rem, 1.75rem);
+   line-height: 1.3;
+   letter-spacing: -0.005em;
+   color: var(--color-charcoal, #14140F);
+   font-weight: 500;
+   margin: 0;
+   max-width: 22ch;
+  }
+  .svc-who-intro p em {
+   font-style: italic;
+   color: var(--color-primary, #4F5C20);
+   font-weight: 500;
+  }
+  .svc-who-intro-tag {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 11px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+   font-weight: 500;
+   display: inline-flex;
+   align-items: center;
+   gap: 0.75rem;
+   margin-bottom: var(--space-5);
+  }
+  .svc-who-intro-tag::before {
+   content: "";
+   display: inline-block;
+   width: 24px;
+   height: 1px;
+   background: var(--color-primary, #4F5C20);
+  }
+
+  .svc-who-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   border-top: 1px solid var(--color-divider, #D8D1BE);
+  }
+  .svc-who-list li {
+   display: grid;
+   grid-template-columns: 60px 1fr;
+   gap: var(--space-4);
+   align-items: baseline;
+   padding: var(--space-4) 0;
+   border-bottom: 1px solid var(--color-divider, #D8D1BE);
+  }
+  .svc-who-list .svc-who-num {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 11px;
+   letter-spacing: 0.18em;
+   color: var(--color-text-muted, #69655B);
+   font-weight: 500;
+  }
+  .svc-who-list .svc-who-body {
+   color: var(--color-text, #14140F);
+   font-size: 15px;
+   line-height: 1.55;
+   max-width: 56ch;
+  }
+  .svc-who-list .svc-who-body strong {
+   font-weight: 600;
+   color: var(--color-charcoal, #14140F);
+   display: block;
+   margin-bottom: 0.15rem;
+   font-size: 15.5px;
+  }
+
+  .svc-who-scope {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 0;
+   border: 1px solid var(--color-divider, #D8D1BE);
+   background: var(--color-divider, #D8D1BE);
+  }
+  @media (max-width: 720px) { .svc-who-scope { grid-template-columns: 1fr; gap: 1px; } }
+  .svc-who-scope > div {
+   background: var(--color-bg);
+   padding: clamp(1.25rem, 2vw, 1.75rem);
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-2);
+  }
+  .svc-who-scope dt {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+   margin: 0;
+  }
+  .svc-who-scope dd {
+   margin: 0;
+   color: var(--color-text, #14140F);
+   font-size: 14.5px;
+   line-height: 1.5;
+   max-width: 48ch;
+  }
+
+  /* ── CLOSING CTA — dark band, two CTAs + spec rail ────────────── */
+  .svc-close {
+   background: var(--color-charcoal, #14140F);
+   color: var(--color-bg, #FAF7F1);
+   padding: clamp(4rem, 10vh, 7rem) 0;
+   position: relative;
+  }
+  .svc-close .container {
+   display: grid;
+   grid-template-columns: 1.1fr 1fr;
+   gap: clamp(2rem, 6vw, 5rem);
+   align-items: center;
+  }
+  @media (max-width: 880px) {
+   .svc-close .container { grid-template-columns: 1fr; }
+  }
+  .svc-close-eyebrow {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.55);
+   display: inline-flex;
+   align-items: center;
+   gap: 0.75rem;
+   margin-bottom: var(--space-5);
+  }
+  .svc-close-eyebrow::before {
+   content: "";
+   display: inline-block;
+   width: 28px;
+   height: 1px;
+   background: var(--color-clay-soft, #C8B79C);
+  }
+  .svc-close h2 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(2rem, 3.4vw + 0.6rem, 3.4rem);
+   line-height: 1.08;
+   letter-spacing: -0.015em;
+   color: var(--color-bg, #FAF7F1);
+   margin: 0 0 var(--space-5);
+   max-width: 16ch;
+  }
+  .svc-close h2 em { font-style: italic; color: var(--color-clay-soft, #C8B79C); font-weight: 500; }
+  .svc-close p {
+   color: rgba(250, 247, 241, 0.78);
+   line-height: 1.6;
+   margin: 0 0 var(--space-6);
+   max-width: 50ch;
+   font-size: clamp(1rem, 0.7vw + 0.6rem, 1.15rem);
+  }
+  .svc-close-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  .svc-close .btn--primary {
+   background: var(--color-bg, #FAF7F1);
+   color: var(--color-charcoal, #14140F);
+   border-color: var(--color-bg, #FAF7F1);
+  }
+  .svc-close .btn--primary:hover {
+   background: var(--color-clay-soft, #C8B79C);
+   border-color: var(--color-clay-soft, #C8B79C);
+   color: var(--color-charcoal, #14140F);
+  }
+  .svc-close .btn--secondary {
+   background: transparent;
+   color: var(--color-bg, #FAF7F1);
+   border: 1px solid rgba(250, 247, 241, 0.35);
+  }
+  .svc-close .btn--secondary:hover {
+   background: rgba(250, 247, 241, 0.08);
+   border-color: var(--color-bg, #FAF7F1);
+   color: var(--color-bg, #FAF7F1);
+  }
+
+  .svc-close-rail {
+   border-left: 1px solid rgba(250, 247, 241, 0.15);
+   padding-left: clamp(1.5rem, 3vw, 2.5rem);
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-5);
+  }
+  @media (max-width: 880px) {
+   .svc-close-rail { border-left: none; padding-left: 0; border-top: 1px solid rgba(250,247,241,0.15); padding-top: var(--space-6); }
+  }
+  .svc-close-rail-item dt {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.45);
+   margin: 0 0 var(--space-1);
+  }
+  .svc-close-rail-item dd {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-size: clamp(1.1rem, 0.9vw + 0.6rem, 1.4rem);
+   font-weight: 500;
+   color: var(--color-bg, #FAF7F1);
+   margin: 0;
+   line-height: 1.25;
+   letter-spacing: -0.005em;
+  }
+  .svc-close-rail-item dd .clay { color: var(--color-clay-soft, #C8B79C); }
+
+  /* ── DRAFT — pending-confirmations aside (dim, between CTA and footer) ─ */
+  .svc-pending {
+   background: var(--color-bg, #FAF7F1);
+   border-top: 1px solid var(--color-divider, #D8D1BE);
+   padding: clamp(2rem, 5vh, 3rem) 0 clamp(2.5rem, 5vh, 3.5rem);
+  }
+  .svc-pending .container {
+   display: grid;
+   grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+   gap: clamp(1.5rem, 4vw, 3rem);
+   align-items: start;
+  }
+  @media (max-width: 720px) {
+   .svc-pending .container { grid-template-columns: 1fr; }
+  }
+  .svc-pending-eyebrow {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+   font-weight: 500;
+  }
+  .svc-pending-head {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-size: 1.05rem;
+   font-weight: 500;
+   color: var(--color-text-muted, #69655B);
+   line-height: 1.35;
+   margin: 0.5rem 0 0;
+   font-style: italic;
+   max-width: 22ch;
+  }
+  .svc-pending-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 1px;
+   background: var(--color-divider, #D8D1BE);
+   border: 1px solid var(--color-divider, #D8D1BE);
+  }
+  @media (max-width: 720px) { .svc-pending-list { grid-template-columns: 1fr; } }
+  .svc-pending-list li {
+   background: var(--color-bg, #FAF7F1);
+   padding: var(--space-4) var(--space-5);
+   display: grid;
+   grid-template-columns: max-content 1fr;
+   gap: 0.4rem 1.25rem;
+   align-items: baseline;
+   font-size: 13px;
+   line-height: 1.5;
+   color: var(--color-text, #14140F);
+  }
+  .svc-pending-list li .pid {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10px;
+   letter-spacing: 0.18em;
+   color: var(--color-text-faint, #9E9A8A);
+   font-weight: 500;
+   text-transform: uppercase;
+  }
+  .svc-pending-list li .pq {
+   font-weight: 500;
+   color: var(--color-charcoal, #14140F);
+   grid-column: 2;
+  }
+  .svc-pending-list li .pa {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   color: var(--color-primary, #4F5C20);
+   grid-column: 2;
+  }
+ </style>
+</head>
+<body class="has-light-header">
+
+<header class="site-header" role="banner">
+ <div class="header-inner">
+  <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
+   <span class="wordmark-name">AutoAcre</span>
+   <span class="wordmark-tag">Northern Rivers</span>
+  </a>
+  <nav class="header-nav header-nav--cream-index" aria-label="Main navigation">
+   <ul class="nav-list" role="list">
+    <li class="nav-item"><a href='/' class="nav-link" data-section="home">Home</a></li>
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="systems" aria-expanded="false" aria-controls="nav-drawer-systems">
+      <span class="nav-cream-trigger-label">Autonomous Systems</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-systems" role="region" aria-label="Autonomous Systems" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">What we install</span>
+        <span class="nav-cream-drawer-count">04 ITEMS</span>
+       </div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/3-10-acre-autonomous-mowing-systems'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">2.5–10 Acre Systems</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">RTK Robot Mower Installation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Acreage Robot Mowing</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/commercial'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Commercial Autonomous Mowing</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+    <li class="nav-item"><a href='/services' class="nav-link" data-section="services" aria-current="page">Services</a></li>
+    <li class="nav-item"><a href='/about' class="nav-link" data-section="about">About</a></li>
+   </ul>
+  </nav>
+  <div class="header-actions">
+   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
+   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
+  </div>
+ </div>
+</header>
+
+<!-- Mobile Nav v2 (Editorial Stack — shipping markup) -->
+<nav class="mobile-nav" aria-label="Mobile navigation">
+ <div class="mn-scroll">
+  <ul class="mn-quicklinks" role="list">
+   <li><a href="/">Home</a></li>
+   <li><a href="/services" aria-current="page">Services</a></li>
+   <li><a href="/about">About</a></li>
+  </ul>
+  <div class="mn-strip">
+   <span class="mn-strip-label">Explore</span>
+   <span class="mn-strip-count">03 SECTIONS</span>
+  </div>
+  <div class="mn-sections">
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-systems"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o);">
+     <span class="mn-section-head"><span class="mn-section-num">01</span><span class="mn-section-label">Autonomous Systems</span></span>
+     <span class="mn-section-meta"><span class="mn-section-count">04</span><svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+    </button>
+    <ul id="mn-list-systems" class="mn-section-list" role="list">
+     <li><a href="/3-10-acre-autonomous-mowing-systems">2.5–10 Acre Systems</a></li>
+     <li><a href="/rtk-robot-mower-installation">RTK Robot Mower Installation</a></li>
+     <li><a href="/acreage-robot-mowing-systems">Acreage Robot Mowing</a></li>
+     <li><a href="/commercial">Commercial Autonomous Mowing</a></li>
+    </ul>
+   </div>
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-locations"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o);">
+     <span class="mn-section-head"><span class="mn-section-num">02</span><span class="mn-section-label">Locations</span></span>
+     <span class="mn-section-meta"><span class="mn-section-count">17</span><svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+    </button>
+    <ul id="mn-list-locations" class="mn-section-list" role="list">
+     <li><a href="/robot-mower-installation-byron-bay">Byron Bay</a></li>
+     <li><a href="/robot-mower-installation-bangalow">Bangalow</a></li>
+     <li><a href="/robot-mower-installation-mullumbimby">Mullumbimby</a></li>
+     <li><a href="/robot-mower-installation-ballina">Ballina</a></li>
+     <li><a href="/robot-mower-installation-lennox-head">Lennox Head</a></li>
+     <li class="is-strong"><a href="/service-area">All locations →</a></li>
+    </ul>
+   </div>
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-insights"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o);">
+     <span class="mn-section-head"><span class="mn-section-num">03</span><span class="mn-section-label">Insights</span></span>
+     <span class="mn-section-meta"><span class="mn-section-count">06</span><svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+    </button>
+    <ul id="mn-list-insights" class="mn-section-list" role="list">
+     <li><a href="/blog">Robot Mower Guides</a></li>
+     <li><a href="/acreage-robot-mowing-systems">Acreage Automation</a></li>
+     <li><a href="/rtk-robot-mower-installation">RTK Technology</a></li>
+     <li><a href="/autonomous-vs-ride-on">Comparisons</a></li>
+     <li><a href="/robot-mower-roi-calculator">ROI Calculator</a></li>
+     <li><a href="/faq">Facts &amp; FAQs</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+ <div class="mn-footer">
+  <a href="tel:0499649094" class="mn-phone">
+   <span class="mn-phone-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+   <span class="mn-phone-text"><span class="mn-phone-eyebrow">Call us</span><span class="mn-phone-number">0499 649 094</span></span>
+  </a>
+  <ul class="mn-meta" role="list">
+   <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg><span>Mon–Fri · 7am–5pm</span></li>
+   <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>Byron Bay, NSW</span></li>
+   <li class="mn-meta-wide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"></rect><polyline points="3 7 12 13 21 7"></polyline></svg><a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></li>
+  </ul>
+ </div>
+ <div class="mn-cta"><a class="mn-cta-btn" href="/book-site-assessment"><span>Book Site Assessment</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg></a></div>
+</nav>
+
+<main>
+
+ <!-- ─── HERO ───────────────────────────────────────────────────── -->
+ <section class="svc-hero" aria-labelledby="services-heading">
+  <div class="container">
+   <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href='/'>Home</a> <span>/</span> Services
+   </nav>
+   <div class="svc-hero-eyebrow">Service — Autonomous acreage management</div>
+   <h1 id="services-heading">Autonomous acreage management for <em>Northern Rivers</em> properties.</h1>
+   <p class="svc-hero-lede">
+    RTK + LiDAR autonomous mowing for the mowable area, plus slope, fire compliance,
+    holiday-rental presentation and orchard under-tree work — for blocks between
+    <mark class="confirm">2.5</mark> and 10 acres. One management fee, year-round.
+    Service operations begin Q1 2027.
+   </p>
+   <dl class="svc-hero-strip">
+    <div><dt>Block size</dt><dd>2.5 – 10 acres</dd></div>
+    <div><dt>System</dt><dd>RTK + LiDAR autonomous</dd></div>
+    <div><dt>Coverage</dt><dd>Northern Rivers, NSW</dd></div>
+    <div><dt>Operations</dt><dd>Begin Q1 2027</dd></div>
+   </dl>
+  </div>
+ </section>
+
+ <!-- ─── HERO SHOT — autonomous mower in service ─────────── -->
+ <figure class="svc-hero-shot" aria-label="AutoAcre autonomous mower in service">
+  <img src="img/services-hero.jpg"
+       srcset="img/services-hero-1280.jpg 1280w, img/services-hero.jpg 1920w"
+       sizes="100vw"
+       alt="AutoAcre RTK + LiDAR autonomous mower at work on a Northern Rivers acreage at golden hour — striped paddock in the foreground, weatherboard homestead with a flowering jacaranda and gum tree, hinterland ridges behind."
+       loading="eager" fetchpriority="high" width="1920" height="1072" />
+  <figcaption class="container">
+   <span class="svc-shot-tag">In service</span>
+   <span class="svc-shot-text">RTK + LiDAR autonomous mower on Northern Rivers hinterland acreage — summer cadence, golden hour. Continuous coverage, no operator on the machine.</span>
+   <span class="svc-shot-coord">N. Rivers · Summer 2026</span>
+  </figcaption>
+ </figure>
+
+ <!-- ─── WHAT WE DO — pillars grid ──────────────────────────────── -->
+ <section class="section svc-pillars-section" aria-labelledby="pillars-heading">
+  <div class="container" style="max-width: 1180px;">
+
+   <header class="svc-section-head">
+    <div>
+     <span class="section-label" style="display:block; margin-bottom: var(--space-3);">What we do</span>
+     <h2 id="pillars-heading">Six service pillars. One autonomous system.</h2>
+    </div>
+    <span class="svc-count">06 pillars · one fee</span>
+   </header>
+
+   <div class="svc-pillar-grid">
+
+    <!-- S/01 — Mowing & vegetation -->
+    <article class="svc-pillar">
+     <div class="svc-pillar-head">
+      <span class="svc-pillar-index">S / 01</span>
+      <span class="svc-pillar-topic">Vegetation</span>
+     </div>
+     <h3>Autonomous mowing &amp; vegetation.</h3>
+     <p class="svc-pillar-blurb">
+      The autonomous mower keeps lawn, paddock and exclusion-zone boundaries at a
+      consistent height continuously — not reset between visits. Twice-weekly through
+      summer and weekly through winter, about three times what a fortnightly contractor delivers.
+     </p>
+     <ul class="svc-pillar-spec" aria-label="What's covered">
+      <li>RTK + LiDAR autonomous mowing across the mowable area</li>
+      <li>Manual edge work along hardscaping &amp; stock fences — <mark class="confirm">quarterly</mark></li>
+      <li>Heavy slashing of overgrown paddocks scoped separately at install</li>
+     </ul>
+     <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>~ 78 mow days / year</div>
+    </article>
+
+    <!-- S/02 — Slope -->
+    <article class="svc-pillar">
+     <div class="svc-pillar-head">
+      <span class="svc-pillar-index">S / 02</span>
+      <span class="svc-pillar-topic">Terrain</span>
+     </div>
+     <h3>Slope management.</h3>
+     <p class="svc-pillar-blurb">
+      Sections up to 38° are handled by the autonomous system without an operator
+      on the machine. That covers the great majority of Northern Rivers hinterland
+      blocks — including ground a ride-on contractor would refuse on safety grounds.
+     </p>
+     <ul class="svc-pillar-spec" aria-label="What's covered">
+      <li>Up to 38° handled autonomously, every cycle</li>
+      <li>Mapped exclusion zones for ridge sections &amp; rocky outcrop</li>
+      <li>Beyond 38° — <mark class="confirm">quoted separately on site assessment</mark></li>
+     </ul>
+     <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>Max gradient · 38°</div>
+    </article>
+
+    <!-- S/03 — Fire compliance -->
+    <article class="svc-pillar">
+     <div class="svc-pillar-head">
+      <span class="svc-pillar-index">S / 03</span>
+      <span class="svc-pillar-topic">Compliance</span>
+     </div>
+     <h3>Fire compliance.</h3>
+     <p class="svc-pillar-blurb">
+      The autonomous mower holds Asset Protection Zone grass height continuously —
+      not just before fire season. Areas around dwellings and outbuildings stay
+      at compliance height every cycle. The system logs cadence and zone coverage.
+     </p>
+     <ul class="svc-pillar-spec" aria-label="What's covered">
+      <li>APZ inner &amp; outer zone grass height held year-round</li>
+      <li>Coverage logs available for council / insurer on request</li>
+      <li>Annual pre-season vegetation review — <mark class="confirm">included in management fee</mark></li>
+     </ul>
+     <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>NSW RFS · APZ compliant</div>
+    </article>
+
+    <!-- S/04 — Holiday rental & absentee -->
+    <article class="svc-pillar">
+     <div class="svc-pillar-head">
+      <span class="svc-pillar-index">S / 04</span>
+      <span class="svc-pillar-topic">Absentee ownership</span>
+     </div>
+     <h3>Holiday-rental &amp; absentee maintenance.</h3>
+     <p class="svc-pillar-blurb">
+      The autonomous system runs to a fixed cadence regardless of bookings —
+      twice-weekly through summer, weekly through winter. The property looks the
+      same on day one of a booking as it does on day seven; fortnightly contractor
+      cycles can't match this in Northern Rivers growing conditions.
+     </p>
+     <ul class="svc-pillar-spec" aria-label="What's covered">
+      <li>Remote monitoring — AutoAcre tracks the system, not the owner</li>
+      <li>Photo reports <mark class="confirm">on request</mark></li>
+      <li>Out of scope: pool, garden beds, interior, pest — separate contractors</li>
+     </ul>
+     <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>Guest-cycle consistent</div>
+    </article>
+
+    <!-- S/05 — Orchard mowing (Northern Rivers specialty crops) -->
+    <article class="svc-pillar">
+     <div class="svc-pillar-head">
+      <span class="svc-pillar-index">S / 05</span>
+      <span class="svc-pillar-topic">Specialty crop</span>
+     </div>
+     <h3>Orchard mowing.</h3>
+     <p class="svc-pillar-blurb">
+      Under-tree and inter-row mowing for macadamia, avocado, blueberry and teatree
+      plantations across the Northern Rivers. The autonomous mower works the wet-season
+      window when ride-on contractor access becomes unreliable — holding ground-cover
+      height through Dec–Mar continuously.
+     </p>
+     <ul class="svc-pillar-spec" aria-label="What's covered">
+      <li>Inter-row and under-tree at consistent ground-cover height</li>
+      <li>Wet-season cadence — Dec–Mar, when ride-on access is limited</li>
+      <li>Crop pages: <a href="/macadamia-mowing" style="color: var(--color-primary, #4F5C20); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;">macadamia</a> · <a href="/avocado-orchard-mowing" style="color: var(--color-primary, #4F5C20); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;">avocado</a> · <a href="/blueberry-farm-mowing" style="color: var(--color-primary, #4F5C20); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;">blueberry</a> · <a href="/teatree-plantation-mowing" style="color: var(--color-primary, #4F5C20); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;">teatree</a></li>
+     </ul>
+     <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>Northern Rivers · 4 crop types</div>
+    </article>
+
+    <!-- S/06 — Sward control / laminitis-prone horses -->
+    <article class="svc-pillar">
+     <div class="svc-pillar-head">
+      <span class="svc-pillar-index">S / 06</span>
+      <span class="svc-pillar-topic">Equine pasture</span>
+     </div>
+     <h3>Sward control for laminitis-prone horses.</h3>
+     <p class="svc-pillar-blurb">
+      Continuous mowing keeps pasture sward at a consistent height every cycle —
+      depleting the fructan and non-structural carbohydrate reserves in tall grass
+      that trigger laminitis episodes. Pasture energy profile stays stable, not
+      spiking on overgrown feed after wet weeks.
+     </p>
+     <ul class="svc-pillar-spec" aria-label="What's covered">
+      <li>Sward held at a consistent target height — every cycle, year-round</li>
+      <li>Reduces fructan spikes in tall &amp; stressed pasture</li>
+      <li>Suits EMS, PPID &amp; founder-prone horses and ponies</li>
+     </ul>
+     <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>Sward height · continuous</div>
+    </article>
+
+   </div>
+  </div>
+ </section>
+
+ <!-- ─── HOW IT WORKS — four-step timeline ──────────────────────── -->
+ <section class="section svc-how-section" aria-labelledby="how-heading">
+  <div class="container" style="max-width: 1180px;">
+
+   <header class="svc-section-head">
+    <div>
+     <span class="section-label" style="display:block; margin-bottom: var(--space-3);">How it works</span>
+     <h2 id="how-heading">The management-fee model, in four steps.</h2>
+    </div>
+    <span class="svc-count">Site assessment → first cycle · ~ <mark class="confirm">4–6 weeks</mark></span>
+   </header>
+
+   <div class="svc-flow" role="list">
+
+    <!-- 01 ── Site assessment -->
+    <article class="svc-step" role="listitem">
+     <div class="svc-step-num">01<sup>· step</sup></div>
+     <div class="svc-step-body">
+      <h3>Site assessment.</h3>
+      <p>
+       On-site visit to walk the property. We map mowable area, slope sections,
+       exclusion zones, and infrastructure — charging dock placement, mains power,
+       cellular coverage for remote monitoring. We tell you honestly whether your
+       property is suitable. If it isn't, we say so. If it is, you leave with a
+       fixed reference price and the option to lock in a Q1 2027 install slot.
+      </p>
+     </div>
+     <dl class="svc-step-meta">
+      <div class="svc-step-meta-row"><dt>Time on site</dt><dd>~ 90 minutes</dd></div>
+      <div class="svc-step-meta-row"><dt>Cost</dt><dd>Free · no obligation</dd></div>
+      <div class="svc-step-meta-row"><dt>Outcome</dt><dd>Fixed reference price &amp; suitability call</dd></div>
+     </dl>
+    </article>
+
+    <!-- 02 ── Purchase & install -->
+    <article class="svc-step" role="listitem">
+     <div class="svc-step-num">02<sup>· step</sup></div>
+     <div class="svc-step-body">
+      <h3>System purchase &amp; install.</h3>
+      <p>
+       You buy the autonomous mowing system outright at the reference launch
+       price of <mark class="confirm"><strong>$33,490</strong></mark>. That covers the RTK base
+       station, commercial-grade autonomous mower with LiDAR, professional
+       installation, and boundary mapping. Most 3–7 acre installs take a single
+       day; 10-acre blocks sometimes a second day for zone complexity. The hardware
+       is yours from day one.
+      </p>
+     </div>
+     <dl class="svc-step-meta">
+      <div class="svc-step-meta-row"><dt>Launch price</dt><dd><strong><mark class="confirm">$33,490</mark></strong></dd></div>
+      <div class="svc-step-meta-row"><dt>Install time</dt><dd>1 day (3–7 ac) · 2 days (10 ac)</dd></div>
+      <div class="svc-step-meta-row"><dt>Includes</dt><dd>RTK base · LiDAR mower · install · mapping</dd></div>
+     </dl>
+    </article>
+
+    <!-- 03 ── Ongoing management -->
+    <article class="svc-step" role="listitem">
+     <div class="svc-step-num">03<sup>· step</sup></div>
+     <div class="svc-step-body">
+      <h3>Ongoing management.</h3>
+      <p>
+       Tiered monthly management fee scaling with mowable acreage — from
+       <mark class="confirm"><strong>$165/mo at 2.5 acres</strong></mark> to
+       <mark class="confirm"><strong>$650/mo at 10 acres</strong></mark>. The fee covers scheduled
+       maintenance, blade replacements, firmware updates, remote monitoring, and
+       repair coordination. Mowing runs ~78 days per year. Ad-hoc on-site
+       call-outs are <mark class="confirm"><strong>$150 / visit</strong></mark> when needed for edge
+       work, manual mowing during downtime, or special requests.
+      </p>
+     </div>
+     <dl class="svc-step-meta">
+      <div class="svc-step-meta-row"><dt>Fee range</dt><dd><strong><mark class="confirm">$165 – $650 / mo</mark></strong></dd></div>
+      <div class="svc-step-meta-row"><dt>Cadence</dt><dd>78 mow days / year</dd></div>
+      <div class="svc-step-meta-row"><dt>Call-out</dt><dd><strong><mark class="confirm">$150 / visit</mark></strong></dd></div>
+     </dl>
+    </article>
+
+    <!-- 04 ── Contract terms -->
+    <article class="svc-step" role="listitem">
+     <div class="svc-step-num">04<sup>· step</sup></div>
+     <div class="svc-step-body">
+      <h3>Contract terms.</h3>
+      <p>
+       Management is month-to-month with 30 days notice. No lock-in. The mower
+       is yours regardless — cancelling management means you operate it yourself
+       going forward. Most owners stay on management because firmware, RTK base
+       station tuning, blade scheduling, and remote diagnostics are work most
+       acreage owners would rather not run themselves.
+      </p>
+     </div>
+     <dl class="svc-step-meta">
+      <div class="svc-step-meta-row"><dt>Term</dt><dd>Month-to-month · 30 days notice</dd></div>
+      <div class="svc-step-meta-row"><dt>Lock-in</dt><dd>None</dd></div>
+      <div class="svc-step-meta-row"><dt>If cancelled</dt><dd>You keep the hardware &amp; self-operate</dd></div>
+     </dl>
+    </article>
+
+   </div>
+  </div>
+ </section>
+
+ <!-- ─── WHO IT'S FOR ───────────────────────────────────────────── -->
+ <section class="section svc-who-section" aria-labelledby="who-heading">
+  <div class="container" style="max-width: 1180px;">
+
+   <header class="svc-section-head">
+    <div>
+     <span class="section-label" style="display:block; margin-bottom: var(--space-3);">Who it's for</span>
+     <h2 id="who-heading">2.5 – 10 acre blocks where mowing has become a real time commitment.</h2>
+    </div>
+    <span class="svc-count">05 typical conversations</span>
+   </header>
+
+   <div class="svc-who-grid">
+
+    <div class="svc-who-intro">
+     <div class="svc-who-intro-tag">The conversation</div>
+     <p>
+      You own <mark class="confirm">2.5</mark> to 10 acres in the Northern Rivers. The
+      mowing has become a real time commitment, or your fortnightly contractor's
+      cycle leaves the property looking <em>under-presented for half of every
+      fortnight</em>. You'd rather solve it permanently than schedule it forever.
+     </p>
+    </div>
+
+    <ol class="svc-who-list">
+     <li>
+      <span class="svc-who-num">W / 01</span>
+      <span class="svc-who-body"><strong>Established lifestyle-acreage owners.</strong>
+      Paying $800 – $1,500 / month to a fortnightly contractor and not quite
+      getting what they want for the money.</span>
+     </li>
+     <li>
+      <span class="svc-who-num">W / 02</span>
+      <span class="svc-who-body"><strong>Holiday-rental &amp; absentee owners.</strong>
+      Need the property consistent across every booking, without coordinating
+      contractor visits from interstate.</span>
+     </li>
+     <li>
+      <span class="svc-who-num">W / 03</span>
+      <span class="svc-who-body"><strong>Equestrian &amp; rural-residential blocks.</strong>
+      Rotational paddock management, stock-fence edges, and bushland margins to
+      hold to APZ height.</span>
+     </li>
+     <li>
+      <span class="svc-who-num">W / 04</span>
+      <span class="svc-who-body"><strong>Slope-heavy blocks.</strong>
+      Sections the ride-on contractor refuses on safety grounds — handled
+      autonomously, every cycle, up to 38°.</span>
+     </li>
+     <li>
+      <span class="svc-who-num">W / 05</span>
+      <span class="svc-who-body"><strong>Northern Rivers orchards.</strong>
+      Macadamia, avocado, blueberry &amp; teatree growers needing under-tree
+      and inter-row coverage through the wet season — when ride-on access
+      becomes unreliable.</span>
+     </li>
+    </ol>
+   </div>
+
+   <dl class="svc-who-scope" aria-label="Out of scope">
+    <div>
+     <dt>Below <mark class="confirm">2.5</mark> acres</dt>
+     <dd>A consumer wire-bounded mower (Husqvarna Automower, Mammotion Luba) is usually the better economic fit — we'll say so honestly on assessment.</dd>
+    </div>
+    <div>
+     <dt>Above 10 acres</dt>
+     <dd>Commercial scope. Multi-unit deployments, scoped and quoted per site — see the <a href="/commercial" style="color: var(--color-primary, #4F5C20); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;">Commercial</a> page.</dd>
+    </div>
+   </dl>
+
+  </div>
+ </section>
+
+ <!-- ─── CLOSING CTA — DARK BAND ─────────────────────────────────── -->
+ <section class="svc-close" aria-labelledby="close-heading">
+  <div class="container">
+   <div>
+    <div class="svc-close-eyebrow">Next step</div>
+    <h2 id="close-heading">Walk your block. <em>Honest answer.</em></h2>
+    <p>
+     Book a site assessment. We'll walk your block, evaluate it for autonomous mowing,
+     give you a fixed reference price, and tell you honestly whether your property is
+     suitable. Open today; service operations begin Q1 2027.
+    </p>
+    <div class="svc-close-actions">
+     <a class="btn btn--primary btn--large" href="/book-site-assessment">Book a site assessment</a>
+     <a class="btn btn--secondary btn--large" href="/robot-mower-roi-calculator">Run the ROI Calculator</a>
+    </div>
+   </div>
+   <dl class="svc-close-rail">
+    <div class="svc-close-rail-item">
+     <dt>What it covers</dt>
+     <dd>Gradient survey, vegetation audit, RTK siting &amp; access constraints.</dd>
+    </div>
+    <div class="svc-close-rail-item">
+     <dt>Time on site</dt>
+     <dd>~ 90 minutes <span class="clay">· on-property</span></dd>
+    </div>
+    <div class="svc-close-rail-item">
+     <dt>Cost</dt>
+     <dd>Free <span class="clay">· no obligation</span></dd>
+    </div>
+    <div class="svc-close-rail-item">
+     <dt>Service area</dt>
+     <dd>Byron, Ballina &amp; Lismore Shires.</dd>
+    </div>
+   </dl>
+  </div>
+ </section>
+
+ <!-- ─── DRAFT — pending confirmations (delete on publish) ──────── -->
+ <aside class="svc-pending" aria-label="Pending confirmations for Ben">
+  <div class="container">
+   <div>
+    <div class="svc-pending-eyebrow">Notes for Ben · 09 placeholders</div>
+    <p class="svc-pending-head">Inline draft values are dotted-underlined in body copy. Resolve and delete this block before publish.</p>
+   </div>
+   <ol class="svc-pending-list">
+    <li>
+     <span class="pid">P / 01</span>
+     <span class="pq">Acreage floor — 2.5 or 3 acres?</span>
+     <span class="pa">→ assumed 2.5 (matches nav + footer)</span>
+    </li>
+    <li>
+     <span class="pid">P / 02</span>
+     <span class="pq">Edge work cadence in fee</span>
+     <span class="pa">→ assumed quarterly</span>
+    </li>
+    <li>
+     <span class="pid">P / 03</span>
+     <span class="pq">Slope &gt; 38° handling</span>
+     <span class="pa">→ assumed quoted separately on assessment</span>
+    </li>
+    <li>
+     <span class="pid">P / 04</span>
+     <span class="pq">APZ pre-season vegetation review</span>
+     <span class="pa">→ assumed included in management fee</span>
+    </li>
+    <li>
+     <span class="pid">P / 05</span>
+     <span class="pq">Photo report cadence</span>
+     <span class="pa">→ assumed on request</span>
+    </li>
+    <li>
+     <span class="pid">P / 06</span>
+     <span class="pq">Onboarding timeline</span>
+     <span class="pa">→ assumed 4–6 weeks</span>
+    </li>
+    <li>
+     <span class="pid">P / 07</span>
+     <span class="pq">System launch price</span>
+     <span class="pa">→ assumed $33,490</span>
+    </li>
+    <li>
+     <span class="pid">P / 08</span>
+     <span class="pq">Tier band &amp; call-out</span>
+     <span class="pa">→ assumed $165 – $650/mo + $150 / visit</span>
+    </li>
+    <li>
+     <span class="pid">P / 09</span>
+     <span class="pq">Orchard mowing pricing</span>
+     <span class="pa">→ assumed scoped at site assessment (same model, separate quote)</span>
+    </li>
+   </ol>
+  </div>
+ </aside>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <a aria-label='AutoAcre home' class='header-logo' href='/'>
+     <img src="img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
+    </a>
+    <p>Autonomous mowing systems for 2.5–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
+   </div>
+   <div class="footer-col">
+    <h4>Autonomous Systems</h4>
+    <ul>
+     <li><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a></li>
+     <li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li>
+     <li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li>
+     <li><a href='/commercial'>Commercial Autonomous Mowing</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Resources</h4>
+    <ul>
+     <li><a href='/resources'>All free guides</a></li>
+     <li><a href='/macadamia-vegetation-guide.pdf'>Macadamia vegetation</a></li>
+     <li><a href='/slope-mowing-guide.pdf'>Slope mowing</a></li>
+     <li><a href='/fire-season-prep-checklist.pdf'>Fire season prep</a></li>
+     <li><a href='/holiday-rental-maintenance-guide.pdf'>Holiday rental maintenance</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Convert</h4>
+    <ul>
+     <li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li>
+     <li><a href='/book-site-assessment'>Book Site Assessment</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+     <li><a href='/about'>About</a></li>
+     <li><a href='/blog'>Blog</a></li>
+     <li><a href='/glossary'>Glossary</a></li>
+     <li><a href='/faq'>FAQ</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Contact</h4>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+     <a href="tel:0499649094">0499 649 094</a>
+    </div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+     <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>
+    </div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+     <span>Byron Bay &amp; Northern Rivers, NSW</span>
+    </div>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>&copy; 2026 AutoAcre. All rights reserved.</span>
+   <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
+   <span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span>
+  </div>
+ </div>
+</footer>
+
+<script src="/app.js" defer></script>
+<script src="/nav.js" defer></script>
+</body>
+</html>
