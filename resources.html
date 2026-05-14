@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Free guides for Northern Rivers acreage owners | AutoAcre</title>
+ <meta name="description" content="Download practical guides on vegetation management, slope mowing, fire compliance and holiday rental maintenance — written for Northern Rivers acreage owners. Direct PDF download, no email required.">
+ <link rel="canonical" href="https://autoacre.com.au/resources.html">
+
+ <meta property="og:title" content="Free guides for Northern Rivers acreage owners | AutoAcre">
+ <meta property="og:description" content="Four free guides for 2.5–10 acre Northern Rivers properties. Direct downloads, no email gate.">
+ <meta property="og:image" content="https://autoacre.com.au/img/hinterland-aerial.jpg">
+ <meta property="og:url" content="https://autoacre.com.au/resources.html">
+ <meta property="og:type" content="article">
+ <meta property="og:locale" content="en_AU">
+
+ <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CollectionPage",
+   "@id": "https://autoacre.com.au/resources.html#webpage",
+   "url": "https://autoacre.com.au/resources.html",
+   "name": "Free guides for Northern Rivers acreage owners",
+   "description": "Practical PDF guides on vegetation management, slope mowing, fire compliance and holiday rental maintenance for 2.5–10 acre Northern Rivers acreage.",
+   "inLanguage": "en-AU",
+   "isPartOf": { "@id": "https://autoacre.com.au/#website" },
+   "about": { "@id": "https://autoacre.com.au/#organization" },
+   "publisher": { "@id": "https://autoacre.com.au/#organization" }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoacre.com.au/" },
+    { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://autoacre.com.au/resources.html" }
+   ]
+  },
+  {
+   "@type": "ItemList",
+   "@id": "https://autoacre.com.au/resources.html#guidelist",
+   "name": "AutoAcre Free Guides",
+   "numberOfItems": 4,
+   "itemListElement": [
+    { "@type": "DigitalDocument", "position": 1, "name": "Macadamia vegetation guide",
+      "description": "Seasonal mowing schedule, fire-break compliance, and equipment guide for Northern Rivers macadamia farms.",
+      "url": "https://autoacre.com.au/macadamia-vegetation-guide.pdf",
+      "encodingFormat": "application/pdf", "inLanguage": "en-AU" },
+    { "@type": "DigitalDocument", "position": 2, "name": "Slope mowing guide",
+      "description": "How to assess, measure and manage slopes on your property — plus what equipment works at each angle.",
+      "url": "https://autoacre.com.au/slope-mowing-guide.pdf",
+      "encodingFormat": "application/pdf", "inLanguage": "en-AU" },
+    { "@type": "DigitalDocument", "position": 3, "name": "Fire season prep checklist",
+      "description": "Month-by-month prep checklist for NSW Rural Fire Service compliance.",
+      "url": "https://autoacre.com.au/fire-season-prep-checklist.pdf",
+      "encodingFormat": "application/pdf", "inLanguage": "en-AU" },
+    { "@type": "DigitalDocument", "position": 4, "name": "Holiday rental maintenance guide",
+      "description": "Mowing schedules, contractor briefs, and APZ compliance for absentee acreage owners.",
+      "url": "https://autoacre.com.au/holiday-rental-maintenance-guide.pdf",
+      "encodingFormat": "application/pdf", "inLanguage": "en-AU" }
+   ]
+  }
+ ]
+}
+ </script>
+
+ <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+ <link rel="stylesheet" href="./base.css">
+ <link rel="stylesheet" href="./style.css">
+ <link rel="stylesheet" href="./direction-b.css">
+ <link rel="stylesheet" href="./nav.css">
+
+ <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+ <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+ <link rel="manifest" href="/site.webmanifest">
+ <meta name="theme-color" content="#14140F">
+
+ <style>
+  /* ──────────────────────────────────────────────────────────────────
+     RESOURCES — page-specific industrial spec-sheet treatment.
+     Reuses Direction B tokens. Charcoal hero, dense mono metadata,
+     numbered cards with sharp edges, dark closing CTA banner.
+     ────────────────────────────────────────────────────────────────── */
+
+  /* Hero — full charcoal inverse band */
+  .res-hero {
+   background: var(--color-charcoal);
+   color: var(--color-bg);
+   padding: clamp(4rem, 11vh, 8rem) 0 0;
+   border-bottom: 1px solid rgba(250, 247, 241, 0.08);
+   position: relative;
+   overflow: hidden;
+  }
+  .res-hero::after {
+   content: "";
+   position: absolute;
+   inset: auto 0 0 0;
+   height: 1px;
+   background: linear-gradient(90deg, transparent, rgba(250,247,241,0.18) 20%, rgba(250,247,241,0.18) 80%, transparent);
+  }
+  .res-hero .container { position: relative; z-index: 1; }
+
+  .res-hero .breadcrumb,
+  .res-hero .breadcrumb a {
+   color: rgba(250, 247, 241, 0.55);
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+  }
+  .res-hero .breadcrumb a:hover { color: var(--color-clay-soft, #C8B79C); }
+  .res-hero .breadcrumb span { color: rgba(250, 247, 241, 0.3); padding: 0 0.5rem; }
+
+  .res-hero-eyebrow {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.55);
+   display: inline-flex;
+   align-items: center;
+   gap: 0.75rem;
+   margin: clamp(2rem, 5vh, 3rem) 0 var(--space-5);
+  }
+  .res-hero-eyebrow::before {
+   content: "";
+   display: inline-block;
+   width: 28px;
+   height: 1px;
+   background: var(--color-clay-soft, #C8B79C);
+  }
+
+  .res-hero h1 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(2.2rem, 5.6vw, 4.6rem);
+   line-height: 1.04;
+   letter-spacing: -0.02em;
+   color: var(--color-bg);
+   margin: 0 0 var(--space-6);
+   max-width: 18ch;
+  }
+  .res-hero h1 em {
+   font-style: italic;
+   color: var(--color-clay-soft, #C8B79C);
+   font-weight: 500;
+  }
+  .res-hero-lede {
+   font-size: clamp(1.05rem, 1.3vw + 0.4rem, 1.3rem);
+   line-height: 1.55;
+   color: rgba(250, 247, 241, 0.78);
+   max-width: 56ch;
+   margin: 0 0 clamp(3rem, 6vh, 4.5rem);
+  }
+
+  /* Industrial meta-strip below the lede */
+  .res-hero-strip {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 0;
+   border-top: 1px solid rgba(250, 247, 241, 0.12);
+   padding-top: var(--space-5);
+   padding-bottom: var(--space-8);
+  }
+  .res-hero-strip > div {
+   padding: 0 var(--space-5);
+   border-right: 1px solid rgba(250, 247, 241, 0.08);
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-2);
+  }
+  .res-hero-strip > div:first-child { padding-left: 0; }
+  .res-hero-strip > div:last-child { border-right: none; padding-right: 0; }
+  .res-hero-strip dt {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.45);
+   margin: 0;
+  }
+  .res-hero-strip dd {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 15px;
+   font-weight: 500;
+   color: var(--color-bg);
+   margin: 0;
+   letter-spacing: 0.02em;
+  }
+  @media (max-width: 720px) {
+   .res-hero-strip { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-5); }
+   .res-hero-strip > div { padding: 0 var(--space-4); border-right: 1px solid rgba(250,247,241,0.08); }
+   .res-hero-strip > div:nth-child(2n) { border-right: none; padding-right: 0; }
+   .res-hero-strip > div:nth-child(2n+1) { padding-left: 0; }
+  }
+
+  /* ──────────────────────────────────────────────────────────────────
+     GUIDE GRID — numbered industrial spec cards
+     ────────────────────────────────────────────────────────────────── */
+  .res-grid-section { background: var(--color-bg); }
+  .res-grid {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 1px;
+   background: var(--color-divider, #D8D1BE);
+   border: 1px solid var(--color-divider, #D8D1BE);
+  }
+  @media (max-width: 820px) {
+   .res-grid { grid-template-columns: 1fr; }
+  }
+
+  .res-card {
+   background: var(--color-bg);
+   padding: clamp(1.75rem, 3vw, 2.75rem);
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-5);
+   position: relative;
+   transition: background 220ms var(--ease-out, ease);
+  }
+  .res-card:hover { background: var(--color-surface, #F0EBDF); }
+
+  .res-card-head {
+   display: flex;
+   align-items: baseline;
+   justify-content: space-between;
+   gap: var(--space-4);
+   padding-bottom: var(--space-4);
+   border-bottom: 1px solid var(--color-divider, #D8D1BE);
+  }
+  .res-card-index {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 13px;
+   font-weight: 600;
+   letter-spacing: 0.12em;
+   color: var(--color-charcoal, #14140F);
+  }
+  .res-card-topic {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+  }
+
+  .res-card h3 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(1.5rem, 1.4vw + 1rem, 2rem);
+   line-height: 1.15;
+   letter-spacing: -0.01em;
+   color: var(--color-charcoal, #14140F);
+   margin: 0;
+  }
+  .res-card-blurb {
+   color: var(--color-text-muted, #69655B);
+   line-height: 1.6;
+   margin: 0;
+   font-size: 15.5px;
+  }
+
+  .res-card-inside {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-2);
+  }
+  .res-card-inside li {
+   display: grid;
+   grid-template-columns: 18px 1fr;
+   gap: var(--space-3);
+   align-items: baseline;
+   font-size: 14px;
+   line-height: 1.5;
+   color: var(--color-text, #14140F);
+  }
+  .res-card-inside li::before {
+   content: "+";
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 13px;
+   color: var(--color-primary, #4F5C20);
+   font-weight: 600;
+  }
+
+  .res-card-foot {
+   margin-top: auto;
+   padding-top: var(--space-5);
+   border-top: 1px solid var(--color-divider, #D8D1BE);
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: var(--space-4);
+   flex-wrap: wrap;
+  }
+  .res-card-meta {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 11.5px;
+   letter-spacing: 0.08em;
+   color: var(--color-text-faint, #9E9A8A);
+   display: inline-flex;
+   align-items: center;
+   gap: 0.5rem;
+  }
+  .res-card-meta strong {
+   color: var(--color-text-muted, #69655B);
+   font-weight: 500;
+  }
+  .res-card-meta .dot {
+   width: 3px;
+   height: 3px;
+   background: currentColor;
+   border-radius: 50%;
+   opacity: 0.5;
+  }
+
+  .res-card-cta {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   font-weight: 600;
+   letter-spacing: 0.16em;
+   text-transform: uppercase;
+   color: var(--color-charcoal, #14140F);
+   text-decoration: none !important;
+   display: inline-flex;
+   align-items: center;
+   gap: 0.6rem;
+   padding: 0.65rem 0;
+   border-bottom: 1px solid var(--color-charcoal, #14140F);
+   transition: gap 220ms var(--ease-out, ease), color 220ms var(--ease-out, ease);
+  }
+  .res-card-cta:hover {
+   color: var(--color-primary, #4F5C20);
+   border-bottom-color: var(--color-primary, #4F5C20);
+   gap: 1rem;
+  }
+  .res-card-cta svg { display: block; }
+
+  /* Section intro header */
+  .res-section-head {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr) auto;
+   align-items: end;
+   gap: var(--space-6);
+   margin-bottom: var(--space-8);
+   padding-bottom: var(--space-5);
+   border-bottom: 1px solid var(--color-divider, #D8D1BE);
+  }
+  .res-section-head h2 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(1.8rem, 2.4vw + 0.6rem, 2.75rem);
+   line-height: 1.1;
+   letter-spacing: -0.01em;
+   color: var(--color-charcoal, #14140F);
+   margin: 0;
+   max-width: 22ch;
+  }
+  .res-section-head .res-count {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   color: var(--color-text-muted, #69655B);
+   white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+   .res-section-head { grid-template-columns: 1fr; }
+   .res-section-head .res-count { justify-self: start; }
+  }
+
+  /* ──────────────────────────────────────────────────────────────────
+     CLOSING CTA — dark editorial band, two CTAs
+     ────────────────────────────────────────────────────────────────── */
+  .res-close {
+   background: var(--color-charcoal, #14140F);
+   color: var(--color-bg, #FAF7F1);
+   padding: clamp(4rem, 10vh, 7rem) 0;
+   position: relative;
+  }
+  .res-close .container {
+   display: grid;
+   grid-template-columns: 1.1fr 1fr;
+   gap: clamp(2rem, 6vw, 5rem);
+   align-items: center;
+  }
+  @media (max-width: 880px) {
+   .res-close .container { grid-template-columns: 1fr; }
+  }
+
+  .res-close-eyebrow {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 12px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.55);
+   display: inline-flex;
+   align-items: center;
+   gap: 0.75rem;
+   margin-bottom: var(--space-5);
+  }
+  .res-close-eyebrow::before {
+   content: "";
+   display: inline-block;
+   width: 28px;
+   height: 1px;
+   background: var(--color-clay-soft, #C8B79C);
+  }
+  .res-close h2 {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-weight: 500;
+   font-size: clamp(2rem, 3.4vw + 0.6rem, 3.4rem);
+   line-height: 1.08;
+   letter-spacing: -0.015em;
+   color: var(--color-bg, #FAF7F1);
+   margin: 0 0 var(--space-5);
+   max-width: 16ch;
+  }
+  .res-close h2 em { font-style: italic; color: var(--color-clay-soft, #C8B79C); font-weight: 500; }
+  .res-close p {
+   color: rgba(250, 247, 241, 0.78);
+   line-height: 1.6;
+   margin: 0 0 var(--space-6);
+   max-width: 48ch;
+   font-size: clamp(1rem, 0.7vw + 0.6rem, 1.15rem);
+  }
+
+  .res-close-actions {
+   display: flex;
+   flex-wrap: wrap;
+   gap: var(--space-4);
+  }
+  .res-close .btn--primary {
+   background: var(--color-bg, #FAF7F1);
+   color: var(--color-charcoal, #14140F);
+   border-color: var(--color-bg, #FAF7F1);
+  }
+  .res-close .btn--primary:hover {
+   background: var(--color-clay-soft, #C8B79C);
+   border-color: var(--color-clay-soft, #C8B79C);
+   color: var(--color-charcoal, #14140F);
+  }
+  .res-close .btn--secondary {
+   background: transparent;
+   color: var(--color-bg, #FAF7F1);
+   border: 1px solid rgba(250, 247, 241, 0.35);
+  }
+  .res-close .btn--secondary:hover {
+   background: rgba(250, 247, 241, 0.08);
+   border-color: var(--color-bg, #FAF7F1);
+   color: var(--color-bg, #FAF7F1);
+  }
+
+  /* Spec rail on the right side of the closing CTA */
+  .res-close-rail {
+   border-left: 1px solid rgba(250, 247, 241, 0.15);
+   padding-left: clamp(1.5rem, 3vw, 2.5rem);
+   display: flex;
+   flex-direction: column;
+   gap: var(--space-5);
+  }
+  @media (max-width: 880px) {
+   .res-close-rail { border-left: none; padding-left: 0; border-top: 1px solid rgba(250,247,241,0.15); padding-top: var(--space-6); }
+  }
+  .res-close-rail-item dt {
+   font-family: var(--font-mono, 'JetBrains Mono', monospace);
+   font-size: 10.5px;
+   letter-spacing: 0.22em;
+   text-transform: uppercase;
+   color: rgba(250, 247, 241, 0.45);
+   margin: 0 0 var(--space-1);
+  }
+  .res-close-rail-item dd {
+   font-family: var(--font-display, Zodiak, Georgia, serif);
+   font-size: clamp(1.1rem, 0.9vw + 0.6rem, 1.4rem);
+   font-weight: 500;
+   color: var(--color-bg, #FAF7F1);
+   margin: 0;
+   line-height: 1.25;
+   letter-spacing: -0.005em;
+  }
+  .res-close-rail-item dd .clay { color: var(--color-clay-soft, #C8B79C); }
+ </style>
+</head>
+<body class="has-light-header">
+
+<header class="site-header" role="banner">
+ <div class="header-inner">
+  <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
+   <span class="wordmark-name">AutoAcre</span>
+   <span class="wordmark-tag">Northern Rivers</span>
+  </a>
+  <nav class="header-nav header-nav--cream-index" aria-label="Main navigation">
+   <ul class="nav-list" role="list">
+    <li class="nav-item"><a href='/' class="nav-link" data-section="home">Home</a></li>
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="systems" aria-expanded="false" aria-controls="nav-drawer-systems">
+      <span class="nav-cream-trigger-label">Autonomous Systems</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-systems" role="region" aria-label="Autonomous Systems" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">What we install</span>
+        <span class="nav-cream-drawer-count">04 ITEMS</span>
+       </div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/3-10-acre-autonomous-mowing-systems'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">2.5–10 Acre Systems</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">RTK Robot Mower Installation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Acreage Robot Mowing</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/commercial'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Commercial Autonomous Mowing</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="locations" aria-expanded="false" aria-controls="nav-drawer-locations">
+      <span class="nav-cream-trigger-label">Locations</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-locations" role="region" aria-label="Locations" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">Where we work</span>
+        <span class="nav-cream-drawer-count">17 ITEMS</span>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Byron Shire — 8</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-byron-bay'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Byron Bay</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-bangalow'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Bangalow</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-mullumbimby'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Mullumbimby</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-ewingsdale'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Ewingsdale</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-federal'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Federal</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-myocum'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Myocum</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-newrybar'><span class="nav-cream-drawer-num">07</span><span class="nav-cream-drawer-label">Newrybar</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-tyagarah'><span class="nav-cream-drawer-num">08</span><span class="nav-cream-drawer-label">Tyagarah</span></a></li>
+        </ul>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Ballina Shire — 5</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-ballina'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Ballina</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-lennox-head'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Lennox Head</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-alstonville'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Alstonville</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-tintenbar'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Tintenbar</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-teven'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Teven</span></a></li>
+        </ul>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Inland — 4</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-brooklet'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Brooklet</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-clunes'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Clunes</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-eureka'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Eureka</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-nashua'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Nashua</span></a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </li>
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="insights" aria-expanded="false" aria-controls="nav-drawer-insights">
+      <span class="nav-cream-trigger-label">Insights</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-insights" role="region" aria-label="Insights" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">Field notes</span>
+        <span class="nav-cream-drawer-count">07 ITEMS</span>
+       </div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/blog'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Robot Mower Guides</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Acreage Automation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">RTK Technology</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/autonomous-vs-ride-on'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Comparisons</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-roi-calculator'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">ROI Calculator</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/faq'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Facts &amp; FAQs</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/resources'><span class="nav-cream-drawer-num">07</span><span class="nav-cream-drawer-label">Free Guides</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+    <li class="nav-item"><a href='/about' class="nav-link" data-section="about">About</a></li>
+   </ul>
+  </nav>
+  <div class="header-actions">
+   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
+   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
+  </div>
+ </div>
+</header>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+ <a class='btn btn--primary btn--large mobile-cta' href='/book-site-assessment' style='margin-bottom: var(--space-4);'>Book Assessment</a>
+ <a href='/'>Home</a>
+ <div class="mobile-nav-areas">
+  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Autonomous Systems
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>
+  <div class="mobile-nav-areas-list">
+   <a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a>
+   <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>
+   <a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a>
+   <a href='/commercial'>Commercial Autonomous Mowing</a>
+  </div>
+ </div>
+ <a href='/about'>About</a>
+ <a href="tel:0499649094" class="mobile-nav-phone">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+  0499 649 094
+ </a>
+</nav>
+
+<main>
+
+ <!-- ─── HERO ───────────────────────────────────────────────────── -->
+ <section class="res-hero" aria-labelledby="resources-heading">
+  <div class="container">
+   <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href='/'>Home</a> <span>/</span> Resources
+   </nav>
+   <div class="res-hero-eyebrow">Field notes — Free downloads</div>
+   <h1 id="resources-heading">Free guides for <em>Northern Rivers</em> acreage owners.</h1>
+   <p class="res-hero-lede">
+    Practical, written-on-the-block resources on vegetation management, slope handling,
+    fire compliance and holiday-rental maintenance. Direct PDF download. No email gate,
+    no follow-up call.
+   </p>
+   <dl class="res-hero-strip">
+    <div><dt>Documents</dt><dd>04 / 04</dd></div>
+    <div><dt>Format</dt><dd>PDF — A4</dd></div>
+    <div><dt>Access</dt><dd>Direct download</dd></div>
+    <div><dt>Updated</dt><dd>2026</dd></div>
+   </dl>
+  </div>
+ </section>
+
+ <!-- ─── GUIDE GRID ─────────────────────────────────────────────── -->
+ <section class="section res-grid-section" aria-labelledby="guides-heading">
+  <div class="container" style="max-width: 1180px;">
+
+   <header class="res-section-head">
+    <div>
+     <span class="section-label" style="display:block; margin-bottom: var(--space-3);">Four guides</span>
+     <h2 id="guides-heading">Pick the one that fits your block.</h2>
+    </div>
+    <span class="res-count">04 documents · 8 pages total</span>
+   </header>
+
+   <div class="res-grid">
+
+    <!-- R/01 ───────────────────────────────────────────── -->
+    <article class="res-card">
+     <div class="res-card-head">
+      <span class="res-card-index">R / 01</span>
+      <span class="res-card-topic">Vegetation</span>
+     </div>
+     <h3>Macadamia vegetation guide.</h3>
+     <p class="res-card-blurb">
+      Seasonal mowing schedule, fire-break compliance and equipment selection for
+      Northern Rivers macadamia farms. Written for the wet-season climate that most
+      orchard playbooks miss.
+     </p>
+     <ul class="res-card-inside" aria-label="What's inside">
+      <li>Under-tree mowing windows — Dec–Mar wet season cadence</li>
+      <li>Groundcover species suited to local rainfall</li>
+      <li>NSW RFS fire-break requirements + equipment specs</li>
+     </ul>
+     <div class="res-card-foot">
+      <span class="res-card-meta">
+       <strong>macadamia-vegetation-guide.pdf</strong>
+       <span class="dot" aria-hidden="true"></span>
+       <span>2 pages</span>
+      </span>
+      <a class="res-card-cta" href="/macadamia-vegetation-guide.pdf" download>
+       Download PDF
+       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v14"></path><path d="m6 11 6 6 6-6"></path><path d="M5 21h14"></path></svg>
+      </a>
+     </div>
+    </article>
+
+    <!-- R/02 ───────────────────────────────────────────── -->
+    <article class="res-card">
+     <div class="res-card-head">
+      <span class="res-card-index">R / 02</span>
+      <span class="res-card-topic">Terrain</span>
+     </div>
+     <h3>Slope mowing guide.</h3>
+     <p class="res-card-blurb">
+      How to assess, measure and manage slopes on your property — plus what equipment
+      holds traction at each angle. Field-tested on Byron hinterland blocks.
+     </p>
+     <ul class="res-card-inside" aria-label="What's inside">
+      <li>DIY slope measurement — phone clinometer + level method</li>
+      <li>Equipment thresholds — by gradient & soil moisture</li>
+      <li>Erosion control & terracing for active mowing zones</li>
+     </ul>
+     <div class="res-card-foot">
+      <span class="res-card-meta">
+       <strong>slope-mowing-guide.pdf</strong>
+       <span class="dot" aria-hidden="true"></span>
+       <span>2 pages</span>
+      </span>
+      <a class="res-card-cta" href="/slope-mowing-guide.pdf" download>
+       Download PDF
+       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v14"></path><path d="m6 11 6 6 6-6"></path><path d="M5 21h14"></path></svg>
+      </a>
+     </div>
+    </article>
+
+    <!-- R/03 ───────────────────────────────────────────── -->
+    <article class="res-card">
+     <div class="res-card-head">
+      <span class="res-card-index">R / 03</span>
+      <span class="res-card-topic">Compliance</span>
+     </div>
+     <h3>Fire season prep checklist.</h3>
+     <p class="res-card-blurb">
+      Month-by-month preparation calendar for NSW Rural Fire Service compliance,
+      with the specific Asset Protection Zone (APZ) measurements that apply to
+      Northern Rivers acreage.
+     </p>
+     <ul class="res-card-inside" aria-label="What's inside">
+      <li>APZ inner & outer zone dimensions — by property type</li>
+      <li>Month-by-month preparation checklist (Sept–Mar)</li>
+      <li>Total Fire Ban day equipment-use rules</li>
+     </ul>
+     <div class="res-card-foot">
+      <span class="res-card-meta">
+       <strong>fire-season-prep-checklist.pdf</strong>
+       <span class="dot" aria-hidden="true"></span>
+       <span>2 pages</span>
+      </span>
+      <a class="res-card-cta" href="/fire-season-prep-checklist.pdf" download>
+       Download PDF
+       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v14"></path><path d="m6 11 6 6 6-6"></path><path d="M5 21h14"></path></svg>
+      </a>
+     </div>
+    </article>
+
+    <!-- R/04 ───────────────────────────────────────────── -->
+    <article class="res-card">
+     <div class="res-card-head">
+      <span class="res-card-index">R / 04</span>
+      <span class="res-card-topic">Absentee ownership</span>
+     </div>
+     <h3>Holiday rental maintenance guide.</h3>
+     <p class="res-card-blurb">
+      Mowing schedules, contractor briefs and APZ compliance for absentee acreage
+      owners running a holiday rental — keeping the grounds guest-ready without
+      flying in for a site walk.
+     </p>
+     <ul class="res-card-inside" aria-label="What's inside">
+      <li>Guest-turnover-aligned mowing cadence</li>
+      <li>Drop-in contractor brief template (1 page)</li>
+      <li>Remote inspection checklist — what to ask for</li>
+     </ul>
+     <div class="res-card-foot">
+      <span class="res-card-meta">
+       <strong>holiday-rental-maintenance-guide.pdf</strong>
+       <span class="dot" aria-hidden="true"></span>
+       <span>2 pages</span>
+      </span>
+      <a class="res-card-cta" href="/holiday-rental-maintenance-guide.pdf" download>
+       Download PDF
+       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v14"></path><path d="m6 11 6 6 6-6"></path><path d="M5 21h14"></path></svg>
+      </a>
+     </div>
+    </article>
+
+   </div>
+  </div>
+ </section>
+
+ <!-- ─── CLOSING CTA — DARK BAND ─────────────────────────────────── -->
+ <section class="res-close" aria-labelledby="close-heading">
+  <div class="container">
+   <div>
+    <div class="res-close-eyebrow">Beyond the guide</div>
+    <h2 id="close-heading">Want it dialled for <em>your block?</em></h2>
+    <p>
+     The guides cover the general case. A site assessment maps your actual
+     gradient, vegetation and access constraints — and gives you a property-specific
+     plan an autonomous system can run against.
+    </p>
+    <div class="res-close-actions">
+     <a class="btn btn--primary btn--large" href="/book-site-assessment">Book Site Assessment</a>
+     <a class="btn btn--secondary btn--large" href="/robot-mower-roi-calculator">Run the ROI Calculator</a>
+    </div>
+   </div>
+   <dl class="res-close-rail">
+    <div class="res-close-rail-item">
+     <dt>What it covers</dt>
+     <dd>Gradient survey, vegetation audit, RTK siting &amp; access constraints.</dd>
+    </div>
+    <div class="res-close-rail-item">
+     <dt>Time on site</dt>
+     <dd>~ 90 minutes <span class="clay">· on-property</span></dd>
+    </div>
+    <div class="res-close-rail-item">
+     <dt>Cost</dt>
+     <dd>Free <span class="clay">· no obligation</span></dd>
+    </div>
+    <div class="res-close-rail-item">
+     <dt>Service area</dt>
+     <dd>Byron, Ballina &amp; Lismore Shires.</dd>
+    </div>
+   </dl>
+  </div>
+ </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <a aria-label='AutoAcre home' class='header-logo' href='/'>
+     <img src="/img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
+    </a>
+    <p>Autonomous mowing systems for 2.5–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
+   </div>
+   <div class="footer-col">
+    <h4>Autonomous Systems</h4>
+    <ul>
+     <li><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a></li>
+     <li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li>
+     <li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li>
+     <li><a href='/commercial'>Commercial Autonomous Mowing</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Resources</h4>
+    <ul>
+     <li><a href='/resources'>All free guides</a></li>
+     <li><a href='/macadamia-vegetation-guide.pdf'>Macadamia vegetation</a></li>
+     <li><a href='/slope-mowing-guide.pdf'>Slope mowing</a></li>
+     <li><a href='/fire-season-prep-checklist.pdf'>Fire season prep</a></li>
+     <li><a href='/holiday-rental-maintenance-guide.pdf'>Holiday rental maintenance</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Convert</h4>
+    <ul>
+     <li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li>
+     <li><a href='/book-site-assessment'>Book Site Assessment</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+     <li><a href='/about'>About</a></li>
+     <li><a href='/blog'>Blog</a></li>
+     <li><a href='/glossary'>Glossary</a></li>
+     <li><a href='/faq'>FAQ</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Contact</h4>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+     <a href="tel:0499649094">0499 649 094</a>
+    </div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+     <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>
+    </div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+     <span>Byron Bay &amp; Northern Rivers, NSW</span>
+    </div>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>&copy; 2026 AutoAcre. All rights reserved.</span>
+   <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
+   <span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span>
+  </div>
+ </div>
+</footer>
+
+<script src="./app.js" defer></script>
+<script src="/nav.js" defer></script>
+</body>
+</html>
