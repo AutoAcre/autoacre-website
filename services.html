@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <!--
- SERVICES — PRODUCTION 2026-05-14
- URL: /services.html
+ SERVICES — /services.html
  Audience: Northern Rivers acreage owners, 2.5–10 acres, considering AutoAcre's
  management-fee offer over fortnightly contractor / DIY ride-on.
  Tone: dry, industrial, no marketing fluff. Mirrors Resources.html pattern.
-
- Nine [CONFIRM:] placeholders are baked in with the most likely value, marked
- inline with <mark class="confirm"> (dotted-underline draft). See the
- .svc-pending block above the footer for the canonical checklist. DELETE
- that block once every value is confirmed.
 -->
 <html lang="en-AU">
 <head>
@@ -50,18 +44,6 @@
      metadata, numbered pillar cards with sharp edges, four-step
      timeline for How It Works.
      ────────────────────────────────────────────────────────────────── */
-
-  /* Inline draft placeholders — Ben sees them in body copy; the listing
-     at the bottom is the canonical checklist. */
-  mark.confirm {
-   background: transparent;
-   color: inherit;
-   border-bottom: 1px dotted var(--color-primary, #4F5C20);
-   padding-bottom: 1px;
-  }
-  @media print {
-   mark.confirm { border-bottom: 0; }
-  }
 
   /* ── HERO — charcoal inverse band ─────────────────────────────── */
   .svc-hero {
@@ -131,7 +113,6 @@
    max-width: 60ch;
    margin: 0 0 clamp(3rem, 6vh, 4.5rem);
   }
-  .svc-hero-lede mark.confirm { border-bottom-color: rgba(200,183,156,0.7); color: var(--color-clay-soft, #C8B79C); }
 
   .svc-hero-strip {
    display: grid;
@@ -711,81 +692,6 @@
    letter-spacing: -0.005em;
   }
   .svc-close-rail-item dd .clay { color: var(--color-clay-soft, #C8B79C); }
-
-  /* ── DRAFT — pending-confirmations aside (dim, between CTA and footer) ─ */
-  .svc-pending {
-   background: var(--color-bg, #FAF7F1);
-   border-top: 1px solid var(--color-divider, #D8D1BE);
-   padding: clamp(2rem, 5vh, 3rem) 0 clamp(2.5rem, 5vh, 3.5rem);
-  }
-  .svc-pending .container {
-   display: grid;
-   grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
-   gap: clamp(1.5rem, 4vw, 3rem);
-   align-items: start;
-  }
-  @media (max-width: 720px) {
-   .svc-pending .container { grid-template-columns: 1fr; }
-  }
-  .svc-pending-eyebrow {
-   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-   font-size: 10.5px;
-   letter-spacing: 0.22em;
-   text-transform: uppercase;
-   color: var(--color-text-muted, #69655B);
-   font-weight: 500;
-  }
-  .svc-pending-head {
-   font-family: var(--font-display, Zodiak, Georgia, serif);
-   font-size: 1.05rem;
-   font-weight: 500;
-   color: var(--color-text-muted, #69655B);
-   line-height: 1.35;
-   margin: 0.5rem 0 0;
-   font-style: italic;
-   max-width: 22ch;
-  }
-  .svc-pending-list {
-   list-style: none;
-   padding: 0;
-   margin: 0;
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   gap: 1px;
-   background: var(--color-divider, #D8D1BE);
-   border: 1px solid var(--color-divider, #D8D1BE);
-  }
-  @media (max-width: 720px) { .svc-pending-list { grid-template-columns: 1fr; } }
-  .svc-pending-list li {
-   background: var(--color-bg, #FAF7F1);
-   padding: var(--space-4) var(--space-5);
-   display: grid;
-   grid-template-columns: max-content 1fr;
-   gap: 0.4rem 1.25rem;
-   align-items: baseline;
-   font-size: 13px;
-   line-height: 1.5;
-   color: var(--color-text, #14140F);
-  }
-  .svc-pending-list li .pid {
-   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-   font-size: 10px;
-   letter-spacing: 0.18em;
-   color: var(--color-text-faint, #9E9A8A);
-   font-weight: 500;
-   text-transform: uppercase;
-  }
-  .svc-pending-list li .pq {
-   font-weight: 500;
-   color: var(--color-charcoal, #14140F);
-   grid-column: 2;
-  }
-  .svc-pending-list li .pa {
-   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-   font-size: 12px;
-   color: var(--color-primary, #4F5C20);
-   grid-column: 2;
-  }
  </style>
 </head>
 <body class="has-light-header">
@@ -915,7 +821,7 @@
    <p class="svc-hero-lede">
     RTK + LiDAR autonomous mowing for the mowable area, plus slope, fire compliance,
     holiday-rental presentation and orchard under-tree work — for blocks between
-    <mark class="confirm">2.5</mark> and 10 acres. One management fee, year-round.
+    2.5 and 10 acres. One management fee, year-round.
     Service operations begin Q1 2027.
    </p>
    <dl class="svc-hero-strip">
@@ -969,7 +875,7 @@
      </p>
      <ul class="svc-pillar-spec" aria-label="What's covered">
       <li>RTK + LiDAR autonomous mowing across the mowable area</li>
-      <li>Manual edge work along hardscaping &amp; stock fences — <mark class="confirm">quarterly</mark></li>
+      <li>Manual edge work along hardscaping &amp; stock fences — quarterly</li>
       <li>Heavy slashing of overgrown paddocks scoped separately at install</li>
      </ul>
      <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>~ 78 mow days / year</div>
@@ -990,7 +896,7 @@
      <ul class="svc-pillar-spec" aria-label="What's covered">
       <li>Up to 38° handled autonomously, every cycle</li>
       <li>Mapped exclusion zones for ridge sections &amp; rocky outcrop</li>
-      <li>Beyond 38° — <mark class="confirm">quoted separately on site assessment</mark></li>
+      <li>Beyond 38° — quoted separately on site assessment</li>
      </ul>
      <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>Max gradient · 38°</div>
     </article>
@@ -1010,7 +916,7 @@
      <ul class="svc-pillar-spec" aria-label="What's covered">
       <li>APZ inner &amp; outer zone grass height held year-round</li>
       <li>Coverage logs available for council / insurer on request</li>
-      <li>Annual pre-season vegetation review — <mark class="confirm">included in management fee</mark></li>
+      <li>Annual pre-season vegetation review — included in management fee</li>
      </ul>
      <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>NSW RFS · APZ compliant</div>
     </article>
@@ -1030,7 +936,7 @@
      </p>
      <ul class="svc-pillar-spec" aria-label="What's covered">
       <li>Remote monitoring — AutoAcre tracks the system, not the owner</li>
-      <li>Photo reports <mark class="confirm">on request</mark></li>
+      <li>Photo reports on request</li>
       <li>Out of scope: pool, garden beds, interior, pest — separate contractors</li>
      </ul>
      <div class="svc-pillar-foot"><span class="dot" aria-hidden="true"></span>Guest-cycle consistent</div>
@@ -1091,7 +997,7 @@
      <span class="section-label" style="display:block; margin-bottom: var(--space-3);">How it works</span>
      <h2 id="how-heading">The management-fee model, in four steps.</h2>
     </div>
-    <span class="svc-count">Site assessment → first cycle · ~ <mark class="confirm">4–6 weeks</mark></span>
+    <span class="svc-count">Site assessment → first cycle · ~ 4–6 weeks</span>
    </header>
 
    <div class="svc-flow" role="list">
@@ -1123,7 +1029,7 @@
       <h3>System purchase &amp; install.</h3>
       <p>
        You buy the autonomous mowing system outright at the reference launch
-       price of <mark class="confirm"><strong>$33,490</strong></mark>. That covers the RTK base
+       price of <strong>$33,490</strong>. That covers the RTK base
        station, commercial-grade autonomous mower with LiDAR, professional
        installation, and boundary mapping. Most 3–7 acre installs take a single
        day; 10-acre blocks sometimes a second day for zone complexity. The hardware
@@ -1131,7 +1037,7 @@
       </p>
      </div>
      <dl class="svc-step-meta">
-      <div class="svc-step-meta-row"><dt>Launch price</dt><dd><strong><mark class="confirm">$33,490</mark></strong></dd></div>
+      <div class="svc-step-meta-row"><dt>Launch price</dt><dd><strong>$33,490</strong></dd></div>
       <div class="svc-step-meta-row"><dt>Install time</dt><dd>1 day (3–7 ac) · 2 days (10 ac)</dd></div>
       <div class="svc-step-meta-row"><dt>Includes</dt><dd>RTK base · LiDAR mower · install · mapping</dd></div>
      </dl>
@@ -1144,18 +1050,18 @@
       <h3>Ongoing management.</h3>
       <p>
        Tiered monthly management fee scaling with mowable acreage — from
-       <mark class="confirm"><strong>$165/mo at 2.5 acres</strong></mark> to
-       <mark class="confirm"><strong>$650/mo at 10 acres</strong></mark>. The fee covers scheduled
+       <strong>$165/mo at 2.5 acres</strong> to
+       <strong>$650/mo at 10 acres</strong>. The fee covers scheduled
        maintenance, blade replacements, firmware updates, remote monitoring, and
        repair coordination. Mowing runs ~78 days per year. Ad-hoc on-site
-       call-outs are <mark class="confirm"><strong>$150 / visit</strong></mark> when needed for edge
+       call-outs are <strong>$150 / visit</strong> when needed for edge
        work, manual mowing during downtime, or special requests.
       </p>
      </div>
      <dl class="svc-step-meta">
-      <div class="svc-step-meta-row"><dt>Fee range</dt><dd><strong><mark class="confirm">$165 – $650 / mo</mark></strong></dd></div>
+      <div class="svc-step-meta-row"><dt>Fee range</dt><dd><strong>$165 – $650 / mo</strong></dd></div>
       <div class="svc-step-meta-row"><dt>Cadence</dt><dd>78 mow days / year</dd></div>
-      <div class="svc-step-meta-row"><dt>Call-out</dt><dd><strong><mark class="confirm">$150 / visit</mark></strong></dd></div>
+      <div class="svc-step-meta-row"><dt>Call-out</dt><dd><strong>$150 / visit</strong></dd></div>
      </dl>
     </article>
 
@@ -1200,7 +1106,7 @@
     <div class="svc-who-intro">
      <div class="svc-who-intro-tag">The conversation</div>
      <p>
-      You own <mark class="confirm">2.5</mark> to 10 acres in the Northern Rivers. The
+      You own 2.5 to 10 acres in the Northern Rivers. The
       mowing has become a real time commitment, or your fortnightly contractor's
       cycle leaves the property looking <em>under-presented for half of every
       fortnight</em>. You'd rather solve it permanently than schedule it forever.
@@ -1244,7 +1150,7 @@
 
    <dl class="svc-who-scope" aria-label="Out of scope">
     <div>
-     <dt>Below <mark class="confirm">2.5</mark> acres</dt>
+     <dt>Below 2.5 acres</dt>
      <dd>A consumer wire-bounded mower (Husqvarna Automower, Mammotion Luba) is usually the better economic fit — we'll say so honestly on assessment.</dd>
     </div>
     <div>
@@ -1292,63 +1198,6 @@
    </dl>
   </div>
  </section>
-
- <!-- ─── DRAFT — pending confirmations (delete on publish) ──────── -->
- <aside class="svc-pending" aria-label="Pending confirmations for Ben">
-  <div class="container">
-   <div>
-    <div class="svc-pending-eyebrow">Notes for Ben · 09 placeholders</div>
-    <p class="svc-pending-head">Inline draft values are dotted-underlined in body copy. Resolve and delete this block before publish.</p>
-   </div>
-   <ol class="svc-pending-list">
-    <li>
-     <span class="pid">P / 01</span>
-     <span class="pq">Acreage floor — 2.5 or 3 acres?</span>
-     <span class="pa">→ assumed 2.5 (matches nav + footer)</span>
-    </li>
-    <li>
-     <span class="pid">P / 02</span>
-     <span class="pq">Edge work cadence in fee</span>
-     <span class="pa">→ assumed quarterly</span>
-    </li>
-    <li>
-     <span class="pid">P / 03</span>
-     <span class="pq">Slope &gt; 38° handling</span>
-     <span class="pa">→ assumed quoted separately on assessment</span>
-    </li>
-    <li>
-     <span class="pid">P / 04</span>
-     <span class="pq">APZ pre-season vegetation review</span>
-     <span class="pa">→ assumed included in management fee</span>
-    </li>
-    <li>
-     <span class="pid">P / 05</span>
-     <span class="pq">Photo report cadence</span>
-     <span class="pa">→ assumed on request</span>
-    </li>
-    <li>
-     <span class="pid">P / 06</span>
-     <span class="pq">Onboarding timeline</span>
-     <span class="pa">→ assumed 4–6 weeks</span>
-    </li>
-    <li>
-     <span class="pid">P / 07</span>
-     <span class="pq">System launch price</span>
-     <span class="pa">→ assumed $33,490</span>
-    </li>
-    <li>
-     <span class="pid">P / 08</span>
-     <span class="pq">Tier band &amp; call-out</span>
-     <span class="pa">→ assumed $165 – $650/mo + $150 / visit</span>
-    </li>
-    <li>
-     <span class="pid">P / 09</span>
-     <span class="pq">Orchard mowing pricing</span>
-     <span class="pa">→ assumed scoped at site assessment (same model, separate quote)</span>
-    </li>
-   </ol>
-  </div>
- </aside>
 
 </main>
 
