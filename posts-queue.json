@@ -1,7 +1,7 @@
 {
-  "nextIndex": 4,
-  "lastPublished": 3,
-  "lastPublishedDate": "2026-05-08",
+  "nextIndex": 5,
+  "lastPublished": 4,
+  "lastPublishedDate": "2026-05-15",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -22,6 +22,11 @@
       "slug": "blog-why-councils-are-switching-to-autonomous-mowing",
       "date": "2026-05-08",
       "title": "Why Councils Are Switching to Autonomous Mowing"
+    },
+    {
+      "slug": "blog-steep-block-mowing-solutions-for-the-northern-rivers-hinterland",
+      "date": "2026-05-15",
+      "title": "Steep Block Mowing Solutions for the Northern Rivers Hinterland"
     }
   ],
   "topics": [
