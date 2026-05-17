@@ -27,7 +27,8 @@
   var state = {
     acreage: 5,
     contractorPerVisit: 800,
-    visitsPerYear: 26
+    visitsPerYear: 26,
+    interacted: false  // flips true on the first ROI-related slider input — reveals .roi-snapshot
   };
 
   var fmtAUD = new Intl.NumberFormat('en-AU', {
@@ -77,6 +78,7 @@
     if (!slider) return;
     slider.addEventListener('input', function (e) {
       state.acreage = parseFloat(e.target.value);
+      state.interacted = true;
       updateDial();
       updateROI();
     });
@@ -96,9 +98,8 @@
 
     var monthlyCtrCost = ctrPerVisit * visits / 12;
     var monthlyDelta = monthlyCtrCost - fee;
-    var beMonthLabel = monthlyDelta <= 0
-      ? '—'
-      : Math.ceil(SYSTEM_PRICE / monthlyDelta) + ' mo';
+    var beMonths = monthlyDelta > 0 ? Math.ceil(SYSTEM_PRICE / monthlyDelta) : null;
+    var beMonthLabel = beMonths == null ? '—' : beMonths + ' mo';
 
     setText('roi-aa-yr1', fmtAUD.format(aaYr1));
     setText('roi-ctr-yr1', fmtAUD.format(ctrYr1));
@@ -119,6 +120,56 @@
         savLabel.textContent = 'PREMIUM';
       }
     }
+
+    updateSnapshot(saved8, beMonths, beMonthLabel);
+  }
+
+  /* ─── Results snapshot — plain-English summary below .roi-savings ─── */
+  function updateSnapshot(saved8, beMonths, beMonthLabel) {
+    var snap = $('roi-snapshot');
+    if (!snap) return;
+
+    var annual = saved8 / 8;
+    var isPositive = saved8 >= 0;
+    var acresLabel = state.acreage % 1 === 0 ? state.acreage : state.acreage.toFixed(1);
+
+    // Populate the three live fields
+    setText('roi-snapshot-8yr', fmtAUD.format(Math.abs(saved8)));
+    setText('roi-snapshot-annual', fmtAUD.format(Math.abs(annual)));
+    setText('roi-snapshot-be', isPositive && beMonths != null ? beMonthLabel : '—');
+
+    // Headline (rewrite both halves depending on positive/negative)
+    var headline = $('roi-snapshot-headline');
+    if (headline) {
+      var strong = '<strong id="roi-snapshot-8yr">' + fmtAUD.format(Math.abs(saved8)) + '</strong>';
+      headline.innerHTML = isPositive
+        ? 'Autonomous mowing saves you approximately ' + strong + ' over 8 years.'
+        : 'At this profile, autonomous mowing costs about ' + strong + ' more over 8 years.';
+    }
+
+    // Plain-English interpretation
+    var prose = '';
+    if (isPositive && beMonths != null) {
+      var yearsText = beMonths >= 12
+        ? (beMonths / 12).toFixed(beMonths % 12 === 0 ? 0 : 1) + ' years'
+        : beMonths + ' months';
+      prose = 'At ' + acresLabel + ' acres, the system pays for itself in about ' + yearsText +
+              ' and runs hands-off after that — no more arranging contractor visits.';
+    } else if (isPositive) {
+      prose = 'At ' + acresLabel + ' acres, autonomous mowing comes out ahead over 8 years and removes the contractor-scheduling overhead.';
+    } else {
+      prose = 'At ' + acresLabel + ' acres and this contractor rate, traditional contracting is cheaper on paper — though it doesn\'t account for your time arranging visits.';
+    }
+    setText('roi-snapshot-prose', prose);
+
+    // Visual flip for negative case
+    if (isPositive) snap.classList.remove('is-negative');
+    else snap.classList.add('is-negative');
+
+    // Reveal once the user has touched any slider
+    if (state.interacted && snap.hasAttribute('hidden')) {
+      snap.removeAttribute('hidden');
+    }
   }
 
   function setupROI() {
@@ -128,12 +179,14 @@
     if (ctrSlider) {
       ctrSlider.addEventListener('input', function (e) {
         state.contractorPerVisit = parseInt(e.target.value, 10);
+        state.interacted = true;
         updateROI();
       });
     }
     if (visitsSlider) {
       visitsSlider.addEventListener('input', function (e) {
         state.visitsPerYear = parseInt(e.target.value, 10);
+        state.interacted = true;
         updateROI();
       });
     }

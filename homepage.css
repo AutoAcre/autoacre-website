@@ -1007,6 +1007,96 @@ body.home .roi-savings-value {
   font-weight: 500;
 }
 
+/* ─── Results snapshot — appears below .roi-savings after first slider input ─── */
+body.home .roi-snapshot {
+  margin-top: 20px;
+  padding: 24px 22px 22px;
+  background: var(--bg);
+  border: 1px solid #D8D1BE;
+  position: relative;
+}
+body.home .roi-snapshot[hidden] { display: none; }
+body.home .roi-snapshot-badge {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  padding: 4px 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-family: var(--font-mono);
+}
+body.home .roi-snapshot-headline {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 14px 0 0;
+  line-height: 1.3;
+  max-width: 560px;
+  letter-spacing: -0.005em;
+}
+body.home .roi-snapshot-headline strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+body.home .roi-snapshot-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1px;
+  margin-top: 18px;
+  background: #D8D1BE;
+  border: 1px solid #D8D1BE;
+}
+body.home .roi-snapshot-stat {
+  padding: 14px 16px;
+  background: var(--bg);
+}
+body.home .roi-snapshot-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+body.home .roi-snapshot-stat-value {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+}
+body.home .roi-snapshot-prose {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 16px 0 0;
+  max-width: 560px;
+}
+body.home .roi-snapshot-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding: 2px 0 3px;
+  transition: opacity 0.2s;
+}
+body.home .roi-snapshot-link:hover { opacity: 0.7; }
+/* Negative variant — when contracting still wins on raw cost */
+body.home .roi-snapshot.is-negative .roi-snapshot-headline strong,
+body.home .roi-snapshot.is-negative .roi-snapshot-stat-value {
+  color: #6B6658;
+}
+
 @media (max-width: 720px) {
   body.home .dial { grid-template-columns: 1fr; }
   body.home .dial-visual { width: 100%; max-width: 320px; height: auto; aspect-ratio: 1; margin: 0 auto; }
