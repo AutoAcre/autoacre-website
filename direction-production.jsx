@@ -248,16 +248,22 @@ function ProductionCalculator({ accent, gating, initialMode }) {
 
   // FINDINGS snapshot — stats shown above NEXT_STEP. All re-derive from
   // `inputs` via `s`/`cheap`/`all`, so they update live on every input change.
-  const maxHoursAcrossAll = Math.max(...all.map(x => x.hours || 0));
-  const hoursSaved = Math.max(0, maxHoursAcrossAll - (cheap.hours || 0));
-  const savingsVsContractor = Math.max(0, s.contractor.total8 - cheap.total8);
+  // Because the contractor/DIY toggle pipes its derived monthly value into
+  // contractorMonthly, `s.contractor.total8` represents the user's CURRENT
+  // method's 8-year cost — same formula works in both toggle modes.
+  const isDiy = inputs.mowMode === 'diy';
+  const savingsVsCurrent = Math.max(0, s.contractor.total8 - cheap.total8);
+  const contractorHoursPerYear = Math.round(inputs.ctrHoursPerVisit * inputs.ctrVisitsPerYear);
+  const diyHoursPerYear = Math.round(inputs.diyHoursPerMonth * 12);
+  const AA_OVERSIGHT_HRS = 25;  // Hrs/yr the user spends overseeing the autonomous system.
+  const hoursFreedDiy = Math.max(0, diyHoursPerYear - AA_OVERSIGHT_HRS);
   const paybackYears = (() => {
     if (cheap.key === 'contractor') return null;
-    // Smallest y where cheap's cumulative (capital + opex × y) ≤ contractor's (opex × y).
+    // Smallest y where cheap's cumulative (capital + opex × y) ≤ current method's (opex × y).
     for (let y = 1; y <= 20; y++) {
       const cheapCum = cheap.capital + cheap.opex * y;
-      const contCum  = s.contractor.opex * y;
-      if (cheapCum <= contCum) return y;
+      const curCum   = s.contractor.opex * y;
+      if (cheapCum <= curCum) return y;
     }
     return null;
   })();
@@ -524,42 +530,52 @@ function ProductionCalculator({ accent, gating, initialMode }) {
         </div>
       )}
 
-      {/* Results snapshot — plain-English findings above NEXT_STEP */}
+      {/* Results snapshot — plain-English findings above NEXT_STEP. Mode-aware. */}
       {unlocked && (
         <div style={{margin:'0 24px 16px', padding:'28px 24px', border:`1px solid ${t.line}`, background:t.surface, position:'relative'}}>
           <div style={{position:'absolute', top:-1, left:-1, padding:'4px 10px', background:accent, color:'#0E120F', fontSize:10, fontWeight:700, letterSpacing:'0.18em', fontFamily:PROD_MONO}}>FINDINGS</div>
 
-          {/* Headline */}
-          <div style={{fontSize:20, fontWeight:700, color:t.text, marginTop:12, lineHeight:1.25, letterSpacing:'-0.01em', maxWidth:680}}>
-            Over 8 years, <span style={{color:accent}}>{cheap.label}</span> is your lowest-cost path.
+          {/* Headline — switches copy on mowMode */}
+          <div style={{fontSize:20, fontWeight:700, color:t.text, marginTop:12, lineHeight:1.25, letterSpacing:'-0.01em', maxWidth:720}}>
+            {isDiy ? (
+              <>Over 8 years, <span style={{color:accent}}>{cheap.label}</span> saves you <span style={{color:accent}}>{fmtMoney(savingsVsCurrent)}</span> in time and frees up <span style={{color:accent}}>{diyHoursPerYear}</span> hours annually.</>
+            ) : (
+              <>Over 8 years, <span style={{color:accent}}>{cheap.label}</span> saves you <span style={{color:accent}}>{fmtMoney(savingsVsCurrent)}</span> compared to paying a contractor.</>
+            )}
           </div>
 
-          {/* Three key numbers — auto-stack vertically below ~640px (auto-fit + minmax) */}
+          {/* Three key tiles — labels + value change with mode; tile 3 (residual) is static */}
           <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(180px, 1fr))', gap:1, marginTop:20, background:t.line, border:`1px solid ${t.line}`}}>
             <div style={{padding:'16px 18px', background:t.bg}}>
-              <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>vs contractor over 8 yrs</div>
-              <div style={{fontFamily:PROD_MONO, fontSize:26, fontWeight:700, color: savingsVsContractor > 0 ? accent : t.text, fontVariantNumeric:'tabular-nums', lineHeight:1.05}}>{fmtMoney(savingsVsContractor)}</div>
-              <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>saved</div>
+              <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>{isDiy ? 'TIME VALUE SAVED · 8 YRS' : 'VS CONTRACTOR · 8 YRS'}</div>
+              <div style={{fontFamily:PROD_MONO, fontSize:26, fontWeight:700, color: savingsVsCurrent > 0 ? accent : t.text, fontVariantNumeric:'tabular-nums', lineHeight:1.05}}>{fmtMoney(savingsVsCurrent)}</div>
+              <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>{isDiy ? 'in time value' : 'vs current contractor'}</div>
             </div>
             <div style={{padding:'16px 18px', background:t.bg}}>
-              <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>hours saved annually</div>
-              <div style={{fontFamily:PROD_MONO, fontSize:26, fontWeight:700, color: hoursSaved > 0 ? accent : t.text, fontVariantNumeric:'tabular-nums', lineHeight:1.05}}>{Math.round(hoursSaved)} hrs</div>
-              <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>vs the most time-intensive option</div>
+              <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>{isDiy ? 'HOURS FREED / YEAR' : 'HOURS SAVED / YEAR'}</div>
+              <div style={{fontFamily:PROD_MONO, fontSize:26, fontWeight:700, color: (isDiy ? hoursFreedDiy : contractorHoursPerYear) > 0 ? accent : t.text, fontVariantNumeric:'tabular-nums', lineHeight:1.05}}>{isDiy ? hoursFreedDiy : contractorHoursPerYear} hrs</div>
+              <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>{isDiy ? 'after ~25 hrs/yr oversight' : 'no more coordinating visits'}</div>
             </div>
             <div style={{padding:'16px 18px', background:t.bg}}>
-              <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>estimated residual value</div>
+              <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>RESIDUAL VALUE · YR 8</div>
               <div style={{fontFamily:PROD_MONO, fontSize:26, fontWeight:700, color: cheap.residual > 0 ? accent : t.text, fontVariantNumeric:'tabular-nums', lineHeight:1.05}}>{fmtMoney(cheap.residual)}</div>
-              <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>{cheap.residual > 0 ? 'at year 8' : 'end-of-life'}</div>
+              <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>{cheap.residual > 0 ? 'optimal path' : 'end-of-life'}</div>
             </div>
           </div>
 
-          {/* Plain-English interpretation */}
-          <p style={{fontSize:14, color:t.textDim, lineHeight:1.6, marginTop:18, maxWidth:680}}>
+          {/* Plain-English interpretation — mode-aware */}
+          <p style={{fontSize:14, color:t.textDim, lineHeight:1.6, marginTop:18, maxWidth:720}}>
             {cheap.key === 'contractor'
-              ? `At ${inputs.acres.toFixed(1)} acres, your contractor remains the cheapest option over 8 years — but a managed system would free up ${Math.round(hoursSaved)} hours a year.`
-              : paybackYears
-                ? `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} pays back vs contractor in approximately ${paybackYears} ${paybackYears === 1 ? 'year' : 'years'} and frees up ${Math.round(hoursSaved)} hours annually.`
-                : `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} is the lowest-cost option over 8 years and frees up ${Math.round(hoursSaved)} hours annually.`}
+              ? (isDiy
+                  ? `At ${inputs.acres.toFixed(1)} acres, your current DIY setup remains the cheapest option over 8 years on the numbers — but it costs you ${diyHoursPerYear} hours a year.`
+                  : `At ${inputs.acres.toFixed(1)} acres, your current contractor remains the cheapest option over 8 years — but a managed system would eliminate ${contractorHoursPerYear} hours of coordination annually.`)
+              : (isDiy
+                  ? (paybackYears
+                      ? `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} pays back in approximately ${paybackYears} ${paybackYears === 1 ? 'year' : 'years'} and returns ${hoursFreedDiy} hours to you every year.`
+                      : `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window and returns ${hoursFreedDiy} hours to you every year.`)
+                  : (paybackYears
+                      ? `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} becomes the lowest-cost option from year ${paybackYears} and eliminates ${contractorHoursPerYear} hours of contractor coordination annually.`
+                      : `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window and eliminates ${contractorHoursPerYear} hours of contractor coordination annually.`))}
           </p>
 
           {/* Footnote */}
