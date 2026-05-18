@@ -83,7 +83,10 @@ function fmtMoneyShort(n) {
 function fmtHours(n) { return Math.round(n) + ' hrs'; }
 
 function scenariosArray(s) {
-  return [s.diy, s.contractor, s.byo, s.aa];
+  // s.byo is still computed by calcScenarios for backward compat, but excluded
+  // from the comparison array so it no longer appears in the table, chart,
+  // legend, optimal-path detection, or FINDINGS snapshot.
+  return [s.diy, s.contractor, s.aa];
 }
 function cheapest(s) {
   return scenariosArray(s).reduce((a,b)=>a.total8 < b.total8 ? a : b);

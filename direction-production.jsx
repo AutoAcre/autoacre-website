@@ -69,14 +69,6 @@ function MethodologyDrawer({ open, onClose, t, accent, inputs, s }) {
             <Kv label="Capital" v="$0" t={t}/>
           </Section>
 
-          <Section title="Buy your own robot" t={t} accent={accent}>
-            <Kv label="Mower" v={s.byo.isMammotion ? 'RTK-LiDAR system ($16k, <5 acres)' : 'RTK-LiDAR system ($54k, ≥5 acres)'} t={t}/>
-            <Kv label="Install/setup" v="$2,000" t={t}/>
-            <Kv label="Self-support hrs/yr" v={`${Math.round(s.byo.hours)} hrs`} t={t}/>
-            <Kv label="Failure buffer" v="5% of mower price/yr" t={t}/>
-            <Kv label="Residual at Y8" v={`${fmtMoney(s.byo.residual)} (20% of mower)`} t={t}/>
-          </Section>
-
           <Section title="Buy + AutoAcre Manage" t={t} accent={accent}>
             <Kv label="Capital (mower + install)" v={fmtMoney(s.aa.capital)} t={t}/>
             <Kv label="Monthly fee" v={`${fmtMoney(s.aa.monthly)}/mo (acreage-tiered)`} t={t}/>
