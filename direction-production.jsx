@@ -218,11 +218,11 @@ function ProductionCalculator({ accent, gating, initialMode }) {
   const t = prodTheme(mode);
   // Derive monthly-spend from the contractor/DIY toggle. Goes into calcScenarios
   // as `contractorMonthly` so the downstream cost math stays unchanged.
-  // Contractor mode: hourly × hrs/visit × visits/yr → annual → /12.
+  // Contractor mode: user-reported monthly invoice (passes through).
   // DIY mode:        (hourly × hrs/mo × 12) + $1,200 assumed equipment → /12.
   const derivedMonthly = inputs.mowMode === 'diy'
     ? ((inputs.diyHourlyValue * inputs.diyHoursPerMonth * 12) + 1200) / 12
-    : (inputs.ctrHourly * inputs.ctrHoursPerVisit * inputs.ctrVisitsPerYear) / 12;
+    : inputs.ctrMonthlyInvoice;
   const s = React.useMemo(
     () => calcScenarios({ ...inputs, contractorMonthly: derivedMonthly }),
     [inputs, derivedMonthly]
@@ -245,7 +245,6 @@ function ProductionCalculator({ accent, gating, initialMode }) {
   // method's 8-year cost — same formula works in both toggle modes.
   const isDiy = inputs.mowMode === 'diy';
   const savingsVsCurrent = Math.max(0, s.contractor.total8 - cheap.total8);
-  const contractorHoursPerYear = Math.round(inputs.ctrHoursPerVisit * inputs.ctrVisitsPerYear);
   const diyHoursPerYear = Math.round(inputs.diyHoursPerMonth * 12);
   const AA_OVERSIGHT_HRS = 25;  // Hrs/yr the user spends overseeing the autonomous system.
   const hoursFreedDiy = Math.max(0, diyHoursPerYear - AA_OVERSIGHT_HRS);
@@ -364,18 +363,12 @@ function ProductionCalculator({ accent, gating, initialMode }) {
             })}
           </div>
 
-          {/* CONTRACTOR mode — 3 sliders */}
+          {/* CONTRACTOR mode — single monthly-invoice slider */}
           {inputs.mowMode === 'contractor' && (
-            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))', gap:'8px 28px', marginTop:6}}>
-              <ProdSlider t={t} label="CONTRACTOR RATE / HR"
-                value={inputs.ctrHourly} min={60} max={200} step={5}
-                format={v=>`$${v}`} onChange={v=>set('ctrHourly', v)} accent={accent}/>
-              <ProdSlider t={t} label="HRS PER VISIT"
-                value={inputs.ctrHoursPerVisit} min={1} max={8} step={0.5}
-                format={v=>`${v} hrs`} onChange={v=>set('ctrHoursPerVisit', v)} accent={accent}/>
-              <ProdSlider t={t} label="VISITS / YEAR"
-                value={inputs.ctrVisitsPerYear} min={6} max={26} step={1}
-                format={v=>`${v}`} onChange={v=>set('ctrVisitsPerYear', v)} accent={accent}/>
+            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'8px 28px', marginTop:6}}>
+              <ProdSlider t={t} label="AVG MONTHLY INVOICE" hint="What do you typically pay your contractor per month?"
+                value={inputs.ctrMonthlyInvoice} min={200} max={3000} step={50}
+                format={v=>`$${v.toLocaleString('en-AU')}`} onChange={v=>set('ctrMonthlyInvoice', v)} accent={accent}/>
             </div>
           )}
 
@@ -549,7 +542,7 @@ function ProductionCalculator({ accent, gating, initialMode }) {
             {isDiy ? (
               <>Over 8 years, <span style={{color:accent}}>{cheap.label}</span> saves you <span style={{color:accent}}>{fmtMoney(savingsVsCurrent)}</span> in time and frees up <span style={{color:accent}}>{diyHoursPerYear}</span> hours annually.</>
             ) : (
-              <>Over 8 years, <span style={{color:accent}}>{cheap.label}</span> saves you <span style={{color:accent}}>{fmtMoney(savingsVsCurrent)}</span> compared to paying a contractor.</>
+              <>Over 8 years, <span style={{color:accent}}>{cheap.label}</span> saves you <span style={{color:accent}}>{fmtMoney(savingsVsCurrent)}</span> compared to your current contractor.</>
             )}
           </div>
 
@@ -561,9 +554,13 @@ function ProductionCalculator({ accent, gating, initialMode }) {
               <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>{isDiy ? 'in time value' : 'vs current contractor'}</div>
             </div>
             <div style={{padding:'16px 18px', background:t.bg}}>
-              <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>{isDiy ? 'HOURS FREED / YEAR' : 'HOURS SAVED / YEAR'}</div>
-              <div style={{fontFamily:PROD_MONO, fontSize:26, fontWeight:700, color: (isDiy ? hoursFreedDiy : contractorHoursPerYear) > 0 ? accent : t.text, fontVariantNumeric:'tabular-nums', lineHeight:1.05}}>{isDiy ? hoursFreedDiy : contractorHoursPerYear} hrs</div>
-              <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>{isDiy ? 'after ~25 hrs/yr oversight' : 'no more coordinating visits'}</div>
+              <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>{isDiy ? 'HOURS FREED / YEAR' : 'CONTRACTOR SPEND · 8 YRS'}</div>
+              {isDiy ? (
+                <div style={{fontFamily:PROD_MONO, fontSize:26, fontWeight:700, color: hoursFreedDiy > 0 ? accent : t.text, fontVariantNumeric:'tabular-nums', lineHeight:1.05}}>{hoursFreedDiy} hrs</div>
+              ) : (
+                <div style={{fontFamily:PROD_MONO, fontSize:26, fontWeight:700, color: t.text, fontVariantNumeric:'tabular-nums', lineHeight:1.05}}>{fmtMoney(s.contractor.total8)}</div>
+              )}
+              <div style={{fontSize:11, color:t.textDim, marginTop:4, letterSpacing:'0.04em'}}>{isDiy ? 'after ~25 hrs/yr oversight' : 'cumulative at year 8'}</div>
             </div>
             <div style={{padding:'16px 18px', background:t.bg}}>
               <div style={{fontSize:10, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:6}}>RESIDUAL VALUE · YR 8</div>
@@ -577,14 +574,14 @@ function ProductionCalculator({ accent, gating, initialMode }) {
             {cheap.key === 'contractor'
               ? (isDiy
                   ? `At ${inputs.acres.toFixed(1)} acres, your current DIY setup remains the cheapest option over 8 years on the numbers — but it costs you ${diyHoursPerYear} hours a year.`
-                  : `At ${inputs.acres.toFixed(1)} acres, your current contractor remains the cheapest option over 8 years — but a managed system would eliminate ${contractorHoursPerYear} hours of coordination annually.`)
+                  : `At ${inputs.acres.toFixed(1)} acres and your current contractor spend, your contractor remains the cheapest option over 8 years.`)
               : (isDiy
                   ? (paybackYears
                       ? `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} pays back in approximately ${paybackYears} ${paybackYears === 1 ? 'year' : 'years'} and returns ${hoursFreedDiy} hours to you every year.`
                       : `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window and returns ${hoursFreedDiy} hours to you every year.`)
                   : (paybackYears
-                      ? `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} becomes the lowest-cost option from year ${paybackYears} and eliminates ${contractorHoursPerYear} hours of contractor coordination annually.`
-                      : `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window and eliminates ${contractorHoursPerYear} hours of contractor coordination annually.`))}
+                      ? `At ${inputs.acres.toFixed(1)} acres and your current contractor spend, ${cheap.label.toLowerCase()} becomes the lowest-cost option from year ${paybackYears} onwards.`
+                      : `At ${inputs.acres.toFixed(1)} acres and your current contractor spend, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window.`))}
           </p>
 
           {/* Footnote */}

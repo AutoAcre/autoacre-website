@@ -131,11 +131,10 @@ const DEFAULT_INPUTS = {
   contractorMonthly: 1250,
 
   // Contractor/DIY toggle — replaces the single "current monthly spend" slider.
-  // mowMode 'contractor' → ctr* fields drive cost; 'diy' → diy* fields drive cost.
+  // mowMode 'contractor' → ctrMonthlyInvoice drives cost (× 12 = annual).
+  // mowMode 'diy'        → diy* fields drive cost.
   mowMode: 'contractor',
-  ctrHourly: 120,           // $/hr the contractor charges
-  ctrHoursPerVisit: 3,      // hrs per visit
-  ctrVisitsPerYear: 12,     // visits per year
+  ctrMonthlyInvoice: 1200,  // $ user typically pays their contractor per month
   diyHourlyValue: 60,       // $/hr the user values their own time at
   diyHoursPerMonth: 10      // hrs/month they currently spend on the mower
 };
