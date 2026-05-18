@@ -122,10 +122,19 @@ const DEFAULT_INPUTS = {
   postcode: '2478',
   terrain: 'rolling',
   frequency: 'fortnightly',
-  // Default contractor bill = 5 acres × $250/acre/month at fortnightly cadence.
-  // User can drag the slider to their actual number; once moved, this value
-  // stays put — Acres/Frequency changes don't recompute it.
-  contractorMonthly: 1250
+  // contractorMonthly is now derived from the contractor/DIY toggle below
+  // (see deriveCurrentMonthlySpend in direction-production.jsx). Kept here
+  // as a fallback for any caller that bypasses the production calc UI.
+  contractorMonthly: 1250,
+
+  // Contractor/DIY toggle — replaces the single "current monthly spend" slider.
+  // mowMode 'contractor' → ctr* fields drive cost; 'diy' → diy* fields drive cost.
+  mowMode: 'contractor',
+  ctrHourly: 120,           // $/hr the contractor charges
+  ctrHoursPerVisit: 3,      // hrs per visit
+  ctrVisitsPerYear: 12,     // visits per year
+  diyHourlyValue: 60,       // $/hr the user values their own time at
+  diyHoursPerMonth: 10      // hrs/month they currently spend on the mower
 };
 
 Object.assign(window, {

@@ -224,7 +224,17 @@ function ProductionCalculator({ accent, gating, initialMode }) {
   }, []);
 
   const t = prodTheme(mode);
-  const s = React.useMemo(()=>calcScenarios(inputs), [inputs]);
+  // Derive monthly-spend from the contractor/DIY toggle. Goes into calcScenarios
+  // as `contractorMonthly` so the downstream cost math stays unchanged.
+  // Contractor mode: hourly × hrs/visit × visits/yr → annual → /12.
+  // DIY mode:        (hourly × hrs/mo × 12) + $1,200 assumed equipment → /12.
+  const derivedMonthly = inputs.mowMode === 'diy'
+    ? ((inputs.diyHourlyValue * inputs.diyHoursPerMonth * 12) + 1200) / 12
+    : (inputs.ctrHourly * inputs.ctrHoursPerVisit * inputs.ctrVisitsPerYear) / 12;
+  const s = React.useMemo(
+    () => calcScenarios({ ...inputs, contractorMonthly: derivedMonthly }),
+    [inputs, derivedMonthly]
+  );
   const cheap = cheapest(s);
   const all = scenariosArray(s);
   const tier = getTier(inputs.postcode);
@@ -320,13 +330,72 @@ function ProductionCalculator({ accent, gating, initialMode }) {
 
       {/* Inputs */}
       <div style={{margin:'0 24px', padding:'20px', border:`1px solid ${t.line}`, background:t.surfaceDim}}>
+        {/* Acres — full-width within the grid */}
         <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'8px 28px'}}>
           <ProdSlider t={t} label="YOUR MOWABLE ACRES" hint="The area you actually mow — not the total property size."
             value={inputs.acres} min={2.5} max={10} step={0.1}
             format={v=>`${v.toFixed(1)} ac`} onChange={v=>set('acres', v)} accent={accent}/>
-          <ProdSlider t={t} label="CURRENT MONTHLY MOWING SPEND" hint="Contractor bill, fuel, or both — whatever you pay today."
-            value={inputs.contractorMonthly} min={300} max={3500} step={50}
-            format={v=>`$${v.toLocaleString('en-AU')}`} onChange={v=>set('contractorMonthly', v)} accent={accent}/>
+        </div>
+
+        {/* Contractor / DIY toggle — directly below Your Mowable Acres */}
+        <div style={{marginTop:14, paddingTop:18, borderTop:`1px solid ${t.line}`}}>
+          <div style={{fontSize:11, letterSpacing:'0.18em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:500, marginBottom:10}}>
+            HOW DO YOU CURRENTLY MANAGE YOUR MOWING?
+          </div>
+          {/* Two-option toggle, side-by-side at every breakpoint */}
+          <div role="radiogroup" aria-label="Current mowing arrangement"
+               style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:0, border:`1px solid ${t.line}`}}>
+            {[
+              {value:'contractor', label:'CONTRACTOR — I pay someone to mow'},
+              {value:'diy',        label:'DIY — I do it myself'}
+            ].map((o, i) => {
+              const active = inputs.mowMode === o.value;
+              return (
+                <button key={o.value} type="button" role="radio" aria-checked={active}
+                  onClick={()=>set('mowMode', o.value)}
+                  style={{
+                    padding:'14px 14px', borderRight: i === 0 ? `1px solid ${t.line}` : 'none',
+                    background: active ? accent : 'transparent',
+                    color: active ? '#0E120F' : t.text,
+                    fontSize:12, fontWeight: active ? 700 : 500, letterSpacing:'0.05em',
+                    fontFamily:PROD_MONO, textTransform:'uppercase',
+                    cursor:'pointer', border:'none', textAlign:'center', lineHeight:1.35,
+                    transition:'all 0.12s'
+                  }}>{o.label}</button>
+              );
+            })}
+          </div>
+
+          {/* CONTRACTOR mode — 3 sliders */}
+          {inputs.mowMode === 'contractor' && (
+            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))', gap:'8px 28px', marginTop:6}}>
+              <ProdSlider t={t} label="CONTRACTOR RATE / HR"
+                value={inputs.ctrHourly} min={60} max={200} step={5}
+                format={v=>`$${v}`} onChange={v=>set('ctrHourly', v)} accent={accent}/>
+              <ProdSlider t={t} label="HRS PER VISIT"
+                value={inputs.ctrHoursPerVisit} min={1} max={8} step={0.5}
+                format={v=>`${v} hrs`} onChange={v=>set('ctrHoursPerVisit', v)} accent={accent}/>
+              <ProdSlider t={t} label="VISITS / YEAR"
+                value={inputs.ctrVisitsPerYear} min={6} max={26} step={1}
+                format={v=>`${v}`} onChange={v=>set('ctrVisitsPerYear', v)} accent={accent}/>
+            </div>
+          )}
+
+          {/* DIY mode — 2 sliders */}
+          {inputs.mowMode === 'diy' && (
+            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))', gap:'8px 28px', marginTop:6}}>
+              <ProdSlider t={t} label="YOUR TIME / HR" hint="What's an hour of your time worth to you?"
+                value={inputs.diyHourlyValue} min={20} max={150} step={5}
+                format={v=>`$${v}`} onChange={v=>set('diyHourlyValue', v)} accent={accent}/>
+              <ProdSlider t={t} label="HRS ON MOWER / MONTH"
+                value={inputs.diyHoursPerMonth} min={1} max={20} step={0.5}
+                format={v=>`${v} hrs`} onChange={v=>set('diyHoursPerMonth', v)} accent={accent}/>
+            </div>
+          )}
+        </div>
+
+        {/* Terrain + frequency */}
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'8px 28px', marginTop:14, paddingTop:18, borderTop:`1px solid ${t.line}`}}>
           <ProdSeg t={t} label="TERRAIN" hint="The dominant grade across most of the mowable area."
             value={inputs.terrain}
             options={[{value:'flat',label:'FLAT'},{value:'rolling',label:'ROLLING'},{value:'steep',label:'STEEP'}]}
