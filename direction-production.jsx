@@ -166,7 +166,7 @@ function ProdChart({ scenarios, cheapKey, accent, t, height = 240 }) {
   const niceMax = Math.ceil(max / 10000) * 10000;
   const x = y => padL + (y / years) * chartW;
   const y = v => padT + chartH - (v / niceMax) * chartH;
-  const colors = { diy:'#9CA88E', contractor:'#C2A06B', byo:'#7E97C9', aa:accent };
+  const colors = { diy:'#9CA88E', contractor:'#C2A06B', aa:accent };
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{width:'100%', height:'auto', display:'block'}}>
       {[0, 0.25, 0.5, 0.75, 1].map(f => (
@@ -232,7 +232,7 @@ function ProductionCalculator({ accent, gating, initialMode }) {
   const tier = getTier(inputs.postcode);
   const cheapAnim = useAnimatedNumber(cheap.total8);
   const set = (k,v) => setInputs(p => ({...p, [k]: v}));
-  const colors = { diy:'#9CA88E', contractor:'#C2A06B', byo:'#7E97C9', aa:accent };
+  const colors = { diy:'#9CA88E', contractor:'#C2A06B', aa:accent };
 
   // savings vs DIY (or worst path) — narrative element
   const max8 = Math.max(...all.map(x=>x.total8));
@@ -439,7 +439,7 @@ function ProductionCalculator({ accent, gating, initialMode }) {
             {all.map(sc => (
               <div key={sc.key} style={{display:'flex', alignItems:'center', gap:6, fontSize:11, fontFamily:PROD_MONO, color: sc.key===cheap.key?t.text:t.textDim, textTransform:'uppercase', letterSpacing:'0.05em'}}>
                 <span style={{width:10, height:2, background:colors[sc.key]}}/>
-                {sc.key === 'aa' ? 'AUTOACRE' : sc.key === 'byo' ? 'OWN ROBOT' : sc.key.toUpperCase()}
+                {sc.key === 'aa' ? 'AUTOACRE' : sc.key.toUpperCase()}
               </div>
             ))}
           </div>
@@ -465,18 +465,35 @@ function ProductionCalculator({ accent, gating, initialMode }) {
                 const isCheap = sc.key === cheap.key;
                 const blur = !unlocked && !isCheap;
                 const cell = {padding:'12px 14px', fontSize:13, fontVariantNumeric:'tabular-nums'};
+                // Sub-cell for the MANAGE PREMIUM row beneath AA — lighter, muted, indented.
+                const subCell = {padding:'8px 14px 10px', fontSize:12, fontVariantNumeric:'tabular-nums', color:t.textDim, fontWeight:400};
                 return (
-                  <tr key={sc.key} style={{borderTop:`1px solid ${t.lineSoft}`, background: isCheap ? `${accent}12` : 'transparent'}}>
-                    <td style={{...cell, color: isCheap ? accent : t.text, fontWeight: isCheap ? 700 : 500}}>
-                      <span style={{display:'inline-block', width:8, height:8, background:colors[sc.key], marginRight:8, verticalAlign:'middle'}}/>
-                      {sc.label}
-                    </td>
-                    <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{fmtMoney(sc.capital)}</td>
-                    <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{fmtMoney(sc.y1)}</td>
-                    <td style={{...cell, textAlign:'right', color: isCheap?accent:t.text, fontWeight: isCheap?700:500, filter: (blur && !isCheap)?'blur(5px)':'none'}}>{fmtMoney(sc.total8)}</td>
-                    <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{Math.round(sc.hours)}</td>
-                    <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{sc.residual > 0 ? fmtMoney(sc.residual) : '—'}</td>
-                  </tr>
+                  <React.Fragment key={sc.key}>
+                    <tr style={{borderTop:`1px solid ${t.lineSoft}`, background: isCheap ? `${accent}12` : 'transparent'}}>
+                      <td style={{...cell, color: isCheap ? accent : t.text, fontWeight: isCheap ? 700 : 500}}>
+                        <span style={{display:'inline-block', width:8, height:8, background:colors[sc.key], marginRight:8, verticalAlign:'middle'}}/>
+                        {sc.label}
+                      </td>
+                      <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{fmtMoney(sc.capital)}</td>
+                      <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{fmtMoney(sc.y1)}</td>
+                      <td style={{...cell, textAlign:'right', color: isCheap?accent:t.text, fontWeight: isCheap?700:500, filter: (blur && !isCheap)?'blur(5px)':'none'}}>{fmtMoney(sc.total8)}</td>
+                      <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{Math.round(sc.hours)}</td>
+                      <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{sc.residual > 0 ? fmtMoney(sc.residual) : '—'}</td>
+                    </tr>
+                    {sc.key === 'aa' && (
+                      <tr style={{borderTop:`1px dashed ${t.lineSoft}`, background: isCheap ? `${accent}08` : 'transparent'}}>
+                        <td style={{...subCell, paddingLeft:38}}>
+                          ↳ MANAGE PREMIUM
+                          <div style={{fontSize:10, color:t.textFaint, marginTop:2, letterSpacing:'0.04em', fontWeight:400, textTransform:'none'}}>AutoAcre management fee component</div>
+                        </td>
+                        <td style={{...subCell, textAlign:'right', color:t.textFaint}}>—</td>
+                        <td style={{...subCell, textAlign:'right', filter: blur?'blur(5px)':'none'}}>{fmtMoney(s.aa.opex)}</td>
+                        <td style={{...subCell, textAlign:'right', filter: blur?'blur(5px)':'none'}}>{fmtMoney(s.aa.opex * 8)}</td>
+                        <td style={{...subCell, textAlign:'right', color:t.textFaint}}>—</td>
+                        <td style={{...subCell, textAlign:'right', color:t.textFaint}}>—</td>
+                      </tr>
+                    )}
+                  </React.Fragment>
                 );
               })}
             </tbody>
