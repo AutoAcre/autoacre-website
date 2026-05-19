@@ -149,7 +149,7 @@ function ProdSeg({ label, hint, value, options, onChange, accent, t }) {
   );
 }
 
-function ProdChart({ scenarios, cheapKey, accent, t, height = 240 }) {
+function ProdChart({ scenarios, cheapKey, referenceKey, accent, t, height = 240 }) {
   const years = 8;
   const W = 600, H = height;
   const padL = 44, padR = 16, padT = 16, padB = 28;
@@ -180,11 +180,17 @@ function ProdChart({ scenarios, cheapKey, accent, t, height = 240 }) {
       ))}
       {series.map(sr => {
         const isCheap = sr.key === cheapKey;
+        const isRef = sr.key === referenceKey;
         const d = sr.pts.map((v,i) => `${i===0?'M':'L'}${x(i)},${y(v)}`).join(' ');
+        // Reference path (the one not aligned with user's mode) is muted to
+        // ~30% and dashed so it reads as context, not a recommendation.
+        const op = isCheap ? 1 : isRef ? 0.3 : 0.55;
+        const sw = isCheap ? 2.5 : 1.5;
         return (
           <g key={sr.key}>
-            <path d={d} fill="none" stroke={colors[sr.key]} strokeWidth={isCheap ? 2.5 : 1.5} opacity={isCheap ? 1 : 0.55}/>
-            <circle cx={x(years)} cy={y(sr.pts[years])} r={isCheap ? 4 : 3} fill={colors[sr.key]}/>
+            <path d={d} fill="none" stroke={colors[sr.key]} strokeWidth={sw} opacity={op}
+              strokeDasharray={isRef ? '4 4' : 'none'}/>
+            <circle cx={x(years)} cy={y(sr.pts[years])} r={isCheap ? 4 : 3} fill={colors[sr.key]} opacity={isRef ? 0.4 : 1}/>
           </g>
         );
       })}
@@ -227,24 +233,40 @@ function ProductionCalculator({ accent, gating, initialMode }) {
     () => calcScenarios({ ...inputs, contractorMonthly: derivedMonthly }),
     [inputs, derivedMonthly]
   );
-  const cheap = cheapest(s);
   const all = scenariosArray(s);
   const tier = getTier(inputs.postcode);
-  const cheapAnim = useAnimatedNumber(cheap.total8);
   const set = (k,v) => setInputs(p => ({...p, [k]: v}));
   const colors = { diy:'#9CA88E', contractor:'#C2A06B', aa:accent };
 
-  // savings vs DIY (or worst path) — narrative element
-  const max8 = Math.max(...all.map(x=>x.total8));
+  // Recommendation is constrained to paths the user would actually consider.
+  // A contractor user is outsourcing by choice — recommending DIY zero-turn
+  // to them ignores that decision. Same logic applies in reverse for DIY users.
+  // The OPTIMAL badge always reflects the best option WITHIN the user's
+  // current behaviour pattern, not the cheapest option overall.
+  // The non-candidate path is still shown in FIG.01/FIG.02 as reference data
+  // but visually muted and never marked OPTIMAL.
+  const isDiy = inputs.mowMode === 'diy';
+  const referenceKey = isDiy ? 'contractor' : 'diy';
+  const candidates = all.filter(sc => sc.key !== referenceKey);
+  const cheap = candidates.reduce((a, b) => a.total8 < b.total8 ? a : b);
+  const cheapAnim = useAnimatedNumber(cheap.total8);
+
+  // savings vs the worst CANDIDATE path — narrative element
+  const max8 = Math.max(...candidates.map(x=>x.total8));
   const savings = max8 - cheap.total8;
 
   // FINDINGS snapshot — stats shown above NEXT_STEP. All re-derive from
-  // `inputs` via `s`/`cheap`/`all`, so they update live on every input change.
-  // Because the contractor/DIY toggle pipes its derived monthly value into
-  // contractorMonthly, `s.contractor.total8` represents the user's CURRENT
-  // method's 8-year cost — same formula works in both toggle modes.
-  const isDiy = inputs.mowMode === 'diy';
+  // `inputs` via `s`/`cheap`/`candidates`, so they update live on every input
+  // change. Because the contractor/DIY toggle pipes its derived monthly value
+  // into contractorMonthly, `s.contractor.total8` represents the user's
+  // CURRENT method's 8-year cost in BOTH modes (contractor invoice ×12×8 or
+  // DIY time-value ×8 + equipment baseline).
   const savingsVsCurrent = Math.max(0, s.contractor.total8 - cheap.total8);
+  // Near-equal: AA optimal and within 10% of current method's 8-yr cost.
+  // Triggers a qualitative-framing branch in the interpretation copy.
+  const nearEqual = cheap.key === 'aa'
+    && s.contractor.total8 > 0
+    && savingsVsCurrent / s.contractor.total8 < 0.10;
   const diyHoursPerYear = Math.round(inputs.diyHoursPerMonth * 12);
   const AA_OVERSIGHT_HRS = 25;  // Hrs/yr the user spends overseeing the autonomous system.
   const hoursFreedDiy = Math.max(0, diyHoursPerYear - AA_OVERSIGHT_HRS);
@@ -429,15 +451,19 @@ function ProductionCalculator({ accent, gating, initialMode }) {
         <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:18, flexWrap:'wrap', gap:8}}>
           <div style={{fontSize:11, letterSpacing:'0.2em', textTransform:'uppercase', fontFamily:PROD_MONO, color:t.textFaint, fontWeight:600}}>FIG.01 / CUMULATIVE COST · YEARS 0–8</div>
           <div style={{display:'flex', gap:14, flexWrap:'wrap'}}>
-            {all.map(sc => (
-              <div key={sc.key} style={{display:'flex', alignItems:'center', gap:6, fontSize:11, fontFamily:PROD_MONO, color: sc.key===cheap.key?t.text:t.textDim, textTransform:'uppercase', letterSpacing:'0.05em'}}>
-                <span style={{width:10, height:2, background:colors[sc.key]}}/>
-                {sc.key === 'aa' ? 'AUTOACRE' : sc.key.toUpperCase()}
-              </div>
-            ))}
+            {all.map(sc => {
+              const isRef = sc.key === referenceKey;
+              return (
+                <div key={sc.key} style={{display:'flex', alignItems:'center', gap:6, fontSize:11, fontFamily:PROD_MONO, color: sc.key===cheap.key?t.text:t.textDim, textTransform:'uppercase', letterSpacing:'0.05em', opacity: isRef ? 0.45 : 1}}>
+                  <span style={{width:10, height:2, background:colors[sc.key]}}/>
+                  {sc.key === 'aa' ? 'AUTOACRE' : sc.key.toUpperCase()}
+                  {isRef && <span style={{marginLeft:4, fontSize:9, letterSpacing:'0.14em', color:t.textFaint}}>· REF</span>}
+                </div>
+              );
+            })}
           </div>
         </div>
-        <ProdChart scenarios={all} cheapKey={cheap.key} accent={accent} t={t}/>
+        <ProdChart scenarios={all} cheapKey={cheap.key} referenceKey={referenceKey} accent={accent} t={t}/>
       </div>
 
       {/* Comparison table — gated rows blur */}
@@ -456,16 +482,25 @@ function ProductionCalculator({ accent, gating, initialMode }) {
             <tbody>
               {all.map(sc => {
                 const isCheap = sc.key === cheap.key;
+                const isRef = sc.key === referenceKey;
                 const blur = !unlocked && !isCheap;
                 const cell = {padding:'12px 14px', fontSize:13, fontVariantNumeric:'tabular-nums'};
                 // Sub-cell for the MANAGE PREMIUM row beneath AA — lighter, muted, indented.
                 const subCell = {padding:'8px 14px 10px', fontSize:12, fontVariantNumeric:'tabular-nums', color:t.textDim, fontWeight:400};
+                // Reference row (not aligned with user's mode) is muted to ~50%
+                // so it reads as context data, not a recommendation.
+                const rowOpacity = isRef ? 0.5 : 1;
                 return (
                   <React.Fragment key={sc.key}>
-                    <tr style={{borderTop:`1px solid ${t.lineSoft}`, background: isCheap ? `${accent}12` : 'transparent'}}>
+                    <tr style={{borderTop:`1px solid ${t.lineSoft}`, background: isCheap ? `${accent}12` : 'transparent', opacity: rowOpacity}}>
                       <td style={{...cell, color: isCheap ? accent : t.text, fontWeight: isCheap ? 700 : 500}}>
                         <span style={{display:'inline-block', width:8, height:8, background:colors[sc.key], marginRight:8, verticalAlign:'middle'}}/>
                         {sc.label}
+                        {isRef && (
+                          <div style={{fontSize:10, color:t.textFaint, marginTop:2, letterSpacing:'0.06em', fontWeight:400, textTransform:'uppercase'}}>
+                            Reference only — not aligned with your current approach
+                          </div>
+                        )}
                       </td>
                       <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{fmtMoney(sc.capital)}</td>
                       <td style={{...cell, textAlign:'right', filter: blur?'blur(5px)':'none', color:t.text}}>{fmtMoney(sc.y1)}</td>
@@ -569,19 +604,26 @@ function ProductionCalculator({ accent, gating, initialMode }) {
             </div>
           </div>
 
-          {/* Plain-English interpretation — mode-aware */}
+          {/* Plain-English interpretation — mode-aware, candidate-constrained.
+              Branches: (1) user's current method is cheapest (within candidate set),
+              (2) AA optimal but within 10% of current — qualitative framing,
+              (3) AA optimal with meaningful saving — payback-year framing. */}
           <p style={{fontSize:14, color:t.textDim, lineHeight:1.6, marginTop:18, maxWidth:720}}>
-            {cheap.key === 'contractor'
+            {cheap.key !== 'aa'
               ? (isDiy
                   ? `At ${inputs.acres.toFixed(1)} acres, your current DIY setup remains the cheapest option over 8 years on the numbers — but it costs you ${diyHoursPerYear} hours a year.`
                   : `At ${inputs.acres.toFixed(1)} acres and your current contractor spend, your contractor remains the cheapest option over 8 years.`)
-              : (isDiy
-                  ? (paybackYears
-                      ? `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} pays back in approximately ${paybackYears} ${paybackYears === 1 ? 'year' : 'years'} and returns ${hoursFreedDiy} hours to you every year.`
-                      : `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window and returns ${hoursFreedDiy} hours to you every year.`)
-                  : (paybackYears
-                      ? `At ${inputs.acres.toFixed(1)} acres and your current contractor spend, ${cheap.label.toLowerCase()} becomes the lowest-cost option from year ${paybackYears} onwards.`
-                      : `At ${inputs.acres.toFixed(1)} acres and your current contractor spend, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window.`))}
+              : nearEqual
+                ? (isDiy
+                    ? `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} costs roughly the same as your current approach over 8 years — but eliminates the time commitment entirely.`
+                    : `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} costs roughly the same as your current approach over 8 years — but eliminates the scheduling hassle entirely.`)
+                : (isDiy
+                    ? (paybackYears
+                        ? `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} pays back in approximately ${paybackYears} ${paybackYears === 1 ? 'year' : 'years'} and returns ${hoursFreedDiy} hours to you every year.`
+                        : `At ${inputs.acres.toFixed(1)} acres, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window and returns ${hoursFreedDiy} hours to you every year.`)
+                    : (paybackYears
+                        ? `At ${inputs.acres.toFixed(1)} acres and your current contractor spend, ${cheap.label.toLowerCase()} becomes the lowest-cost option from year ${paybackYears} onwards.`
+                        : `At ${inputs.acres.toFixed(1)} acres and your current contractor spend, ${cheap.label.toLowerCase()} is the lowest-cost option over the 8-year window.`))}
           </p>
 
           {/* Footnote */}
