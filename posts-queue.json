@@ -1,7 +1,7 @@
 {
-  "nextIndex": 5,
-  "lastPublished": 4,
-  "lastPublishedDate": "2026-05-15",
+  "nextIndex": 6,
+  "lastPublished": 5,
+  "lastPublishedDate": "2026-05-22",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -27,6 +27,11 @@
       "slug": "blog-steep-block-mowing-solutions-for-the-northern-rivers-hinterland",
       "date": "2026-05-15",
       "title": "Steep Block Mowing Solutions for the Northern Rivers Hinterland"
+    },
+    {
+      "slug": "blog-5-signs-your-acreage-property-needs-a-better-mowing-solution",
+      "date": "2026-05-22",
+      "title": "5 Signs Your Acreage Property Needs a Better Mowing Solution"
     }
   ],
   "topics": [
