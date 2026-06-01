@@ -1,7 +1,7 @@
 {
-  "nextIndex": 7,
-  "lastPublished": 6,
-  "lastPublishedDate": "2026-05-29",
+  "nextIndex": 8,
+  "lastPublished": 7,
+  "lastPublishedDate": "2026-06-01",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -37,6 +37,11 @@
       "slug": "blog-acreage-mowing-in-bangalow-what-property-owners-need-to-know",
       "date": "2026-05-29",
       "title": "Acreage Mowing in Bangalow — What Property Owners Need to Know"
+    },
+    {
+      "slug": "blog-the-hidden-cost-of-fortnightly-mowing-on-lifestyle-properties",
+      "date": "2026-06-01",
+      "title": "The Hidden Cost of Fortnightly Mowing on Lifestyle Properties"
     }
   ],
   "topics": [
