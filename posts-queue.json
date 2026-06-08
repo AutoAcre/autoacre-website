@@ -1,7 +1,7 @@
 {
-  "nextIndex": 8,
-  "lastPublished": 7,
-  "lastPublishedDate": "2026-06-01",
+  "nextIndex": 9,
+  "lastPublished": 8,
+  "lastPublishedDate": "2026-06-08",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -42,6 +42,11 @@
       "slug": "blog-the-hidden-cost-of-fortnightly-mowing-on-lifestyle-properties",
       "date": "2026-06-01",
       "title": "The Hidden Cost of Fortnightly Mowing on Lifestyle Properties"
+    },
+    {
+      "slug": "blog-autonomous-mowing-subscription-service-is-it-worth-it",
+      "date": "2026-06-08",
+      "title": "Autonomous Mowing Subscription Service — Is It Worth It?"
     }
   ],
   "topics": [
