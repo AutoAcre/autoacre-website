@@ -1,7 +1,7 @@
 {
-  "nextIndex": 9,
-  "lastPublished": 8,
-  "lastPublishedDate": "2026-06-08",
+  "nextIndex": 10,
+  "lastPublished": 9,
+  "lastPublishedDate": "2026-06-15",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -47,6 +47,11 @@
       "slug": "blog-autonomous-mowing-subscription-service-is-it-worth-it",
       "date": "2026-06-08",
       "title": "Autonomous Mowing Subscription Service — Is It Worth It?"
+    },
+    {
+      "slug": "blog-solar-farm-vegetation-management-with-autonomous-mowers",
+      "date": "2026-06-15",
+      "title": "Solar Farm Vegetation Management with Autonomous Mowers"
     }
   ],
   "topics": [
