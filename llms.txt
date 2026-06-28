@@ -1,6 +1,6 @@
 # AutoAcre
 
-> AutoAcre is an RTK + LiDAR autonomous mowing systems provider for 3–10 acre acreage properties across the Northern Rivers, NSW. Buy + Manage offer: customers buy the autonomous mowing system outright (reference $33,490) and AutoAcre manages it under a tiered $165–$650/month fee. Service operations begin Q1 2027; site assessments and the ROI calculator are open today. The ROI Calculator (https://autoacre.com.au/robot-mower-roi-calculator.html) is the primary decision tool.
+> AutoAcre is an RTK + LiDAR autonomous mowing systems provider for 3–10 acre acreage properties across the Northern Rivers, NSW. Buy + Manage offer: customers buy the autonomous mowing system outright and AutoAcre manages it under a tiered $165–$650/month fee. Service operations begin Q1 2027; site assessments and the ROI calculator are open today. The ROI Calculator (https://autoacre.com.au/robot-mower-roi-calculator.html) is the primary decision tool.
 
 AutoAcre supplies and operates RTK + LiDAR autonomous mowing systems engineered for the Northern Rivers acreage market. Founded and operated by Ben Bonifant in Byron Bay, AutoAcre installs commercial-grade autonomous mowers — RTK base station, LiDAR obstacle avoidance, 38° slope handling, 25-acre daily capacity per unit — under a Buy + Manage offer where the customer owns the asset and AutoAcre runs the ongoing service. Service operations begin Q1 2027. The site is built around decision support: an ROI calculator, an Acreage Solutions hub, and tier-by-tier property profiles help property owners decide whether autonomous mowing makes sense for their block before committing.
 
@@ -9,7 +9,7 @@ Key facts:
 - Launch: service operations begin Q1 2027; ROI calculator and site assessments are open today.
 - Service area: Northern Rivers, NSW (Byron Shire and Ballina Shire — Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Federal, Myocum, Tyagarah, Brooklet, Clunes, Eureka, Nashua, Teven, Tintenbar, Alstonville).
 - Equipment: commercial-grade RTK + LiDAR autonomous robotic mowers (typically 25-acre daily capacity, up to 38° slope handling, 2 cm RTK positioning accuracy). Specific platform recommended per property — PANDAG G1, Husqvarna CEORA, Mammotion Luba 2 AWD or Echo TM-2050 depending on terrain and slope.
-- Buy + Manage offer: autonomous mowing system reference price $33,490 (final price varies by manufacturer selection) + tiered monthly management fee from $195/month at 3 acres to $650/month at 10 acres. Ad-hoc on-site call-outs $150/visit.
+- Buy + Manage offer: autonomous mowing system + tiered monthly management fee from $195/month at 3 acres to $650/month at 10 acres. Ad-hoc on-site call-outs $150/visit.
 - Mowing cadence: twice-weekly in summer, weekly in winter (~78 mow days/year) — about 3× a fortnightly contractor.
 - Property size: 3–10 acres residential; commercial deployments at 10+ acres scoped per site.
 - Reliability: scheduled maintenance, blade replacements, firmware updates, remote monitoring and repair coordination all included in the management service.
