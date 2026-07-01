@@ -1,7 +1,7 @@
 {
-  "nextIndex": 12,
-  "lastPublished": 11,
-  "lastPublishedDate": "2026-06-29",
+  "nextIndex": 13,
+  "lastPublished": 12,
+  "lastPublishedDate": "2026-07-01",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -62,6 +62,11 @@
       "slug": "blog-acreage-mowing-in-newrybar-lifestyle-property-maintenance-guide",
       "date": "2026-06-29",
       "title": "Acreage Mowing in Newrybar — Lifestyle Property Maintenance Guide"
+    },
+    {
+      "slug": "blog-acreage-mowing-in-mullumbimby-northern-rivers-property-guide",
+      "date": "2026-07-01",
+      "title": "Acreage Mowing in Mullumbimby — Northern Rivers Property Guide"
     }
   ],
   "topics": [
