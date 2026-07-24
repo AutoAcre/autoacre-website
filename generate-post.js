@@ -256,7 +256,7 @@ async function main() {
   if (topic.customBody) {
     console.log('Using pre-written custom body (skipping AI generation)');
     // Convert plain text paragraphs to HTML — split by double newlines
-    const paragraphs = topic.customBody.split(/\n\s*\n/).filter(p => p.trim());
+    const paragraphs = topic.customBody.split(/\n+/).filter(p => p.trim());
     content = paragraphs.map(p => {
       const trimmed = p.trim();
       // If it starts with **, treat as h2 heading with bold text (Ben uses **bold** for section headers)
