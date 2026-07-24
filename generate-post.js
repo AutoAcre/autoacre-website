@@ -2,169 +2,6 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
-// ── Shared cream-index header (matches /nav.css + /nav.js contract) ─────────
-// Used by both buildPostHtml() and buildBlogHtml(). Blog content lives in the
-// Insights section, so the Insights trigger gets aria-current="page".
-const SHARED_NAV_HEADER = `<header class="site-header" role="banner">
- <div class="header-inner">
-  <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
-   <span class="wordmark-name">AutoAcre</span>
-   <span class="wordmark-tag">Northern Rivers</span>
-  </a>
-  <nav class="header-nav header-nav--cream-index" aria-label="Main navigation">
-   <ul class="nav-list" role="list">
-    <li class="nav-item"><a href='/' class="nav-link" data-section="home">Home</a></li>
-    <li class="nav-item nav-cream-item">
-     <button type="button" class="nav-cream-trigger" data-section="systems" aria-expanded="false" aria-controls="nav-drawer-systems">
-      <span class="nav-cream-trigger-label">Autonomous Systems</span>
-      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-     </button>
-     <div class="nav-cream-drawer" id="nav-drawer-systems" role="region" aria-label="Autonomous Systems" hidden>
-      <div class="nav-cream-drawer-inner">
-       <div class="nav-cream-drawer-strip"><span class="nav-cream-drawer-eyebrow">What we install</span><span class="nav-cream-drawer-count">04 ITEMS</span></div>
-       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
-        <li class="nav-cream-drawer-item"><a href='/3-10-acre-autonomous-mowing-systems'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">2.5–10 Acre Systems</span></a></li>
-        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">RTK Robot Mower Installation</span></a></li>
-        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Acreage Robot Mowing</span></a></li>
-        <li class="nav-cream-drawer-item"><a href='/commercial'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Commercial Autonomous Mowing</span></a></li>
-       </ul>
-      </div>
-     </div>
-    </li>
-    <li class="nav-item nav-cream-item">
-     <button type="button" class="nav-cream-trigger" data-section="locations" aria-expanded="false" aria-controls="nav-drawer-locations">
-      <span class="nav-cream-trigger-label">Locations</span>
-      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-     </button>
-     <div class="nav-cream-drawer" id="nav-drawer-locations" role="region" aria-label="Locations" hidden>
-      <div class="nav-cream-drawer-inner">
-       <div class="nav-cream-drawer-strip">
-        <span class="nav-cream-drawer-eyebrow">Where we work</span>
-        <span class="nav-cream-drawer-count">17 ITEMS</span>
-       </div>
-       <div class="nav-cream-region">
-        <div class="nav-cream-region-label">Byron Shire — 8</div>
-        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-byron-bay'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Byron Bay</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-bangalow'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Bangalow</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-mullumbimby'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Mullumbimby</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-ewingsdale'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Ewingsdale</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-federal'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Federal</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-myocum'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Myocum</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-newrybar'><span class="nav-cream-drawer-num">07</span><span class="nav-cream-drawer-label">Newrybar</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-tyagarah'><span class="nav-cream-drawer-num">08</span><span class="nav-cream-drawer-label">Tyagarah</span></a></li>
-        </ul>
-       </div>
-       <div class="nav-cream-region">
-        <div class="nav-cream-region-label">Ballina Shire — 5</div>
-        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-ballina'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Ballina</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-lennox-head'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Lennox Head</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-alstonville'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Alstonville</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-tintenbar'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Tintenbar</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-teven'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Teven</span></a></li>
-        </ul>
-       </div>
-       <div class="nav-cream-region">
-        <div class="nav-cream-region-label">Inland — 4</div>
-        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-brooklet'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Brooklet</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-clunes'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Clunes</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-eureka'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Eureka</span></a></li>
-         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-nashua'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Nashua</span></a></li>
-        </ul>
-       </div>
-      </div>
-     </div>
-    </li>
-    <li class="nav-item nav-cream-item">
-     <button type="button" class="nav-cream-trigger" data-section="insights" aria-current="page" aria-expanded="false" aria-controls="nav-drawer-insights">
-      <span class="nav-cream-trigger-label">Insights</span>
-      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-     </button>
-     <div class="nav-cream-drawer" id="nav-drawer-insights" role="region" aria-label="Insights" hidden>
-      <div class="nav-cream-drawer-inner">
-       <div class="nav-cream-drawer-strip"><span class="nav-cream-drawer-eyebrow">Field notes</span><span class="nav-cream-drawer-count">06 ITEMS</span></div>
-       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
-        <li class="nav-cream-drawer-item"><a href='/blog'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Robot Mower Guides</span></a></li>
-        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Acreage Automation</span></a></li>
-        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">RTK Technology</span></a></li>
-        <li class="nav-cream-drawer-item"><a href='/autonomous-vs-ride-on'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Comparisons</span></a></li>
-        <li class="nav-cream-drawer-item"><a href='/robot-mower-roi-calculator'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">ROI Calculator</span></a></li>
-        <li class="nav-cream-drawer-item"><a href='/faq'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Facts &amp; FAQs</span></a></li>
-       </ul>
-      </div>
-     </div>
-    </li>
-    <li class="nav-item"><a href='/about' class="nav-link" data-section="about">About</a></li>
-   </ul>
-  </nav>
-  <div class="header-actions">
-   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
-   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
-  </div>
- </div>
-</header>
-<nav class="mobile-nav" aria-label="Mobile navigation">
- <a class='btn btn--primary btn--large mobile-cta' href='/book-site-assessment' style='margin-bottom: var(--space-4);'>Book Assessment</a>
- <a href='/'>Home</a>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Autonomous Systems <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-  <div class="mobile-nav-areas-list"><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a><a href='/commercial'>Commercial Autonomous Mowing</a></div>
- </div>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Locations <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-  <div class="mobile-nav-areas-list"><span class="mobile-nav-region-label">Byron Shire — 8</span><a href='/robot-mower-installation-byron-bay'>Byron Bay</a><a href='/robot-mower-installation-bangalow'>Bangalow</a><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a><a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a><a href='/robot-mower-installation-federal'>Federal</a><a href='/robot-mower-installation-myocum'>Myocum</a><a href='/robot-mower-installation-newrybar'>Newrybar</a><a href='/robot-mower-installation-tyagarah'>Tyagarah</a><span class="mobile-nav-region-label">Ballina Shire — 5</span><a href='/robot-mower-installation-ballina'>Ballina</a><a href='/robot-mower-installation-lennox-head'>Lennox Head</a><a href='/robot-mower-installation-alstonville'>Alstonville</a><a href='/robot-mower-installation-tintenbar'>Tintenbar</a><a href='/robot-mower-installation-teven'>Teven</a><span class="mobile-nav-region-label">Inland — 4</span><a href='/robot-mower-installation-brooklet'>Brooklet</a><a href='/robot-mower-installation-clunes'>Clunes</a><a href='/robot-mower-installation-eureka'>Eureka</a><a href='/robot-mower-installation-nashua'>Nashua</a><a href='/service-area' class="mobile-nav-all-locations">All service areas →</a></div>
- </div>
- <div class="mobile-nav-areas">
-  <button class="mobile-nav-areas-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Insights <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-  <div class="mobile-nav-areas-list"><a href='/blog'>Robot Mower Guides</a><a href='/acreage-robot-mowing-systems'>Acreage Automation</a><a href='/rtk-robot-mower-installation'>RTK Technology</a><a href='/autonomous-vs-ride-on'>Comparisons</a><a href='/robot-mower-roi-calculator'>ROI Calculator</a><a href='/faq'>Facts &amp; FAQs</a></div>
- </div>
- <a href='/about'>About</a>
- <a href="tel:0499649094" class="mobile-nav-phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0.7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
-</nav>`;
-
-// ── Shared head links (CSS + fonts) — must match what the rest of the site loads
-// so blog content renders consistently with authority pages. Adding direction-b.css
-// is critical: without it posts render with no Direction B skin (no olive primary,
-// rounded corners come back, Zodiak headlines disappear). Inter Tight + JetBrains
-// Mono load via direct <link> for parallel font-CSS download (matching the perf
-// hoist applied to all other pages). ────────────────────────────────────────────
-const SHARED_HEAD_LINKS = `<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
- <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css">
- <link rel="stylesheet" href="/direction-b.css">
- <link rel="stylesheet" href="/nav.css">`;
-
-// ── Shared 6-column footer matching the canonical site footer (Autonomous Systems
-// / Locations / Insights / Convert / Company / Contact). Used by both buildPostHtml
-// and buildBlogHtml so blog content sits consistently with authority pages.
-const SITE_FOOTER = ` <footer class="site-footer" role="contentinfo">
- <div class="container">
-  <div class="footer-grid">
-   <div class="footer-brand">
-    <a aria-label='AutoAcre home' class='header-logo' href='/'>
-     <img src="/img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
-    </a>
-    <p>Autonomous mowing systems for 2.5–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
-   </div>
-   <div class="footer-col"><h4>Autonomous Systems</h4><ul><li><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a></li><li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li><li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li><li><a href='/commercial'>Commercial Autonomous Mowing</a></li></ul></div>
-   <div class="footer-col"><h4>Locations</h4><ul><li><a href='/robot-mower-installation-byron-bay'>Byron Bay</a></li><li><a href='/robot-mower-installation-federal'>Federal</a></li><li><a href='/robot-mower-installation-bangalow'>Bangalow</a></li><li><a href='/robot-mower-installation-mullumbimby'>Mullumbimby</a></li><li><a href='/robot-mower-installation-newrybar'>Newrybar</a></li><li><a href='/robot-mower-installation-ewingsdale'>Ewingsdale</a></li><li><a href='/robot-mower-installation-myocum'>Myocum</a></li><li><a href='/robot-mower-installation-brooklet'>Brooklet</a></li><li><a href='/service-area'>All locations</a></li></ul></div>
-   <div class="footer-col"><h4>Insights</h4><ul><li><a href='/blog'>Robot Mower Guides</a></li><li><a href='/acreage-robot-mowing-systems'>Acreage Automation</a></li><li><a href='/rtk-robot-mower-installation'>RTK Technology</a></li><li><a href='/autonomous-vs-ride-on'>Comparisons</a></li><li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li><li><a href='/faq'>Facts &amp; FAQs</a></li></ul></div>
-   <div class="footer-col"><h4>Convert</h4><ul><li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li><li><a href='/book-site-assessment'>Book Site Assessment</a></li></ul></div>
-   <div class="footer-col"><h4>Company</h4><ul><li><a href='/about'>About</a></li><li><a href='/blog'>Blog</a></li><li><a href='/glossary'>Glossary</a></li><li><a href='/facts'>Facts &amp; Figures</a></li></ul></div>
-   <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><a href="tel:0499649094">0499 649 094</a></div><div class="footer-contact-item"><a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></div><div class="footer-contact-item"><span>Byron Bay &amp; Northern Rivers, NSW</span></div></div>
-  </div>
-  <div class="footer-bottom">
-   <span>&copy; 2026 AutoAcre. All rights reserved.</span>
-   <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
-   <span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span>
-  </div>
- </div>
-</footer>`;
-
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function slugify(title) {
   return 'blog-' + title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -197,57 +34,6 @@ function httpsPost(url, headers, body) {
   });
 }
 
-// ── Generate 3 FAQ Q&A pairs for the post (for FAQPage schema) ───────────────
-// Returns an array of {q, a} objects. Returns [] on any failure so the post
-// still publishes — graceful degradation.
-async function generateFaqs(topic) {
-  try {
-    const result = await httpsPost(
-      'https://api.anthropic.com/v1/messages',
-      {
-        'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01'
-      },
-      {
-        model: 'claude-sonnet-4-5',
-        max_tokens: 1200,
-        system: `You write FAQ pairs for AutoAcre, an autonomous acreage mowing service in Byron Bay & the Northern Rivers, NSW. Brand: premium, grounded, Australian, NOT tech startup. Owner Ben Bonifant, 0499 649 094. AutoAcre's offer is Buy + Manage: customer buys the PANDAG G1 robotic mower outright, then pays a tiered monthly management fee from $260/month (4 acres) to $650/month (10 acres) for scheduled maintenance, monitoring and repair coordination. PANDAG G1 specs: 25 acres/day, 38° slopes, GPS-RTK navigation. Do NOT describe it as a "subscription" or claim "$600-$800/month". Do NOT claim AutoAcre is the authorised PANDAG G1 dealer. Australian spelling. Each answer is 2-3 sentences, factual, specific, and self-contained. Output ONLY a JSON array of exactly 3 objects: [{"q":"...","a":"..."},{"q":"...","a":"..."},{"q":"...","a":"..."}]. No markdown. No code fences. No prose around the JSON.`,
-        messages: [{
-          role: 'user',
-          content: `Write 3 FAQ pairs that an AI answer engine could cite for this blog post. The questions must be the kinds of questions real Northern Rivers acreage owners ask. Make them specific to the post topic so they reinforce the post's authority.\n\nTitle: ${topic.title}\nTarget keyword: ${topic.keyword}\nCategory: ${topic.tag}\n\nOutput the JSON array directly with no code fences and no surrounding prose.`
-        }]
-      }
-    );
-    if (result.error) throw new Error('Anthropic FAQ error: ' + result.error.message);
-    let txt = (result.content || []).filter(b => b.type === 'text').map(b => b.text).join('').trim();
-    // Strip code fences if the model added them anyway
-    if (txt.startsWith('```')) {
-      const lines = txt.split('\n');
-      lines.shift();
-      if (lines[lines.length - 1].trim().startsWith('```')) lines.pop();
-      txt = lines.join('\n').trim();
-    }
-    const parsed = JSON.parse(txt);
-    if (!Array.isArray(parsed)) throw new Error('FAQ response not an array');
-    return parsed
-      .filter(x => x && typeof x.q === 'string' && typeof x.a === 'string')
-      .slice(0, 3);
-  } catch (e) {
-    console.warn('FAQ generation failed (post will still publish without FAQ schema):', e.message);
-    return [];
-  }
-}
-
-// ── Escape a string for safe embedding in a JSON-LD <script> block ───────────
-function jsonLdEscape(s) {
-  return String(s)
-    .replace(/\\/g, '\\\\')
-    .replace(/"/g, '\\"')
-    .replace(/\r?\n/g, ' ')
-    .replace(/<\/script/gi, '<\\/script');
-}
-
 // ── Generate post content via Anthropic ──────────────────────────────────────
 async function generateContent(topic) {
   console.log(`Generating: ${topic.title}`);
@@ -261,7 +47,7 @@ async function generateContent(topic) {
     {
       model: 'claude-sonnet-4-5',
       max_tokens: 4000,
-      system: `You are a senior SEO content writer for AutoAcre, an autonomous acreage mowing business in Byron Bay, Northern Rivers NSW. Brand: premium rural property, trustworthy, grounded, Australian hinterland. NOT tech startup. Owner Ben Bonifant, 0499 649 094, autoacre.com.au. AutoAcre's offer is Buy + Manage: customer buys the PANDAG G1 robotic mower outright, then pays a tiered monthly management fee from $260/month (4 acres) to $650/month (10 acres) for ongoing scheduled maintenance, blade replacements, firmware updates, monitoring and repair coordination. The customer owns the asset; AutoAcre runs the management service. PANDAG G1 specs: 25 acres/day capacity, 38° slope handling, GPS-RTK precision navigation. Service area: Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Federal, Myocum, Tyagarah, Brooklet, Clunes, Eureka, Nashua, Alstonville, Teven, Tintenbar, Northern Rivers NSW. Do NOT describe AutoAcre as a "subscription" service or claim "$600-$800/month all-inclusive" — that was a previous model. Do NOT claim AutoAcre is the authorised PANDAG G1 dealer (relationship is not yet formal). Output clean HTML using only h2, p, ul, li, strong tags. No h1. No divs. 900-1100 words. Australian spelling. Target keyword in first paragraph and 2+ h2s. End with CTA linking to autoacre.com.au/quote.html or demo.html. Output HTML directly with no code fences, no backticks, no markdown.`,
+      system: `You are a senior SEO content writer for AutoAcre, a premium autonomous acreage mowing business in Byron Bay, Northern Rivers NSW. Brand: premium rural property, trustworthy, grounded, Australian hinterland. NOT tech startup. Owner Ben Bonifant, 0499 649 094, autoacre.com.au. PANDAG G1 mower (25 acres/day, 38° slopes), $600-$800/month. Service area: Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Northern Rivers NSW. Output clean HTML using only h2, p, ul, li, strong tags. No h1. No divs. 900-1100 words. Australian spelling. Target keyword in first paragraph and 2+ h2s. End with CTA linking to autoacre.com.au/quote.html or demo.html. Output HTML directly with no code fences, no backticks, no markdown.`,
       messages: [{
         role: 'user',
         content: `Write the full SEO blog post body for AutoAcre.\nTitle: ${topic.title}\nTarget keyword: ${topic.keyword}\nCategory: ${topic.tag}\n\nOutput the HTML directly with no code fences, no backticks, no markdown wrapping.`
@@ -286,6 +72,41 @@ async function generateContent(topic) {
 
 // ── Build blog post HTML ──────────────────────────────────────────────────────
 function buildPostHtml(post) {
+  const SITE_HEADER = `  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo" aria-label="AutoAcre home">
+        <img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Management" height="52" style="height:52px;width:auto;">
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="residential.html">Residential</a>
+        <a href="commercial.html">Commercial</a>
+        <a href="about.html">About</a>
+        <a href="blog.html" class="active">Blog</a>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:0499649094" class="header-phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0499 649 094</a>
+        <a href="demo.html" class="btn btn--primary header-cta">Book a Demo</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode"></button>
+        <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
+      </div>
+    </div>
+  </header>
+  <nav class="mobile-nav"><a href="index.html">Home</a><a href="residential.html">Residential</a><a href="commercial.html">Commercial</a><a href="about.html">About</a><a href="blog.html">Blog</a><div class="mobile-nav-cta"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large">Get a Quote</a></div></nav>`;
+
+  const SITE_FOOTER = `  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a href="index.html"><img src="./img/logo.png" alt="AutoAcre" height="48" style="height:48px;width:auto;filter:brightness(0) invert(1);"></a><p>Autonomous grounds management across the Northern Rivers.</p></div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="residential.html">Residential</a></li><li><a href="commercial.html">Commercial</a></li><li><a href="demo.html">Book a Demo</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><a href="tel:0499649094">0499 649 094</a></div><div class="footer-contact-item"><a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a></div></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span></div>
+    </div>
+  </footer>
+  <script src="./app.js" defer></script>`;
+
   return `<!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -294,80 +115,15 @@ function buildPostHtml(post) {
   <meta name="description" content="${post.excerpt}">
   <link rel="canonical" href="https://autoacre.com.au/${post.slug}.html">
   <meta property="og:title" content="${post.title}"><meta property="og:description" content="${post.excerpt}">
-  <meta property="og:image" content="https://autoacre.com.au/img/${post.img}"><meta property="og:url" content="https://autoacre.com.au/${post.slug}.html"><meta property="og:type" content="article">
-  <script type="application/ld+json">${(() => {
-    const articleId = `https://autoacre.com.au/${post.slug}.html#article`;
-    const pageId = `https://autoacre.com.au/${post.slug}.html#webpage`;
-    const orgId = "https://autoacre.com.au/#organization";
-    const personId = "https://autoacre.com.au/#ben-bonifant";
-    const websiteId = "https://autoacre.com.au/#website";
-    const graph = [
-      {
-        "@type": "WebPage",
-        "@id": pageId,
-        "url": `https://autoacre.com.au/${post.slug}.html`,
-        "name": post.title,
-        "description": post.excerpt,
-        "inLanguage": "en-AU",
-        "isPartOf": { "@id": websiteId },
-        "primaryImageOfPage": `https://autoacre.com.au/img/${post.img}`,
-        "speakable": {
-          "@type": "SpeakableSpecification",
-          "cssSelector": [".page-hero-text h1", ".page-hero-text p", ".pb h2", ".pb p"]
-        }
-      },
-      {
-        "@type": "Article",
-        "@id": articleId,
-        "headline": post.title,
-        "description": post.excerpt,
-        "articleSection": post.tag,
-        "keywords": post.keyword,
-        "wordCount": post.wordCount || undefined,
-        "datePublished": post.date,
-        "dateModified": post.date,
-        "inLanguage": "en-AU",
-        "image": `https://autoacre.com.au/img/${post.img}`,
-        "author": { "@id": personId },
-        "publisher": { "@id": orgId },
-        "mainEntityOfPage": { "@id": pageId },
-        "isPartOf": { "@id": websiteId },
-        "about": { "@id": orgId },
-        "mentions": [
-          { "@id": orgId },
-          { "@id": "https://autoacre.com.au/#service-residential" },
-          { "@id": "https://autoacre.com.au/#service-commercial" },
-          { "@id": "https://autoacre.com.au/#product-platform" }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoacre.com.au/" },
-          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://autoacre.com.au/blog.html" },
-          { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://autoacre.com.au/${post.slug}.html` }
-        ]
-      }
-    ];
-    if (Array.isArray(post.faqs) && post.faqs.length) {
-      graph.push({
-        "@type": "FAQPage",
-        "@id": `https://autoacre.com.au/${post.slug}.html#faq`,
-        "isPartOf": { "@id": pageId },
-        "about": { "@id": orgId },
-        "mainEntity": post.faqs.map(f => ({
-          "@type": "Question",
-          "name": f.q,
-          "acceptedAnswer": { "@type": "Answer", "text": f.a }
-        }))
-      });
-    }
-    return JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
-  })()}<\/script>
-  ${SHARED_HEAD_LINKS}
+  <meta property="og:image" content="./img/og-image.png"><meta property="og:url" content="https://autoacre.com.au/${post.slug}.html"><meta property="og:type" content="article">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${post.title}","description":"${post.excerpt}","author":{"@type":"Person","name":"Ben Bonifant"},"publisher":{"@type":"Organization","name":"AutoAcre","url":"https://autoacre.com.au"},"datePublished":"${post.date}","keywords":"${post.keyword}"}<\/script>
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css">
 </head>
-<body class="has-light-header">
-${SHARED_NAV_HEADER}
+<body>
+${SITE_HEADER}
   <main>
     <section class="page-hero"><div class="container">
       <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="blog.html">Blog</a> <span>/</span> ${post.title}</nav>
@@ -383,21 +139,13 @@ ${SHARED_NAV_HEADER}
         </div>
       </div>
     </div></section>
-    <div class="section-image"><img src="./img/${post.img}" alt="${post.title}" width="1200" height="400" loading="eager" fetchpriority="high"></div>
+    <div class="section-image"><img src="./img/${post.img}" alt="${post.title}" width="1200" height="400" loading="eager"></div>
     <section class="section"><div class="container">
       <div style="max-width:740px;margin:0 auto;line-height:1.85;font-size:17px;">
-        <style>.pb h2{font-size:22px;font-weight:700;margin:2em 0 0.5em;line-height:1.3;color:#2D2D2D}.pb p{margin:0 0 1.3em;line-height:1.85}.pb ul{margin:0 0 1.3em 1.5em}.pb li{margin-bottom:0.5em;line-height:1.7}.pb a{color:#4F5C20}.pb strong{font-weight:600}</style>
+        <style>.pb h2{font-size:22px;font-weight:700;margin:2em 0 0.5em;line-height:1.3;color:#2D2D2D}.pb p{margin:0 0 1.3em;line-height:1.85}.pb ul{margin:0 0 1.3em 1.5em}.pb li{margin-bottom:0.5em;line-height:1.7}.pb a{color:#7A8B2D}.pb strong{font-weight:600}</style>
         <div class="pb">${post.content}</div>
       </div>
     </div></section>
-    ${(Array.isArray(post.faqs) && post.faqs.length) ? `<section class="section section--alt"><div class="container">
-      <div style="max-width:780px;margin:0 auto;">
-        <h2 style="font-size:26px;font-weight:600;margin:0 0 1em;color:#2D2D2D;">Frequently asked questions</h2>
-        <style>.post-faq{padding:1.3em 0;border-bottom:1px solid #E8E8E0}.post-faq:last-child{border-bottom:none}.post-faq .q{font-size:18px;font-weight:600;margin:0 0 0.4em;color:#2D2D2D}.post-faq .a{font-size:16px;line-height:1.7;color:#444;margin:0}</style>
-        ${post.faqs.map(f => `<div class="post-faq"><p class="q">${f.q}</p><p class="a">${f.a}</p></div>`).join('')}
-        <p style="margin-top:1.6em;font-size:15px;color:#666;">More answers in the <a href="faq.html" style="color:#4F5C20;">AutoAcre FAQ</a>, or browse the <a href="glossary.html" style="color:#4F5C20;">glossary</a>.</p>
-      </div>
-    </div></section>` : ''}
     <section class="cta-banner"><div class="container">
       <h2>Ready to transform your property?</h2>
       <p>Book an on-site demonstration and see the PANDAG G1 handle your terrain. $350–$450 credited to your first month.</p>
@@ -405,8 +153,6 @@ ${SHARED_NAV_HEADER}
     </div></section>
   </main>
 ${SITE_FOOTER}
-<script src="./app.js" defer></script>
-<script src="/nav.js" defer></script>
 </body></html>`;
 }
 
@@ -443,14 +189,18 @@ function buildBlogHtml(published) {
   <title>Blog — Acreage Mowing &amp; Property Maintenance | AutoAcre</title>
   <meta name="description" content="Expert guides on acreage mowing costs, autonomous vs traditional mowing, and lifestyle property maintenance across Byron Bay and the Northern Rivers.">
   <link rel="canonical" href="https://autoacre.com.au/blog.html">
-  ${SHARED_HEAD_LINKS}
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./base.css"><link rel="stylesheet" href="./style.css">
 </head>
-<body class="has-light-header">
-${SHARED_NAV_HEADER}
+<body>
+  <header class="site-header"><div class="header-inner"><a href="index.html" class="header-logo"><img src="./img/logo.png" alt="AutoAcre" height="52" style="height:52px;width:auto;"></a><nav class="header-nav"><a href="index.html">Home</a><a href="residential.html">Residential</a><a href="commercial.html">Commercial</a><a href="about.html">About</a><a href="blog.html" class="active">Blog</a></nav><div class="header-actions"><a href="demo.html" class="btn btn--primary header-cta">Book a Demo</a><button class="theme-toggle" data-theme-toggle></button><button class="mobile-menu-btn"><span></span></button></div></div></header>
+  <nav class="mobile-nav"><a href="index.html">Home</a><a href="residential.html">Residential</a><a href="commercial.html">Commercial</a><a href="about.html">About</a><a href="blog.html">Blog</a><div class="mobile-nav-cta"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large">Get a Quote</a></div></nav>
   <main>
     <section class="page-hero"><div class="container">
       <nav class="breadcrumb"><a href="index.html">Home</a> <span>/</span> Blog</nav>
-      <div class="page-hero-inner"><div class="page-hero-text"><span class="section-label">Knowledge Base</span><h1>Guides for acreage property owners</h1><p>Practical advice on autonomous mowing, grounds management, and getting the most from your Northern Rivers lifestyle property.</p></div><div class="page-hero-image"><img src="./img/hinterland-aerial.jpg" alt="Aerial perspective across the Byron Bay hinterland — the lifestyle-acreage region these guides cover" width="800" height="600" loading="eager" fetchpriority="high"></div></div>
+      <div class="page-hero-inner" style="grid-template-columns:1fr;"><div class="page-hero-text"><span class="section-label">Knowledge Base</span><h1>Guides for acreage property owners</h1><p>Practical advice on autonomous mowing, grounds management, and getting the most from your Northern Rivers lifestyle property.</p></div></div>
     </div></section>
     <section class="section"><div class="container">
       <h2 class="sr-only">Articles</h2>
@@ -459,13 +209,12 @@ ${SHARED_NAV_HEADER}
     </div></section>
     <section class="cta-banner"><div class="container">
       <h2>Don't wait for another fortnightly visit</h2>
-      <p>See frequent autonomous mowing on your property.</p>
+      <p>See daily autonomous mowing on your property.</p>
       <div class="cta-banner-actions"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large" style="border-color:rgba(255,255,255,0.3);color:#fff;">Get a Quote</a></div>
     </div></section>
   </main>
-${SITE_FOOTER}
-<script src="./app.js" defer></script>
-<script src="/nav.js" defer></script>
+  <footer class="site-footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span></div></div></footer>
+  <script src="./app.js" defer></script>
 </body></html>`;
 }
 
@@ -474,30 +223,12 @@ function buildSitemap(published) {
   const today = new Date().toISOString().split('T')[0];
   const staticUrls = [
     ['https://autoacre.com.au/', '1.0', 'weekly'],
-    ['https://autoacre.com.au/acreage-robot-mowing-systems.html', '0.9', 'monthly'],
+    ['https://autoacre.com.au/residential.html', '0.9', 'monthly'],
     ['https://autoacre.com.au/commercial.html', '0.9', 'monthly'],
     ['https://autoacre.com.au/about.html', '0.8', 'monthly'],
     ['https://autoacre.com.au/blog.html', '0.9', 'weekly'],
     ['https://autoacre.com.au/demo.html', '0.8', 'monthly'],
     ['https://autoacre.com.au/quote.html', '0.8', 'monthly'],
-    ['https://autoacre.com.au/faq.html', '0.9', 'monthly'],
-    ['https://autoacre.com.au/glossary.html', '0.8', 'monthly'],
-    ['https://autoacre.com.au/facts.html', '0.8', 'monthly'],
-    ['https://autoacre.com.au/autonomous-vs-ride-on.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/commercial-robotic-mower-buyers-guide-australia.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/autonomous-vs-ride-on.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/holiday-rental-mowing.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/absentee-owner-mowing.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/steep-block-mowing.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/how-to-prepare-acreage-for-autonomous-mowing.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/how-to-assess-if-your-property-is-right-for-autonomous-mowing.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/how-to-switch-from-a-fortnightly-contractor.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/service-area.html', '0.9', 'monthly'],
-    ['https://autoacre.com.au/solar-farm-mowing.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/council-mowing-northern-rivers.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/resort-grounds-maintenance.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/school-grounds-maintenance.html', '0.85', 'monthly'],
-    ['https://autoacre.com.au/golf-course-robot-mower.html', '0.85', 'monthly'],
   ];
   const suburbs = ['bangalow','ewingsdale','newrybar','alstonville','teven','tintenbar','brooklet','clunes','nashua','eureka','federal','myocum','tyagarah','mullumbimby'];
   const suburbUrls = suburbs.map(s => [`https://autoacre.com.au/mowing-${s}.html`, '0.8', 'monthly']);
@@ -520,10 +251,32 @@ async function main() {
   const topic = queue.topics[queue.nextIndex];
   console.log(`Publishing topic ${queue.nextIndex + 1}/${queue.topics.length}: ${topic.title}`);
 
-  // Generate content + paired FAQs (for FAQPage schema)
-  const content = await generateContent(topic);
-  const faqs = await generateFaqs(topic);
-  console.log(`Generated ${faqs.length} FAQ pair(s) for schema enrichment`);
+  // Use custom body if provided, otherwise generate via AI
+  let content;
+  if (topic.customBody) {
+    console.log('Using pre-written custom body (skipping AI generation)');
+    // Convert plain text paragraphs to HTML — split by double newlines
+    const paragraphs = topic.customBody.split(/\n\s*\n/).filter(p => p.trim());
+    content = paragraphs.map(p => {
+      const trimmed = p.trim();
+      // If it starts with **, treat as h2 heading with bold text (Ben uses **bold** for section headers)
+      if (trimmed.startsWith('**') && trimmed.indexOf('**', 2) > 0) {
+        const boldEnd = trimmed.indexOf('**', 2);
+        const heading = trimmed.slice(2, boldEnd);
+        const rest = trimmed.slice(boldEnd + 2).trim();
+        return `<h2>${heading}</h2>${rest ? `\n<p>${rest}</p>` : ''}`;
+      }
+      // If wrapped in *italic*, treat as italic sign-off paragraph
+      if (trimmed.startsWith('*') && trimmed.endsWith('*') && !trimmed.startsWith('**')) {
+        return `<p><em>${trimmed.slice(1, -1)}</em></p>`;
+      }
+      // Regular paragraph — convert inline **bold** to <strong>
+      const withBold = trimmed.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      return `<p>${withBold}</p>`;
+    }).join('\n');
+  } else {
+    content = await generateContent(topic);
+  }
 
   // Build post object
   const today = new Date().toISOString().split('T')[0];
@@ -537,8 +290,6 @@ async function main() {
     content,
     excerpt: words.slice(0, 30).join(' ') + '…',
     readTime: Math.max(4, Math.round(words.length / 200)),
-    wordCount: words.length,
-    faqs,
     date: today
   };
 
