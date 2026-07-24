@@ -1,0 +1,335 @@
+diff --git a/generate-post.js b/generate-post.js
+index d439a28..a1e0fcd 100644
+--- a/generate-post.js
++++ b/generate-post.js
+@@ -256,7 +256,7 @@ async function main() {
+   if (topic.customBody) {
+     console.log('Using pre-written custom body (skipping AI generation)');
+     // Convert plain text paragraphs to HTML — split by double newlines
+-    const paragraphs = topic.customBody.split(/\n\s*\n/).filter(p => p.trim());
++    const paragraphs = topic.customBody.split(/\n+/).filter(p => p.trim());
+     content = paragraphs.map(p => {
+       const trimmed = p.trim();
+       // If it starts with **, treat as h2 heading with bold text (Ben uses **bold** for section headers)
+diff --git a/posts-queue.json b/posts-queue.json
+index 0045b0e..3a8187b 100644
+--- a/posts-queue.json
++++ b/posts-queue.json
+@@ -89,252 +89,252 @@
+       "title": "Eight acres a day. Not twelve.",
+       "keyword": "autonomous mowing honest capacity acres per day",
+       "tag": "Honesty",
+-      "img": "g1-wide-paddock.png",
++      "img": "g1-wide-paddock.jpg",
+       "customBody": "The spec sheet for our machine says it can mow up to twelve acres a day. We tell clients eight.\nWorth explaining why, because the gap between those two numbers is where most autonomous mowing projects go wrong.\nTwelve acres is a peak figure. Short grass, firm ground, a simple site, no obstacles, the machine running flat out all day. Real ground is not like that. Dense summer grass slows the cut. Rutted paddocks slow the travel. Panel rows and tree lines mean turning, and turning is time. On the ground we work, eight acres a day is what you can actually plan around. Some days it does more. You do not build a schedule on your best day.\nSame story with slopes. The machine is climb-rated to 42 degrees on spike tyres, and that number is real, it will get up a steep bank. But climbing a slope and mowing one are different jobs. Proven mowing performance is 30 degrees on firm ground. We quote the second number, because that is the one your site plan depends on.\nAnd the honest limits list does not stop there. Close-in work around posts and tight structures is not fully solved, the machine handles the bulk and a person handles the fiddly edges. Waterlogged ground is out entirely, no autonomous mower belongs on it. These are not things we mention after the contract. They are things we lead with.\nThe machine platform we run has done its proving overseas, overnight unmanned mowing on 30 degree golf slopes in Korea, dam embankments in Japan. Australian solar ground is the next test, and we would rather arrive with numbers you can hold us to.\nIf a supplier only ever gives you their best-day figures, ask what their planning figures are. If they are the same number, that tells you something.\n*AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. If you manage big ground and want the honest numbers, get in touch: ben@autoacre.com.au.*"
+     },
+     {
+       "title": "The biggest line item nobody budgets",
+       "keyword": "solar farm vegetation management cost",
+       "tag": "Solar",
+-      "img": "commercial-solar.png",
++      "img": "commercial-solar.jpg",
+       "customBody": "Ask a solar farm what they spend on mowing and you will usually get a pause.\nNot because the number is secret. Because it does not exist. On most utility sites, mowing is not a budget line. It is whoever has a spare hour, on whatever machine is running, whenever the grass gets ahead of them.\nHere is what that actually costs. Most utility-scale sites run day to day with one or two technicians. Skilled people, often trades-qualified. When the grass gets away, those are the people sitting on a mower, sometimes for a serious share of their week in the growing season. Every hour they mow is an hour of electrical work, preventative maintenance and fault response that waits.\nMeanwhile the contract does not wait. Vegetation clauses typically set hard heights, commonly around 100mm under the panels and 300mm between rows, held every cycle, all year. Fall behind in a wet summer and the fuel load builds right under the asset. Grass fires on solar farms are not hypothetical, and the party holding the vegetation scope usually holds the risk.\nSo the real cost of mowing is scattered across three places at once. Wages that were budgeted for other work. Compliance risk that only shows up when something goes wrong. And the backlog of skilled jobs not getting done.\nIndustry analysis consistently puts vegetation management among the largest single operating costs on utility solar. It just rarely looks that way from inside, because no single line item carries it.\nTwo facts worth sitting with. Grass on a Queensland solar farm grows every month of the year. And on most sites, cutting it is nobody's actual job.\n*AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. If you manage solar ground and want to talk, get in touch: ben@autoacre.com.au.*"
+     },
+     {
+       "title": "Four robots, 919 hectares: what Brisbane Airport just proved",
+       "keyword": "Brisbane Airport autonomous mowing Australia",
+       "tag": "Industry",
+-      "img": "commercial-hero.png",
++      "img": "commercial-hero.jpg",
+       "customBody": "Brisbane Airport runs four autonomous mowers on its airside grass. Not a concept, not a pilot press release from overseas. Working machines, on Australian ground, at a site where the safety case is about as demanding as it gets.\nThe details worth knowing. The fleet manages a growing share of roughly 919 hectares of airside land. The machines run day and night, contained by sensors, geofencing and a physical barrier. They charge from solar and renewable grid power. Continuous cutting has been credited with greener grass and less herbicide use. The program won the Australian Airports Association innovation award.\nAnd the number everyone quotes: the airport estimates around a 70 percent reduction in vegetation costs. Worth being precise here, that is the airport's own estimate from their trial, not an independent audit. But it is their number, from their ground, and they liked the result enough to keep the machines and collect the award.\nOne honest caveat from our side. The Brisbane machines are a smaller class of robot, continuous-cut units working inside a contained area. That is a different tool from the heavy RTK-guided deck mowers built for open paddocks, solar rows and rough ground. So the airport result does not prove every machine on every site.\nWhat it does prove is the concept, on Australian ground, at an Australian institution with zero appetite for gimmicks. Autonomous mowing is not coming. It is here, it is airside at your state's biggest airport, and it has an award on the shelf.\nThe question for anyone managing large ground has quietly changed. It is no longer whether the robots work. It is which class of machine suits your ground, and who runs it properly.\n*AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. If you manage big ground and want to talk through what would suit it, get in touch: ben@autoacre.com.au.*"
+     },
+     {
+       "title": "Why autonomous mowing trials fail",
+       "keyword": "autonomous mowing trial failure why",
+       "tag": "Analysis",
+-      "img": "problem.png",
++      "img": "problem.jpg",
+       "customBody": "Plenty of big sites in Australia have trialled an autonomous mower. Fewer are still running one. Having watched this category closely, the failures follow a pattern, and it is almost never the one people expect.\n**The wrong machine for the ground.** Most failed trials start with a machine built for somewhere else. A flat-lawn robot sent onto rutted paddocks. A machine designed for one environment asked to read a completely different one. The sales pitch says it can do anything. Ground does not care about sales pitches.\n**Autonomy that is not.** Some machines are autonomous in the brochure and babysat in real life. If the AI needs months of manual correction, boundary tweaking and someone standing nearby, you have not removed labour, you have changed what the labour does. A real system maps the site once and then holds its lines, cycle after cycle, without a person hovering.\n**The support gap.** A mower that cannot be fixed is a sculpture. Regional sites already know this pain with conventional gear, a broken machine and a two week wait for parts starts a cascade that eats the whole schedule. Any autonomous trial that arrives without spare parts on site and a plan for who swaps a blade on a Tuesday is a countdown, not a trial.\n**Nobody owns the running of it.** This is the quiet killer. The machine turns up, the salesman leaves, and the robot becomes another job for a crew that was already stretched. Autonomous mowers do not need much minding, but they need someone whose actual job is watching coverage, scheduling cycles, catching problems early and keeping parts ahead of need. No owner, no result.\nNotice what is not on the list. The machines themselves, by and large, work. What fails is the fit and the running.\nWhich is why we sell operated trials, not machines in a crate. Defined zones, measured results against your contract heights, spares on site, and one person, us, accountable for the running. If it does not stack up on your ground, the report says so, and you have lost a trial fee instead of a purchase.\n*AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. If you have tried a robot before and it did not stick, we would genuinely like to hear what happened: ben@autoacre.com.au.*"
+     },
+     {
+       "title": "A week a month on the slasher",
+       "keyword": "acreage mowing Northern Rivers hobby farm",
+       "tag": "Residential",
+-      "img": "hinterland-aerial.png",
++      "img": "hinterland-aerial.jpg",
+       "customBody": "There is a particular kind of property owner in the Northern Rivers. Enough acreage that the mowing is real work. Not enough to justify a full time groundsperson. So every month, a week disappears onto the slasher.\nHorse properties. Hobby farms. Agistment blocks. Holiday parks. Big rural home blocks that looked romantic at purchase. The pattern is the same, the grass grows every month of a northern NSW year, and somebody has to sit on a machine while it gets cut. Usually the owner. Usually on the weekend.\nAn autonomous mower changes the shape of that. The machine gets the property mapped once, then works to a schedule. It mows in the heat while you are at work. It mows at night, the navigation does not need daylight. It comes back to its dock, charges, and goes again. All electric, so it is quiet enough that the neighbours will not know, and there is no fuel run, no oil, no belts.\nThe honest limits, because we always lead with those. Genuinely boggy, waterlogged ground is out, saturated soil gives the tyres nothing and no autonomous mower belongs there, so wet corners stay on your tractor or wait for the dry. Tight fiddly edges around structures still want a person occasionally. And a robot on your property deserves proper setup, mapped boundaries, no-go zones around dams and stock, sensible scheduling. That setup is the difference between a machine that works and an expensive ornament, and it is the part we do.\nWhat you get back is the week. Every month. Which over a year is nearly three months of weekends.\nWe are taking enquiries now for properties across the Northern Rivers ahead of our residential launch. If your slasher time has stopped being therapeutic, get in touch.\n*AutoAcre is an autonomous mowing operator based in Byron Bay and the Northern Rivers, NSW. For acreage, commercial grounds and solar-farm vegetation management: ben@autoacre.com.au.*"
+     },
+     {
+       "title": "How Much Does Acreage Mowing Cost in Byron Bay?",
+       "keyword": "acreage mowing cost Byron Bay",
+       "tag": "Pricing",
+-      "img": "hero.png"
++      "img": "hero.jpg"
+     },
+     {
+       "title": "Autonomous Mowing vs Traditional Ride-On: A Property Owner's Guide",
+       "keyword": "autonomous mowing vs ride-on",
+       "tag": "Comparison",
+-      "img": "commercial-hero.png"
++      "img": "commercial-hero.jpg"
+     },
+     {
+       "title": "Managing Holiday Rental Grounds Without a Contractor",
+       "keyword": "holiday rental property mowing Byron Bay",
+       "tag": "Holiday Rental",
+-      "img": "aerial-prestige.png"
++      "img": "aerial-prestige.jpg"
+     },
+     {
+       "title": "Why Councils Are Switching to Autonomous Mowing",
+       "keyword": "council mowing Northern Rivers",
+       "tag": "Commercial",
+-      "img": "commercial-council.png"
++      "img": "commercial-council.jpg"
+     },
+     {
+       "title": "Steep Block Mowing Solutions for the Northern Rivers Hinterland",
+       "keyword": "steep block mowing Northern Rivers",
+       "tag": "Residential",
+-      "img": "hinterland-aerial.png"
++      "img": "hinterland-aerial.jpg"
+     },
+     {
+       "title": "5 Signs Your Acreage Property Needs a Better Mowing Solution",
+       "keyword": "acreage mowing solution Northern Rivers",
+       "tag": "Maintenance",
+-      "img": "problem.png"
++      "img": "problem.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Bangalow — What Property Owners Need to Know",
+       "keyword": "acreage mowing Bangalow",
+       "tag": "Suburb",
+-      "img": "g1-striping.png"
++      "img": "g1-striping.jpg"
+     },
+     {
+       "title": "The Hidden Cost of Fortnightly Mowing on Lifestyle Properties",
+       "keyword": "fortnightly mowing cost acreage",
+       "tag": "Cost Analysis",
+-      "img": "result.png"
++      "img": "result.jpg"
+     },
+     {
+       "title": "Autonomous Mowing Subscription Service — Is It Worth It?",
+       "keyword": "autonomous mowing subscription Byron Bay",
+       "tag": "Subscription",
+-      "img": "demo-scene.png"
++      "img": "demo-scene.jpg"
+     },
+     {
+       "title": "Solar Farm Vegetation Management with Autonomous Mowers",
+       "keyword": "solar farm mowing vegetation management",
+       "tag": "Commercial",
+-      "img": "commercial-solar.png"
++      "img": "commercial-solar.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Ewingsdale — Prestige Property Grounds Management",
+       "keyword": "acreage mowing Ewingsdale",
+       "tag": "Suburb",
+-      "img": "aerial-prestige.png"
++      "img": "aerial-prestige.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Newrybar — Lifestyle Property Maintenance Guide",
+       "keyword": "acreage mowing Newrybar",
+       "tag": "Suburb",
+-      "img": "hinterland-aerial.png"
++      "img": "hinterland-aerial.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Mullumbimby — Northern Rivers Property Guide",
+       "keyword": "acreage mowing Mullumbimby",
+       "tag": "Suburb",
+-      "img": "g1-wide-paddock.png"
++      "img": "g1-wide-paddock.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Federal — Hinterland Property Maintenance",
+       "keyword": "acreage mowing Federal",
+       "tag": "Suburb",
+-      "img": "demo-scene.png"
++      "img": "demo-scene.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Myocum — Elevated Hinterland Property Care",
+       "keyword": "acreage mowing Myocum",
+       "tag": "Suburb",
+-      "img": "aerial-prestige.png"
++      "img": "aerial-prestige.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Alstonville — Plateau Property Maintenance",
+       "keyword": "acreage mowing Alstonville",
+       "tag": "Suburb",
+-      "img": "g1-striping.png"
++      "img": "g1-striping.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Tintenbar — Rural Lifestyle Property Guide",
+       "keyword": "acreage mowing Tintenbar",
+       "tag": "Suburb",
+-      "img": "g1-wide-paddock.png"
++      "img": "g1-wide-paddock.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Brooklet — Hinterland Grounds Management",
+       "keyword": "acreage mowing Brooklet",
+       "tag": "Suburb",
+-      "img": "hinterland-aerial.png"
++      "img": "hinterland-aerial.jpg"
+     },
+     {
+       "title": "Golf Course Robot Mower Australia — What Superintendents Need to Know",
+       "keyword": "golf course robot mower Australia",
+       "tag": "Commercial",
+-      "img": "commercial-golf.png"
++      "img": "commercial-golf.jpg"
+     },
+     {
+       "title": "Resort Grounds Maintenance Byron Bay — The Autonomous Mowing Advantage",
+       "keyword": "resort grounds maintenance Byron Bay",
+       "tag": "Commercial",
+-      "img": "commercial-resort.png"
++      "img": "commercial-resort.jpg"
+     },
+     {
+       "title": "School Grounds Maintenance Northern Rivers — A Better Approach",
+       "keyword": "school grounds maintenance Northern Rivers",
+       "tag": "Commercial",
+-      "img": "commercial-school.png"
++      "img": "commercial-school.jpg"
+     },
+     {
+       "title": "Commercial Grounds Maintenance Northern Rivers — Complete Guide",
+       "keyword": "commercial grounds maintenance Northern Rivers",
+       "tag": "Commercial",
+-      "img": "commercial-hero.png"
++      "img": "commercial-hero.jpg"
+     },
+     {
+       "title": "Autonomous Mower Dealer Northern Rivers — Buying vs Subscribing",
+       "keyword": "autonomous mower dealer Northern Rivers",
+       "tag": "Commercial",
+-      "img": "hilux-trailer.png"
++      "img": "hilux-trailer.jpg"
+     },
+     {
+       "title": "How to Manage a Lifestyle Property Without Living On It",
+       "keyword": "lifestyle property mowing Byron Bay hinterland",
+       "tag": "Holiday Rental",
+-      "img": "veranda-view.png"
++      "img": "veranda-view.jpg"
+     },
+     {
+       "title": "Why Absentee Property Owners Are Switching to Autonomous Mowing",
+       "keyword": "absentee owner mowing Byron Bay",
+       "tag": "Holiday Rental",
+-      "img": "aerial-prestige.png"
++      "img": "aerial-prestige.jpg"
+     },
+     {
+       "title": "Acreage Mowing Byron Shire — A Complete Property Owner's Guide",
+       "keyword": "acreage mowing Byron Shire",
+       "tag": "Regional",
+-      "img": "hinterland-aerial.png"
++      "img": "hinterland-aerial.jpg"
+     },
+     {
+       "title": "Acreage Mowing Northern Rivers — The Ultimate Regional Guide",
+       "keyword": "acreage mowing Northern Rivers",
+       "tag": "Regional",
+-      "img": "g1-wide-paddock.png"
++      "img": "g1-wide-paddock.jpg"
+     },
+     {
+       "title": "Zero Turn vs Autonomous Mowing — What's Best for Acreage?",
+       "keyword": "zero turn mowing Byron hinterland",
+       "tag": "Comparison",
+-      "img": "commercial-hero.png"
++      "img": "commercial-hero.jpg"
+     },
+     {
+       "title": "Ride-On Mowing Service Byron Bay — Why Autonomous Beats It",
+       "keyword": "ride-on mowing service Byron Bay",
+       "tag": "Comparison",
+-      "img": "result.png"
++      "img": "result.jpg"
+     },
+     {
+       "title": "How Much Does It Cost to Maintain a 10-Acre Lifestyle Property?",
+       "keyword": "lifestyle property maintenance cost Byron Bay",
+       "tag": "Pricing",
+-      "img": "hero.png"
++      "img": "hero.jpg"
+     },
+     {
+       "title": "Park and Reserve Mowing — How Councils Use Autonomous Technology",
+       "keyword": "council grounds mowing Northern Rivers",
+       "tag": "Commercial",
+-      "img": "commercial-park.png"
++      "img": "commercial-park.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Tyagarah — Coastal Hinterland Property Guide",
+       "keyword": "acreage mowing Tyagarah",
+       "tag": "Suburb",
+-      "img": "hinterland-aerial.png"
++      "img": "hinterland-aerial.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Clunes — Valley Property Maintenance Guide",
+       "keyword": "acreage mowing Clunes",
+       "tag": "Suburb",
+-      "img": "g1-striping.png"
++      "img": "g1-striping.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Teven — Rural Valley Property Guide",
+       "keyword": "acreage mowing Teven",
+       "tag": "Suburb",
+-      "img": "g1-wide-paddock.png"
++      "img": "g1-wide-paddock.jpg"
+     },
+     {
+       "title": "Fire Hazard Reduction Mowing — How Autonomous Technology Helps",
+       "keyword": "fire hazard mowing Northern Rivers",
+       "tag": "Safety",
+-      "img": "hinterland-aerial.png"
++      "img": "hinterland-aerial.jpg"
+     },
+     {
+       "title": "Pasture Management for Lifestyle Properties in the Northern Rivers",
+       "keyword": "pasture management lifestyle property Northern Rivers",
+       "tag": "Maintenance",
+-      "img": "g1-wide-paddock.png"
++      "img": "g1-wide-paddock.jpg"
+     },
+     {
+       "title": "What Is a PANDAG G1 Autonomous Mower? A Buyer's Guide",
+@@ -346,19 +346,19 @@
+       "title": "How Autonomous Mowing Works — A Simple Explainer for Property Owners",
+       "keyword": "how autonomous mowing works",
+       "tag": "Education",
+-      "img": "demo-scene.png"
++      "img": "demo-scene.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Nashua — Large Block Property Guide",
+       "keyword": "acreage mowing Nashua",
+       "tag": "Suburb",
+-      "img": "g1-wide-paddock.png"
++      "img": "g1-wide-paddock.jpg"
+     },
+     {
+       "title": "Acreage Mowing in Eureka — Northern Rivers Rural Property Guide",
+       "keyword": "acreage mowing Eureka",
+       "tag": "Suburb",
+-      "img": "hinterland-aerial.png"
++      "img": "hinterland-aerial.jpg"
+     }
+   ]
+ }
+\ No newline at end of file
