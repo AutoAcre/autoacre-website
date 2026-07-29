@@ -1,7 +1,7 @@
 {
-  "nextIndex": 0,
-  "lastPublished": 20,
-  "lastPublishedDate": "2026-07-22",
+  "nextIndex": 1,
+  "lastPublished": 0,
+  "lastPublishedDate": "2026-07-29",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -82,6 +82,11 @@
       "slug": "blog-acreage-mowing-in-alstonville-plateau-property-maintenance",
       "date": "2026-07-22",
       "title": "Acreage Mowing in Alstonville — Plateau Property Maintenance"
+    },
+    {
+      "slug": "blog-eight-acres-a-day-not-twelve",
+      "date": "2026-07-29",
+      "title": "Eight acres a day. Not twelve."
     }
   ],
   "topics": [

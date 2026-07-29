@@ -395,5 +395,16 @@
       }
     ],
     "date": "2026-07-22"
+  },
+  {
+    "title": "Eight acres a day. Not twelve.",
+    "keyword": "autonomous mowing honest capacity acres per day",
+    "tag": "Honesty",
+    "img": "g1-wide-paddock.jpg",
+    "slug": "blog-eight-acres-a-day-not-twelve",
+    "content": "<p>The spec sheet for our machine says it can mow up to twelve acres a day. We tell clients eight.</p>\n<p>Worth explaining why, because the gap between those two numbers is where most autonomous mowing projects go wrong.</p>\n<p>Twelve acres is a peak figure. Short grass, firm ground, a simple site, no obstacles, the machine running flat out all day. Real ground is not like that. Dense summer grass slows the cut. Rutted paddocks slow the travel. Panel rows and tree lines mean turning, and turning is time. On the ground we work, eight acres a day is what you can actually plan around. Some days it does more. You do not build a schedule on your best day.</p>\n<p>Same story with slopes. The machine is climb-rated to 42 degrees on spike tyres, and that number is real, it will get up a steep bank. But climbing a slope and mowing one are different jobs. Proven mowing performance is 30 degrees on firm ground. We quote the second number, because that is the one your site plan depends on.</p>\n<p>And the honest limits list does not stop there. Close-in work around posts and tight structures is not fully solved, the machine handles the bulk and a person handles the fiddly edges. Waterlogged ground is out entirely, no autonomous mower belongs on it. These are not things we mention after the contract. They are things we lead with.</p>\n<p>The machine platform we run has done its proving overseas, overnight unmanned mowing on 30 degree golf slopes in Korea, dam embankments in Japan. Australian solar ground is the next test, and we would rather arrive with numbers you can hold us to.</p>\n<p>If a supplier only ever gives you their best-day figures, ask what their planning figures are. If they are the same number, that tells you something.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. If you manage big ground and want the honest numbers, get in touch: ben@autoacre.com.au.</em></p>",
+    "excerpt": "The spec sheet for our machine says it can mow up to twelve acres a day. We tell clients eight. Worth explaining why, because the gap between those two numbers…",
+    "readTime": 4,
+    "date": "2026-07-29"
   }
 ]
