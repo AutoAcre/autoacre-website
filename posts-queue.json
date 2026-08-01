@@ -1,7 +1,7 @@
 {
-  "nextIndex": 1,
-  "lastPublished": 0,
-  "lastPublishedDate": "2026-07-29",
+  "nextIndex": 2,
+  "lastPublished": 1,
+  "lastPublishedDate": "2026-08-01",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -87,6 +87,11 @@
       "slug": "blog-eight-acres-a-day-not-twelve",
       "date": "2026-07-29",
       "title": "Eight acres a day. Not twelve."
+    },
+    {
+      "slug": "blog-the-biggest-line-item-nobody-budgets",
+      "date": "2026-08-01",
+      "title": "The biggest line item nobody budgets"
     }
   ],
   "topics": [

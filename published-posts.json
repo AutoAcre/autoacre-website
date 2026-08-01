@@ -406,5 +406,16 @@
     "excerpt": "The spec sheet for our machine says it can mow up to twelve acres a day. We tell clients eight. Worth explaining why, because the gap between those two numbers…",
     "readTime": 4,
     "date": "2026-07-29"
+  },
+  {
+    "title": "The biggest line item nobody budgets",
+    "keyword": "solar farm vegetation management cost",
+    "tag": "Solar",
+    "img": "commercial-solar.jpg",
+    "slug": "blog-the-biggest-line-item-nobody-budgets",
+    "content": "<p>Ask a solar farm what they spend on mowing and you will usually get a pause.</p>\n<p>Not because the number is secret. Because it does not exist. On most utility sites, mowing is not a budget line. It is whoever has a spare hour, on whatever machine is running, whenever the grass gets ahead of them.</p>\n<p>Here is what that actually costs. Most utility-scale sites run day to day with one or two technicians. Skilled people, often trades-qualified. When the grass gets away, those are the people sitting on a mower, sometimes for a serious share of their week in the growing season. Every hour they mow is an hour of electrical work, preventative maintenance and fault response that waits.</p>\n<p>Meanwhile the contract does not wait. Vegetation clauses typically set hard heights, commonly around 100mm under the panels and 300mm between rows, held every cycle, all year. Fall behind in a wet summer and the fuel load builds right under the asset. Grass fires on solar farms are not hypothetical, and the party holding the vegetation scope usually holds the risk.</p>\n<p>So the real cost of mowing is scattered across three places at once. Wages that were budgeted for other work. Compliance risk that only shows up when something goes wrong. And the backlog of skilled jobs not getting done.</p>\n<p>Industry analysis consistently puts vegetation management among the largest single operating costs on utility solar. It just rarely looks that way from inside, because no single line item carries it.</p>\n<p>Two facts worth sitting with. Grass on a Queensland solar farm grows every month of the year. And on most sites, cutting it is nobody's actual job.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. If you manage solar ground and want to talk, get in touch: ben@autoacre.com.au.</em></p>",
+    "excerpt": "Ask a solar farm what they spend on mowing and you will usually get a pause. Not because the number is secret. Because it does not exist. On most utility…",
+    "readTime": 4,
+    "date": "2026-08-01"
   }
 ]
