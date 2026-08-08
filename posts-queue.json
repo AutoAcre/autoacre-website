@@ -1,7 +1,7 @@
 {
-  "nextIndex": 2,
-  "lastPublished": 1,
-  "lastPublishedDate": "2026-08-01",
+  "nextIndex": 3,
+  "lastPublished": 2,
+  "lastPublishedDate": "2026-08-08",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -92,6 +92,11 @@
       "slug": "blog-the-biggest-line-item-nobody-budgets",
       "date": "2026-08-01",
       "title": "The biggest line item nobody budgets"
+    },
+    {
+      "slug": "blog-four-robots-919-hectares-what-brisbane-airport-just-proved",
+      "date": "2026-08-08",
+      "title": "Four robots, 919 hectares: what Brisbane Airport just proved"
     }
   ],
   "topics": [
