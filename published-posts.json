@@ -428,5 +428,16 @@
     "excerpt": "Brisbane Airport runs four autonomous mowers on its airside grass. Not a concept, not a pilot press release from overseas. Working machines, on Australian ground, at a site where the…",
     "readTime": 4,
     "date": "2026-08-08"
+  },
+  {
+    "title": "Why autonomous mowing trials fail",
+    "keyword": "autonomous mowing trial failure why",
+    "tag": "Analysis",
+    "img": "problem.jpg",
+    "slug": "blog-why-autonomous-mowing-trials-fail",
+    "content": "<p>Plenty of big sites in Australia have trialled an autonomous mower. Fewer are still running one. Having watched this category closely, the failures follow a pattern, and it is almost never the one people expect.</p>\n<h2>The wrong machine for the ground.</h2>\n<p>Most failed trials start with a machine built for somewhere else. A flat-lawn robot sent onto rutted paddocks. A machine designed for one environment asked to read a completely different one. The sales pitch says it can do anything. Ground does not care about sales pitches.</p>\n<h2>Autonomy that is not.</h2>\n<p>Some machines are autonomous in the brochure and babysat in real life. If the AI needs months of manual correction, boundary tweaking and someone standing nearby, you have not removed labour, you have changed what the labour does. A real system maps the site once and then holds its lines, cycle after cycle, without a person hovering.</p>\n<h2>The support gap.</h2>\n<p>A mower that cannot be fixed is a sculpture. Regional sites already know this pain with conventional gear, a broken machine and a two week wait for parts starts a cascade that eats the whole schedule. Any autonomous trial that arrives without spare parts on site and a plan for who swaps a blade on a Tuesday is a countdown, not a trial.</p>\n<h2>Nobody owns the running of it.</h2>\n<p>This is the quiet killer. The machine turns up, the salesman leaves, and the robot becomes another job for a crew that was already stretched. Autonomous mowers do not need much minding, but they need someone whose actual job is watching coverage, scheduling cycles, catching problems early and keeping parts ahead of need. No owner, no result.</p>\n<p>Notice what is not on the list. The machines themselves, by and large, work. What fails is the fit and the running.</p>\n<p>Which is why we sell operated trials, not machines in a crate. Defined zones, measured results against your contract heights, spares on site, and one person, us, accountable for the running. If it does not stack up on your ground, the report says so, and you have lost a trial fee instead of a purchase.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. If you have tried a robot before and it did not stick, we would genuinely like to hear what happened: ben@autoacre.com.au.</em></p>",
+    "excerpt": "Plenty of big sites in Australia have trialled an autonomous mower. Fewer are still running one. Having watched this category closely, the failures follow a pattern, and it is almost…",
+    "readTime": 4,
+    "date": "2026-08-15"
   }
 ]

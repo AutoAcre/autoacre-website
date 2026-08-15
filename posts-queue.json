@@ -1,7 +1,7 @@
 {
-  "nextIndex": 3,
-  "lastPublished": 2,
-  "lastPublishedDate": "2026-08-08",
+  "nextIndex": 4,
+  "lastPublished": 3,
+  "lastPublishedDate": "2026-08-15",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -97,6 +97,11 @@
       "slug": "blog-four-robots-919-hectares-what-brisbane-airport-just-proved",
       "date": "2026-08-08",
       "title": "Four robots, 919 hectares: what Brisbane Airport just proved"
+    },
+    {
+      "slug": "blog-why-autonomous-mowing-trials-fail",
+      "date": "2026-08-15",
+      "title": "Why autonomous mowing trials fail"
     }
   ],
   "topics": [
