@@ -1,7 +1,7 @@
 {
-  "nextIndex": 4,
-  "lastPublished": 3,
-  "lastPublishedDate": "2026-08-15",
+  "nextIndex": 5,
+  "lastPublished": 4,
+  "lastPublishedDate": "2026-08-22",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -102,6 +102,11 @@
       "slug": "blog-why-autonomous-mowing-trials-fail",
       "date": "2026-08-15",
       "title": "Why autonomous mowing trials fail"
+    },
+    {
+      "slug": "blog-a-week-a-month-on-the-slasher",
+      "date": "2026-08-22",
+      "title": "A week a month on the slasher"
     }
   ],
   "topics": [
