@@ -450,5 +450,16 @@
     "excerpt": "There is a particular kind of property owner in the Northern Rivers. Enough acreage that the mowing is real work. Not enough to justify a full time groundsperson. So every…",
     "readTime": 4,
     "date": "2026-08-22"
+  },
+  {
+    "title": "The mower does not need the internet. Here is what does.",
+    "keyword": "autonomous mower internet connectivity RTK",
+    "tag": "Education",
+    "img": "demo-scene.jpg",
+    "slug": "blog-the-mower-does-not-need-the-internet-here-is-what-does",
+    "content": "<p>A fair question from anyone running a remote site: what happens to an autonomous mower when the signal drops?</p>\n<p>The honest answer needs a distinction most sales pitches skip. Navigation and mowing do not use the internet at all. The machine positions itself off RTK corrections from a base station on your site, sent over local radio. Accuracy is about two centimetres, and it holds the same lines cycle after cycle whether the site has five bars or none.</p>\n<p>Two limits worth knowing. Metal panel rows soak up radio, so effective base range on a solar site is around a kilometre, which means big sites run several base stations and machines move between zones. And if the machine loses its RTK fix, it rides through short dropouts of a few minutes, then stops rather than guessing. A mower that keeps cutting blind is not a feature.</p>\n<p>What does need connectivity is the knowing. Remote monitoring, live status, alerts. Without signal the machine still mows, you just cannot watch it from your desk.</p>\n<p>Which leads to the insight that shapes how we run sites: connectivity solves knowing, not fixing. A bogged machine with perfect 4G is still bogged. The win from monitoring is catching things early and dispatching the right fix once, not pretending a dashboard is a field crew.</p>\n<p>So when you assess any autonomous system, split the question in two. How does it navigate when the signal is gone, and what do you stop knowing. Suppliers who cannot answer those separately have not run one remotely.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "excerpt": "A fair question from anyone running a remote site: what happens to an autonomous mower when the signal drops? The honest answer needs a distinction most sales pitches skip. Navigation…",
+    "readTime": 4,
+    "date": "2026-08-29"
   }
 ]
