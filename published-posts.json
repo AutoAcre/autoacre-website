@@ -461,5 +461,16 @@
     "excerpt": "A fair question from anyone running a remote site: what happens to an autonomous mower when the signal drops? The honest answer needs a distinction most sales pitches skip. Navigation…",
     "readTime": 4,
     "date": "2026-08-29"
+  },
+  {
+    "title": "Fire, fuel load and robots: the honest conversation",
+    "keyword": "autonomous mower fire safety solar farm",
+    "tag": "Safety",
+    "img": "commercial-solar.jpg",
+    "slug": "blog-fire-fuel-load-and-robots-the-honest-conversation",
+    "content": "<p>If you manage solar ground, fire is not an abstract risk. Grass fires on solar farms happen, and the usual ignition story is mundane: a mower blade striking gravel or rock on a hot dry day.</p>\n<p>So here is the honest position on autonomous mowers and fire, stated the way we state it to clients.</p>\n<p>First, the machine does not detect fire. There is no spark sensor on the deck and we do not pretend otherwise. What an autonomous machine does better than any human operator is go exactly where it is told, every time. Gravel margins, rocky patches and high risk zones get mapped as no-go areas during setup, and the machine simply never mows them. Blade strike risk is managed by routing, not by wishful sensing. The risky edges stay with a person who can see the ground.</p>\n<p>Second, the battery is a separate conversation, and it deserves its own controls. Charging is the highest risk window for any lithium machine, so the charge point belongs on hardstand, well clear of arrays and switchrooms, with a non-combustible radius. No charging on total fire ban days, the machine parks instead. And any battery pack that has copped an impact, a bogging or a water event sits in quarantine on hardstand for 48 hours before it goes near a charger, because damaged packs fail later, not immediately.</p>\n<p>Third, the fuel load argument runs the other way too. The biggest fire input on a solar site is long dry grass under the asset. A machine that cuts continuously, all year, without depending on whoever has a spare afternoon, is itself fire mitigation.</p>\n<p>None of this is complicated. It is just written down, which on most sites the fire plan for the mower is not.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "excerpt": "If you manage solar ground, fire is not an abstract risk. Grass fires on solar farms happen, and the usual ignition story is mundane: a mower blade striking gravel or…",
+    "readTime": 4,
+    "date": "2026-09-01"
   }
 ]
