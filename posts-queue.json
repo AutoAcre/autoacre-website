@@ -1,7 +1,7 @@
 {
-  "nextIndex": 7,
-  "lastPublished": 6,
-  "lastPublishedDate": "2026-09-01",
+  "nextIndex": 8,
+  "lastPublished": 7,
+  "lastPublishedDate": "2026-09-08",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -117,6 +117,11 @@
       "slug": "blog-fire-fuel-load-and-robots-the-honest-conversation",
       "date": "2026-09-01",
       "title": "Fire, fuel load and robots: the honest conversation"
+    },
+    {
+      "slug": "blog-the-best-time-to-mow-a-solar-farm-is-2am",
+      "date": "2026-09-08",
+      "title": "The best time to mow a solar farm is 2am"
     }
   ],
   "topics": [
