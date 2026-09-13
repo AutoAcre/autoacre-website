@@ -374,5 +374,13 @@
       "tag": "Suburb",
       "img": "hinterland-aerial.jpg"
     }
-  ]
+  ],
+  "gates": {
+    "inflated_post_fixed": false,
+    "generator_instructions_corrected": true,
+    "schema_restored": true,
+    "fifteen_retrofitted": false,
+    "_note": "Section 1 of AutoAcre_Content_Queue_v2.md. All four must be true before anything publishes. Flip a flag only when the work is genuinely done."
+  },
+  "blockedNames_note": "The live blocked-names list is BLOCKED_NAMES in generate-post.js. Add supplier, client and site names there."
 }

@@ -60,9 +60,9 @@ const IMAGE_ALT = {
   'commercial-hero.jpg':    'Autonomous mowing for commercial grounds',
   'aerial-prestige.jpg':    'Aerial view of prestige lifestyle property',
   'hinterland-aerial.jpg':  'Northern Rivers hinterland lifestyle property',
-  'g1-wide-paddock.jpg':    'PANDAG G1 autonomous mower working open paddock',
-  'g1-striping.jpg':        'Mowing stripes cut by PANDAG G1 autonomous mower',
-  'g1-closeup.png':         'PANDAG G1 autonomous mower detail',
+  'g1-wide-paddock.jpg':    'Autonomous mower working an open paddock',
+  'g1-striping.jpg':        'Mowing stripes cut by an autonomous mower',
+  'g1-closeup.png':         'Autonomous mower detail, tracked deck and sensors',
   'hilux-trailer.jpg':      'AutoAcre Hilux and trailer with autonomous mowing equipment',
   'demo-scene.jpg':         'AutoAcre autonomous mowing demonstration',
   'problem.jpg':            'Overgrown property showing acreage mowing challenge',
@@ -175,6 +175,172 @@ if (process.argv.includes('--check-images')) {
   process.exit(0);
 }
 
+// ── Content Queue v2 rules ────────────────────────────────────────────────────
+// Source of truth: AutoAcre_Content_Queue_v2.md Sections 2.1 to 2.5.
+// Change the doc first, then mirror it here. Never soften a rule in one place only.
+
+// Section 2.5 check 4. Names that must never appear in a published post.
+const BLOCKED_NAMES = [
+  'PANDAG', 'Pandag', 'AllyNav', 'Lianshi', 'Taurus80E', 'Yarbo',
+  'Renu Robotics', 'Renubot', 'Swap Robotics', 'Directed Machines', 'FJD',
+  'RES Group', 'Emerald Solar', 'Wolff', 'Stockland', 'Misty Mountain',
+];
+
+const SIGN_OFF = '<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>';
+
+const SYSTEM_PROMPT = [
+  'You write blog posts for AutoAcre, an autonomous mowing service in the Northern Rivers NSW, run by Ben Bonifant. AutoAcre is the service brand. Write as Ben.',
+  '',
+  'VOICE',
+  'Plain, short sentences. Contractions. Honest limits stated before anyone asks. Sentence fragments are fine. No corporate polish, no marketing adjectives, no "premium", no "transform", no "unlock", no "seamless", no "game-changing". Australian spelling. 350 to 600 words total, and 600 is a hard ceiling.',
+  '',
+  'DRAFTING LAWS (hard)',
+  '- Never use an em-dash. Use commas, full stops or brackets.',
+  '- Never use an en-dash number range. Write "eight to twelve" in words.',
+  '- Label money as AUD. State no dollar figure at all unless ALLOWED NUMBERS below names it.',
+  '',
+  'HONESTY RULES (hard)',
+  '- Planning capacity is about 8 acres (3 hectares) a day. Never 12, never 25. If a manufacturer peak figure comes up, name it as a peak and correct it to the planning figure in the same sentence.',
+  '- Mowing slope is 30 degrees proven. Climbing is 42 degrees. Never conflate them and never average them.',
+  '- Close-in work is 60 to 70 percent autonomous. The machine does the bulk, people do edges, posts and structures. Never call a whole site fully autonomous.',
+  '- The machine has no spark or fire detection. Fire risk is managed operationally: no-go zones on gravel and high-risk margins, charging siting, no charging on total fire ban days.',
+  '- Certification is in progress. Never write certified, complies, compliant, or approved for public spaces.',
+  '- Wet or waterlogged ground is excluded. It gets mapped out, not driven through.',
+  '- There is no live multi-site telemetry this year. Do not describe a dashboard as if it exists.',
+  '- Overseas references are the previous generation of the platform. Say "the platform class" or "the previous generation of this platform". Never present them as the current machine.',
+  "- Brisbane Airport's 70 percent figure is the airport's own estimate from their own trial. Always attribute it that way, and note the machine class differs (small contained units, not heavy RTK deck mowers).",
+  '- Never name a manufacturer, supplier or machine model. Describe machines by class and spec, for example "a 48-inch tracked RTK mower", or just "the machine".',
+  '- Never name a client, site, farm, solar operator or developer. Nothing said in private appears in public.',
+  '- Never present the service as an existing track record. "Our model is to operate" is allowed. "We operate X sites" is not.',
+  '- The machine creates a skilled local technician role. Never say it replaces the crew or removes labour.',
+  '- Sheep and grazing are a complement, not a competitor. Never disparage grazing, contractors or any competitor product.',
+  '',
+  'STRUCTURE (every post, in this order)',
+  '1. First line: the meta description alone, wrapped exactly as <!--META: your text here-->. 140 to 155 characters, contains the primary keyword, states the honest answer, no hype.',
+  '2. An H2 phrased as the search question matching the target keyword. The paragraph under it answers that question directly in two sentences. This is the featured snippet target.',
+  '3. The body: two to four more H2 sections. Primary keyword appears in the first 100 words and once more naturally. Do not stuff it.',
+  '4. At least two internal links with descriptive link text, chosen from the INTERNAL LINKS list below. Never "click here".',
+  '5. An H2 reading exactly: Common questions. Under it, three to five H3 questions phrased the way people search, each answered in one to three sentences in one following paragraph.',
+  '',
+  'OUTPUT',
+  'Clean HTML using only h2, h3, p, ul, li, strong and a tags. No h1, no divs, no code fences, no backticks, no markdown. Do not write a sign-off or contact line, one is appended automatically.',
+].join('\n');
+
+// Offer the model real, existing posts to link to (Section 2.4 internal links).
+function linkMenu() {
+  const p = path.join(__dirname, 'published-posts.json');
+  const published = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
+  return published.slice(-14).map(x => '- ' + x.slug + '.html : ' + x.title).join('\n');
+}
+
+// Section 2.5 self-check. Returns failure strings; empty array means pass.
+function selfCheck(post) {
+  const fails = [];
+  const html = post.content || '';
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const sentences = text.split(/(?<=[.!?])\s+/);
+
+  // 1. em-dash
+  const emDashes = (html.match(/—/g) || []).length;
+  if (emDashes) fails.push('em-dash present (' + emDashes + ')');
+
+  // 2. capacity and slope figures
+  for (const sen of sentences) {
+    if (/\b12 acres\b/i.test(sen) && !/\bpeak\b|\bplanning\b/i.test(sen)) {
+      fails.push('"12 acres" stated without peak or planning context');
+      break;
+    }
+  }
+  if (/\b25 acres\b/i.test(text)) fails.push('"25 acres" present (inflated capacity)');
+  if (/\b38\s*(degree|deg|°)/i.test(text)) fails.push('"38 degrees" present (conflated slope figure)');
+
+  // 3. compliance language
+  for (const sen of sentences) {
+    const m = sen.match(/\b(complies|compliant|certified|approved)\b/i);
+    if (m && !new RegExp('not yet[^.]{0,20}' + m[1], 'i').test(sen)) {
+      fails.push('compliance claim "' + m[1] + '" without "not yet"');
+      break;
+    }
+  }
+
+  // 4. blocked names
+  for (const name of BLOCKED_NAMES) {
+    const re = new RegExp('\\b' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b');
+    if (re.test(html)) fails.push('blocked name "' + name + '" present');
+  }
+
+  // 5. structure
+  if (!post.slug) fails.push('no slug');
+  const metaLen = (post.excerpt || '').length;
+  if (metaLen < 120 || metaLen > 165) fails.push('meta description ' + metaLen + ' chars (want 140 to 155)');
+  if (!/<h2[^>]*>/i.test(html)) fails.push('no H2');
+  if (!/<h2[^>]*>\s*Common questions\s*<\/h2>/i.test(html)) fails.push('no FAQ block');
+  else if ((html.split(/<h3/i).length - 1) < 3) fails.push('FAQ block has fewer than three questions');
+  const internalLinks = (html.match(/href="(?!https?:|mailto:|tel:)[^"]+"/g) || []).length;
+  if (internalLinks < 2) fails.push('only ' + internalLinks + ' internal links (want two or more)');
+  if (!post.img || !fs.existsSync(path.join(__dirname, 'img', post.img))) fails.push('header image missing: ' + post.img);
+
+  // 6. word count
+  const words = text ? text.split(/\s+/).length : 0;
+  if (words < 350 || words > 600) fails.push('word count ' + words + ' (want 350 to 600)');
+
+  return fails;
+}
+
+// Belt and braces: strip characters the drafting laws forbid before the check
+// runs. The check still fails the post if anything got through.
+function stripForbidden(html) {
+  return html
+    .replace(/\s*—\s*/g, ', ')
+    .replace(/(\d)\s*–\s*(\d)/g, '$1 to $2')
+    .replace(/–/g, '-');
+}
+
+// Pull the <!--META: ...--> line out of the generated body.
+function extractMeta(html) {
+  const m = html.match(/<!--\s*META:\s*([\s\S]*?)-->/i);
+  return { meta: m ? m[1].trim() : '', body: html.replace(/<!--\s*META:[\s\S]*?-->/i, '').trim() };
+}
+
+// Build FAQPage entities from the "Common questions" block (Gate 3).
+function extractFaq(html) {
+  const idx = html.search(/<h2[^>]*>\s*Common questions\s*<\/h2>/i);
+  if (idx === -1) return [];
+  const tail = html.slice(idx);
+  const out = [];
+  const re = /<h3[^>]*>([\s\S]*?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/gi;
+  let m;
+  while ((m = re.exec(tail)) !== null) {
+    const q = m[1].replace(/<[^>]+>/g, '').trim();
+    const a = m[2].replace(/<[^>]+>/g, '').trim();
+    if (q && a) out.push({ q, a });
+  }
+  return out;
+}
+
+// CLI audit: node generate-post.js --check-posts  runs the Section 2.5 self-check
+// over every published post, so a rule change can be tested without calling the API.
+if (process.argv.includes('--check-posts')) {
+  const published = JSON.parse(fs.readFileSync(path.join(__dirname, 'published-posts.json'), 'utf8'));
+  let bad = 0;
+  for (const p of published) {
+    const file = path.join(__dirname, p.slug + '.html');
+    if (!fs.existsSync(file)) { console.log('MISSING FILE ' + p.slug); bad++; continue; }
+    const html = fs.readFileSync(file, 'utf8');
+    const m = html.match(/<div class="pb">([\s\S]*?)<\/div>/);
+    const metaM = html.match(/<meta name="description" content="([^"]*)"/);
+    const fails = selfCheck({
+      content: m ? m[1] : html,
+      slug: p.slug,
+      img: p.img,
+      excerpt: metaM ? metaM[1] : '',
+    });
+    if (fails.length) { bad++; console.log('\n' + p.slug); fails.forEach(x => console.log('   - ' + x)); }
+  }
+  console.log('\n' + bad + ' of ' + published.length + ' published posts fail the self-check.');
+  process.exit(0);
+}
+
 // ── Generate post content via Anthropic ──────────────────────────────────────
 async function generateContent(topic) {
   console.log(`Generating: ${topic.title}`);
@@ -188,10 +354,20 @@ async function generateContent(topic) {
     {
       model: 'claude-sonnet-4-5',
       max_tokens: 4000,
-      system: `You are a senior SEO content writer for AutoAcre, a premium autonomous acreage mowing business in Byron Bay, Northern Rivers NSW. Brand: premium rural property, trustworthy, grounded, Australian hinterland. NOT tech startup. Owner Ben Bonifant, 0499 649 094, autoacre.com.au. PANDAG G1 mower (25 acres/day, 38° slopes), $600-$800/month. Service area: Byron Bay, Bangalow, Newrybar, Ewingsdale, Mullumbimby, Northern Rivers NSW. Output clean HTML using only h2, p, ul, li, strong tags. No h1. No divs. 900-1100 words. Australian spelling. Target keyword in first paragraph and 2+ h2s. End with CTA linking to autoacre.com.au/quote.html or demo.html. Output HTML directly with no code fences, no backticks, no markdown.`,
+      system: SYSTEM_PROMPT,
       messages: [{
         role: 'user',
-        content: `Write the full SEO blog post body for AutoAcre.\nTitle: ${topic.title}\nTarget keyword: ${topic.keyword}\nCategory: ${topic.tag}\n\nOutput the HTML directly with no code fences, no backticks, no markdown wrapping.`
+        content: [
+          'Write the blog post body for AutoAcre.',
+          'H1 (already on the page, do not repeat it): ' + topic.title,
+          'Primary keyword: ' + topic.keyword,
+          'Slug: ' + (topic.slug || slugify(topic.title)),
+          topic.must_say ? 'MUST SAY (your outline, cover every point):\n- ' + [].concat(topic.must_say).join('\n- ') : '',
+          topic.never_say ? 'NEVER SAY:\n- ' + [].concat(topic.never_say).join('\n- ') : '',
+          'ALLOWED NUMBERS (no other figure may appear anywhere in the post): ' + (topic.allowed_numbers || 'none, write the post with no numeric figures at all'),
+          'INTERNAL LINKS available (use at least two, descriptive link text):\n' + linkMenu(),
+          'Output the HTML directly. No code fences, no backticks, no markdown.',
+        ].filter(Boolean).join('\n\n')
       }]
     }
   );
@@ -211,12 +387,42 @@ async function generateContent(topic) {
   return content;
 }
 
+// Escape a string for use inside an HTML attribute or JSON-LD value.
+function esc(v) {
+  return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Gate 3: Article plus FAQPage on every post.
+function buildSchema(post) {
+  const graph = [{
+    '@type': 'Article',
+    headline: post.title,
+    description: post.meta,
+    image: 'https://autoacre.com.au/img/' + post.img,
+    author: { '@type': 'Person', name: 'Ben Bonifant' },
+    publisher: { '@type': 'Organization', name: 'AutoAcre', url: 'https://autoacre.com.au' },
+    datePublished: post.date,
+    mainEntityOfPage: 'https://autoacre.com.au/' + post.slug + '.html',
+    keywords: post.keyword,
+  }];
+  if (post.faq && post.faq.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      mainEntity: post.faq.map(x => ({
+        '@type': 'Question', name: x.q,
+        acceptedAnswer: { '@type': 'Answer', text: x.a },
+      })),
+    });
+  }
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+}
+
 // ── Build blog post HTML ──────────────────────────────────────────────────────
 function buildPostHtml(post) {
   const SITE_HEADER = `  <header class="site-header" role="banner">
     <div class="header-inner">
       <a href="index.html" class="header-logo" aria-label="AutoAcre home">
-        <img src="./img/logo.png" alt="AutoAcre — Autonomous Acreage Management" height="52" style="height:52px;width:auto;">
+        <img src="./img/logo.png" alt="AutoAcre, autonomous acreage management" height="52" style="height:52px;width:auto;">
       </a>
       <nav class="header-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
@@ -253,11 +459,11 @@ function buildPostHtml(post) {
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${post.title} | AutoAcre Blog</title>
-  <meta name="description" content="${post.excerpt}">
+  <meta name="description" content="${esc(post.meta)}">
   <link rel="canonical" href="https://autoacre.com.au/${post.slug}.html">
-  <meta property="og:title" content="${post.title}"><meta property="og:description" content="${post.excerpt}">
+  <meta property="og:title" content="${esc(post.title)}"><meta property="og:description" content="${esc(post.meta)}">
   <meta property="og:image" content="https://autoacre.com.au/img/${post.img}"><meta property="og:url" content="https://autoacre.com.au/${post.slug}.html"><meta property="og:type" content="article">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${post.title}","description":"${post.excerpt}","author":{"@type":"Person","name":"Ben Bonifant"},"publisher":{"@type":"Organization","name":"AutoAcre","url":"https://autoacre.com.au"},"datePublished":"${post.date}","keywords":"${post.keyword}"}<\/script>
+  <script type="application/ld+json">${buildSchema(post)}<\/script>
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -276,7 +482,7 @@ ${SITE_HEADER}
             <span>${post.readTime} min read</span>
           </div>
           <h1>${post.title}</h1>
-          <p style="font-size:var(--text-lg);color:var(--color-text-muted);line-height:1.7;">${post.excerpt}</p>
+          <p style="font-size:var(--text-lg);color:var(--color-text-muted);line-height:1.7;">${esc(post.meta)}</p>
         </div>
       </div>
     </div></section>
@@ -288,8 +494,8 @@ ${SITE_HEADER}
       </div>
     </div></section>
     <section class="cta-banner"><div class="container">
-      <h2>Ready to transform your property?</h2>
-      <p>Book an on-site demonstration and see the PANDAG G1 handle your terrain. $350–$450 credited to your first month.</p>
+      <h2>See it on your ground</h2>
+      <p>Book an on-site demonstration and see how the machine handles your ground.</p>
       <div class="cta-banner-actions"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large" style="border-color:rgba(255,255,255,0.3);color:#fff;">Get a Quote</a></div>
     </div></section>
   </main>
@@ -378,16 +584,44 @@ function buildSitemap(published) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${all.map(([u, p, f]) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${f}</changefreq>\n    <priority>${p}</priority>\n  </url>`).join('\n')}\n</urlset>`;
 }
 
+// Section 1: the four publishing gates. All four must be true or nothing publishes.
+function openGates(queue) {
+  const g = queue.gates || {};
+  const required = {
+    inflated_post_fixed: 'the old 25 acres / 38 degree post is fixed or unpublished',
+    generator_instructions_corrected: 'generator instructions match Content Queue v2 Section 2',
+    schema_restored: 'post template emits Article + FAQPage schema',
+    fifteen_retrofitted: 'the fifteen queued posts have the Section 3 retrofit applied',
+  };
+  return Object.keys(required).filter(k => g[k] !== true).map(k => k + ' (' + required[k] + ')');
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
   // Load queue
   const queuePath = path.join(__dirname, 'posts-queue.json');
   const queue = JSON.parse(fs.readFileSync(queuePath, 'utf8'));
 
+  const open = openGates(queue);
+  if (open.length && !process.argv.includes('--ignore-gates')) {
+    console.error('HOLDING SLOT. Open gates:');
+    open.forEach(o => console.error('  - ' + o));
+    console.error('Set them true in posts-queue.json "gates" when each is genuinely done.');
+    process.exit(1);
+  }
+
   if (queue.nextIndex >= queue.topics.length) {
     console.log('All topics published — queue complete!');
     return;
   }
+
+  while (queue.topics[queue.nextIndex] &&
+         (queue.topics[queue.nextIndex].status === 'held' || queue.topics[queue.nextIndex].gate)) {
+    const skipped = queue.topics[queue.nextIndex];
+    console.log('Skipping ' + skipped.title + ' (' + (skipped.gate || 'held') + ')');
+    queue.nextIndex += 1;
+  }
+  if (queue.nextIndex >= queue.topics.length) { console.log('No clear entry left in the queue.'); return; }
 
   const topic = queue.topics[queue.nextIndex];
   console.log(`Publishing topic ${queue.nextIndex + 1}/${queue.topics.length}: ${topic.title}`);
@@ -429,18 +663,36 @@ async function main() {
 
   // Build post object
   const today = new Date().toISOString().split('T')[0];
-  const words = content.replace(/<[^>]+>/g, ' ').trim().split(/\s+/);
+  const extracted = extractMeta(content);
+  let body = stripForbidden(extracted.body);
+  if (!body.includes('ben@autoacre.com.au')) body = body + '\n' + SIGN_OFF;
+  const words = body.replace(/<[^>]+>/g, ' ').trim().split(/\s+/);
+  // A hand-written entry can carry its own meta in the queue; otherwise use the
+  // model's <!--META:--> line. Falling back to truncated body text fails the check,
+  // which is the point: a post without a real meta description is not ready.
+  const meta = topic.meta || extracted.meta || (words.slice(0, 22).join(' ') + '.');
   const post = {
     title: topic.title,
     keyword: topic.keyword,
     tag: topic.tag,
     img: image,
-    slug: slugify(topic.title),
-    content,
-    excerpt: words.slice(0, 30).join(' ') + '…',
-    readTime: Math.max(4, Math.round(words.length / 200)),
+    slug: topic.slug || slugify(topic.title),
+    content: body,
+    meta,
+    excerpt: meta,
+    faq: extractFaq(body),
+    readTime: Math.max(3, Math.round(words.length / 200)),
     date: today
   };
+
+  // Section 2.5 self-check. On any failure the slot is held, not filled.
+  const fails = selfCheck(post);
+  if (fails.length) {
+    console.error('SELF-CHECK FAILED for "' + post.title + '". Slot held, nothing written.');
+    fails.forEach(x => console.error('  - ' + x));
+    process.exit(1);
+  }
+  console.log('Self-check passed (' + words.length + ' words, ' + post.faq.length + ' FAQ entries).');
 
   // Add to published list (loaded above)
   published.push(post);
