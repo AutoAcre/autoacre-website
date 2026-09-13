@@ -70,8 +70,8 @@ function MethodologyDrawer({ open, onClose, t, accent, inputs, s }) {
           </Section>
 
           <Section title="Buy + AutoAcre Manage" t={t} accent={accent}>
-            <Kv label="Capital (mower + install)" v={fmtMoney(s.aa.capital)} t={t}/>
-            <Kv label="Monthly fee" v={`${fmtMoney(s.aa.monthly)}/mo (acreage-tiered)`} t={t}/>
+            <Kv label="Capital (mower + install)" v="Quoted after site assessment" t={t}/>
+            <Kv label="Monthly fee" v="Quoted after site assessment" t={t}/>
             <Kv label="Your time" v="0 hrs (managed)" t={t}/>
             <Kv label="Residual at Y8" v="$6,700 (locked buy-back)" t={t}/>
           </Section>

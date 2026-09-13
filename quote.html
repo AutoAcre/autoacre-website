@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Get a Quote — AutoAcre Autonomous Mowing | Byron Bay &amp; Northern Rivers</title>
- <meta name="description" content="Get a personalised quote for autonomous acreage mowing. Buy + Manage offer: commercial-grade autonomous mower sale and $165–$650/mo management. Commercial fleet solutions available. Byron Bay, Northern Rivers.">
+ <meta name="description" content="Get a personalised quote for autonomous acreage mowing. Buy + Manage offer: commercial-grade autonomous mower sale and ongoing management, quoted after a site assessment. Commercial fleet solutions available. Byron Bay, Northern Rivers.">
  <link rel="canonical" href="https://autoacre.com.au/quote.html">
  <script type="application/ld+json">
  {
@@ -15,7 +15,7 @@
     "@id": "https://autoacre.com.au/quote.html#webpage",
     "url": "https://autoacre.com.au/quote.html",
     "name": "Get a Quote — AutoAcre Autonomous Mowing | Byron Bay & Northern Rivers",
-    "description": "Personalised quote for autonomous mowing. Buy + Manage: $165–$650/month management. Commercial fleet solutions for Northern Rivers acreage.",
+    "description": "Personalised quote for autonomous mowing. Buy + Manage: system purchase plus monthly management, quoted after a site assessment. Commercial fleet solutions for Northern Rivers acreage.",
     "inLanguage": "en-AU",
     "isPartOf": { "@id": "https://autoacre.com.au/#website" },
     "about": { "@id": "https://autoacre.com.au/#organization" },
@@ -36,7 +36,7 @@
  }
  </script>
  <meta property="og:title" content="Get a Quote — AutoAcre Autonomous Mowing">
- <meta property="og:description" content="Personalised quote for autonomous mowing. Buy + Manage: $165–$650/mo management. Commercial fleet solutions. Northern Rivers.">
+ <meta property="og:description" content="Personalised quote for autonomous mowing. Buy + Manage: management quoted after a site assessment. Commercial fleet solutions. Northern Rivers.">
  <meta property="og:image" content="https://autoacre.com.au/img/aerial-prestige.jpg">
  <meta property="og:url" content="https://autoacre.com.au/quote.html">
  <meta property="og:type" content="website">
@@ -420,9 +420,9 @@
 
    <!-- COST ESTIMATOR -->
    <div class="est-card">
-    <span class="est-label">Step 2 — Instant estimate</span>
-    <h3>Estimate your numbers</h3>
-    <p class="sub">Move the slider to your mowable area (or use the area from the map above). The numbers update live — Year 1 outlay, 8-year total, and how that compares to a fortnightly contractor over the same window.</p>
+    <span class="est-label">Step 2 — Your mowable area</span>
+    <h3>Set your mowable area</h3>
+    <p class="sub">Move the slider to your mowable area (or use the area from the map above). It carries straight into the quote request below, so we start from your number instead of a guess.</p>
 
     <div class="est-slider-row">
     <span>Mowable area</span>
@@ -431,39 +431,15 @@
     <input type="range" id="est-slider" class="est-slider" min="2.5" max="10" step="0.5" value="5" aria-label="Mowable area in acres">
     <div class="est-ticks"><span>2.5 ac</span><span>6 ac</span><span>10 ac</span></div>
 
-    <div class="est-pricing-grid">
-    <div class="est-tile">
-     <div class="lab">Mower (one-time)</div>
-     <div class="num">$33,490</div>
-    </div>
-    <div class="est-tile">
-     <div class="lab">Monthly management</div>
-     <div class="num"><span id="est-monthly">$330</span><span class="unit">/mo</span></div>
-    </div>
-    </div>
-
-    <div class="est-totals">
-    <div class="grid">
-     <div>
-     <div class="lab">Year 1 total</div>
-     <div class="num" id="est-y1">$37,450</div>
-     </div>
-     <div>
-     <div class="lab">8-year total</div>
-     <div class="num" id="est-y8">$65,170</div>
-     </div>
-    </div>
-    </div>
-
     <div class="est-compare">
-    <strong>vs a fortnightly contractor at <span id="est-contractor-rate">$750/month</span>:</strong>
-    8-year contractor cost is <span id="est-contractor-8yr">$72,000</span> — and you own nothing at the end.
-    With AutoAcre over 8 years you spend <em><span id="est-vs-amount">$6,830</span> <span id="est-vs-direction">less</span></em> on cash AND own a mower worth ~$6,700 at year 8 (~20% residual).
-    Net of residual, AutoAcre is <strong><span id="est-net-amount">$13,530</span> <span id="est-net-direction">cheaper</span></strong> — with ~3× the mowing frequency (≈78 mows/year vs ≈26).
+    <strong>What it costs:</strong>
+    You buy the system once, then pay one monthly management fee. The monthly fee scales with mowable acreage. We quote it after a site assessment.
+    The economics depend on what you spend on mowing now and how much of your block is actually mowable. We work both out on site, then put the figures in writing.
+    You also get about 3× the mowing frequency of a fortnightly contractor (roughly 78 mows a year against 26).
     </div>
 
-    <button type="button" class="est-cta" id="est-prefill-btn">Use these numbers in my quote request ↓</button>
-    <p class="est-finep">Estimate only — final pricing confirmed at the on-site demo. Ad-hoc call-outs $150/visit. Contractor benchmark $250/acre/month based on Northern Rivers premium acreage market reference pricing (zero-turn, fortnightly, mowing only). Residual is an estimate at year 8 — secondary market for commercial robotic mowers in Australia is thin.</p>
+    <button type="button" class="est-cta" id="est-prefill-btn">Use this area in my quote request ↓</button>
+    <p class="est-finep">Pricing is confirmed at the on-site assessment, not before it. Acreage from the map is an estimate, we measure it properly on the day.</p>
    </div>
 
    <!-- Leaflet + Leaflet.draw + Turf for the map area calculator -->
@@ -718,67 +694,11 @@
     (function(){
     var slider = document.getElementById('est-slider');
     var areaDisplay = document.getElementById('est-area-display');
-    var monthlyEl = document.getElementById('est-monthly');
-    var y1El = document.getElementById('est-y1');
-    var y8El = document.getElementById('est-y8');
-    var contractor8El = document.getElementById('est-contractor-8yr');
-    var contractorRateEl = document.getElementById('est-contractor-rate');
-    var vsAmountEl = document.getElementById('est-vs-amount');
-    var vsDirEl = document.getElementById('est-vs-direction');
-    var netAmountEl = document.getElementById('est-net-amount');
-    var netDirEl = document.getElementById('est-net-direction');
     var prefillBtn = document.getElementById('est-prefill-btn');
-
-    var MOWER_PRICE = 33490;
-    var RESIDUAL_VALUE = 6700; // ~20% of mower price at year 8
-    // Fortnightly contractor benchmark: $250/acre/month
-    // Based on Northern Rivers premium acreage market reference pricing (zero-turn, mowing only, fortnightly)
-    var CONTRACTOR_PER_ACRE_MONTHLY = 250;
-    var ANALYSIS_MONTHS = 96; // 8 years
-
-    // Anchor pricing tiers — interpolate linearly between
-    var anchors = [
-     [2.5, 165], [3, 195], [4, 260], [5, 330], [6, 390], [7, 455], [8, 520], [9, 585], [10, 650]
-    ];
-
-    function feeForAcres(acres) {
-     if (acres <= anchors[0][0]) return anchors[0][1];
-     if (acres >= anchors[anchors.length-1][0]) return anchors[anchors.length-1][1];
-     for (var i = 0; i < anchors.length - 1; i++) {
-     var a1 = anchors[i][0], f1 = anchors[i][1];
-     var a2 = anchors[i+1][0], f2 = anchors[i+1][1];
-     if (acres >= a1 && acres <= a2) {
-      var t = (acres - a1) / (a2 - a1);
-      var raw = f1 + t * (f2 - f1);
-      return Math.round(raw / 5) * 5; // round to nearest $5
-     }
-     }
-     return 0;
-    }
-
-    function fmt(n) { return '$' + Math.round(n).toLocaleString('en-AU'); }
 
     function update() {
      var acres = parseFloat(slider.value);
-     var fee = feeForAcres(acres);
      areaDisplay.textContent = acres.toFixed(1) + ' acres';
-     monthlyEl.textContent = fmt(fee);
-     var y1 = MOWER_PRICE + fee * 12;
-     var y8 = MOWER_PRICE + fee * ANALYSIS_MONTHS;
-     y1El.textContent = fmt(y1);
-     y8El.textContent = fmt(y8);
-     var contractorMonthly = Math.round(acres * CONTRACTOR_PER_ACRE_MONTHLY);
-     contractorRateEl.textContent = fmt(contractorMonthly) + '/month';
-     var contractor8 = contractorMonthly * ANALYSIS_MONTHS;
-     contractor8El.textContent = fmt(contractor8);
-     // Cash diff (positive = AutoAcre more)
-     var cashDiff = y8 - contractor8;
-     vsAmountEl.textContent = fmt(Math.abs(cashDiff));
-     vsDirEl.textContent = cashDiff >= 0 ? 'more' : 'less';
-     // Net of residual
-     var netDiff = cashDiff - RESIDUAL_VALUE;
-     netAmountEl.textContent = fmt(Math.abs(netDiff));
-     netDirEl.textContent = netDiff >= 0 ? 'more expensive' : 'cheaper';
     }
 
     slider.addEventListener('input', update);
@@ -809,7 +729,7 @@
     <ul class="feature-list">
     <li>
      <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-     <strong>Residential:</strong>&nbsp;$165–$650/month management fee for properties 2.5–10 acres
+     <strong>Residential:</strong>&nbsp;Monthly management fee scales with mowable acreage on properties 2.5–10 acres, quoted after a site assessment
     </li>
     <li>
      <svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

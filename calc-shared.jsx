@@ -1,5 +1,9 @@
-// Shared calculator math + helpers — lifted directly from calculator-v4.html
-// (canonical pricing per business-model-update.md)
+// Shared calculator math + helpers.
+//
+// No AutoAcre pricing lives in this file. It is served publicly, so the fee
+// table and the system price were readable by anyone who opened it. The
+// comparison covers the options a buyer can price themselves (DIY zero-turn
+// and a contractor). What AutoAcre charges is quoted after a site assessment.
 
 const TIER_1 = ['2477','2478','2479','2481','2482','2483'];
 const TIER_2 = ['2480','2470','2464','2484','2487'];
@@ -7,19 +11,6 @@ function getTier(postcode) {
   if (TIER_1.includes(postcode)) return 1;
   if (TIER_2.includes(postcode)) return 2;
   return 3;
-}
-
-const MGMT_FEE = { 2.5:165, 3:195, 4:260, 5:330, 6:390, 7:455, 8:520, 9:585, 10:650 };
-function mgmtFee(acres) {
-  const keys = Object.keys(MGMT_FEE).map(Number).sort((a,b)=>a-b);
-  if (acres <= keys[0]) return MGMT_FEE[keys[0]];
-  if (acres >= keys[keys.length-1]) return MGMT_FEE[keys[keys.length-1]];
-  for (let i=0; i<keys.length-1; i++) {
-    if (acres >= keys[i] && acres <= keys[i+1]) {
-      const f = (acres - keys[i]) / (keys[i+1] - keys[i]);
-      return MGMT_FEE[keys[i]] + f * (MGMT_FEE[keys[i+1]] - MGMT_FEE[keys[i]]);
-    }
-  }
 }
 
 const FREQ_VISITS = { weekly: 52, fortnightly: 26, monthly: 12, seasonal: 4 };
@@ -56,18 +47,13 @@ function calcScenarios({ acres, terrain, frequency, contractorMonthly }) {
   const byoY1 = byoCapital + byoOpex;
   const byo8yr = byoCapital + (byoOpex * 8) - byoResidual;
 
-  const aaCapital = 33490;
-  const aaMonthly = mgmtFee(acres);
-  const aaOpex = aaMonthly * 12;
-  const aaResidual = 6700;
-  const aaY1 = aaCapital + aaOpex;
-  const aa8yr = aaCapital + (aaOpex * 8) - aaResidual;
-
   return {
     diy:        { key:'diy',        label:'DIY zero-turn',        capital: diyCapital,  y1: diyY1,        total8: diy8yr,        hours: diyHoursPerYear, residual: diyResidual,    opex: diyOpex },
     contractor: { key:'contractor', label:'Contractor',           capital: 0,           y1: contractorY1, total8: contractor8yr, hours: 0,               residual: 0,              opex: contractorAnnualValue },
-    byo:        { key:'byo',        label:'Buy your own — RTK-LiDAR autonomous mowing system', capital: byoCapital, y1: byoY1, total8: byo8yr, hours: byoSupportHours, residual: byoResidual, opex: byoOpex, isMammotion },
-    aa:         { key:'aa',         label:'Buy + AutoAcre Manage', capital: aaCapital,   y1: aaY1,         total8: aa8yr,         hours: 0,               residual: aaResidual,     opex: aaOpex,  monthly: aaMonthly }
+    byo:        { key:'byo',        label:'Buy your own RTK-LiDAR autonomous mowing system', capital: byoCapital, y1: byoY1, total8: byo8yr, hours: byoSupportHours, residual: byoResidual, opex: byoOpex, isMammotion },
+    // Kept so the view can still reference it, with no figures in it. Our fee
+    // and system price are quoted after a site assessment, not published.
+    aa:         { key:'aa',         label:'Buy + AutoAcre Manage', capital: null, y1: null, total8: null, hours: 0, residual: null, opex: null, monthly: null, quoted: true }
   };
 }
 
@@ -83,10 +69,10 @@ function fmtMoneyShort(n) {
 function fmtHours(n) { return Math.round(n) + ' hrs'; }
 
 function scenariosArray(s) {
-  // s.byo is still computed by calcScenarios for backward compat, but excluded
-  // from the comparison array so it no longer appears in the table, chart,
-  // legend, optimal-path detection, or FINDINGS snapshot.
-  return [s.diy, s.contractor, s.aa];
+  // The AutoAcre scenario is not shown: our fee is quoted after a site
+  // assessment, not published. s.byo stays computed for backward compat but
+  // is excluded, as before.
+  return [s.diy, s.contractor];
 }
 function cheapest(s) {
   return scenariosArray(s).reduce((a,b)=>a.total8 < b.total8 ? a : b);
