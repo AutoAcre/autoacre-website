@@ -181,9 +181,22 @@ if (process.argv.includes('--check-images')) {
 
 // Section 2.5 check 4. Names that must never appear in a published post.
 const BLOCKED_NAMES = [
-  'PANDAG', 'Pandag', 'AllyNav', 'Lianshi', 'Taurus80E', 'Yarbo',
-  'Renu Robotics', 'Renubot', 'Swap Robotics', 'Directed Machines', 'FJD',
+  // Manufacturer and machine models. Describe the machine by class and spec instead.
+  'PANDAG', 'Pandag', 'G1', 'M1500', 'Taurus80E',
+  // Suppliers and supplier parent companies.
+  'AllyNav', 'Lianshi', 'Yifei', 'Franklin Xu',
+  // Competitor brands and their models.
+  'Yarbo', 'Renu Robotics', 'Renubot', 'Swap Robotics', 'Directed Machines',
+  'FJD', 'RM21', 'Husqvarna', 'CEORA', 'Echo Robotics', 'TM-2050', 'Raymo',
+  // Clients, prospects and their sites. Nothing said in private appears in public.
   'RES Group', 'Emerald Solar', 'Wolff', 'Stockland', 'Misty Mountain',
+  'Aura', 'Burdekin', 'Chinchilla', 'Western Downs', 'McLeans Ridges', 'Kunghur',
+  'Gracewood',
+  // People. Clients, contacts, advisers.
+  'Macpherson', 'Reece McDonald', "O'Rorke", 'Niraj', 'Peter Crabb',
+  'Camilla', 'Collins Hume',
+  // Dead or internal brand names that must not surface publicly.
+  'AcreIQ', 'Lark',
 ];
 
 const SIGN_OFF = '<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>';
