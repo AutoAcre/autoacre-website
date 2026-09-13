@@ -34,6 +34,85 @@ function httpsPost(url, headers, body) {
   });
 }
 
+// ── Image selection ───────────────────────────────────────────────────────────
+// Picks the hero image from the post's title + keyword, not the queue's tag.
+// First match wins. Filenames match what is actually in /img (jpg, except g1-closeup.png).
+const SUBURBS = ['bangalow','newrybar','ewingsdale','mullumbimby','federal','myocum','alstonville','tintenbar','brooklet','tyagarah','clunes','teven','nashua','eureka','lennox head','ballina'];
+const SUBURB_RE = new RegExp('\\b(' + SUBURBS.join('|') + ')\\b');
+
+const IMAGE_ALT = {
+  'commercial-solar.jpg':   'Autonomous mower working solar farm vegetation',
+  'commercial-golf.jpg':    'Autonomous mower on golf course grounds',
+  'commercial-school.jpg':  'Autonomous mowing on school grounds',
+  'commercial-council.jpg': 'Autonomous mowing on council parks and reserves',
+  'commercial-park.jpg':    'Autonomous mowing in park and reserve',
+  'commercial-resort.jpg':  'Autonomous mowing at resort grounds',
+  'commercial-hero.jpg':    'Autonomous mowing for commercial grounds',
+  'aerial-prestige.jpg':    'Aerial view of prestige lifestyle property',
+  'hinterland-aerial.jpg':  'Northern Rivers hinterland lifestyle property',
+  'g1-wide-paddock.jpg':    'PANDAG G1 autonomous mower working open paddock',
+  'g1-striping.jpg':        'Mowing stripes cut by PANDAG G1 autonomous mower',
+  'g1-closeup.png':         'PANDAG G1 autonomous mower detail',
+  'hilux-trailer.jpg':      'AutoAcre Hilux and trailer with autonomous mowing equipment',
+  'demo-scene.jpg':         'AutoAcre autonomous mowing demonstration',
+  'problem.jpg':            'Overgrown property showing acreage mowing challenge',
+  'result.jpg':             'Well-maintained acreage after autonomous mowing',
+  'residential-hero.jpg':   'Residential acreage lifestyle property',
+  'veranda-view.jpg':       'View from lifestyle property veranda',
+  'hero.jpg':               'Northern Rivers acreage property',
+};
+
+function pickImage(topic) {
+  const s = ((topic.title || '') + ' ' + (topic.keyword || '')).toLowerCase();
+  const has = re => re.test(s);
+  const suburb = SUBURB_RE.test(s);
+  const location = suburb || has(/\bbyron\b|\bhinterland|northern rivers|\bshire\b/);
+
+  if (has(/solar/)) return 'commercial-solar.jpg';
+  if (has(/\bgolf\b/)) return 'commercial-golf.jpg';
+  if (has(/\bschool/)) return 'commercial-school.jpg';
+  if (has(/\bcouncil/) || has(/parks and reserves/)) return 'commercial-council.jpg';
+  if (has(/\bparks?\b/) || has(/\breserves?\b/)) return 'commercial-park.jpg';
+  if (has(/\bresort/)) return 'commercial-resort.jpg';
+  if (has(/\bairport/) || has(/\bcommercial\b/)) return 'commercial-hero.jpg';
+  if (has(/\bdealer/)) return 'hilux-trailer.jpg';
+  if (has(/holiday rental/) || has(/\babsentee/) || has(/without living/)) return 'aerial-prestige.jpg';
+  if (has(/\bprestige/) || has(/\bestate\b/)) return 'aerial-prestige.jpg';
+  if (has(/\bsteep/) || has(/\bslopes?\b/)) return 'hinterland-aerial.jpg';
+  if (has(/\bpandag\b/) || has(/\bg1\b/) || has(/\blymow\b/) || has(/\bluba\b/) || has(/\bmammotion\b/) || has(/\bbuy(er|ing)?\b/)) return 'g1-closeup.png';
+  if (has(/\bdemo(nstration)?s?\b/)) return 'demo-scene.jpg';
+  if (has(/how it works|how .* works|explained|explainer/) || (has(/\bguide\b/) && !location)) return 'demo-scene.jpg';
+  if (has(/\binternet|\bconnectivity|\brtk\b|\bsignal\b|\bwifi\b/)) return 'demo-scene.jpg';
+  if (has(/acres (a|per) day|\bcapacity\b|hectares (a|per) day/)) return 'g1-wide-paddock.jpg';
+  if (has(/\btrials?\b/) && has(/\bfail/)) return 'problem.jpg';
+  if (has(/\bproblems?\b/) || has(/\bsigns?\b/) || has(/\bissues?\b/)) return 'problem.jpg';
+  if (has(/\bresults?\b/) || has(/before and after/)) return 'result.jpg';
+  if (has(/\bcost/) || has(/\bprices?\b|\bpricing\b/) || has(/\bspend/) || has(/\bbudget/) || has(/worth it/) || has(/\bsubscription/)) return 'hero.jpg';
+  if (has(/zero[- ]turn/) || has(/ride[- ]on/) || has(/\bdiy\b/)) return 'result.jpg';
+  if (has(/\bpaddock/) || has(/\bpasture/)) return 'g1-wide-paddock.jpg';
+  if (suburb) return 'hinterland-aerial.jpg';
+  if (has(/\bveranda/) || has(/\bview\b/) || has(/\blifestyle\b/)) return 'veranda-view.jpg';
+  if (has(/\bhinterland/) || has(/\bbyron\b/) || suburb) return 'hinterland-aerial.jpg';
+  if (has(/\bfire\b|\bbushfire\b|\bhazard/)) return 'hinterland-aerial.jpg';
+  if (has(/\bacreage/) || has(/\bfarm/)) return 'g1-wide-paddock.jpg';
+  return 'hero.jpg';
+}
+
+function altFor(img, fallback) {
+  return IMAGE_ALT[img] || fallback;
+}
+
+// CLI check: node generate-post.js --check-images  → prints what each queued topic would get
+if (process.argv.includes('--check-images')) {
+  const q = JSON.parse(fs.readFileSync(path.join(__dirname, 'posts-queue.json'), 'utf8'));
+  q.topics.forEach((t, i) => {
+    const img = pickImage(t);
+    const flag = img === t.img ? ' ' : '*';
+    console.log(`${String(i).padStart(2)} ${flag} ${img.padEnd(22)} (queue: ${(t.img || '-').padEnd(22)}) ${t.title}`);
+  });
+  process.exit(0);
+}
+
 // ── Generate post content via Anthropic ──────────────────────────────────────
 async function generateContent(topic) {
   console.log(`Generating: ${topic.title}`);
@@ -115,7 +194,7 @@ function buildPostHtml(post) {
   <meta name="description" content="${post.excerpt}">
   <link rel="canonical" href="https://autoacre.com.au/${post.slug}.html">
   <meta property="og:title" content="${post.title}"><meta property="og:description" content="${post.excerpt}">
-  <meta property="og:image" content="./img/og-image.png"><meta property="og:url" content="https://autoacre.com.au/${post.slug}.html"><meta property="og:type" content="article">
+  <meta property="og:image" content="https://autoacre.com.au/img/${post.img}"><meta property="og:url" content="https://autoacre.com.au/${post.slug}.html"><meta property="og:type" content="article">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${post.title}","description":"${post.excerpt}","author":{"@type":"Person","name":"Ben Bonifant"},"publisher":{"@type":"Organization","name":"AutoAcre","url":"https://autoacre.com.au"},"datePublished":"${post.date}","keywords":"${post.keyword}"}<\/script>
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,7 +218,7 @@ ${SITE_HEADER}
         </div>
       </div>
     </div></section>
-    <div class="section-image"><img src="./img/${post.img}" alt="${post.title}" width="1200" height="400" loading="eager"></div>
+    <div class="section-image"><img src="./img/${post.img}" alt="${altFor(post.img, post.title)}" width="1200" height="400" loading="eager"></div>
     <section class="section"><div class="container">
       <div style="max-width:740px;margin:0 auto;line-height:1.85;font-size:17px;">
         <style>.pb h2{font-size:22px;font-weight:700;margin:2em 0 0.5em;line-height:1.3;color:#2D2D2D}.pb p{margin:0 0 1.3em;line-height:1.85}.pb ul{margin:0 0 1.3em 1.5em}.pb li{margin-bottom:0.5em;line-height:1.7}.pb a{color:#7A8B2D}.pb strong{font-weight:600}</style>
@@ -164,7 +243,7 @@ function buildBlogHtml(published) {
 
   const featuredHtml = featured ? `
     <article class="blog-card blog-featured reveal" style="margin-bottom:var(--space-8);">
-      <div class="blog-card-image"><img src="./img/${featured.img}" alt="${featured.title}" width="800" height="450" loading="lazy"></div>
+      <div class="blog-card-image"><img src="./img/${featured.img}" alt="${altFor(featured.img, featured.title)}" width="800" height="450" loading="lazy"></div>
       <div class="blog-card-body">
         <div class="blog-card-meta"><span class="blog-card-tag">${featured.tag}</span><time datetime="${featured.date}">${fmtDate(featured.date)}</time><span>${featured.readTime} min read</span></div>
         <h3>${featured.title}</h3><p>${featured.excerpt}</p>
@@ -174,7 +253,7 @@ function buildBlogHtml(published) {
 
   const gridHtml = rest.length ? `<div class="card-grid card-grid--3 reveal">${rest.map(p => `
     <article class="blog-card">
-      <div class="blog-card-image"><img src="./img/${p.img}" alt="${p.title}" width="400" height="225" loading="lazy"></div>
+      <div class="blog-card-image"><img src="./img/${p.img}" alt="${altFor(p.img, p.title)}" width="400" height="225" loading="lazy"></div>
       <div class="blog-card-body">
         <div class="blog-card-meta"><span class="blog-card-tag">${p.tag}</span><time datetime="${p.date}">${fmtDate(p.date)}</time><span>${p.readTime} min read</span></div>
         <h3>${p.title}</h3><p>${p.excerpt}</p>
@@ -251,6 +330,11 @@ async function main() {
   const topic = queue.topics[queue.nextIndex];
   console.log(`Publishing topic ${queue.nextIndex + 1}/${queue.topics.length}: ${topic.title}`);
 
+  // Pick the hero image from the topic content (title + keyword), not the queue's tag-based img.
+  // Runs for customBody posts too.
+  const image = pickImage(topic);
+  if (image !== topic.img) console.log(`Image: ${image} (queue had ${topic.img || 'none'})`);
+
   // Use custom body if provided, otherwise generate via AI
   let content;
   if (topic.customBody) {
@@ -285,7 +369,7 @@ async function main() {
     title: topic.title,
     keyword: topic.keyword,
     tag: topic.tag,
-    img: topic.img,
+    img: image,
     slug: slugify(topic.title),
     content,
     excerpt: words.slice(0, 30).join(' ') + '…',
