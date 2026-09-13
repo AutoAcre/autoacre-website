@@ -71,6 +71,25 @@ const IMAGE_ALT = {
   'residential-hero.jpg':   'Residential acreage lifestyle property',
   'veranda-view.jpg':       'View from lifestyle property veranda',
   'hero.jpg':               'Northern Rivers acreage property',
+  'acreage-aerial-1.jpg':   'Aerial view of forested hills and paddocks at sunrise',
+  'acreage-aerial-2.jpg':   'Green paddock on a hilltop with farmland beyond',
+  'acreage-aerial-3.jpg':   'Rural properties across rolling farmland from the air',
+  'acreage-road-1.jpg':     'Country road through acreage properties, drone view',
+  'acreage-valley-1.jpg':   'Green valley with scattered rural homes from above',
+  'acreage-rolling-1.jpg':  'Rolling green hills with a line of trees',
+  'acreage-paddock-aerial-1.jpg': 'Paddock and tree lines from directly above',
+  'acreage-valley-sunset-1.jpg': 'Farm valley at sunset with sheds and mountains',
+  'steep-block-1.jpg':      'Steep green hillside block with fence line',
+  'steep-block-2.jpg':      'Grassy slope under a cloudy sky',
+  'steep-block-3.jpg':      'Cattle grazing a steep coastal hillside',
+  'paddock-gums-1.jpg':     'Gum trees in a paddock under a blue sky',
+  'paddock-fence-1.jpg':    'Timber post and rail fence along a mown paddock',
+  'paddock-dusk-1.jpg':     'Long grass paddock at dusk',
+  'paddock-dusk-2.jpg':     'Grass seed heads against an evening sky',
+  'rideon-1.jpg':           'Zero-turn mower cutting a large lawn',
+  'rideon-2.jpg':           'Ride-on mower working an acreage lawn',
+  'lifestyle-driveway-1.jpg': 'Tree-lined driveway to a gated rural property',
+  'lifestyle-pool-aerial-3.jpg': 'Aerial view of a house, pool and palms',
 };
 
 // Pools: when a rule has several suitable images, one is chosen deterministically from the
@@ -84,9 +103,28 @@ const POOLS = {
   resort:  ['commercial-resort.jpg', 'commercial-resort-2.jpg'],
   airport: ['commercial-airport-1.jpg', 'commercial-airport-2.jpg'],
   commercial: ['commercial-hero.jpg', 'commercial-park-2.jpg', 'commercial-school-2.jpg'],
+  hinterland: ['hinterland-aerial.jpg', 'acreage-aerial-1.jpg', 'acreage-aerial-2.jpg', 'acreage-aerial-3.jpg', 'acreage-road-1.jpg', 'acreage-valley-1.jpg', 'acreage-rolling-1.jpg', 'acreage-paddock-aerial-1.jpg'],
+  steep:   ['hinterland-aerial.jpg', 'steep-block-1.jpg', 'steep-block-2.jpg', 'steep-block-3.jpg'],
+  paddock: ['g1-wide-paddock.jpg', 'acreage-paddock-aerial-1.jpg', 'paddock-gums-1.jpg', 'paddock-fence-1.jpg', 'acreage-valley-sunset-1.jpg'],
+  prestige: ['aerial-prestige.jpg', 'lifestyle-pool-aerial-3.jpg', 'lifestyle-driveway-1.jpg'],
+  lifestyle: ['veranda-view.jpg', 'lifestyle-driveway-1.jpg', 'paddock-dusk-1.jpg', 'acreage-valley-sunset-1.jpg'],
+  rideon:  ['result.jpg', 'rideon-1.jpg', 'rideon-2.jpg'],
+  fire:    ['hinterland-aerial.jpg', 'paddock-gums-1.jpg', 'paddock-dusk-2.jpg'],
+  cost:    ['hero.jpg', 'acreage-aerial-2.jpg', 'acreage-valley-1.jpg'],
+  night:   ['paddock-dusk-1.jpg', 'paddock-dusk-2.jpg'],
 };
 function hashStr(str) { let h = 0; for (const c of str) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; }
-function fromPool(name, topic) { const p = POOLS[name]; return p[hashStr(topic.title || '') % p.length]; }
+// Least-recently-used pick: prefer a pool image no published post has used yet, otherwise the one
+// used longest ago. Falls back to a title hash when nothing is published. Keeps neighbours different.
+let _recentImages = [];
+function setRecentImages(published) { _recentImages = published.map(p => p.img); }
+function fromPool(name, topic) {
+  const p = POOLS[name];
+  const lastIdx = img => _recentImages.lastIndexOf(img);
+  const unused = p.filter(img => lastIdx(img) === -1);
+  if (unused.length) return unused[hashStr((topic.title || '') + (topic.keyword || '')) % unused.length];
+  return p.slice().sort((a, b) => lastIdx(a) - lastIdx(b))[0];
+}
 
 function pickImage(topic) {
   const s = ((topic.title || '') + ' ' + (topic.keyword || '')).toLowerCase();
@@ -103,25 +141,26 @@ function pickImage(topic) {
   if (has(/\bairport/)) return fromPool('airport', topic);
   if (has(/\bcommercial\b/)) return fromPool('commercial', topic);
   if (has(/\bdealer/)) return 'hilux-trailer.jpg';
-  if (has(/holiday rental/) || has(/\babsentee/) || has(/without living/)) return 'aerial-prestige.jpg';
-  if (has(/\bprestige/) || has(/\bestate\b/)) return 'aerial-prestige.jpg';
-  if (has(/\bsteep/) || has(/\bslopes?\b/)) return 'hinterland-aerial.jpg';
+  if (has(/holiday rental/) || has(/\babsentee/) || has(/without living/)) return fromPool('prestige', topic);
+  if (has(/\bprestige/) || has(/\bestate\b/)) return fromPool('prestige', topic);
+  if (has(/\bsteep/) || has(/\bslopes?\b/)) return fromPool('steep', topic);
+  if (has(/\bnight\b|\bovernight\b|\b2am\b|\bdusk\b/)) return fromPool('night', topic);
   if (has(/\bpandag\b/) || has(/\bg1\b/) || has(/\blymow\b/) || has(/\bluba\b/) || has(/\bmammotion\b/) || has(/\bbuy(er|ing)?\b/)) return 'g1-closeup.png';
   if (has(/\bdemo(nstration)?s?\b/)) return 'demo-scene.jpg';
   if (has(/how it works|how .* works|explained|explainer/) || (has(/\bguide\b/) && !location)) return 'demo-scene.jpg';
   if (has(/\binternet|\bconnectivity|\brtk\b|\bsignal\b|\bwifi\b/)) return 'demo-scene.jpg';
-  if (has(/acres (a|per) day|\bcapacity\b|hectares (a|per) day/)) return 'g1-wide-paddock.jpg';
+  if (has(/acres (a|per) day|\bcapacity\b|hectares (a|per) day/)) return fromPool('paddock', topic);
   if (has(/\btrials?\b/) && has(/\bfail/)) return 'problem.jpg';
   if (has(/\bproblems?\b/) || has(/\bsigns?\b/) || has(/\bissues?\b/)) return 'problem.jpg';
   if (has(/\bresults?\b/) || has(/before and after/)) return 'result.jpg';
-  if (has(/\bcost/) || has(/\bprices?\b|\bpricing\b/) || has(/\bspend/) || has(/\bbudget/) || has(/worth it/) || has(/\bsubscription/)) return 'hero.jpg';
-  if (has(/zero[- ]turn/) || has(/ride[- ]on/) || has(/\bdiy\b/)) return 'result.jpg';
-  if (has(/\bpaddock/) || has(/\bpasture/)) return 'g1-wide-paddock.jpg';
-  if (suburb) return 'hinterland-aerial.jpg';
-  if (has(/\bveranda/) || has(/\bview\b/) || has(/\blifestyle\b/)) return 'veranda-view.jpg';
-  if (has(/\bhinterland/) || has(/\bbyron\b/) || suburb) return 'hinterland-aerial.jpg';
-  if (has(/\bfire\b|\bbushfire\b|\bhazard/)) return 'hinterland-aerial.jpg';
-  if (has(/\bacreage/) || has(/\bfarm/)) return 'g1-wide-paddock.jpg';
+  if (has(/\bcost/) || has(/\bprices?\b|\bpricing\b/) || has(/\bspend/) || has(/\bbudget/) || has(/worth it/) || has(/\bsubscription/)) return fromPool('cost', topic);
+  if (has(/zero[- ]turn/) || has(/ride[- ]on/) || has(/\bdiy\b/)) return fromPool('rideon', topic);
+  if (has(/\bpaddock/) || has(/\bpasture/)) return fromPool('paddock', topic);
+  if (suburb) return fromPool('hinterland', topic);
+  if (has(/\bveranda/) || has(/\bview\b/) || has(/\blifestyle\b/)) return fromPool('lifestyle', topic);
+  if (has(/\bhinterland/) || has(/\bbyron\b/) || suburb) return fromPool('hinterland', topic);
+  if (has(/\bfire\b|\bbushfire\b|\bhazard/)) return fromPool('fire', topic);
+  if (has(/\bacreage/) || has(/\bfarm/)) return fromPool('paddock', topic);
   return 'hero.jpg';
 }
 
@@ -132,8 +171,13 @@ function altFor(img, fallback) {
 // CLI check: node generate-post.js --check-images  → prints what each queued topic would get
 if (process.argv.includes('--check-images')) {
   const q = JSON.parse(fs.readFileSync(path.join(__dirname, 'posts-queue.json'), 'utf8'));
+  const pubPath = path.join(__dirname, 'published-posts.json');
+  const sim = fs.existsSync(pubPath) ? JSON.parse(fs.readFileSync(pubPath, 'utf8')) : [];
   q.topics.forEach((t, i) => {
+    if (i < q.nextIndex) { const img = t.img; console.log(`${String(i).padStart(2)}   ${(img||'-').padEnd(22)} published`); return; }
+    setRecentImages(sim);
     const img = pickImage(t);
+    sim.push({ img });
     const flag = img === t.img ? ' ' : '*';
     console.log(`${String(i).padStart(2)} ${flag} ${img.padEnd(22)} (queue: ${(t.img || '-').padEnd(22)}) ${t.title}`);
   });
@@ -359,6 +403,9 @@ async function main() {
 
   // Pick the hero image from the topic content (title + keyword), not the queue's tag-based img.
   // Runs for customBody posts too.
+  const publishedPath = path.join(__dirname, 'published-posts.json');
+  const published = fs.existsSync(publishedPath) ? JSON.parse(fs.readFileSync(publishedPath, 'utf8')) : [];
+  setRecentImages(published);
   const image = pickImage(topic);
   if (image !== topic.img) console.log(`Image: ${image} (queue had ${topic.img || 'none'})`);
 
@@ -404,9 +451,7 @@ async function main() {
     date: today
   };
 
-  // Load existing published list
-  const publishedPath = path.join(__dirname, 'published-posts.json');
-  const published = fs.existsSync(publishedPath) ? JSON.parse(fs.readFileSync(publishedPath, 'utf8')) : [];
+  // Add to published list (loaded above)
   published.push(post);
 
   // Write files

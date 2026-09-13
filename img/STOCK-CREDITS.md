@@ -15,3 +15,27 @@ All files below are from Unsplash and used under the Unsplash License (free for 
 | commercial-resort-2.jpg | Alef Morais | MT5MkFhSRmE |
 | commercial-airport-1.jpg | Lukáš Vaňátko | L4SUqyNJ_RI |
 | commercial-airport-2.jpg | Jumpei Mokudai | vv14zAhJnEg |
+
+## Batch 2 (residential / acreage)
+
+| File | Photographer | Unsplash ID |
+|---|---|---|
+| acreage-aerial-1.jpg | Levi Bare | fVpCWcX70ns |
+| acreage-aerial-2.jpg | Lucas Gallone | S_QdJC0AaTc |
+| acreage-aerial-3.jpg | Alex Reynolds | ojVeVYX4dro |
+| acreage-road-1.jpg | Alex Reynolds | w24ekqtZ0rc |
+| acreage-valley-1.jpg | Ryan Hughes | kLRR2dp2k_w |
+| acreage-paddock-aerial-1.jpg | Bernd Dittrich | WTxWLFcLG38 |
+| acreage-valley-sunset-1.jpg | Troy Olson | jO9mJy2j_b0 |
+| acreage-rolling-1.jpg | Dawid Zawila | L3sh5N6Lqzo |
+| steep-block-1.jpg | Beaumont Yun | B96PRfpRy8g |
+| steep-block-2.jpg | Wilhelm Gunkel | ex0TpGuBLy0 |
+| steep-block-3.jpg | (Unsplash) | 5Bsz0UlHktw |
+| paddock-gums-1.jpg | Matt Johnson | 5-TSY8AJRZQ |
+| paddock-fence-1.jpg | Eduardo Taulois | vpkfpQuoEpY |
+| paddock-dusk-1.jpg | Artur Oliinyk | AzFSQdgJxU8 |
+| paddock-dusk-2.jpg | Shay Sumner | H7GubomjRRs |
+| rideon-1.jpg | Michael Smith | 1MNJ9y1Wr50 |
+| rideon-2.jpg | sydney Rae | zUT8Vv6pJbk |
+| lifestyle-driveway-1.jpg | Cristina Anne Costello | _mA1Wjp-KGo |
+| lifestyle-pool-aerial-3.jpg | Renaldo Matamoro | U8jLTGPLv3M |
