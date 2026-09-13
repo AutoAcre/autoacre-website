@@ -42,6 +42,17 @@ const SUBURB_RE = new RegExp('\\b(' + SUBURBS.join('|') + ')\\b');
 
 const IMAGE_ALT = {
   'commercial-solar.jpg':   'Autonomous mower working solar farm vegetation',
+  'commercial-solar-2.jpg': 'Aerial view of solar farm rows with grass between panels',
+  'commercial-solar-3.jpg': 'Solar panel rows over grass, seen from above',
+  'commercial-solar-4.jpg': 'Grass strips between solar arrays on a utility-scale site',
+  'commercial-golf-2.jpg':  'Mower on a golf green beside a bunker, drone view',
+  'commercial-golf-3.jpg':  'Aerial view of golf course fairways',
+  'commercial-school-2.jpg':'School building with playing field in front',
+  'commercial-school-3.jpg':'School sports oval from above',
+  'commercial-park-2.jpg':  'Public park lawns and trees from above',
+  'commercial-resort-2.jpg':'Palm trees over resort lawn',
+  'commercial-airport-1.jpg':'Aircraft landing over grass beside a runway',
+  'commercial-airport-2.jpg':'Airport runway and grass verges from the air',
   'commercial-golf.jpg':    'Autonomous mower on golf course grounds',
   'commercial-school.jpg':  'Autonomous mowing on school grounds',
   'commercial-council.jpg': 'Autonomous mowing on council parks and reserves',
@@ -62,19 +73,35 @@ const IMAGE_ALT = {
   'hero.jpg':               'Northern Rivers acreage property',
 };
 
+// Pools: when a rule has several suitable images, one is chosen deterministically from the
+// post title so the same post always gets the same image but neighbouring posts differ.
+const POOLS = {
+  solar:   ['commercial-solar.jpg', 'commercial-solar-2.jpg', 'commercial-solar-3.jpg', 'commercial-solar-4.jpg'],
+  golf:    ['commercial-golf.jpg', 'commercial-golf-2.jpg', 'commercial-golf-3.jpg'],
+  school:  ['commercial-school.jpg', 'commercial-school-2.jpg', 'commercial-school-3.jpg'],
+  council: ['commercial-council.jpg', 'commercial-park-2.jpg'],
+  park:    ['commercial-park.jpg', 'commercial-park-2.jpg'],
+  resort:  ['commercial-resort.jpg', 'commercial-resort-2.jpg'],
+  airport: ['commercial-airport-1.jpg', 'commercial-airport-2.jpg'],
+  commercial: ['commercial-hero.jpg', 'commercial-park-2.jpg', 'commercial-school-2.jpg'],
+};
+function hashStr(str) { let h = 0; for (const c of str) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; }
+function fromPool(name, topic) { const p = POOLS[name]; return p[hashStr(topic.title || '') % p.length]; }
+
 function pickImage(topic) {
   const s = ((topic.title || '') + ' ' + (topic.keyword || '')).toLowerCase();
   const has = re => re.test(s);
   const suburb = SUBURB_RE.test(s);
   const location = suburb || has(/\bbyron\b|\bhinterland|northern rivers|\bshire\b/);
 
-  if (has(/solar/)) return 'commercial-solar.jpg';
-  if (has(/\bgolf\b/)) return 'commercial-golf.jpg';
-  if (has(/\bschool/)) return 'commercial-school.jpg';
-  if (has(/\bcouncil/) || has(/parks and reserves/)) return 'commercial-council.jpg';
-  if (has(/\bparks?\b/) || has(/\breserves?\b/)) return 'commercial-park.jpg';
-  if (has(/\bresort/)) return 'commercial-resort.jpg';
-  if (has(/\bairport/) || has(/\bcommercial\b/)) return 'commercial-hero.jpg';
+  if (has(/solar/)) return fromPool('solar', topic);
+  if (has(/\bgolf\b/)) return fromPool('golf', topic);
+  if (has(/\bschool/)) return fromPool('school', topic);
+  if (has(/\bcouncil/) || has(/parks and reserves/)) return fromPool('council', topic);
+  if (has(/\bparks?\b/) || has(/\breserves?\b/)) return fromPool('park', topic);
+  if (has(/\bresort/)) return fromPool('resort', topic);
+  if (has(/\bairport/)) return fromPool('airport', topic);
+  if (has(/\bcommercial\b/)) return fromPool('commercial', topic);
   if (has(/\bdealer/)) return 'hilux-trailer.jpg';
   if (has(/holiday rental/) || has(/\babsentee/) || has(/without living/)) return 'aerial-prestige.jpg';
   if (has(/\bprestige/) || has(/\bestate\b/)) return 'aerial-prestige.jpg';
