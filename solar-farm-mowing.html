@@ -469,39 +469,62 @@
    <p>It is mowing under and between panel rows with an autonomous machine that positions itself by RTK, runs to a schedule, and does the bulk of the cut without a driver. It is not spraying, not post-collar work and not a replacement for the crew; it takes the repetitive, wide-area cutting off their roster so their hours go to the work that needs people.</p>
    <p>Our model is to operate that machine for you, on your ground, against your contract heights. You keep your crew and your existing scope. We add a scheduled cutting cycle that does not depend on who is available that week.</p>
 
-   <h2 style="font-size:28px;font-weight:600;margin:1.8em 0 0.8em;color:#2D2D2D;">By the numbers</h2>
-   <div class="ind-facts">
-  <div class="ind-fact">
-   <div class="ind-fact-label">Under-panel clearance</div>
-   <div class="ind-fact-value">75 cm minimum</div>
-   <div class="ind-fact-note">Below that, the strip is a person's job</div>
   </div>
-  <div class="ind-fact">
-   <div class="ind-fact-label">Planning capacity</div>
-   <div class="ind-fact-value">About 8 acres a day</div>
-   <div class="ind-fact-note">3 hectares, per machine. Not the brochure peak.</div>
-  </div>
-  <div class="ind-fact">
-   <div class="ind-fact-label">Close-in work</div>
-   <div class="ind-fact-value">60 to 70% autonomous</div>
-   <div class="ind-fact-note">Posts, trays and edges stay manual</div>
-  </div>
-  <div class="ind-fact">
-   <div class="ind-fact-label">Mowing slope</div>
-   <div class="ind-fact-value">30&deg; proven</div>
-   <div class="ind-fact-note">Climbing is a separate figure. We do not blend them.</div>
-  </div>
-  <div class="ind-fact">
-   <div class="ind-fact-label">Positioning</div>
-   <div class="ind-fact-value">About 2 cm</div>
-   <div class="ind-fact-note">RTK from a local base. Roughly 1 km radio range among panels.</div>
-  </div>
-  <div class="ind-fact">
-   <div class="ind-fact-label">Night operation</div>
-   <div class="ind-fact-value">Yes</div>
-   <div class="ind-fact-note">RTK and LiDAR do not need daylight</div>
-  </div>
+ </section>
+
+ <section class="section" aria-labelledby="solar-stats-heading">
+  <style>
+   #solar-stats .stats { grid-template-columns: 1fr; gap: 1.8rem 1.5rem; }
+   @media (min-width: 560px) { #solar-stats .stats { grid-template-columns: repeat(2, 1fr); gap: 2.2rem 1.5rem; } }
+   @media (min-width: 900px) { #solar-stats .stats { grid-template-columns: repeat(3, 1fr); } }
+   #solar-stats .stat { text-align: left; border-left: 1px solid rgba(250,247,241,0.18); padding-left: 1.1rem; }
+   #solar-stats .stat-value { font-size: clamp(2rem, 3.2vw, 3rem); white-space: nowrap; }
+   #solar-stats .stat-label { margin-bottom: 0.55rem; }
+   #solar-stats .stat-note { font-size: 14px; line-height: 1.5; color: rgba(250,247,241,0.62); margin: 0; }
+   #solar-stats .section-header { max-width: none; margin-left: 0; text-align: left; }
+  </style>
+  <div class="container" id="solar-stats">
+   <div class="section-header" style="margin-bottom:2.2rem;">
+    <span class="section-label" style="color:rgba(250,247,241,0.6);">By the numbers</span>
+    <h2 id="solar-stats-heading" style="color:inherit;font-size:28px;font-weight:600;margin:0.3em 0 0;">The figures we plan on, not the brochure ones</h2>
    </div>
+   <div class="stats">
+    <div class="stat">
+     <div class="stat-value">75 cm</div>
+     <div class="stat-label">Minimum under-panel clearance</div>
+     <p class="stat-note">Below that, the strip is a person's job</p>
+    </div>
+    <div class="stat">
+     <div class="stat-value">~8 ac/day</div>
+     <div class="stat-label">Planning capacity, per machine</div>
+     <p class="stat-note">3 hectares, per machine. Not the brochure peak.</p>
+    </div>
+    <div class="stat">
+     <div class="stat-value">60 to 70%</div>
+     <div class="stat-label">Close-in work done autonomously</div>
+     <p class="stat-note">Posts, trays and edges stay manual</p>
+    </div>
+    <div class="stat">
+     <div class="stat-value">30&deg;</div>
+     <div class="stat-label">Mowing slope, proven</div>
+     <p class="stat-note">Climbing is a separate figure. We do not blend them.</p>
+    </div>
+    <div class="stat">
+     <div class="stat-value">~2 cm</div>
+     <div class="stat-label">RTK positioning accuracy</div>
+     <p class="stat-note">RTK from a local base. Roughly 1 km radio range among panels.</p>
+    </div>
+    <div class="stat">
+     <div class="stat-value">Night</div>
+     <div class="stat-label">Runs after dark</div>
+     <p class="stat-note">RTK and LiDAR do not need daylight</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section class="section">
+  <div class="container" style="max-width:880px;">
 
    <h2 style="font-size:28px;font-weight:600;margin:2.2em 0 0.5em;color:#2D2D2D;">How much of a solar farm can a robot actually mow?</h2>
    <p>The bulk strip under and between rows, wherever there is at least 75 centimetres of clearance. That is the part of the site where a robot beats a ride-on outright, because a ride-on cannot get under the modules at all.</p>
