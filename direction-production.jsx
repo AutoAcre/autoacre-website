@@ -64,16 +64,16 @@ function MethodologyDrawer({ open, onClose, t, accent, inputs, s }) {
           </Section>
 
           <Section title="Contractor" t={t} accent={accent}>
-            <Kv label="Rate basis" v="$250/visit/acre at fortnightly cadence" t={t}/>
+            <Kv label="Rate basis" v="AUD $250/acre/month at fortnightly cadence" t={t}/>
             <Kv label="Annual" v={fmtMoney(s.contractor.opex)} t={t}/>
             <Kv label="Capital" v="$0" t={t}/>
           </Section>
 
           <Section title="Buy + AutoAcre Manage" t={t} accent={accent}>
-            <Kv label="Capital (mower + install)" v="Quoted after site assessment" t={t}/>
-            <Kv label="Monthly fee" v="Quoted after site assessment" t={t}/>
+            <Kv label="Capital (mower + install)" v="In your written quote" t={t}/>
+            <Kv label="Monthly fee" v="Priced against your current mowing bill" t={t}/>
             <Kv label="Your time" v="0 hrs (managed)" t={t}/>
-            <Kv label="Residual at Y8" v="$6,700 (locked buy-back)" t={t}/>
+            <Kv label="Residual at Y8" v="Set out in your written quote" t={t}/>
           </Section>
 
           <div style={{marginTop:24, padding:16, border:`1px dashed ${t.line}`, fontSize:12, color:t.textDim, lineHeight:1.6, fontFamily:PROD_MONO, letterSpacing:'0.04em'}}>
