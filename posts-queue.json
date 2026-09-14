@@ -238,43 +238,47 @@
       "meta": "Solar farm vegetation compliance records: height, zone and date with photos, every cycle. Mapped-line mowing logs what was cut and when. Show the file."
     },
     {
-      "title": "Acreage Mowing in Tintenbar — Rural Lifestyle Property Guide",
+      "title": "Acreage Mowing in Tintenbar: Rural Lifestyle Property Guide",
       "keyword": "acreage mowing Tintenbar",
       "tag": "Suburb",
-      "img": "g1-wide-paddock.jpg"
+      "img": "g1-wide-paddock.jpg",
+      "status": "held",
+      "holdReason": "Suburb pages folded into service-area.html on 14 Sep 2026 (zero clicks). Decide whether a suburb blog post adds anything before releasing."
     },
     {
-      "title": "Acreage Mowing in Brooklet — Hinterland Grounds Management",
+      "title": "Acreage Mowing in Brooklet: Hinterland Grounds Management",
       "keyword": "acreage mowing Brooklet",
       "tag": "Suburb",
-      "img": "hinterland-aerial.jpg"
+      "img": "hinterland-aerial.jpg",
+      "status": "held",
+      "holdReason": "Suburb pages folded into service-area.html on 14 Sep 2026 (zero clicks). Decide whether a suburb blog post adds anything before releasing."
     },
     {
-      "title": "Golf Course Robot Mower Australia — What Superintendents Need to Know",
+      "title": "Golf Course Robot Mower Australia: What Superintendents Need to Know",
       "keyword": "golf course robot mower Australia",
       "tag": "Commercial",
       "img": "commercial-golf.jpg"
     },
     {
-      "title": "Resort Grounds Maintenance Byron Bay — The Autonomous Mowing Advantage",
+      "title": "Resort Grounds Maintenance Byron Bay: The Autonomous Mowing Advantage",
       "keyword": "resort grounds maintenance Byron Bay",
       "tag": "Commercial",
       "img": "commercial-resort.jpg"
     },
     {
-      "title": "School Grounds Maintenance Northern Rivers — A Better Approach",
+      "title": "School Grounds Maintenance Northern Rivers: A Better Approach",
       "keyword": "school grounds maintenance Northern Rivers",
       "tag": "Commercial",
       "img": "commercial-school.jpg"
     },
     {
-      "title": "Commercial Grounds Maintenance Northern Rivers — Complete Guide",
+      "title": "Commercial Grounds Maintenance Northern Rivers: Complete Guide",
       "keyword": "commercial grounds maintenance Northern Rivers",
       "tag": "Commercial",
       "img": "commercial-hero.jpg"
     },
     {
-      "title": "Autonomous Mower Dealer Northern Rivers — Buying vs Subscribing",
+      "title": "Autonomous Mower Dealer Northern Rivers: Buying vs Subscribing",
       "keyword": "autonomous mower dealer Northern Rivers",
       "tag": "Commercial",
       "img": "hilux-trailer.jpg"
@@ -292,25 +296,25 @@
       "img": "aerial-prestige.jpg"
     },
     {
-      "title": "Acreage Mowing Byron Shire — A Complete Property Owner's Guide",
+      "title": "Acreage Mowing Byron Shire: A Complete Property Owner's Guide",
       "keyword": "acreage mowing Byron Shire",
       "tag": "Regional",
       "img": "hinterland-aerial.jpg"
     },
     {
-      "title": "Acreage Mowing Northern Rivers — The Ultimate Regional Guide",
+      "title": "Acreage Mowing Northern Rivers: The Ultimate Regional Guide",
       "keyword": "acreage mowing Northern Rivers",
       "tag": "Regional",
       "img": "g1-wide-paddock.jpg"
     },
     {
-      "title": "Zero Turn vs Autonomous Mowing — What's Best for Acreage?",
+      "title": "Zero Turn vs Autonomous Mowing: What's Best for Acreage?",
       "keyword": "zero turn mowing Byron hinterland",
       "tag": "Comparison",
       "img": "commercial-hero.jpg"
     },
     {
-      "title": "Ride-On Mowing Service Byron Bay — Why Autonomous Beats It",
+      "title": "Ride-On Mowing Service Byron Bay: Why Autonomous Beats It",
       "keyword": "ride-on mowing service Byron Bay",
       "tag": "Comparison",
       "img": "result.jpg"
@@ -322,31 +326,37 @@
       "img": "hero.jpg"
     },
     {
-      "title": "Park and Reserve Mowing — How Councils Use Autonomous Technology",
+      "title": "Park and Reserve Mowing: How Councils Use Autonomous Technology",
       "keyword": "council grounds mowing Northern Rivers",
       "tag": "Commercial",
       "img": "commercial-park.jpg"
     },
     {
-      "title": "Acreage Mowing in Tyagarah — Coastal Hinterland Property Guide",
+      "title": "Acreage Mowing in Tyagarah: Coastal Hinterland Property Guide",
       "keyword": "acreage mowing Tyagarah",
       "tag": "Suburb",
-      "img": "hinterland-aerial.jpg"
+      "img": "hinterland-aerial.jpg",
+      "status": "held",
+      "holdReason": "Suburb pages folded into service-area.html on 14 Sep 2026 (zero clicks). Decide whether a suburb blog post adds anything before releasing."
     },
     {
-      "title": "Acreage Mowing in Clunes — Valley Property Maintenance Guide",
+      "title": "Acreage Mowing in Clunes: Valley Property Maintenance Guide",
       "keyword": "acreage mowing Clunes",
       "tag": "Suburb",
-      "img": "g1-striping.jpg"
+      "img": "g1-striping.jpg",
+      "status": "held",
+      "holdReason": "Suburb pages folded into service-area.html on 14 Sep 2026 (zero clicks). Decide whether a suburb blog post adds anything before releasing."
     },
     {
-      "title": "Acreage Mowing in Teven — Rural Valley Property Guide",
+      "title": "Acreage Mowing in Teven: Rural Valley Property Guide",
       "keyword": "acreage mowing Teven",
       "tag": "Suburb",
-      "img": "g1-wide-paddock.jpg"
+      "img": "g1-wide-paddock.jpg",
+      "status": "held",
+      "holdReason": "Suburb pages folded into service-area.html on 14 Sep 2026 (zero clicks). Decide whether a suburb blog post adds anything before releasing."
     },
     {
-      "title": "Fire Hazard Reduction Mowing — How Autonomous Technology Helps",
+      "title": "Fire Hazard Reduction Mowing: How Autonomous Technology Helps",
       "keyword": "fire hazard mowing Northern Rivers",
       "tag": "Safety",
       "img": "hinterland-aerial.jpg"
@@ -358,28 +368,32 @@
       "img": "g1-wide-paddock.jpg"
     },
     {
-      "title": "What Is a machine Autonomous Mower? A Buyer's Guide",
+      "title": "What Is an Autonomous Mower? A Buyer's Guide",
       "keyword": "commercial-grade autonomous mower",
       "tag": "Product",
       "img": "g1-closeup.png"
     },
     {
-      "title": "How Autonomous Mowing Works — A Simple Explainer for Property Owners",
+      "title": "How Autonomous Mowing Works: A Simple Explainer for Property Owners",
       "keyword": "how autonomous mowing works",
       "tag": "Education",
       "img": "demo-scene.jpg"
     },
     {
-      "title": "Acreage Mowing in Nashua — Large Block Property Guide",
+      "title": "Acreage Mowing in Nashua: Large Block Property Guide",
       "keyword": "acreage mowing Nashua",
       "tag": "Suburb",
-      "img": "g1-wide-paddock.jpg"
+      "img": "g1-wide-paddock.jpg",
+      "status": "held",
+      "holdReason": "Suburb pages folded into service-area.html on 14 Sep 2026 (zero clicks). Decide whether a suburb blog post adds anything before releasing."
     },
     {
-      "title": "Acreage Mowing in Eureka — Northern Rivers Rural Property Guide",
+      "title": "Acreage Mowing in Eureka: Northern Rivers Rural Property Guide",
       "keyword": "acreage mowing Eureka",
       "tag": "Suburb",
-      "img": "hinterland-aerial.jpg"
+      "img": "hinterland-aerial.jpg",
+      "status": "held",
+      "holdReason": "Suburb pages folded into service-area.html on 14 Sep 2026 (zero clicks). Decide whether a suburb blog post adds anything before releasing."
     }
   ],
   "gates": {
