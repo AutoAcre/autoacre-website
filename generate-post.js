@@ -348,9 +348,16 @@ if (process.argv.includes('--check-posts')) {
       img: p.img,
       excerpt: metaM ? metaM[1] : '',
     });
-    if (fails.length) { bad++; console.log('\n' + p.slug); fails.forEach(x => console.log('   - ' + x)); }
+    const hard = fails.filter(x => !x.startsWith('word count'));
+    const soft = fails.filter(x => x.startsWith('word count'));
+    if (hard.length || soft.length) {
+      if (hard.length) bad++;
+      console.log('\n' + p.slug);
+      hard.forEach(x => console.log('   - ' + x));
+      soft.forEach(x => console.log('   ~ ' + x + '  [advisory for published posts: Section 3 does not require re-cutting]'));
+    }
   }
-  console.log('\n' + bad + ' of ' + published.length + ' published posts fail the self-check.');
+  console.log('\n' + bad + ' of ' + published.length + ' published posts fail the Section 3 retrofit checks.');
   process.exit(0);
 }
 
@@ -579,22 +586,44 @@ function buildBlogHtml(published) {
 }
 
 // ── Build sitemap ─────────────────────────────────────────────────────────────
+// Lists every real page on the site. Utility pages are skipped, and so is any
+// path that _redirects sends elsewhere, since a sitemap should never list a URL
+// that only redirects. Blog posts come from published-posts.json.
 function buildSitemap(published) {
   const today = new Date().toISOString().split('T')[0];
-  const staticUrls = [
-    ['https://autoacre.com.au/', '1.0', 'weekly'],
-    ['https://autoacre.com.au/residential.html', '0.9', 'monthly'],
-    ['https://autoacre.com.au/commercial.html', '0.9', 'monthly'],
-    ['https://autoacre.com.au/about.html', '0.8', 'monthly'],
-    ['https://autoacre.com.au/blog.html', '0.9', 'weekly'],
-    ['https://autoacre.com.au/demo.html', '0.8', 'monthly'],
-    ['https://autoacre.com.au/quote.html', '0.8', 'monthly'],
-  ];
-  const suburbs = ['bangalow','ewingsdale','newrybar','alstonville','teven','tintenbar','brooklet','clunes','nashua','eureka','federal','myocum','tyagarah','mullumbimby'];
-  const suburbUrls = suburbs.map(s => [`https://autoacre.com.au/mowing-${s}.html`, '0.8', 'monthly']);
-  const postUrls = published.map(p => [`https://autoacre.com.au/${p.slug}.html`, '0.7', 'monthly']);
-  const all = [...staticUrls, ...suburbUrls, ...postUrls];
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${all.map(([u, p, f]) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${f}</changefreq>\n    <priority>${p}</priority>\n  </url>`).join('\n')}\n</urlset>`;
+  const SKIP = /^(404|thank-you.*|privacy|terms|blog-.*)\.html$/;
+  const redirected = new Set();
+  const rp = path.join(__dirname, '_redirects');
+  if (fs.existsSync(rp)) {
+    for (const line of fs.readFileSync(rp, 'utf8').split('\n')) {
+      const m = line.trim().match(/^(\/\S+)\s+\S+\s+\d{3}/);
+      if (m) redirected.add(m[1].replace(/^\//, ''));
+    }
+  }
+  const PRIORITY = {
+    'index.html': ['1.0', 'weekly'], 'commercial.html': ['0.9', 'monthly'], 'residential.html': ['0.9', 'monthly'],
+    'solar-farm-mowing.html': ['0.9', 'monthly'], 'commercial-robotic-mower-buyers-guide-australia.html': ['0.9', 'monthly'],
+    'best-robot-mower-for-large-properties.html': ['0.9', 'monthly'], 'blog.html': ['0.9', 'weekly'],
+    'about.html': ['0.8', 'monthly'], 'demo.html': ['0.8', 'monthly'], 'quote.html': ['0.8', 'monthly'],
+    'service-area.html': ['0.8', 'monthly'],
+  };
+  const pages = fs.readdirSync(__dirname)
+    .filter(f => f.endsWith('.html') && !SKIP.test(f) && !redirected.has(f))
+    .sort();
+  const urls = pages.map(f => {
+    const [p, c] = PRIORITY[f] || ['0.7', 'monthly'];
+    return [f === 'index.html' ? 'https://autoacre.com.au/' : 'https://autoacre.com.au/' + f, p, c];
+  });
+  for (const p of published) urls.push(['https://autoacre.com.au/' + p.slug + '.html', '0.7', 'monthly']);
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(([u, p, f]) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${f}</changefreq>\n    <priority>${p}</priority>\n  </url>`).join('\n')}\n</urlset>`;
+}
+
+// CLI: node generate-post.js --sitemap  rewrites sitemap.xml without publishing anything
+if (process.argv.includes('--sitemap')) {
+  const published = JSON.parse(fs.readFileSync(path.join(__dirname, 'published-posts.json'), 'utf8'));
+  fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), buildSitemap(published));
+  console.log('sitemap.xml rebuilt');
+  process.exit(0);
 }
 
 // Section 1: the four publishing gates. All four must be true or nothing publishes.
