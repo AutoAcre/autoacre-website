@@ -856,6 +856,16 @@ body.home .dial-fee-value {
   color: var(--accent);
   font-weight: 500;
 }
+body.home .dial-fee { flex-wrap: wrap; gap: 8px 20px; }
+body.home .dial-fee > .label { flex: 1 1 auto; min-width: 0; }
+body.home .dial-fee-value { flex: 0 0 auto; margin-left: auto; font-variant-numeric: tabular-nums; white-space: nowrap; }
+body.home .dial-fee-note {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 12px 0 0;
+  max-width: 52ch;
+}
 
 /* Range slider */
 body.home input[type="range"] {
@@ -1103,6 +1113,7 @@ body.home .roi-snapshot.is-negative .roi-snapshot-stat-value {
   body.home .roi-controls { grid-template-columns: 1fr; }
   body.home .roi-readouts { grid-template-columns: repeat(2, 1fr); }
   body.home .dial-card, body.home .roi { padding: 24px; }
+  body.home .dial-fee-value { font-size: 20px; margin-left: 0; }
   body.home .numbers-header { flex-direction: column; }
 }
 

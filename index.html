@@ -55,7 +55,7 @@
   "image": "https://autoacre.com.au/img/og-image.png",
   "telephone": "+61499649094",
   "email": "ben@autoacre.com.au",
-  "priceRange": "Quoted after site assessment",
+  "priceRange": "Priced against your current mowing bill after a site assessment",
   "currenciesAccepted": "AUD",
   "paymentAccepted": "Credit Card, Bank Transfer",
   "founder": { "@id": "https://autoacre.com.au/#ben-bonifant" },
@@ -199,7 +199,7 @@
    "@id": "https://autoacre.com.au/#offer-management-fee",
    "name": "Monthly Management Fee (tiered by acreage)",
    "priceCurrency": "AUD",
-   "priceRange": "Quoted after site assessment",
+   "priceRange": "Priced against your current mowing bill after a site assessment",
    "availability": "https://schema.org/PreOrder",
    "availabilityStarts": "2027-03-01",
    "areaServed": { "@type": "AdministrativeArea", "name": "Northern Rivers, NSW" }
@@ -742,9 +742,10 @@
       <input type="range" id="acreage-slider" min="2.5" max="10" step="0.5" value="5" aria-label="Property acreage in acres">
       <div class="dial-ticks"><span>2.5 ac</span><span>5 ac</span><span>7 ac</span><span>10 ac</span></div>
       <div class="dial-fee">
-       <span class="label">Management fee / month</span>
-       <span class="dial-fee-value">Quoted after site assessment</span>
+       <span class="label">Typical fortnightly contractor, per year</span>
+       <span class="dial-fee-value">about AUD $<span id="dial-contractor-value">15,000</span></span>
       </div>
+      <p class="dial-fee-note">Based on around AUD $250 per acre a month, the Northern Rivers acreage benchmark. Your own mowing bills replace this figure at the site assessment.</p>
      </div>
     </div>
    </div>
@@ -753,8 +754,8 @@
     <div class="roi-header">
      <div class="label-strong">What it costs</div>
     </div>
-    <p>Two things drive the numbers. What you pay a contractor now, and how much of your block is actually mowable. We work both out on site, then you get the figures in writing.</p>
-    <p><a href="/quote">Book a site assessment</a> and we'll price it against your own mowing bills.</p>
+    <p>One system, bought once. One monthly fee that scales with the same acreage as the figure above. Two things set it: what you pay for mowing now, and how much of your block is actually mowable.</p>
+    <p><a href="/quote">Book a site assessment</a> and we'll price it against your own mowing bills, in writing.</p>
    </div>
 
    <!-- Calculator readout targets retained for /js/app.js. Kept out of the page while pricing is quoted on site. -->

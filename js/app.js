@@ -46,6 +46,11 @@
     }
 
     setText('dial-acres-value', acres % 1 === 0 ? acres : acres.toFixed(1));
+    // Typical fortnightly contractor cost on this acreage: the AUD $250/acre/month
+    // Northern Rivers benchmark (also stated on acreage-robot-mowing-systems.html),
+    // rounded to the nearest AUD $500. Their side of the maths, not ours.
+    var contractorYear = Math.round((acres * 250 * 12) / 500) * 500;
+    setText('dial-contractor-value', contractorYear.toLocaleString('en-AU'));
     var meta = $('dial-meta');
     if (meta) {
       meta.textContent = '≈ ' + Math.round(sqM).toLocaleString() +
@@ -97,7 +102,6 @@
     document.body.classList.add('js-enhanced');
     updateDial();
     setupDial();
-    setupROI();
     setupStickyHeader();
   }
 
