@@ -18,182 +18,166 @@
 {
  "@context": "https://schema.org",
  "@graph": [
- {
-  "@type": "WebPage",
-  "@id": "https://autoacre.com.au/solar-farm-mowing.html#webpage",
-  "url": "https://autoacre.com.au/solar-farm-mowing.html",
-  "name": "Automated Vegetation Management for Solar Farms: How Robotic Mowing Works Under Panels",
-  "description": "How automated vegetation management works on Australian solar farms: what an RTK robot mower can cut under and between panel rows, what stays with the crew, fire controls, night mowing and what a site assessment checks. Honest limits included.",
-  "inLanguage": "en-AU",
-  "isPartOf": {
-  "@id": "https://autoacre.com.au/#website"
-  },
-  "about": {
-  "@id": "https://autoacre.com.au/#organization"
-  },
-  "mainEntity": {
-  "@id": "https://autoacre.com.au/solar-farm-mowing.html#service"
-  },
-  "speakable": {
-  "@type": "SpeakableSpecification",
-  "cssSelector": [
-   ".page-hero-text h1",
-   ".page-hero-text p",
-   ".reason h3",
-   ".reason p"
-  ]
-  },
-  "mentions": [
   {
-   "@id": "https://autoacre.com.au/#organization"
+   "@type": "WebPage",
+   "@id": "https://autoacre.com.au/solar-farm-mowing.html#webpage",
+   "url": "https://autoacre.com.au/solar-farm-mowing.html",
+   "name": "Automated Vegetation Management for Solar Farms: How Robotic Mowing Works Under Panels",
+   "description": "How automated vegetation management works on Australian solar farms: what an RTK robot mower can cut under and between panel rows, what stays with the crew, fire controls, night mowing and what a site assessment checks. Honest limits included.",
+   "inLanguage": "en-AU",
+   "isPartOf": {
+    "@id": "https://autoacre.com.au/#website"
+   },
+   "about": {
+    "@id": "https://autoacre.com.au/#organization"
+   },
+   "mainEntity": {
+    "@id": "https://autoacre.com.au/solar-farm-mowing.html#service"
+   },
+   "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+     ".page-hero-text h1",
+     ".page-hero-text p",
+     ".reason h3",
+     ".reason p"
+    ]
+   },
+   "mentions": [
+    {
+     "@id": "https://autoacre.com.au/#organization"
+    },
+    {
+     "@id": "https://autoacre.com.au/#service-commercial"
+    },
+    {
+     "@id": "https://autoacre.com.au/#product-platform"
+    }
+   ]
   },
   {
-   "@id": "https://autoacre.com.au/#service-commercial"
+   "@type": "Service",
+   "@id": "https://autoacre.com.au/solar-farm-mowing.html#service",
+   "name": "Automated vegetation management for solar farms",
+   "serviceType": "Solar Farm Vegetation Management",
+   "category": "Commercial Vegetation Management",
+   "provider": {
+    "@id": "https://autoacre.com.au/#organization"
+   },
+   "areaServed": [
+    {
+     "@type": "AdministrativeArea",
+     "name": "Northern Rivers, NSW"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "New South Wales, Australia"
+    }
+   ],
+   "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Solar farm operators, asset managers, and operations & maintenance contractors"
+   },
+   "description": "Operated robotic mowing for solar farms: a low-profile RTK mower does the bulk cutting under and between panel rows on a schedule, with a local technician handling edges, posts and structures. Certification in progress. Scope confirmed by site assessment.",
+   "isRelatedTo": {
+    "@id": "https://autoacre.com.au/#service-commercial"
+   },
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AUD",
+    "availability": "https://schema.org/InStock",
+    "areaServed": {
+     "@type": "AdministrativeArea",
+     "name": "Northern Rivers, NSW"
+    }
+   }
   },
   {
-   "@id": "https://autoacre.com.au/#product-platform"
+   "@type": "FAQPage",
+   "@id": "https://autoacre.com.au/solar-farm-mowing.html#faq",
+   "isPartOf": {
+    "@id": "https://autoacre.com.au/solar-farm-mowing.html#webpage"
+   },
+   "about": {
+    "@id": "https://autoacre.com.au/#organization"
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Can a robotic mower mow under solar panels?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, wherever there is at least 75 centimetres of clearance. A low-profile RTK machine runs the strip under the modules that a ride-on cannot reach. Close-in work around posts and cable trays is still a person's job."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How many autonomous mowers does a solar farm need?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Mowable acres divided by about eight acres a day per machine, checked against the mowing cycle with slack for weather. A fictional 500-acre site on a 30-day cycle needs three machines, not one. Size for spring growth, not winter."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is an autonomous mower a fire risk on a solar farm?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The machine has no spark detection, so fire risk is managed operationally: no-go zones on gravel margins, charging stations on cleared ground, no charging on total fire ban days. Its contribution is a consistent cut height, which is fuel-load control that does not lapse."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the mower lose positioning between panel rows?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Positioning is RTK from a local base, accurate to about two centimetres. Panels cut radio range to roughly a kilometre, so large sites run several bases. Short dropouts are ridden through; after a few minutes the machine stops and alerts rather than guessing."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can we keep grazing sheep on the site?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Grazing and mowing are complementary. Sheep take the open growth down and the machine does the under-panel strip and the scheduled cut they leave behind. We plan the cycle around the grazing rotation."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is the system certified for use on energised sites?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Certification is in progress. We do not describe the machine as certified or compliant until the documents are in hand, and we will show you what exists in writing at the assessment. Public liability and the operating controls are set out in the trial agreement before anything moves."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://autoacre.com.au/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Commercial",
+     "item": "https://autoacre.com.au/commercial.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Solar farm vegetation management",
+     "item": "https://autoacre.com.au/solar-farm-mowing.html"
+    }
+   ]
   }
-  ]
- },
- {
-  "@type": "Service",
-  "@id": "https://autoacre.com.au/solar-farm-mowing.html#service",
-  "name": "Solar Farm Autonomous Vegetation Management",
-  "serviceType": "Solar Farm Vegetation Management",
-  "category": "Commercial Vegetation Management",
-  "provider": {
-  "@id": "https://autoacre.com.au/#organization"
-  },
-  "areaServed": [
-  {
-   "@type": "AdministrativeArea",
-   "name": "Northern Rivers, NSW"
-  },
-  {
-   "@type": "AdministrativeArea",
-   "name": "New South Wales, Australia"
-  }
-  ],
-  "audience": {
-  "@type": "BusinessAudience",
-  "audienceType": "Solar farm operators, asset managers, and operations & maintenance contractors"
-  },
-  "description": "Autonomous mowing service for solar farm vegetation management — designed for the row spacing, panel proximity, and continuous coverage requirements that conventional ride-on mowing cannot safely meet.",
-  "isRelatedTo": {
-  "@id": "https://autoacre.com.au/#service-commercial"
-  },
-  "offers": {
-  "@type": "Offer",
-  "priceCurrency": "AUD",
-  "availability": "https://schema.org/InStock",
-  "areaServed": {
-   "@type": "AdministrativeArea",
-   "name": "Northern Rivers, NSW"
-  }
-  }
- },
- {
-  "@type": "FAQPage",
-  "@id": "https://autoacre.com.au/solar-farm-mowing.html#faq",
-  "isPartOf": {
-  "@id": "https://autoacre.com.au/solar-farm-mowing.html#webpage"
-  },
-  "about": {
-  "@id": "https://autoacre.com.au/#organization"
-  },
-  "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "Can autonomous mowers actually navigate solar farm rows safely?",
-   "acceptedAnswer": {
-   "@type": "Answer",
-   "text": "Yes — the platform AutoAcre operates uses GPS-RTK navigation accurate to centimetre level, with mapped row corridors that the unit physically cannot deviate from. Panel-strike risk is effectively zero compared to operator-driven ride-on mowing, where the leading cause of damage is misjudged turns near panel edges."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "How does autonomous mowing handle solar farm slopes?",
-   "acceptedAnswer": {
-   "@type": "Answer",
-   "text": "The commercial-grade autonomous mower is rated to 30 degrees, well above the typical ride-on safe operating limit of 15-20 degrees. Many Australian solar farms are sited on rolling rural land where conventional ride-on mowing requires brushcutter follow-up; the autonomous mower covers those sections directly."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "What about fire risk under solar panels?",
-   "acceptedAnswer": {
-   "@type": "Answer",
-   "text": "Tall dry vegetation under arrays is a known Australian solar fire-load risk. Frequent autonomous mowing maintains a continuous low height profile rather than the saw-tooth pattern of contractor cycles — keeping fuel load consistently low rather than periodically violating it. AutoAcre's deployment can be configured to enforce a specific maximum height standard."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Can the autonomous mower meet our PPA / O&M vegetation height requirements?",
-   "acceptedAnswer": {
-   "@type": "Answer",
-   "text": "Yes. Most solar PPAs specify a maximum allowable vegetation height (commonly 150-300mm). The commercial-grade autonomous mower's daily operation cycle keeps height at a constant set-point rather than allowing it to grow up to a fortnightly cut-down. AutoAcre configures the height target during deployment."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "How does this compare to fortnightly contractor mowing?",
-   "acceptedAnswer": {
-   "@type": "Answer",
-   "text": "Cost-equivalent or lower over a 12-month period for sites above ~100 acres, given the elimination of operator scheduling, weather delays, panel-strike insurance, and brushcutter follow-up on slopes. The bigger gain is reliability — autonomous operation doesn't have weather windows, sick days, or rebooking gaps."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Does AutoAcre service solar farms outside the Northern Rivers?",
-   "acceptedAnswer": {
-   "@type": "Answer",
-   "text": "AutoAcre's primary service area is Byron Shire and Ballina Shire, but AutoAcre's commercial operations extend to wider Northern NSW for commercial deployments. Solar farm projects are scoped on a per-site basis — contact AutoAcre to discuss your site location and scale."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "What about sheep grazing as an alternative — why mowing?",
-   "acceptedAnswer": {
-   "@type": "Answer",
-   "text": "Sheep grazing is a viable solar vegetation strategy at some sites but introduces livestock management overhead, infrastructure (water, fencing, shade), and seasonal performance variability. Autonomous mowing is a simpler operational model with no livestock dependencies and predictable per-hectare cost."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "How are autonomous units secured on remote solar sites?",
-   "acceptedAnswer": {
-   "@type": "Answer",
-   "text": "GPS geofencing, PIN-locked operating systems, and remote disable. If a unit is moved off the mapped site without authorisation, it locks itself and AutoAcre is notified. Theft of working autonomous mowers is rare because they are useless without their dock and operating account."
-   }
-  }
-  ]
- },
- {
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-  {
-   "@type": "ListItem",
-   "position": 1,
-   "name": "Home",
-   "item": "https://autoacre.com.au/"
-  },
-  {
-   "@type": "ListItem",
-   "position": 2,
-   "name": "Commercial",
-   "item": "https://autoacre.com.au/commercial.html"
-  },
-  {
-   "@type": "ListItem",
-   "position": 3,
-   "name": "Solar Farm Mowing",
-   "item": "https://autoacre.com.au/solar-farm-mowing.html"
-  }
-  ]
- }
  ]
 }
- </script>
+</script>
 
  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
