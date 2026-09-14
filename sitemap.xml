@@ -259,6 +259,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://autoacre.com.au/how-the-machine-sees.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://autoacre.com.au/rtk-vs-boundary-wire.html</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
