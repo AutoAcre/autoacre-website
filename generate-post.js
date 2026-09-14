@@ -189,8 +189,10 @@ const BLOCKED_NAMES = [
   'Yarbo', 'Renu Robotics', 'Renubot', 'Swap Robotics', 'Directed Machines',
   'FJD', 'RM21', 'Husqvarna', 'CEORA', 'Echo Robotics', 'TM-2050', 'Raymo',
   // Clients, prospects and their sites. Nothing said in private appears in public.
+  // (Burdekin, Chinchilla and Western Downs are public Queensland regions, not
+  // site names, and a regional solar post is entitled to name them.)
   'RES Group', 'Emerald Solar', 'Wolff', 'Stockland', 'Misty Mountain',
-  'Aura', 'Burdekin', 'Chinchilla', 'Western Downs', 'McLeans Ridges', 'Kunghur',
+  'Aura', 'McLeans Ridges', 'Kunghur',
   'Gracewood',
   // People. Clients, contacts, advisers.
   'Macpherson', 'Reece McDonald', "O'Rorke", 'Niraj', 'Peter Crabb',
@@ -270,7 +272,11 @@ function selfCheck(post) {
   // 3. compliance language
   for (const sen of sentences) {
     const m = sen.match(/\b(complies|compliant|certified|approved)\b/i);
-    if (m && !new RegExp('not yet[^.]{0,20}' + m[1], 'i').test(sen)) {
+    // Section 2.3 is about claims for OUR machine and service. A solar farm's own
+    // compliance records, or a quoted contrast, are not that. Flag only when the
+    // sentence also names the machine, the service, or certification itself.
+    const aboutUs = /\b(machine|mower|unit|platform|autoacre|our service|certification|for public|public spaces|public use)\b/i.test(sen);
+    if (m && aboutUs && !new RegExp('not yet[^.]{0,20}' + m[1], 'i').test(sen)) {
       fails.push('compliance claim "' + m[1] + '" without "not yet"');
       break;
     }
@@ -681,6 +687,9 @@ async function main() {
   if (topic.customBody) {
     console.log('Using pre-written custom body (skipping AI generation)');
     // Convert plain text paragraphs to HTML — split by double newlines
+    const inline = t => t
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
     const paragraphs = topic.customBody.split(/\n+/).filter(p => p.trim());
     content = paragraphs.map(p => {
       const trimmed = p.trim();
@@ -695,9 +704,10 @@ async function main() {
       if (trimmed.startsWith('*') && trimmed.endsWith('*') && !trimmed.startsWith('**')) {
         return `<p><em>${trimmed.slice(1, -1)}</em></p>`;
       }
-      // Regular paragraph — convert inline **bold** to <strong>
-      const withBold = trimmed.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      return `<p>${withBold}</p>`;
+      // Sub-heading: a line starting with ### becomes an h3 (the FAQ block uses it)
+      if (trimmed.startsWith('### ')) return `<h3>${inline(trimmed.slice(4))}</h3>`;
+      // Regular paragraph: inline bold and markdown links
+      return `<p>${inline(trimmed)}</p>`;
     }).join('\n');
   } else {
     content = await generateContent(topic);
@@ -729,6 +739,12 @@ async function main() {
 
   // Section 2.5 self-check. On any failure the slot is held, not filled.
   const fails = selfCheck(post);
+  if (process.argv.includes('--dry-run')) {
+    console.log('DRY RUN: ' + post.title);
+    console.log('  slug ' + post.slug + '.html | image ' + post.img + ' | ' + words.length + ' words | meta ' + meta.length + ' chars | ' + post.faq.length + ' FAQ');
+    console.log(fails.length ? '  WOULD HOLD SLOT:\n   - ' + fails.join('\n   - ') : '  self-check PASSED, would publish');
+    process.exit(fails.length ? 1 : 0);
+  }
   if (fails.length) {
     console.error('SELF-CHECK FAILED for "' + post.title + '". Slot held, nothing written.');
     fails.forEach(x => console.error('  - ' + x));
