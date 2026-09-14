@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <!--
  PHASE 2 AUTHORITY PAGE — DRAFT 2026-05-06
- URL: /acreage-robot-mowing-systems.html
+ URL: /rtk-robot-mower-installation.html
 
- Role: Phase 2 HUB authority page — whole-system / Buy + Manage offer authority.
- Primary keyword: "acreage robot mowing systems" / "autonomous mowing system"
- Intent: Authority (per spec Section 5) — single intent: explain the whole AutoAcre offer end-to-end.
- Word target: 1800-3000 (per spec Section 8). Aim ~2200.
+ Role: Technology + installation authority — "how does this actually get installed and work?"
+ Primary keyword: "RTK robot mower installation"
+ Intent: Authority — single intent: technology and installation depth.
+ Word target: 1800-3000.
+
+ Distinct from /rtk-vs-boundary-wire (Phase 4 comparison page). This page owns INSTALLATION
+ keyword space; the comparison page owns the head-to-head keyword. Cross-link, don't cannibalise.
 
  Internal linking (per spec Section 7):
-   - Receives links from: homepage intent split, /3-10-acre-autonomous-mowing-systems (Phase 2 spoke),
-     /rtk-robot-mower-installation (Phase 2 spoke), /best-robot-mower-for-large-properties (Phase 4)
-   - Links to: ROI Calculator (Conversion), Book Site Assessment (Conversion),
-     /3-10-acre-autonomous-mowing-systems (size deep-dive), /rtk-robot-mower-installation (tech deep-dive)
-   - Per spec: NO random cross-linking; every link is hierarchy-purposeful.
+   - Receives links from: homepage technology section, /rtk-vs-boundary-wire (Phase 4),
+     how-to-prepare-acreage, how-to-assess-if-your-property-is-right, /acreage-robot-mowing-systems
+   - Links to: /acreage-robot-mowing-systems (whole-system view), /rtk-vs-boundary-wire (Phase 4 comparison),
+     ROI Calculator, Book Site Assessment
 
- Phase dependencies (links resolve once Phase 2 batch ships):
-   - /3-10-acre-autonomous-mowing-systems (Phase 2 spoke — being drafted next)
-   - /rtk-robot-mower-installation (Phase 2 spoke — being drafted next)
+ Phase dependencies:
+   - /rtk-vs-boundary-wire (Phase 4 comparison — not yet built)
    - /book-site-assessment (Phase 5 rename — currently /book-site-assessment)
    - /robot-mower-roi-calculator (Phase 5 rename — currently /robot-mower-roi-calculator)
 -->
@@ -33,14 +34,14 @@
    gtag('config', 'G-QV4RX5RY79');
  </script>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Acreage Robot Mowing Systems — RTK + LiDAR Buy + Manage Offer | AutoAcre</title>
- <meta name="description" content="The whole AutoAcre offer in one place: RTK + LiDAR autonomous mowing systems for 2.5–10 acre acreage, sold under our Buy + Manage offer. Buy the system outright, AutoAcre manages it under a monthly fee that scales with mowable acreage. Northern Rivers, NSW.">
- <link rel="canonical" href="https://autoacre.com.au/acreage-robot-mowing-systems.html">
+ <title>LiDAR on Robot Mowers: What It Detects, What It Misses, and How It Compares to Radar | AutoAcre</title>
+ <meta name="description" content="How LiDAR obstacle detection works on an autonomous mower, how it compares with radar and cameras, and the limits no sensor on the market solves yet.">
+ <link rel="canonical" href="https://autoacre.com.au/lidar-technology.html">
 
- <meta property="og:title" content="Acreage Robot Mowing Systems — AutoAcre Buy + Manage">
- <meta property="og:description" content="RTK + LiDAR autonomous mowing systems for 2.5–10 acre Northern Rivers acreage. Buy the system, AutoAcre manages it.">
- <meta property="og:image" content="https://autoacre.com.au/img/aerial-prestige.jpg">
- <meta property="og:url" content="https://autoacre.com.au/acreage-robot-mowing-systems.html">
+ <meta property="og:title" content="LiDAR on Robot Mowers: What It Detects, What It Misses, and How It Compares to Radar">
+ <meta property="og:description" content="How LiDAR obstacle detection works on an autonomous mower, how it compares with radar and cameras, and the limits no sensor on the market solves yet.">
+ <meta property="og:image" content="https://autoacre.com.au/img/g1-wide-paddock.jpg">
+ <meta property="og:url" content="https://autoacre.com.au/lidar-technology.html">
  <meta property="og:type" content="website">
  <meta property="og:locale" content="en_AU">
 
@@ -50,9 +51,9 @@
  "@graph": [
   {
    "@type": "WebPage",
-   "@id": "https://autoacre.com.au/acreage-robot-mowing-systems.html#webpage",
-   "url": "https://autoacre.com.au/acreage-robot-mowing-systems.html",
-   "name": "Acreage Robot Mowing Systems — RTK + LiDAR Buy + Manage Offer | AutoAcre",
+   "@id": "https://autoacre.com.au/lidar-technology.html#webpage",
+   "url": "https://autoacre.com.au/lidar-technology.html",
+   "name": "LiDAR on Robot Mowers: What It Detects, What It Misses, and How It Compares to Radar",
    "inLanguage": "en-AU",
    "isPartOf": {
     "@id": "https://autoacre.com.au/#website"
@@ -61,24 +62,9 @@
     "@id": "https://autoacre.com.au/#organization"
    },
    "mainEntity": {
-    "@id": "https://autoacre.com.au/#service-residential"
+    "@id": "https://autoacre.com.au/#product-platform"
    },
-   "mentions": [
-    {
-     "@id": "https://autoacre.com.au/#product-platform"
-    },
-    {
-     "@id": "https://autoacre.com.au/#offer-management-fee"
-    }
-   ],
-   "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [
-     ".page-hero-text h1",
-     ".page-hero-text p",
-     ".faq-answer-inner"
-    ]
-   }
+   "description": "How LiDAR obstacle detection works on an autonomous mower, how it compares with radar and cameras, and the limits no sensor on the market solves yet."
   },
   {
    "@type": "BreadcrumbList",
@@ -92,59 +78,61 @@
     {
      "@type": "ListItem",
      "position": 2,
-     "name": "Acreage Solutions",
-     "item": "https://autoacre.com.au/acreage-robot-mowing-systems.html"
+     "name": "LiDAR Technology",
+     "item": "https://autoacre.com.au/lidar-technology.html"
     }
    ]
   },
   {
    "@type": "FAQPage",
-   "@id": "https://autoacre.com.au/acreage-robot-mowing-systems.html#faq",
-   "isPartOf": {
-    "@id": "https://autoacre.com.au/acreage-robot-mowing-systems.html#webpage"
-   },
-   "about": {
-    "@id": "https://autoacre.com.au/#organization"
-   },
+   "@id": "https://autoacre.com.au/lidar-technology.html#faq",
    "mainEntity": [
     {
      "@type": "Question",
-     "name": "How is AutoAcre's system different from a consumer robot mower?",
+     "name": "Does LiDAR mean the mower will detect my kids or my dog?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Most robot mowers sold in Australia are built for suburban yards, typically a quarter to half an acre, and rely on a buried boundary wire or consumer-grade GPS. They are not built for the slope, area or terrain of a 2.5 to 10 acre block. AutoAcre's systems are commercial-grade: RTK positioning accurate to about two centimetres, LiDAR obstacle avoidance, a planning capacity of about 8 acres a day and mowing slopes to 30 degrees. Different category of equipment for a different category of property."
+      "text": "It gives the machine a far better chance than radar or a bumper alone, because it reads shape and height rather than just presence. It is not a guarantee, and nobody in this market should offer you one. Tall grass hides low objects from every sensor, and a child sitting down is a harder shape than an adult standing up. Our rule is fenced and controlled ground, with mowing scheduled for when people are not there. That rule exists because of exactly this."
      }
     },
     {
      "@type": "Question",
-     "name": "Can I cancel the management fee?",
+     "name": "Is LiDAR better than radar?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Yes. The management agreement is month-to-month, 30 days notice, no lock-in. The mower is yours regardless. Cancelling management means you run it yourself: firmware, RTK base station configuration, blade changes and diagnostics. Most owners keep it for that reason."
+      "text": "Better at different things. LiDAR reads shape, which is what you need to tell one object from another. Radar is genuinely more robust in dust, fog, heavy rain and low sun, which is why agricultural machines rely on it. For rows of trees or tunnel alleyways, radar alone is often fine. For anywhere people walk, shape matters and radar alone is a materially weaker safety case."
      }
     },
     {
      "@type": "Question",
-     "name": "What if the mower breaks?",
+     "name": "Does the mower navigate using LiDAR?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Repair coordination is part of the management fee. If the unit develops a fault, AutoAcre handles diagnosis, parts sourcing and either a field repair or a factory return. Warranty terms and the spares we hold locally are set out in your quote, not assumed."
+      "text": "No, and this catches people out. Navigation is RTK: the machine follows a path it was mapped onto, positioned by satellite to about two centimetres. LiDAR is the obstacle layer on top of that. The machine we have selected and most of its competitors all need a full boundary map walked or driven before the first cut, regardless of what sensors they carry. How RTK positioning works and how it is installed."
      }
     },
     {
      "@type": "Question",
-     "name": "What does the ownership picture look like over time?",
+     "name": "Can it mow at night?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "You buy the system once and pay a monthly management fee that scales with mowable acreage. A fortnightly contractor is a bill that keeps arriving with nothing owned at the end. Whether the gap is in your favour depends on what you spend on mowing now and how much of your block is actually mowable, so we work both out at the site assessment rather than promise a number here."
+      "text": "Yes. LiDAR generates its own light and RTK is satellite based, so neither needs daylight. On commercial sites that is usually the point: the machine runs when nobody else is on the ground, and in a Queensland summer it runs in the cool hours rather than the worst of the heat."
      }
     },
     {
      "@type": "Question",
-     "name": "Can I add a second mower for larger properties?",
+     "name": "Does LiDAR detect fire, or hot spots?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Yes. Properties beyond 10 acres are scoped as multi-unit deployments, with each mower given its own zones from a shared RTK base station. Multi-unit work is quoted per site under a separate commercial agreement. Book a site assessment for properties beyond 10 acres."
+      "text": "No. LiDAR measures distance, not heat. The machine has no spark detection and no external fire sensing, and there is nothing on the roadmap for it. Fire risk is managed operationally instead: no-go zones over gravel and high risk margins, charging on cleared ground, and no charging on total fire ban days. Its real contribution to fire risk is a consistent cut height, which is fuel load control that does not lapse."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is a machine with LiDAR approved for use in public spaces?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Sensors and certification are separate questions, and having one does not give you the other. Certification on the machine we have selected is in progress, and we do not describe it as certified, compliant or approved for public spaces until the documents are in hand. Worth knowing when you read anyone's compliance page: an Australian RCM mark covers electrical safety, electromagnetic compatibility and radio as a supplier declaration. It is not machinery safety certification, which is a separate third party test of the part that can hurt someone."
      }
     }
    ]
@@ -173,7 +161,6 @@
 </head>
 <body class="has-light-header">
 
- <!-- HEADER (matches Phase 1 homepage rebuild — no pre-launch banner; soft pre-launch posture) -->
  <header class="site-header" role="banner">
  <div class="header-inner">
   <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
@@ -324,8 +311,8 @@
     </button>
     <ul id="mn-list-systems" class="mn-section-list" role="list">
      <li><a href="/3-10-acre-autonomous-mowing-systems">2.5–10 Acre Systems</a></li>
-     <li><a href="/rtk-robot-mower-installation">RTK Robot Mower Installation</a></li>
-     <li><a href="/acreage-robot-mowing-systems" aria-current="page">Acreage Robot Mowing</a></li>
+     <li><a href="/rtk-robot-mower-installation" aria-current="page">RTK Robot Mower Installation</a></li>
+     <li><a href="/acreage-robot-mowing-systems">Acreage Robot Mowing</a></li>
      <li><a href="/commercial">Commercial Autonomous Mowing</a></li>
      <li><a href="/commercial-robotic-mower-buyers-guide-australia">Commercial Mower Buyer's Guide</a></li>
      <li><a href="/best-robot-mower-for-large-properties">Best Robot Mower for Acreage</a></li>
@@ -426,214 +413,187 @@
 </nav>
 <main>
 
- <!-- PAGE HERO -->
+ <!-- HERO -->
  <section class="page-hero">
   <div class="container">
-   <nav class="breadcrumb" aria-label="Breadcrumb"><a href='/'>Home</a> <span>/</span> Acreage Robot Mowing Systems</nav>
+   <nav class="breadcrumb" aria-label="Breadcrumb"><a href='/'>Home</a> <span>/</span> <a href='/faq'>Insights</a> <span>/</span> LiDAR Technology</nav>
    <div class="page-hero-inner">
     <div class="page-hero-text">
-     <span class="section-label">Acreage Solutions · Buy + Manage</span>
-     <h1>What an autonomous mowing system on your acreage actually is</h1>
-     <p>RTK and LiDAR robotic mowing engineered for 2.5–10 acre Northern Rivers properties — sold and serviced under AutoAcre's Buy + Manage offer. You buy the system outright. AutoAcre operates it ongoing. Below, the whole offer end to end.</p>
+     <span class="section-label">Technology &middot; Obstacle detection</span>
+     <h1>LiDAR on an autonomous mower: what it sees, and what it does not</h1>
+     <p>RTK tells a mower where it is. Obstacle detection tells it what is in front of it, and those are two different jobs done by different hardware. This page covers what LiDAR actually does, how it compares with radar and cameras, what the machine does when it detects something, and the parts of the problem no sensor on the market solves yet.</p>
      <div class="hero-actions">
-      <a class='btn btn--primary btn--large' href='/book-site-assessment'>Book Site Assessment</a>
-      <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator'>Run the ROI Calculator</a>
+      <a class='btn btn--primary btn--large' href='/book-site-assessment'>Book a site assessment</a>
+      <a class='btn btn--secondary btn--large' href='/rtk-robot-mower-installation'>How RTK positioning works</a>
      </div>
     </div>
     <div class="page-hero-image">
-     <img src="./img/aerial-prestige.jpg" alt="Aerial view of a Northern Rivers acreage property maintained by an autonomous mowing system" width="800" height="600" loading="eager" fetchpriority="high">
+     <img src="./img/paddock-dusk-2.jpg" alt="Open paddock at dusk. LiDAR and RTK do not need daylight, so an autonomous mower can work after the light has gone" width="800" height="600" loading="eager" fetchpriority="high">
     </div>
    </div>
   </div>
  </section>
 
- <!-- WHAT'S IN THE SYSTEM -->
- <section class="section section--alt" aria-labelledby="components-heading">
+ <!-- WHAT IS LIDAR -->
+ <section class="section section--alt" aria-labelledby="what-heading">
   <div class="container">
    <div class="section-header reveal">
-    <span class="section-label">What's in the system</span>
-    <h2 id="components-heading">Four parts. One offer.</h2>
-    <p>An "autonomous mowing system" isn't just a robot — it's the four components that together let unattended mowing actually work at acreage scale. AutoAcre supplies and configures all four under a single Buy + Manage offer.</p>
-   </div>
-   <div class="card-grid card-grid--2 reveal">
-    <div class="card">
-     <div class="card-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg>
-     </div>
-     <h3>RTK base station</h3>
-     <p>A fixed satellite reference unit installed on your property — usually on a shed or pole near the charging dock. Provides centimetre-accurate positioning corrections to the mower in real time. One base station serves the whole property; one base station can also support multiple mowers if your acreage scales beyond a single unit.</p>
-    </div>
-    <div class="card">
-     <div class="card-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="10" rx="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/><path d="M3 12h18M6 8V6"/></svg>
-     </div>
-     <h3>Commercial-grade autonomous mower</h3>
-     <p>The mower itself — 48-inch deck, about 8 acres a day capacity, 30° slope handling, 8-hour battery, electric drive (≈60dB operating noise). Maps your property once during installation, then mows the same paths every cycle. No buried boundary wire to cut, drift, or replace over time.</p>
-    </div>
-    <div class="card">
-     <div class="card-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><path d="M2 12a10 10 0 0 1 10-10M22 12a10 10 0 0 1-10 10"/></svg>
-     </div>
-     <h3>LiDAR sensor stack</h3>
-     <p>Laser-based real-time obstacle avoidance built into the mower. Detects fallen branches, garden hoses, sleeping dogs, kids' bikes left in the grass — and stops or routes around them dynamically. RTK without LiDAR is precision-blind to anything new on the property; LiDAR is what makes it safe to leave the mower running unattended.</p>
-    </div>
-    <div class="card">
-     <div class="card-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/><path d="M9 12l2 2 4-4"/></svg>
-     </div>
-     <h3>Ongoing managed service</h3>
-     <p>The fourth component is the part nobody else in the Northern Rivers offers: AutoAcre operates the system on your behalf. Remote monitoring, scheduled maintenance, blade replacements, firmware updates, repair coordination, advisory. The system is yours. The day-to-day operation is ours.</p>
-    </div>
-   </div>
-   <p style="margin-top: var(--space-6); text-align: center; color: var(--color-text-muted);">Want the technical detail on the RTK base station and install process? Read <a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a>.</p>
-  </div>
- </section>
-
- <!-- WHY RTK + LIDAR (brief pointer; full deep-dive at /rtk-robot-mower-installation) -->
- <section class="section" aria-labelledby="why-tech-heading">
-  <div class="container">
-   <div class="section-header reveal">
-    <span class="section-label">Why this stack</span>
-    <h2 id="why-tech-heading">Why RTK and LiDAR specifically</h2>
+    <span class="section-label">The technology</span>
+    <h2 id="what-heading">What LiDAR is, in plain terms</h2>
    </div>
    <div class="content-split reveal">
     <div>
-     <p>Most "robot mowers" sold in Australia use one of two older approaches. Boundary-wire robot mowers use a buried perimeter cable — a physical perimeter cable that defines the mowing area. Cheaper consumer GPS mowers use single-receiver positioning with metre-level accuracy. Both have specific limitations on acreage.</p>
-     <p>Boundary wire is fine on a quarter-acre suburban lawn, but on a 5-acre block it's a multi-kilometre cable run that takes hours to install, costs hundreds of dollars in wire, and fails permanently the first time a tree root, gardener's spade, or paddock erosion cuts it. Single-receiver GPS drifts metres in either direction depending on satellite geometry — not viable for following the same paths or staying out of garden beds.</p>
+     <p>LiDAR stands for Light Detection and Ranging. The sensor fires pulses of invisible laser light, measures how long each pulse takes to come back, and turns that into a distance. Do that tens of thousands of times a second across a sweep, and you get a three dimensional picture of everything around the machine: how far away it is, how tall it is, and what shape it is.</p>
+     <p>The shape part is what matters. A camera sees a pattern of colour and has to work out what it is looking at. Radar sees that something is there and roughly how far away. <strong>LiDAR sees form.</strong> That is the difference between knowing an object is present and having some chance of telling a fence post from a crouching person from a soccer ball.</p>
+     <p>It also works in the dark, because it makes its own light. Combined with RTK positioning, which is satellite based and equally indifferent to daylight, that is why an autonomous mower can run a paddock at two in the morning and a ride-on cannot.</p>
     </div>
     <div>
-     <p>RTK fixes the GPS problem. A fixed reference station on your property broadcasts correction data to the mower; positions resolve to within 2 cm. The mower follows the same routes every cycle, holds boundaries to a few centimetres, and handles slopes that would defeat a wire-bounded unit.</p>
-     <p>LiDAR fixes the obstacle problem. RTK alone is precision-blind to anything new in the environment — fallen branches, unexpected pets, kids' bikes left out. LiDAR scans the immediate surroundings continuously and stops or routes around them in real time. RTK and LiDAR together is the dividing line between equipment that works on a manicured suburban lawn and equipment that works on a real working acreage.</p>
-     <p style="margin-top: var(--space-4);"><a href='/rtk-robot-mower-installation'>Read the full RTK installation deep dive →</a></p>
+     <ul class="feature-list">
+      <li><strong>Measures distance, not colour.</strong> Works at night, in shade, and against low sun.</li>
+      <li><strong>Builds shape.</strong> Height and outline, not just presence.</li>
+      <li><strong>Short range by design.</strong> On a mower it is watching the next few metres, not the horizon.</li>
+      <li><strong>Degrades in heavy dust, fog and rain.</strong> Airborne particles return pulses of their own.</li>
+      <li><strong>Separate from navigation.</strong> The machine still follows an RTK path it was mapped onto.</li>
+     </ul>
     </div>
    </div>
   </div>
  </section>
 
- <!-- BUY + MANAGE IN DEPTH -->
- <section class="section" aria-labelledby="buymanage-heading">
+ <!-- THE THREE APPROACHES -->
+ <section class="section" aria-labelledby="compare-heading">
   <div class="container">
    <div class="section-header reveal">
-    <span class="section-label">The offer</span>
-    <h2 id="buymanage-heading">How Buy + Manage works in depth</h2>
-    <p>AutoAcre publishes one residential offer: Buy + Manage. The customer buys the autonomous mowing system outright. AutoAcre handles every operational thing that follows.</p>
-    <p style="color: var(--color-text-muted); font-size: var(--text-sm); max-width: 60ch; margin: var(--space-3) auto 0;">There are simpler offer shapes — pure subscription where AutoAcre owns and rents the mower, or pure sale where you buy and then operate it yourself. We tried both at the start and neither held up: subscription concentrates all the hardware risk on AutoAcre, and pure sale leaves the customer running firmware, RTK base configuration, blade replacement schedules, and remote diagnostics most acreage owners would rather not run. Buy + Manage is the middle path. The asset risk is yours (which it should be — it's your equipment); the operational complexity is ours (which it should be — that's what we know how to do).</p>
+    <span class="section-label">How machines actually sense</span>
+    <h2 id="compare-heading">Three ways a mower detects an obstacle, and none of them wins outright</h2>
+    <p>Most commercial machines use more than one. When you are comparing units, the question is not whether a machine has LiDAR, it is which combination it has and what it does with the information.</p>
    </div>
-   <div class="content-split reveal">
-    <div>
-     <h3 style="margin-top: 0;">BUY — the system, yours to keep</h3>
-     <p>The system is sold outright. That includes the RTK base station, the commercial-grade autonomous mower with LiDAR, professional installation, and boundary mapping for your property. Final price varies by manufacturer match — AutoAcre selects the unit best suited to your terrain rather than anchoring to a single platform.</p>
-     <p>The system becomes yours. You own the asset. You can sell it. You can take it with you if you move. There's no lock-in on the BUY side — once installed, the hardware is straightforwardly yours.</p>
-     <p style="margin-top: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm);">Quick caveat: the secondary market for commercial-grade autonomous mowers in Australia is thin. Residual value at year 8 is estimated at ~20% (around 20% of the system up-front cost) but it's an estimate, not a quote.</p>
+   <div class="card-grid card-grid--3 reveal">
+    <div class="card">
+     <h3>LiDAR</h3>
+     <p><strong>Good at:</strong> shape and height, working in the dark, distinguishing a low obstacle from open ground, giving the machine a chance to classify what it has found rather than just stop for everything.</p>
+     <p><strong>Weak at:</strong> heavy dust, fog and driving rain, where the beam scatters. Also the most expensive of the three, which is why it appears on commercial machines and not on consumer ones.</p>
     </div>
-    <div>
-     <h3 style="margin-top: 0;">MANAGE — operations under one fee</h3>
-     <p>One tiered monthly management fee. It scales with mowable acreage, from 2.5 acres up to 10. We quote it after a site assessment, once we know how much of your block the mower will actually run on.</p>
-     <p>The fee covers scheduled maintenance, blade replacements, firmware updates, remote monitoring, and repair coordination. Mowing cadence is twice-weekly in summer and weekly in winter — about 3× a fortnightly contractor.</p>
-     <p>Month-to-month, 30 days notice, no lock-in. The system is yours regardless; cancelling management just means you're operating it yourself going forward.</p>
+    <div class="card">
+     <h3>Radar</h3>
+     <p><strong>Good at:</strong> exactly the conditions LiDAR struggles in. Dust, rain, low sun and glare barely touch it, which is why agricultural robots lean on it. Robust, cheap and reliable.</p>
+     <p><strong>Weak at:</strong> telling you what the object is. Radar reports that something is there. It does not give you enough shape to separate a person from a post, which matters a great deal on ground where people walk.</p>
+    </div>
+    <div class="card">
+     <h3>Cameras and vision</h3>
+     <p><strong>Good at:</strong> colour, texture and context. Reading the difference between cut grass and a garden bed, or spotting a boundary a laser would not see as an obstacle at all.</p>
+     <p><strong>Weak at:</strong> darkness, glare, heavy shadow and anything visually ambiguous. Vision systems are improving quickly, and they are still the least mature of the three on complex ground.</p>
     </div>
    </div>
   </div>
  </section>
 
- <!-- DAY TO DAY OPERATION -->
- <section class="section section--alt" aria-labelledby="operation-heading">
+ <!-- WHAT HAPPENS ON DETECTION -->
+ <section class="section section--alt" aria-labelledby="response-heading">
   <div class="container">
    <div class="section-header reveal">
-    <span class="section-label">Day to day</span>
-    <h2 id="operation-heading">How the system operates</h2>
-    <p>Once installed and commissioned, the system runs itself. The day-to-day reality of living with autonomous mowing on acreage is calmer than most expect — and noticeably different from the fortnightly contractor cycle.</p>
+    <span class="section-label">The question behind the question</span>
+    <h2 id="response-heading">Detecting something is the easy half. What the machine does next is the real answer</h2>
+    <p>Ask any supplier what their machine does when it detects an obstacle. There are three possible answers and they are not equivalent.</p>
    </div>
    <div class="steps reveal">
     <div class="step">
-     <h3>Cadence: ~78 mow days/year</h3>
-     <p>Twice-weekly in summer (≈26 weeks × 2 = 52 mows). Weekly in winter (≈26 weeks × 1 = 26 mows). Total ~78 mow days/year — roughly 3× a fortnightly contractor at ~26 mows/year. Each individual mow is shorter and shallower than a contractor visit, which is exactly why it works at this frequency.</p>
+     <h3>It slows down</h3>
+     <p>The mildest response. Useful for something the machine is fairly confident it can pass safely, and not much use for anything it cannot identify.</p>
     </div>
     <div class="step">
-     <h3>Quiet, electric, mostly invisible</h3>
-     <p>Operating noise around 60dB — about the level of normal conversation. Fully electric drive, no fuel storage on site, no fumes. You'll see the mower if you're looking for it; you'll forget it's there if you're not. Most owners schedule overnight or early morning runs and never notice the system at work.</p>
+     <h3>It stops and alerts</h3>
+     <p>The safe response, and the one the machine we have selected gives on contact. It halts, flags the position and waits for a human. Safe, and it costs you a cycle if nobody is watching the alerts, which is precisely why someone needs to be.</p>
     </div>
     <div class="step">
-     <h3>Safe around people, pets and obstacles</h3>
-     <p>LiDAR scans the immediate environment continuously. Collision detection and lift sensors stop the mower immediately on contact. Operates at low forward speed (well below ride-on speeds). Exclusion zones for play areas, garden beds, pool surrounds and driveways are configured during installation and enforced by RTK boundary mapping.</p>
+     <h3>It reroutes around the obstacle and carries on</h3>
+     <p>The answer everyone wants, and the one to press hardest on. Autonomous reroute after contact is still maturing on the platform we have selected, and we say so rather than selling you a firmware release. Ask when it ships, and ask what happens in the meantime.</p>
     </div>
    </div>
   </div>
  </section>
 
- <!-- WHAT THE FEE COVERS / DOESN'T -->
- <section class="section" aria-labelledby="coverage-heading">
+ <!-- HONEST LIMITS -->
+ <section class="section" aria-labelledby="limits-heading">
   <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">The honest part</span>
+    <h2 id="limits-heading">What LiDAR does not solve</h2>
+    <p>This is the section most suppliers leave out, and it is the one that decides whether a machine suits your ground.</p>
+   </div>
    <div class="content-split reveal">
     <div>
-     <span class="section-label">Coverage</span>
-     <h2 id="coverage-heading">What the management fee covers, and what sits outside it</h2>
-     <p style="color: var(--color-text-muted); margin-bottom: var(--space-6);">The fee is structured around standard ongoing operation. Optional and ad-hoc work sits outside the fee so you only pay for what you use.</p>
-     <h3 style="margin-top: var(--space-4);">Covered by the standard management fee</h3>
-     <ul class="feature-list">
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>~78 mow days/year (twice-weekly summer, weekly winter)</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Scheduled maintenance and blade replacements</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Firmware and software updates</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Remote monitoring and operational diagnostics</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Repair coordination if the unit develops a fault</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167L3.333 10" stroke="#4F5C20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Advisory — ongoing operational guidance for the property owner</li>
-     </ul>
-     <h3 style="margin-top: var(--space-6);">Sits outside the standard fee</h3>
-     <ul class="feature-list">
-      <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#4F5C20" stroke-width="2" fill="none"/></svg>Ad-hoc on-site call-outs, charged per visit (e.g. manual mow during downtime, special requests)</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#4F5C20" stroke-width="2" fill="none"/></svg>Edge trimming along hardscaping — separate contractor recommended for periodic edge work</li>
-      <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#4F5C20" stroke-width="2" fill="none"/></svg>Weekly photo reports — available on the higher management tier (quote-only)</li>
-     </ul>
+     <p><strong>It does not finish the close-in work.</strong> On a structured commercial site we plan on 60 to 70 percent of the close-in work being autonomous. Edges, posts, cable trays, inverter pads and garden beds still need a person. Better sensors have narrowed that gap over the last two years. They have not closed it.</p>
+     <p><strong>Tall grass hides low obstacles from every sensor.</strong> Post detection in long grass is a known limitation, not a quirk of one machine. If the grass is over the object, no laser, radar or camera reliably finds it. The answer is mapping the hazards as no-go zones before the first cut, which is a job done by a person with a remote and a plan.</p>
+     <p><strong>It is not fire detection.</strong> The machine has no spark detection and no external fire sensing. Fire risk is managed operationally: no-go zones over gravel and high risk margins, charging stations sited on cleared ground, no charging on total fire ban days.</p>
     </div>
-    <div class="content-split-image">
-     <img src="./img/result.jpg" alt="Pristine mowing stripes on a Northern Rivers acreage property" width="800" height="600" loading="lazy">
+    <div>
+     <p><strong>Detection is not certification.</strong> A sensor suite is a capability. Third party machinery safety certification is a test somebody else has paid for and signed. They are different things, and on our machine the certification is in progress. We do not describe it as certified, compliant or approved for public spaces, and we will not until the documents are in hand.</p>
+     <p><strong>It does not replace controlling the site.</strong> Everything above is why our rule is fenced and controlled ground with mowing scheduled for when people are not there, rather than unsupervised operation in a public space. That line comes from what the technology can actually do today.</p>
+     <p><strong>And it does not remove the person.</strong> Someone maps the site, swaps blades and battery packs, recovers a bogged machine and keeps the records. That is a skilled local technician role, and it is worth budgeting for rather than discovering.</p>
     </div>
    </div>
   </div>
  </section>
 
- <!-- 8-YEAR OWNERSHIP PICTURE -->
- <section class="section section--alt" aria-labelledby="ownership-heading">
+ <!-- NIGHT -->
+ <section class="section section--alt" aria-labelledby="night-heading">
   <div class="container">
    <div class="section-header reveal">
-    <span class="section-label">8-year ownership</span>
-    <h2 id="ownership-heading">What this looks like over 8 years</h2>
-    <p>The economics work out cleanly over an 8-year window because the up-front asset cost amortises across a longer period and the ~78-mow-day duty cycle keeps wear low enough to justify it.</p>
+    <span class="section-label">Where it earns its keep</span>
+    <h2 id="night-heading">The practical payoff is working after dark</h2>
    </div>
-   <div class="reveal">
-    <p>The Northern Rivers premium acreage benchmark for a fortnightly contractor is around $250/acre/month. That's a bill that keeps arriving for 8 years, and at the end of it you own nothing.</p>
-    <p>On the AutoAcre side, the up-front system cost is one-off and the management fee scales with mowable acreage. The gap in your favour widens as the block gets bigger. Net of the estimated 20% residual at year 8 and a few ad-hoc call-outs a year, it widens a bit further again.</p>
-    <p>What the gap actually comes to depends on what you spend on mowing now and how much of your block is really mowable. We work both out at the site assessment. <a href='/robot-mower-roi-calculator'>Start with the ROI calculator →</a></p>
+   <div class="content-split reveal">
+    <div>
+     <p>A ride-on needs an operator, and an operator needs daylight and a reason to be there. LiDAR makes its own light and RTK comes from satellites, so neither cares what time it is.</p>
+     <p>On a solar farm that means cutting overnight while nobody else is on the ground, and finishing before the day crew arrive. On a campground or a resort it means the machine works between guests rather than around them. In a Queensland summer it means running in the cool hours and parking the machine through the worst of the heat.</p>
+     <p>We have written the solar version of this in detail, including the parts that do not work yet: <a href="solar-farm-mowing.html">automated vegetation management for solar farms</a>. The short version of why the clock matters is in <a href="blog-the-best-time-to-mow-a-solar-farm-is-2am.html">the best time to mow a solar farm is 2am</a>.</p>
+    </div>
+    <div>
+     <ul class="feature-list">
+      <li><strong>No daylight dependency.</strong> Laser ranging and satellite positioning both work at night.</li>
+      <li><strong>Fewer people on the ground.</strong> The safest hours to run an autonomous machine are the hours nobody else is there.</li>
+      <li><strong>Heat management.</strong> Night cycles keep the machine and the battery out of the worst of the day.</li>
+      <li><strong>Noise.</strong> Electric and quiet enough that overnight operation is a scheduling question, not a complaint.</li>
+     </ul>
+    </div>
    </div>
-   <p style="text-align: center; margin-top: var(--space-8); color: var(--color-text-muted);">Plus: ~3× the mowing frequency. Plus: you own the asset at year 8.</p>
   </div>
  </section>
 
- <!-- PROPERTY FIT -->
- <section class="section" aria-labelledby="fit-heading">
+ <!-- WHAT TO ASK -->
+ <section class="section" aria-labelledby="ask-heading">
   <div class="container">
    <div class="section-header reveal">
-    <span class="section-label">Property fit</span>
-    <h2 id="fit-heading">Is your property right for an autonomous mowing system?</h2>
-    <p>The Buy + Manage offer is shaped specifically for 2.5–10 acre acreage. Below 2.5 acres, a consumer wire-bounded mower is usually the right fit. Above 10 acres, the conversation moves into commercial scope — multi-unit deployments, scoped per site.</p>
+    <span class="section-label">Use this on us too</span>
+    <h2 id="ask-heading">Six questions worth asking any supplier about obstacle detection</h2>
+    <p>Including us. If a supplier cannot answer these in writing, that is itself an answer.</p>
    </div>
-   <div class="card-grid card-grid--3 reveal">
-    <a class='card' href='/3-10-acre-autonomous-mowing-systems'>
-     <h3>Acreage size</h3>
-     <p>2.5–10 acres of mowable area. Tier-by-tier fit and economics for each acreage size — read the full property-size deep dive.</p>
-    </a>
-    <div class="card">
-     <h3>Terrain</h3>
-     <p>Slopes up to 30°. Most Northern Rivers hinterland properties — including undulating terrain — sit well within range. Extreme rocky outcrop or unmanageable rock-bed sections are evaluated case-by-case during site assessment.</p>
+   <div class="steps reveal">
+    <div class="step">
+     <h3>Which sensors, exactly?</h3>
+     <p>LiDAR, radar, cameras, ultrasonic, a contact bumper, or a combination. Ask for the spec sheet rather than the web page. Marketing copy and spec sheets disagree more often than you would expect.</p>
     </div>
-    <div class="card">
-     <h3>Infrastructure</h3>
-     <p>The charging dock needs a sheltered location with mains power. Reasonable cellular coverage is required for remote monitoring. Both are assessed during the on-site visit; a small shelter build is part of the install if no suitable location exists.</p>
+    <div class="step">
+     <h3>What does it do when it detects something?</h3>
+     <p>Slow, stop, or reroute. Get the answer for each sensor, because a machine can reroute around something it sees early and only stop for something it touches.</p>
     </div>
-   </div>
-   <div class="reveal" style="margin-top: var(--space-8); padding: var(--space-5); border: 1px solid var(--color-divider); border-radius: var(--radius-md); max-width: 720px; margin-inline: auto;">
-    <h3 style="margin-top: 0;">When an AutoAcre system isn't the right fit</h3>
-    <p style="margin-bottom: 0; color: var(--color-text-muted);">Below 2.5 acres, the system is overspecified — a consumer-grade robot mower is the better economic match. Properties with extensive water features, dense rocky outcrop, or terrain that requires regular tree-canopy clearance are evaluated case-by-case. If your block has slope sections beyond 30° or persistent wet-soil zones, autonomous mowing isn't the right tool — a human operator with a tracked mower handles those better. We say this honestly during site assessment because misfit installations don't make good customers or good case studies.</p>
+    <div class="step">
+     <h3>What has it been tested against?</h3>
+     <p>A post is not a person, and a standing person is not a child sitting down in long grass. Ask what was tested, in what conditions, and what changed as a result.</p>
+    </div>
+    <div class="step">
+     <h3>Is there third party machinery safety certification?</h3>
+     <p>Not a self declaration, and not an electrical or radio mark, which covers something different. Ask who tested it and ask to see the certificate.</p>
+    </div>
+    <div class="step">
+     <h3>Who carries responsibility for the autonomous system?</h3>
+     <p>Some manufacturers state this explicitly. Others leave it with whoever is operating the machine. Procurement will ask, so ask first.</p>
+    </div>
+    <div class="step">
+     <h3>What is still on the roadmap rather than shipping?</h3>
+     <p>Ask which capabilities are in the machine today and which are promised in a firmware release. Then ask what happens on your ground in the meantime.</p>
+    </div>
    </div>
   </div>
  </section>
@@ -643,47 +603,79 @@
   <div class="container">
    <div class="section-header reveal">
     <span class="section-label">FAQ</span>
-    <h2 id="faq-heading">Common questions on the system and the offer</h2>
+    <h2 id="faq-heading">Common questions about LiDAR and obstacle detection</h2>
    </div>
    <div class="faq-list reveal">
     <div class="faq-item">
-     <button class="faq-question" aria-expanded="false">How is AutoAcre's system different from a consumer robot mower?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-     <div class="faq-answer"><div class="faq-answer-inner">Most robot mowers sold in Australia are built for suburban yards, typically a quarter to half an acre, and rely on a buried boundary wire or consumer-grade GPS. They are not built for the slope, area or terrain of a 2.5 to 10 acre block. AutoAcre's systems are commercial-grade: RTK positioning accurate to about two centimetres, LiDAR obstacle avoidance, a planning capacity of about 8 acres a day and mowing slopes to 30 degrees. Different category of equipment for a different category of property.</div></div>
+     <button class="faq-question" aria-expanded="false">Does LiDAR mean the mower will detect my kids or my dog?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">It gives the machine a far better chance than radar or a bumper alone, because it reads shape and height rather than just presence. It is not a guarantee, and nobody in this market should offer you one. Tall grass hides low objects from every sensor, and a child sitting down is a harder shape than an adult standing up. Our rule is fenced and controlled ground, with mowing scheduled for when people are not there. That rule exists because of exactly this.</div></div>
     </div>
     <div class="faq-item">
-     <button class="faq-question" aria-expanded="false">Can I cancel the management fee?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-     <div class="faq-answer"><div class="faq-answer-inner">Yes. The management agreement is month-to-month, 30 days notice, no lock-in. The mower is yours regardless. Cancelling management means you run it yourself: firmware, RTK base station configuration, blade changes and diagnostics. Most owners keep it for that reason.</div></div>
+     <button class="faq-question" aria-expanded="false">Is LiDAR better than radar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Better at different things. LiDAR reads shape, which is what you need to tell one object from another. Radar is genuinely more robust in dust, fog, heavy rain and low sun, which is why agricultural machines rely on it. For rows of trees or tunnel alleyways, radar alone is often fine. For anywhere people walk, shape matters and radar alone is a materially weaker safety case.</div></div>
     </div>
     <div class="faq-item">
-     <button class="faq-question" aria-expanded="false">What if the mower breaks?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-     <div class="faq-answer"><div class="faq-answer-inner">Repair coordination is part of the management fee. If the unit develops a fault, AutoAcre handles diagnosis, parts sourcing and either a field repair or a factory return. Warranty terms and the spares we hold locally are set out in your quote, not assumed.</div></div>
+     <button class="faq-question" aria-expanded="false">Does the mower navigate using LiDAR?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">No, and this catches people out. Navigation is RTK: the machine follows a path it was mapped onto, positioned by satellite to about two centimetres. LiDAR is the obstacle layer on top of that. The machine we have selected and most of its competitors all need a full boundary map walked or driven before the first cut, regardless of what sensors they carry. <a href="rtk-robot-mower-installation.html">How RTK positioning works and how it is installed</a>.</div></div>
     </div>
     <div class="faq-item">
-     <button class="faq-question" aria-expanded="false">What does the ownership picture look like over time?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-     <div class="faq-answer"><div class="faq-answer-inner">You buy the system once and pay a monthly management fee that scales with mowable acreage. A fortnightly contractor is a bill that keeps arriving with nothing owned at the end. Whether the gap is in your favour depends on what you spend on mowing now and how much of your block is actually mowable, so we work both out at the site assessment rather than promise a number here.</div></div>
+     <button class="faq-question" aria-expanded="false">Can it mow at night?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Yes. LiDAR generates its own light and RTK is satellite based, so neither needs daylight. On commercial sites that is usually the point: the machine runs when nobody else is on the ground, and in a Queensland summer it runs in the cool hours rather than the worst of the heat.</div></div>
     </div>
     <div class="faq-item">
-     <button class="faq-question" aria-expanded="false">Can I add a second mower for larger properties?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-     <div class="faq-answer"><div class="faq-answer-inner">Yes. Properties beyond 10 acres are scoped as multi-unit deployments, with each mower given its own zones from a shared RTK base station. Multi-unit work is quoted per site under a separate commercial agreement. Book a site assessment for properties beyond 10 acres.</div></div>
+     <button class="faq-question" aria-expanded="false">Does LiDAR detect fire, or hot spots?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">No. LiDAR measures distance, not heat. The machine has no spark detection and no external fire sensing, and there is nothing on the roadmap for it. Fire risk is managed operationally instead: no-go zones over gravel and high risk margins, charging on cleared ground, and no charging on total fire ban days. Its real contribution to fire risk is a consistent cut height, which is fuel load control that does not lapse.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">Is a machine with LiDAR approved for use in public spaces?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">Sensors and certification are separate questions, and having one does not give you the other. Certification on the machine we have selected is in progress, and we do not describe it as certified, compliant or approved for public spaces until the documents are in hand. Worth knowing when you read anyone's compliance page: an Australian RCM mark covers electrical safety, electromagnetic compatibility and radio as a supplier declaration. It is not machinery safety certification, which is a separate third party test of the part that can hurt someone.</div></div>
     </div>
    </div>
   </div>
  </section>
 
- <!-- FINAL CTA -->
+ <!-- RELATED -->
+ <section class="section" aria-labelledby="related-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">Related</span>
+    <h2 id="related-heading">Where to go next</h2>
+   </div>
+   <div class="card-grid card-grid--2 reveal">
+    <div class="card">
+     <h3><a href="rtk-robot-mower-installation.html">RTK positioning, explained</a></h3>
+     <p>The other half of the system. How a machine knows where it is to about two centimetres, what gets installed at your property, and what an install day looks like.</p>
+    </div>
+    <div class="card">
+     <h3><a href="commercial-robotic-mower-buyers-guide-australia.html">Commercial robotic mower buyer's guide</a></h3>
+     <p>Every commercial machine available in Australia compared on slope, real coverage and certification, with the units converted consistently.</p>
+    </div>
+    <div class="card">
+     <h3><a href="solar-farm-mowing.html">Automated vegetation management for solar farms</a></h3>
+     <p>What a machine can cut under and between panel rows, what stays with the crew, and the fire and positioning limits stated plainly.</p>
+    </div>
+    <div class="card">
+     <h3><a href="faq.html">Facts and FAQs</a></h3>
+     <p>The broader set of questions about autonomous mowing on acreage and commercial ground.</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- CTA -->
  <section class="cta-banner" aria-labelledby="cta-heading">
   <div class="container">
-   <h2 id="cta-heading">Decide before you commit</h2>
-   <p>Run the ROI calculator to see your 8-year picture against your current contractor — or book a site assessment to walk your property and lock in a Q1 2027 installation slot. Both are open today.</p>
+   <h2 id="cta-heading">The sensors matter less than the ground they are on</h2>
+   <p>A site assessment walks your property and tells you which zones a machine can carry, which stay with a person, and where the honest limits land on your ground. It can also tell you the site is not right for one. Either answer is worth having.</p>
    <div class="cta-banner-actions">
-    <a class='btn btn--primary btn--large' href='/book-site-assessment'>Book Site Assessment</a>
-    <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator' style='border-color: rgba(255,255,255,0.3); color: #fff;'>Run the ROI Calculator</a>
+    <a href="book-site-assessment.html" class="btn btn--primary btn--large">Book a site assessment</a>
+    <a href="commercial-robotic-mower-buyers-guide-australia.html" class="btn btn--secondary btn--large" style="border-color:rgba(255,255,255,0.3);color:#fff;">Compare the machines</a>
    </div>
   </div>
  </section>
+
  </main>
 
- <!-- FOOTER (matches Phase 1 homepage rebuild — multi-brand-dealer line removed) -->
  <footer class="site-footer" role="contentinfo">
  <div class="container">
   <div class="footer-grid">
