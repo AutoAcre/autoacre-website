@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<!--
+ AUTHORITY PAGE - How the machine sees
+ URL: /how-the-machine-sees.html
+
+ Role: Technology + safety authority - "what can the machine actually detect, and what does it do next?"
+ Primary keyword: "how autonomous mowers see" / sensor stack, LiDAR, radar, ultrasonic
+ Intent: Authority - single intent: perception layer depth.
+
+ Sister page to /rtk-robot-mower-installation (position). This page owns PERCEPTION.
+ /lidar-technology owns the LiDAR-vs-radar head-to-head. Cross-link, do not cannibalise.
+
+ Internal linking:
+   - Links to: /rtk-robot-mower-installation, /lidar-technology, /acreage-robot-mowing-systems,
+     ROI Calculator, Book Site Assessment
+-->
+<html lang="en-AU">
+<head>
+ <meta charset="UTF-8">
+ <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-QV4RX5RY79"></script>
+ <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+   gtag('config', 'G-QV4RX5RY79');
+ </script>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>How Autonomous Mowers See: LiDAR, Cameras, Radar and Ultrasonic Explained | AutoAcre</title>
+ <meta name="description" content="What the perception layer on a commercial autonomous mower actually does. LiDAR, cameras, radar and ultrasonic, where each sensor works, where it does not, and where a person still matters.">
+ <link rel="canonical" href="https://autoacre.com.au/how-the-machine-sees.html">
+
+ <meta property="og:title" content="How Autonomous Mowers See: LiDAR, Cameras, Radar and Ultrasonic Explained | AutoAcre">
+ <meta property="og:description" content="What the perception layer on a commercial autonomous mower actually does. LiDAR, cameras, radar and ultrasonic, where each sensor works, where it does not, and where a person still matters.">
+ <meta property="og:image" content="https://autoacre.com.au/img/g1-closeup.jpg">
+ <meta property="og:url" content="https://autoacre.com.au/how-the-machine-sees.html">
+ <meta property="og:type" content="website">
+ <meta property="og:locale" content="en_AU">
+
+ <script type="application/ld+json">
+ {
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+  "@type": "WebPage",
+  "@id": "https://autoacre.com.au/how-the-machine-sees.html#webpage",
+  "url": "https://autoacre.com.au/how-the-machine-sees.html",
+  "name": "How Autonomous Mowers See: LiDAR, Cameras, Radar and Ultrasonic Explained | AutoAcre",
+  "inLanguage": "en-AU",
+  "isPartOf": { "@id": "https://autoacre.com.au/#website" },
+  "about": { "@id": "https://autoacre.com.au/#organization" },
+  "mainEntity": { "@id": "https://autoacre.com.au/how-the-machine-sees.html#article" }
+  },
+  {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://autoacre.com.au/" },
+   { "@type": "ListItem", "position": 2, "name": "How the Machine Sees", "item": "https://autoacre.com.au/how-the-machine-sees.html" }
+  ]
+  },
+  {
+  "@type": "TechArticle",
+  "@id": "https://autoacre.com.au/how-the-machine-sees.html#article",
+  "headline": "How Autonomous Mowers See: LiDAR, Cameras, Radar and Ultrasonic Explained",
+  "description": "What the perception layer on a commercial autonomous mower actually does. LiDAR, cameras, radar and ultrasonic, where each sensor works, where it does not, and where a person still matters.",
+  "inLanguage": "en-AU",
+  "mainEntityOfPage": { "@id": "https://autoacre.com.au/how-the-machine-sees.html#webpage" },
+  "image": "https://autoacre.com.au/img/g1-closeup.jpg",
+  "author": {
+   "@type": "Organization",
+   "name": "AutoAcre",
+   "url": "https://autoacre.com.au/"
+  },
+  "publisher": {
+   "@type": "Organization",
+   "name": "AutoAcre",
+   "url": "https://autoacre.com.au/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://autoacre.com.au/img/logo.png"
+   }
+  }
+  },
+  {
+  "@type": "FAQPage",
+  "@id": "https://autoacre.com.au/how-the-machine-sees.html#faq",
+  "mainEntity": [
+   {
+   "@type": "Question",
+   "name": "Does it stop for people?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It detects them and stops. On sites where people can be present we use LiDAR-equipped machines and schedule around foot traffic."
+   }
+   },
+   {
+   "@type": "Question",
+   "name": "Can it see at night?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "LiDAR and ultrasonic work the same in the dark. Cameras do not, which is one reason the sensor stack is layered."
+   }
+   },
+   {
+   "@type": "Question",
+   "name": "What happens if a sensor fails?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The machine stops. A fault in the perception layer is treated as an obstacle, not ignored."
+   }
+   },
+   {
+   "@type": "Question",
+   "name": "Do all robotic mowers have LiDAR?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Many commercial machines run radar and cameras. Ask any supplier exactly what is on the machine, and what it does when it detects something."
+   }
+   }
+  ]
+  }
+ ]
+ }
+ </script>
+
+ <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="./base.css">
+ <link rel="stylesheet" href="./style.css">
+ <link rel="stylesheet" href="/direction-b.css">
+
+ <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+ <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+ <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+ <link rel="manifest" href="/site.webmanifest">
+ <meta name="theme-color" content="#4F5C20">
+ <link rel="stylesheet" href="/nav.css">
+ <link rel="stylesheet" href="/mobile-nav.css">
+</head>
+<body class="has-light-header">
+
+ <header class="site-header" role="banner">
+ <div class="header-inner">
+  <a aria-label='AutoAcre home' class='header-logo header-logo--wordmark' href='/'>
+   <span class="wordmark-name">AutoAcre</span>
+   <span class="wordmark-tag">Northern Rivers</span>
+  </a>
+  <nav class="header-nav header-nav--cream-index" aria-label="Main navigation">
+   <ul class="nav-list" role="list">
+    <li class="nav-item"><a href='/' class="nav-link" data-section="home">Home</a></li>
+
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="systems" aria-current="page" aria-expanded="false" aria-controls="nav-drawer-systems">
+      <span class="nav-cream-trigger-label">Autonomous Systems</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-systems" role="region" aria-label="Autonomous Systems" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">What we install</span>
+        <span class="nav-cream-drawer-count">07 ITEMS</span>
+       </div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/3-10-acre-autonomous-mowing-systems'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">2.5–10 Acre Systems</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">RTK Robot Mower Installation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/how-the-machine-sees' aria-current="page"><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">How the Machine Sees</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Acreage Robot Mowing</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/commercial'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Commercial Autonomous Mowing</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/commercial-robotic-mower-buyers-guide-australia'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Commercial Mower Buyer's Guide</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/best-robot-mower-for-large-properties'><span class="nav-cream-drawer-num">07</span><span class="nav-cream-drawer-label">Best Robot Mower for Acreage</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="locations" aria-expanded="false" aria-controls="nav-drawer-locations">
+      <span class="nav-cream-trigger-label">Locations</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-locations" role="region" aria-label="Locations" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">Where we work</span>
+        <span class="nav-cream-drawer-count">17 ITEMS</span>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Byron Shire — 8</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-byron-bay'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Byron Bay</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-bangalow'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Bangalow</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#mullumbimby'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Mullumbimby</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#ewingsdale'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Ewingsdale</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#federal'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Federal</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#myocum'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Myocum</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#newrybar'><span class="nav-cream-drawer-num">07</span><span class="nav-cream-drawer-label">Newrybar</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#tyagarah'><span class="nav-cream-drawer-num">08</span><span class="nav-cream-drawer-label">Tyagarah</span></a></li>
+        </ul>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Ballina Shire — 5</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-ballina'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Ballina</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Lennox Head</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-alstonville'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Alstonville</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#tintenbar'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Tintenbar</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-teven'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">Teven</span></a></li>
+        </ul>
+       </div>
+       <div class="nav-cream-region">
+        <div class="nav-cream-region-label">Inland — 4</div>
+        <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--3col" role="list">
+         <li class="nav-cream-drawer-item"><a href='/service-area#brooklet'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Brooklet</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#clunes'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Clunes</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/service-area#eureka'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">Eureka</span></a></li>
+         <li class="nav-cream-drawer-item"><a href='/robot-mower-installation-nashua'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Nashua</span></a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </li>
+
+    <li class="nav-item nav-cream-item">
+     <button type="button" class="nav-cream-trigger" data-section="insights" aria-expanded="false" aria-controls="nav-drawer-insights">
+      <span class="nav-cream-trigger-label">Insights</span>
+      <svg class="nav-cream-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </button>
+     <div class="nav-cream-drawer" id="nav-drawer-insights" role="region" aria-label="Insights" hidden>
+      <div class="nav-cream-drawer-inner">
+       <div class="nav-cream-drawer-strip">
+        <span class="nav-cream-drawer-eyebrow">Field notes</span>
+        <span class="nav-cream-drawer-count">09 ITEMS</span>
+       </div>
+       <ul class="nav-cream-drawer-grid nav-cream-drawer-grid--2col" role="list">
+        <li class="nav-cream-drawer-item"><a href='/blog'><span class="nav-cream-drawer-num">01</span><span class="nav-cream-drawer-label">Robot Mower Guides</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/acreage-robot-mowing-systems'><span class="nav-cream-drawer-num">02</span><span class="nav-cream-drawer-label">Acreage Automation</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/rtk-robot-mower-installation'><span class="nav-cream-drawer-num">03</span><span class="nav-cream-drawer-label">RTK Technology</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/how-the-machine-sees'><span class="nav-cream-drawer-num">04</span><span class="nav-cream-drawer-label">Machine Perception</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/lidar-technology'><span class="nav-cream-drawer-num">05</span><span class="nav-cream-drawer-label">LiDAR Technology</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/autonomous-vs-ride-on'><span class="nav-cream-drawer-num">06</span><span class="nav-cream-drawer-label">Comparisons</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/robot-mower-roi-calculator'><span class="nav-cream-drawer-num">07</span><span class="nav-cream-drawer-label">ROI Calculator</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/faq'><span class="nav-cream-drawer-num">08</span><span class="nav-cream-drawer-label">Facts &amp; FAQs</span></a></li>
+        <li class="nav-cream-drawer-item"><a href='/resources'><span class="nav-cream-drawer-num">09</span><span class="nav-cream-drawer-label">Free Guides</span></a></li>
+       </ul>
+      </div>
+     </div>
+    </li>
+
+    <li class="nav-item"><a href='/services' class="nav-link" data-section="services">Services</a></li>
+    <li class="nav-item"><a href='/about' class="nav-link" data-section="about">About</a></li>
+   </ul>
+  </nav>
+  <div class="header-actions">
+   <a class='btn btn--primary header-cta' href='/book-site-assessment'>Book Assessment</a>
+   <button class="mobile-menu-btn" aria-label="Open menu"><span></span></button>
+  </div>
+ </div>
+</header>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+
+ <div class="mn-scroll">
+
+  <!-- Primary quick-links -->
+  <ul class="mn-quicklinks" role="list">
+   <li><a href="/">Home</a></li>
+   <li><a href="/services">Services</a></li>
+   <li><a href="/about">About</a></li>
+  </ul>
+
+  <!-- Section strip -->
+  <div class="mn-strip">
+   <span class="mn-strip-label">Explore</span>
+   <span class="mn-strip-count">03 SECTIONS</span>
+  </div>
+
+  <!-- Expandable sections -->
+  <div class="mn-sections">
+
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-systems"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o); if(o){setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'nearest'});},380);}">
+     <span class="mn-section-head">
+      <span class="mn-section-num">01</span>
+      <span class="mn-section-label">Autonomous Systems</span>
+     </span>
+     <span class="mn-section-meta">
+      <span class="mn-section-count">07</span>
+      <svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </span>
+    </button>
+    <ul id="mn-list-systems" class="mn-section-list" role="list">
+     <li><a href="/3-10-acre-autonomous-mowing-systems">2.5–10 Acre Systems</a></li>
+     <li><a href="/rtk-robot-mower-installation">RTK Robot Mower Installation</a></li>
+     <li><a href="/how-the-machine-sees" aria-current="page">How the Machine Sees</a></li>
+     <li><a href="/acreage-robot-mowing-systems">Acreage Robot Mowing</a></li>
+     <li><a href="/commercial">Commercial Autonomous Mowing</a></li>
+     <li><a href="/commercial-robotic-mower-buyers-guide-australia">Commercial Mower Buyer's Guide</a></li>
+     <li><a href="/best-robot-mower-for-large-properties">Best Robot Mower for Acreage</a></li>
+    </ul>
+   </div>
+
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-locations"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o); if(o){setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'nearest'});},380);}">
+     <span class="mn-section-head">
+      <span class="mn-section-num">02</span>
+      <span class="mn-section-label">Locations</span>
+     </span>
+     <span class="mn-section-meta">
+      <span class="mn-section-count">17</span>
+      <svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </span>
+    </button>
+    <ul id="mn-list-locations" class="mn-section-list" role="list">
+     <li><a href="/robot-mower-installation-byron-bay">Byron Bay</a></li>
+     <li><a href="/robot-mower-installation-bangalow">Bangalow</a></li>
+     <li><a href="/service-area#mullumbimby">Mullumbimby</a></li>
+     <li><a href="/robot-mower-installation-ballina">Ballina</a></li>
+     <li><a href="/service-area">Lennox Head</a></li>
+     <li class="is-strong"><a href="/service-area">All locations →</a></li>
+    </ul>
+   </div>
+
+   <div class="mn-section">
+    <button type="button" class="mn-section-toggle" aria-expanded="false" aria-controls="mn-list-insights"
+            onclick="var s=this.closest('.mn-section'); var o=s.classList.toggle('is-open'); this.setAttribute('aria-expanded', o); if(o){setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'nearest'});},380);}">
+     <span class="mn-section-head">
+      <span class="mn-section-num">03</span>
+      <span class="mn-section-label">Insights</span>
+     </span>
+     <span class="mn-section-meta">
+      <span class="mn-section-count">09</span>
+      <svg class="mn-section-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+     </span>
+    </button>
+    <ul id="mn-list-insights" class="mn-section-list" role="list">
+     <li><a href="/blog">Robot Mower Guides</a></li>
+     <li><a href="/acreage-robot-mowing-systems">Acreage Automation</a></li>
+     <li><a href="/rtk-robot-mower-installation">RTK Technology</a></li>
+     <li><a href="/how-the-machine-sees">Machine Perception</a></li>
+     <li><a href="/lidar-technology">LiDAR Technology</a></li>
+     <li><a href="/autonomous-vs-ride-on">Comparisons</a></li>
+     <li><a href="/robot-mower-roi-calculator">ROI Calculator</a></li>
+     <li><a href="/faq">Facts &amp; FAQs</a></li>
+     <li><a href="/resources">Free Guides</a></li>
+    </ul>
+   </div>
+
+  </div>
+  <!-- Footer block: phone · hours · location · email · social -->
+  <div class="mn-footer">
+   <a href="tel:0499649094" class="mn-phone">
+    <span class="mn-phone-icon">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </span>
+    <span class="mn-phone-text">
+     <span class="mn-phone-eyebrow">Call us</span>
+     <span class="mn-phone-number">0499 649 094</span>
+    </span>
+   </a>
+   <ul class="mn-meta" role="list">
+    <li>
+     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+     <span>Mon–Fri · 7am–5pm</span>
+    </li>
+    <li>
+     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+     <span>Byron Bay, NSW</span>
+    </li>
+    <li class="mn-meta-wide">
+     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><polyline points="3 7 12 13 21 7"/></svg>
+     <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>
+    </li>
+   </ul>
+   <div class="mn-footer-bottom">
+    <div class="mn-social">
+     <a href="https://instagram.com/autoacre" aria-label="AutoAcre on Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+     <a href="https://facebook.com/autoacre" aria-label="AutoAcre on Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    </div>
+    <span class="mn-footer-meta">ABN pending · est. 2026</span>
+   </div>
+  </div>
+ </div>
+
+
+ <!-- Full-width CTA pinned to bottom -->
+ <div class="mn-cta">
+  <a class="mn-cta-btn" href="/book-site-assessment">
+   <span>Book Site Assessment</span>
+   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+  </a>
+ </div>
+
+</nav>
+<main>
+
+ <!-- HERO -->
+ <section class="page-hero">
+  <div class="container">
+   <nav class="breadcrumb" aria-label="Breadcrumb"><a href='/'>Home</a> <span>/</span> How the Machine Sees</nav>
+   <div class="page-hero-inner">
+    <div class="page-hero-text">
+     <span class="section-label">Authority Page &middot; Technology &amp; Safety</span>
+     <h1>How the machine sees: RTK positions, perception protects</h1>
+     <p>Two different jobs, and they use different senses. What the sensor stack on a commercial autonomous mower actually does, and where a person still matters.</p>
+     <div class="hero-actions">
+      <a class='btn btn--primary btn--large' href='/book-site-assessment'>Book Site Assessment</a>
+      <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator'>Run the ROI Calculator</a>
+     </div>
+    </div>
+    <div class="page-hero-image">
+     <img src="./img/g1-closeup.jpg" alt="Commercial autonomous mower working a Northern Rivers paddock, the machine whose sensor stack this page covers" width="800" height="600" loading="eager" fetchpriority="high">
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- TWO JOBS, TWO SENSES -->
+ <section class="section section--alt" aria-labelledby="two-jobs-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">The perception layer</span>
+    <h2 id="two-jobs-heading">Two different jobs, and they use different senses.</h2>
+   </div>
+   <div class="reveal" style="max-width: 68ch; margin-inline: auto;">
+    <p>A commercial autonomous mower has to do two things at the same time. It has to know where it is on the property, and it has to react to what is new in front of it. Those are separate jobs, and they use different sensors.</p>
+    <p>Position is what RTK does. Perception is what everything else does. Both matter, and neither replaces the other.</p>
+   </div>
+  </div>
+ </section>
+
+ <!-- POSITION -->
+ <section class="section" aria-labelledby="position-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">Position</span>
+    <h2 id="position-heading">Knowing where it is</h2>
+   </div>
+   <div class="reveal" style="max-width: 68ch; margin-inline: auto;">
+    <p>RTK positioning. The machine holds its lines to about two centimetres and cuts the same paths every cycle. It is precise, and it is blind. RTK knows nothing about anything that was not there when the site was mapped.</p>
+    <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted);">See: <a href='/rtk-robot-mower-installation'>how positioning works &rarr;</a></p>
+   </div>
+  </div>
+ </section>
+
+ <!-- PERCEPTION -->
+ <section class="section section--alt" aria-labelledby="perception-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">Perception</span>
+    <h2 id="perception-heading">Seeing what is new</h2>
+    <p>That is the perception layer, and it is what lets the machine work without a person walking behind it.</p>
+   </div>
+   <div class="card-grid card-grid--3 reveal">
+    <div class="card">
+     <h3>1. LiDAR</h3>
+     <p>A laser scanner that measures distance and shape, day or night. It is the sensor that can tell a post from a person, and it does not care about darkness or glare.</p>
+    </div>
+    <div class="card">
+     <h3>2. Cameras</h3>
+     <p>Add context and colour, and help the machine understand what it is looking at. Weaker at night and in low sun.</p>
+    </div>
+    <div class="card">
+     <h3>3. Ultrasonic and radar</h3>
+     <p>Short range, and very good at saying something is there, even in dust and rain. Less good at saying what.</p>
+    </div>
+   </div>
+   <p class="reveal" style="max-width: 68ch; margin: var(--space-6) auto 0; font-size: var(--text-sm); color: var(--color-text-muted); text-align: center;">Deeper on obstacle detection, and how LiDAR compares to radar: <a href='/lidar-technology'>LiDAR on an autonomous mower &rarr;</a></p>
+  </div>
+ </section>
+
+ <!-- SENSOR SELECTION -->
+ <section class="section" aria-labelledby="selection-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">Sensor selection</span>
+    <h2 id="selection-heading">Not every commercial mower carries all three</h2>
+   </div>
+   <div class="reveal" style="max-width: 68ch; margin-inline: auto;">
+    <p>Some run radar and cameras only. We specify the sensor stack to the ground: where people or animals can be present, we put LiDAR-equipped machines. On fenced orchard rows and solar farms with controlled access, radar and cameras are enough.</p>
+   </div>
+  </div>
+ </section>
+
+ <!-- THE FAILSAFE -->
+ <section class="section section--alt" aria-labelledby="failsafe-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">The failsafe</span>
+    <h2 id="failsafe-heading">The last layer</h2>
+   </div>
+   <div class="reveal" style="max-width: 68ch; margin-inline: auto;">
+    <p>A contact bumper, an emergency stop on the machine and on the remote, and blade shutdown the moment the machine lifts or tilts. This is what happens if everything above it has been fooled.</p>
+   </div>
+  </div>
+ </section>
+
+ <!-- WHAT SENSORS DO NOT REPLACE -->
+ <section class="section" aria-labelledby="limits-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">The boundaries of automation</span>
+    <h2 id="limits-heading">What sensors do not replace</h2>
+   </div>
+   <div class="reveal" style="max-width: 68ch; margin-inline: auto;">
+    <p>Mapped no-go zones. Scheduling around when people are on site. Fencing where it is needed. And a person for close-in work around posts, structures and edges. We do not run these unsupervised where the public walks, and we will tell you that before you ask.</p>
+   </div>
+  </div>
+ </section>
+
+ <!-- FAQ -->
+ <section class="section section--alt" aria-labelledby="faq-heading">
+  <div class="container">
+   <div class="section-header reveal">
+    <span class="section-label">FAQ</span>
+    <h2 id="faq-heading">Safety and sensor questions</h2>
+   </div>
+   <div class="faq-list reveal">
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">Does it stop for people?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">It detects them and stops. On sites where people can be present we use LiDAR-equipped machines and schedule around foot traffic.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">Can it see at night?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">LiDAR and ultrasonic work the same in the dark. Cameras do not, which is one reason the sensor stack is layered.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">What happens if a sensor fails?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">The machine stops. A fault in the perception layer is treated as an obstacle, not ignored.</div></div>
+    </div>
+    <div class="faq-item">
+     <button class="faq-question" aria-expanded="false">Do all robotic mowers have LiDAR?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+     <div class="faq-answer"><div class="faq-answer-inner">No. Many commercial machines run radar and cameras. Ask any supplier exactly what is on the machine, and what it does when it detects something.</div></div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- CROSS-LINK -->
+ <section class="section" aria-labelledby="hub-link-heading">
+  <div class="container" style="max-width: 720px; text-align: center;">
+   <div class="reveal">
+    <h2 id="hub-link-heading">For the whole-system view</h2>
+    <p>This page focuses on how the machine perceives its environment. For how it knows where it is, read the RTK page. For the complete AutoAcre offer, Buy + Manage, ongoing operation and 8-year ownership economics, start at the Acreage Solutions hub.</p>
+    <div style="margin-top: var(--space-5);">
+     <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center;">
+      <a class='btn btn--secondary btn--large' href='/rtk-robot-mower-installation'>Read RTK positioning &rarr;</a>
+      <a class='btn btn--secondary btn--large' href='/acreage-robot-mowing-systems'>Read Acreage Solutions hub &rarr;</a>
+     </div>
+     <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted);">Property-size deep dive: <a href='/3-10-acre-autonomous-mowing-systems'>2.5&ndash;10 Acre Autonomous Systems</a>. Local install context: <a href='/robot-mower-installation-byron-bay'>Byron Bay</a>, <a href='/robot-mower-installation-bangalow'>Bangalow</a>.</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- FINAL CTA -->
+ <section class="cta-banner" aria-labelledby="cta-heading">
+  <div class="container">
+   <h2 id="cta-heading">See what sensor stack fits your property</h2>
+   <p>The site assessment walks the property, identifies where LiDAR is required, where radar plus cameras is enough, and where fencing or scheduling is the right answer. Two minutes online to start.</p>
+   <div class="cta-banner-actions">
+    <a class='btn btn--primary btn--large' href='/book-site-assessment'>Book Site Assessment</a>
+    <a class='btn btn--secondary btn--large' href='/robot-mower-roi-calculator' style='border-color: rgba(255,255,255,0.3); color: #fff;'>Run the ROI Calculator</a>
+   </div>
+  </div>
+ </section>
+ </main>
+
+ <footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <a aria-label='AutoAcre home' class='header-logo' href='/'>
+     <img src="/img/logo.png" alt="AutoAcre — Autonomous Acreage Mowing Systems" height="48" style="height: 48px; width: auto; filter: brightness(0) invert(1);">
+    </a>
+    <p>Autonomous mowing systems for 2.5–10 acre acreage and larger commercial sites across the Northern Rivers, NSW.</p>
+   </div>
+   <div class="footer-col">
+    <h4>Autonomous Systems</h4>
+    <ul>
+     <li><a href='/3-10-acre-autonomous-mowing-systems'>2.5–10 Acre Systems</a></li>
+     <li><a href='/rtk-robot-mower-installation'>RTK Robot Mower Installation</a></li>
+     <li><a href='/how-the-machine-sees'>How the Machine Sees</a></li>
+     <li><a href='/acreage-robot-mowing-systems'>Acreage Robot Mowing</a></li>
+     <li><a href='/commercial'>Commercial Autonomous Mowing</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Locations</h4>
+    <ul>
+     <li><a href='/robot-mower-installation-byron-bay'>Byron Bay</a></li>
+     <li><a href='/service-area#federal'>Federal</a></li>
+     <li><a href='/robot-mower-installation-bangalow'>Bangalow</a></li>
+     <li><a href='/service-area#mullumbimby'>Mullumbimby</a></li>
+     <li><a href='/service-area#newrybar'>Newrybar</a></li>
+     <li><a href='/service-area#ewingsdale'>Ewingsdale</a></li>
+     <li><a href='/service-area#myocum'>Myocum</a></li>
+     <li><a href='/service-area#brooklet'>Brooklet</a></li>
+     <li><a href='/service-area'>All locations</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Insights</h4>
+    <ul>
+     <li><a href='/blog'>Robot Mower Guides</a></li>
+     <li><a href='/acreage-robot-mowing-systems'>Acreage Automation</a></li>
+     <li><a href='/rtk-robot-mower-installation'>RTK Technology</a></li>
+     <li><a href='/lidar-technology'>LiDAR Technology</a></li>
+     <li><a href='/autonomous-vs-ride-on'>Comparisons</a></li>
+     <li><a href='/commercial-robotic-mower-buyers-guide-australia'>Commercial Mower Buyer's Guide</a></li>
+     <li><a href='/best-robot-mower-for-large-properties'>Best Robot Mower for Acreage</a></li>
+     <li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li>
+     <li><a href='/faq'>Facts &amp; FAQs</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Convert</h4>
+    <ul>
+     <li><a href='/robot-mower-roi-calculator'>ROI Calculator</a></li>
+     <li><a href='/book-site-assessment'>Book Site Assessment</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+     <li><a href='/about'>About</a></li>
+     <li><a href='/blog'>Blog</a></li>
+     <li><a href='/glossary'>Glossary</a></li>
+     <li><a href='/facts'>Facts &amp; Figures</a></li>
+    </ul>
+   </div>
+   <div class="footer-col">
+    <h4>Contact</h4>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+     <a href="tel:0499649094">0499 649 094</a>
+    </div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+     <a href="mailto:ben@autoacre.com.au">ben@autoacre.com.au</a>
+    </div>
+    <div class="footer-contact-item">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+     <span>Byron Bay &amp; Northern Rivers, NSW</span>
+    </div>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>&copy; 2026 AutoAcre. All rights reserved.</span>
+   <span>ABN pending · Service operations begin Q1 2027 · Northern Rivers hinterland (Byron, Ballina &amp; Lismore Shires)</span>
+   <span class="footer-bottom-legal"><a href='/privacy'>Privacy</a> · <a href='/terms'>Terms</a></span>
+  </div>
+ </div>
+</footer>
+
+ <script src="./app.js" defer></script>
+ <script src="/nav.js" defer></script>
+</body>
+</html>
