@@ -201,6 +201,16 @@ const BLOCKED_NAMES = [
   'AcreIQ', 'Lark',
 ];
 
+// GA4 tag, identical to the one on every static page. Change the ID here and in the pages together.
+const GA_SNIPPET = `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QV4RX5RY79"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QV4RX5RY79');
+</script>`;
+
 const SIGN_OFF = '<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>';
 
 const SYSTEM_PROMPT = [
@@ -484,6 +494,7 @@ function buildPostHtml(post) {
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+${GA_SNIPPET}
   <title>${post.title} | AutoAcre Blog</title>
   <meta name="description" content="${esc(post.meta)}">
   <link rel="canonical" href="https://autoacre.com.au/${post.slug}.html">
@@ -559,6 +570,7 @@ function buildBlogHtml(published) {
 <html lang="en-AU">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+${GA_SNIPPET}
   <title>Blog — Acreage Mowing &amp; Property Maintenance | AutoAcre</title>
   <meta name="description" content="Expert guides on acreage mowing costs, autonomous vs traditional mowing, and lifestyle property maintenance across Byron Bay and the Northern Rivers.">
   <link rel="canonical" href="https://autoacre.com.au/blog.html">
