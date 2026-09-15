@@ -825,5 +825,35 @@
         "a": "Not this year. There's no live multi-site telemetry yet. The technician sets the schedule and checks the result on the ground."
       }
     ]
+  },
+  {
+    "title": "The maths of a mowing cycle",
+    "keyword": "solar farm mowing cycle fleet sizing",
+    "tag": "Analysis",
+    "img": "commercial-solar.jpg",
+    "slug": "blog-the-maths-of-a-mowing-cycle",
+    "content": "<h2>How many autonomous mowers does a solar farm need?</h2>\n<p>Divide the site by about eight acres (three hectares) a day per machine, then check the total fits inside your cutting cycle with slack to spare. A 500 acre site on a 30 day cycle needs three machines, not one.</p>\n<p>Most vegetation contracts on solar farms work to a cycle: the whole site cut to height, typically every 30 days. So the sizing question for any mowing setup, human or robot, is simple to state. Can it cover the whole site and be back where it started before the clock runs out?</p>\n<p>Here is the honest worked example. Take a 500 acre site. A machine that covers eight acres a day, which is our real world planning figure, needs about 63 machine days to cut the lot. One machine takes two months. Fail. Three machines do it in about 21 days, inside the cycle with roughly nine days of slack.</p>\n<p>That slack is not padding, it is the whole game. Wet days, a flat tyre, a blade change, a zone that grew faster than planned. Buffer days are what stand between a schedule and a cascade.</p>\n<p>Now the part most quotes skip: growth is not constant. In a wet summer flush, grass over 300mm cuts at roughly half speed. Your 21 day cycle quietly becomes 30 plus, and the buffer is gone exactly when you need it most. Which is why the honest sizing rule is: size the fleet for summer, and let it cruise in winter. A setup that only works in July is a setup that fails in January, and January is when the compliance risk lives.</p>\n<p>None of this maths is secret. It is just rarely done before the machines are bought, which is how sites end up discovering their fleet is one machine short in the middle of the worst growth month.</p>\n<p>Do the cycle maths first. Everything else follows from it.</p>\n<h2>Common questions</h2>\n<h3>Is eight acres a day the machine's top speed?</h3>\n<p>No. Peak figures on flat, short grass run higher, but eight acres (about three hectares) a day is the planning figure we size fleets around, because real sites have long grass, wet patches and blade changes.</p>\n<h3>What happens to the cycle in summer?</h3>\n<p>Grass over 300mm cuts at roughly half speed. A 21 day cycle drifts past 30 and the buffer is gone, which is why the fleet gets sized for summer growth and cruises in winter.</p>\n<h3>Does the machine cut the whole site on its own?</h3>\n<p>No. It handles the bulk open runs and under-panel strips, roughly 60 to 70 percent of the task. People still do the edges, posts and structures, so those crew hours need to sit in the plan too.</p>\n<h3>What eats the buffer days?</h3>\n<p>Wet ground, which gets mapped out rather than driven through. Flat tyres, blade changes and zones that grew faster than expected. Nine days of slack sounds generous until January.</p>\n<h2>Read next</h2>\n<p>Related: <a href=\"blog-eight-acres-a-day-not-twelve.html\">Eight acres a day. Not twelve.</a>, <a href=\"blog-why-autonomous-mowing-trials-fail.html\">Why autonomous mowing trials fail</a> and <a href=\"blog-a-week-a-month-on-the-slasher.html\">A week a month on the slasher</a>.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "meta": "Solar farm mowing cycle fleet sizing, worked honestly: plan on about eight acres a day per machine and size the fleet for summer growth, not winter.",
+    "excerpt": "Solar farm mowing cycle fleet sizing, worked honestly: plan on about eight acres a day per machine and size the fleet for summer growth, not winter.",
+    "faq": [
+      {
+        "q": "Is eight acres a day the machine's top speed?",
+        "a": "No. Peak figures on flat, short grass run higher, but eight acres (about three hectares) a day is the planning figure we size fleets around, because real sites have long grass, wet patches and blade changes."
+      },
+      {
+        "q": "What happens to the cycle in summer?",
+        "a": "Grass over 300mm cuts at roughly half speed. A 21 day cycle drifts past 30 and the buffer is gone, which is why the fleet gets sized for summer growth and cruises in winter."
+      },
+      {
+        "q": "Does the machine cut the whole site on its own?",
+        "a": "No. It handles the bulk open runs and under-panel strips, roughly 60 to 70 percent of the task. People still do the edges, posts and structures, so those crew hours need to sit in the plan too."
+      },
+      {
+        "q": "What eats the buffer days?",
+        "a": "Wet ground, which gets mapped out rather than driven through. Flat tyres, blade changes and zones that grew faster than expected. Nine days of slack sounds generous until January."
+      }
+    ],
+    "readTime": 3,
+    "date": "2026-09-15"
   }
 ]
