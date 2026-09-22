@@ -855,5 +855,35 @@
     ],
     "readTime": 3,
     "date": "2026-09-15"
+  },
+  {
+    "title": "Grass, sheep and robots: it is not either-or",
+    "keyword": "agrivoltaics sheep grazing vs mowing solar",
+    "tag": "Solar",
+    "img": "commercial-solar-3.jpg",
+    "slug": "blog-grass-sheep-and-robots-it-is-not-either-or",
+    "content": "<h2>Agrivoltaics sheep grazing vs mowing: which does a solar farm need?</h2>\n<p>Usually both. Sheep do the bulk grazing across open ground, and a machine holds the contract heights in the asset protection zones, firebreaks and under-panel strips where the paperwork demands numbers.</p>\n<p>The fastest growing vegetation practice on Australian solar farms is not a machine at all. It is sheep. Agrivoltaics grazing is real, it works, and on the right site it is excellent land use.</p>\n<p>So a fair question: if sheep can do it, why robots?</p>\n<p>The honest answer is that they solve different parts of the problem. Sheep are superb at broadacre bulk grazing where stocking rates, water and management stack up. What grazing does not do well is precision and paperwork. Contract heights held to the millimetre, every cycle, all year. Asset protection zones and firebreaks cut to a defined specification before fire season. Consistent height under panels regardless of what the flock felt like eating that month. A photographic compliance record for the asset manager.</p>\n<p>Robots are the mirror image. They hold heights and produce records, but they will never convert grass into wool.</p>\n<p>So the realistic future on many sites is both. Sheep do the bulk biology across the open ground. Machines hold the specification where the contract and the fire code demand numbers: the APZs, the firebreaks, the under-panel strips, the zones the flock missed. Each covers the other's gap.</p>\n<p>The trap is treating it as a religious choice. The site does not care about your philosophy. It cares whether the grass is at height when the auditor, or the fire, arrives.</p>\n<h2>Common questions</h2>\n<h3>Do robots replace sheep on a solar farm?</h3>\n<p>No. Grazing is excellent land use where stocking rates, water and management stack up. The machine covers the zones the flock missed and the specifications the flock can't hold.</p>\n<h3>Which parts of a site does the machine do?</h3>\n<p>The mapped bulk runs, APZs, firebreaks and under-panel strips, roughly 60 to 70 percent of the mowing task. People still cut around posts, structures and edges.</p>\n<h3>Can sheep and the machine share the same ground?</h3>\n<p>Yes, in different zones or at different times. Our model is to map the zones the contract needs held to height and leave the open ground to the flock.</p>\n<h3>Does the machine produce a compliance record?</h3>\n<p>It follows mapped lines, so it logs what it cut and when. Add height checks and photos each cycle and the asset manager has a dated record instead of a contractor's word.</p>\n<h2>Read next</h2>\n<p>Related: <a href=\"blog-solar-farm-vegetation-management-with-autonomous-mowers.html\">Solar Farm Vegetation Management with Autonomous Mowers</a>, <a href=\"blog-fire-fuel-load-and-robots-the-honest-conversation.html\">Fire, fuel load and robots: the honest conversation</a> and <a href=\"blog-the-best-time-to-mow-a-solar-farm-is-2am.html\">The best time to mow a solar farm is 2am</a>.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "meta": "Agrivoltaics sheep grazing vs mowing on solar farms is not either-or. Sheep handle bulk grazing; a machine holds APZ and under-panel heights to spec.",
+    "excerpt": "Agrivoltaics sheep grazing vs mowing on solar farms is not either-or. Sheep handle bulk grazing; a machine holds APZ and under-panel heights to spec.",
+    "faq": [
+      {
+        "q": "Do robots replace sheep on a solar farm?",
+        "a": "No. Grazing is excellent land use where stocking rates, water and management stack up. The machine covers the zones the flock missed and the specifications the flock can't hold."
+      },
+      {
+        "q": "Which parts of a site does the machine do?",
+        "a": "The mapped bulk runs, APZs, firebreaks and under-panel strips, roughly 60 to 70 percent of the mowing task. People still cut around posts, structures and edges."
+      },
+      {
+        "q": "Can sheep and the machine share the same ground?",
+        "a": "Yes, in different zones or at different times. Our model is to map the zones the contract needs held to height and leave the open ground to the flock."
+      },
+      {
+        "q": "Does the machine produce a compliance record?",
+        "a": "It follows mapped lines, so it logs what it cut and when. Add height checks and photos each cycle and the asset manager has a dated record instead of a contractor's word."
+      }
+    ],
+    "readTime": 3,
+    "date": "2026-09-22"
   }
 ]
