@@ -1,7 +1,7 @@
 {
-  "nextIndex": 10,
-  "lastPublished": 9,
-  "lastPublishedDate": "2026-09-22",
+  "nextIndex": 11,
+  "lastPublished": 10,
+  "lastPublishedDate": "2026-09-29",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -132,6 +132,11 @@
       "slug": "blog-grass-sheep-and-robots-it-is-not-either-or",
       "date": "2026-09-22",
       "title": "Grass, sheep and robots: it is not either-or"
+    },
+    {
+      "slug": "blog-the-robot-does-not-replace-the-crew",
+      "date": "2026-09-29",
+      "title": "The robot does not replace the crew"
     }
   ],
   "topics": [
