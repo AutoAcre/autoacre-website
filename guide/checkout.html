@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout | The AutoAcre Guide</title>
+<meta name="description" content="Checkout for the AutoAcre Guide.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="/guide/guide.css">
+</head>
+<body>
+<main class="page">
+<section class="sec">
+<h1>Checkout</h1>
+<p class="sub">The AutoAcre Guide v1. PDF, instant download. v2 is free when it's released.</p>
+<p class="co-line"><span>Total</span><span data-bump-total data-base-price="197">A$197 (AUD)</span></p>
+<form id="checkout-form" action="#" method="post" style="margin-top:24px">
+<div class="bump" data-order-bump data-sku="commercial-quote-kit" data-price="29">
+<input type="checkbox" id="order-bump" name="order_bump" value="commercial-quote-kit" aria-describedby="order-bump-desc">
+<div>
+<label class="bump-title" for="order-bump">Add the Commercial Quote Kit for A$29 (AUD)</label>
+<p id="order-bump-desc">My editable quote template, site survey form &amp; property manager email scripts. They're the ones I use for AutoAcre quotes.</p>
+</div>
+</div>
+<div class="cta"><!-- STUB: wire to Stripe Checkout (see README note in guide/checkout.js). -->
+<button class="btn" type="submit">Pay now</button></div>
+</form>
+</section>
+</main>
+<script src="/guide/order-bump.js"></script>
+<script src="/guide/checkout.js"></script>
+</body>
+</html>

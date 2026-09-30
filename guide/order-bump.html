@@ -1,0 +1,10 @@
+<!-- Order bump component. Include directly above the pay button; unticked by default.
+     Pair with /guide/order-bump.js, which reads data-price & exposes the ticked state.
+     Stripe: when the box is ticked, add the Quote Kit price to the Checkout Session line items. -->
+<div class="bump" data-order-bump data-sku="commercial-quote-kit" data-price="29">
+<input type="checkbox" id="order-bump" name="order_bump" value="commercial-quote-kit" aria-describedby="order-bump-desc">
+<div>
+<label class="bump-title" for="order-bump">Add the Commercial Quote Kit for A$29 (AUD)</label>
+<p id="order-bump-desc">My editable quote template, site survey form &amp; property manager email scripts. They're the ones I use for AutoAcre quotes.</p>
+</div>
+</div>
