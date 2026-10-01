@@ -915,5 +915,39 @@
     ],
     "readTime": 3,
     "date": "2026-09-29"
+  },
+  {
+    "title": "What to ask before you buy an autonomous mower",
+    "keyword": "autonomous mower buying questions checklist",
+    "tag": "Education",
+    "img": "g1-closeup.png",
+    "slug": "blog-what-to-ask-before-you-buy-an-autonomous-mower",
+    "content": "<h2>What questions should you ask before buying an autonomous mower?</h2>\n<p>Ask for planning figures not peak figures, the mowing slope not the climbing slope, what happens on wet ground and when positioning drops, and who swaps a blade on a Tuesday. Then ask for a measured trial against your own contract heights before any money changes hands.</p>\n<p>A buyer's checklist, from the honest side of the counter. If you are evaluating any autonomous mowing system, ours included, these are the questions that separate a working setup from an expensive lesson.</p>\n<h2>Ask for planning figures, not peak figures.</h2>\n<p>Every machine has a brochure number achieved on perfect ground. Ask what the supplier plans real sites around. If the two numbers are the same, be suspicious.</p>\n<h2>Separate climbing from mowing.</h2>\n<p>A slope a machine can climb and a slope it can properly mow are different specifications. Get the mowing figure in writing.</p>\n<h2>Ask what happens when positioning drops.</h2>\n<p>The right answer involves riding through short dropouts and then stopping. The wrong answer is anything that sounds like the machine keeps going regardless.</p>\n<h2>Ask the wet ground question.</h2>\n<p>Any supplier who claims their machine handles waterlogged ground has not put a 300 kilogram machine on saturated turf. The honest answer is mapping wet zones out and waiting for the dry.</p>\n<h2>Ask who swaps a blade on a Tuesday.</h2>\n<p>Parts on site, tool-free changeovers your own crew can do, and a stated turnaround for anything bigger. A machine that waits two weeks for parts is a schedule cascade waiting to happen.</p>\n<h2>Ask who owns the running of it.</h2>\n<p>Coverage tracking, scheduling, catching problems early, parts ahead of need. If the answer is your already stretched crew, the machine will quietly become nobody's job.</p>\n<h2>Ask for a measured trial against your own contract heights.</h2>\n<p>Defined zones, real numbers, a written report. A supplier confident in their machine will sell you the proof. One who is not will sell you the machine.</p>\n<h2>Common questions</h2>\n<h3>What's the difference between a planning figure and a peak figure?</h3>\n<p>The peak is a brochure number from perfect ground. For a commercial-grade RTK mower we plan on about eight acres (three hectares) a day, and a supplier quoting the peak as the plan should be asked why.</p>\n<h3>Why separate climbing slope from mowing slope?</h3>\n<p>Because they're different specifications. The machine class we work with climbs 42 degrees but has a proven mowing slope of 30 degrees, and a quote that blends the two hides the real figure.</p>\n<h3>Does an autonomous mower handle wet ground?</h3>\n<p>No. A 300 kilogram machine on saturated turf ruts it. Wet zones get mapped out and the machine waits for the dry.</p>\n<h3>Does the machine have fire or spark detection?</h3>\n<p>No. Fire is managed operationally: no-go zones on gravel margins, careful charging siting, and no charging on total fire ban days. Ask any supplier the same question and expect a straight answer.</p>\n<h3>Where is the machine up to on certification?</h3>\n<p>Certification is in progress, with documents to follow. Any supplier who answers that question with a single word should be asked to show the paperwork instead.</p>\n<h2>Read next</h2>\n<p>Related: <a href=\"blog-why-autonomous-mowing-trials-fail.html\">Why autonomous mowing trials fail</a>, <a href=\"blog-eight-acres-a-day-not-twelve.html\">Eight acres a day. Not twelve.</a> and <a href=\"blog-the-mower-does-not-need-the-internet-here-is-what-does.html\">The mower does not need the internet. Here is what does.</a>.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "meta": "An autonomous mower buying questions checklist from the honest side: planning figures, mowing slope, wet ground, blade swaps and a measured trial first.",
+    "excerpt": "An autonomous mower buying questions checklist from the honest side: planning figures, mowing slope, wet ground, blade swaps and a measured trial first.",
+    "faq": [
+      {
+        "q": "What's the difference between a planning figure and a peak figure?",
+        "a": "The peak is a brochure number from perfect ground. For a commercial-grade RTK mower we plan on about eight acres (three hectares) a day, and a supplier quoting the peak as the plan should be asked why."
+      },
+      {
+        "q": "Why separate climbing slope from mowing slope?",
+        "a": "Because they're different specifications. The machine class we work with climbs 42 degrees but has a proven mowing slope of 30 degrees, and a quote that blends the two hides the real figure."
+      },
+      {
+        "q": "Does an autonomous mower handle wet ground?",
+        "a": "No. A 300 kilogram machine on saturated turf ruts it. Wet zones get mapped out and the machine waits for the dry."
+      },
+      {
+        "q": "Does the machine have fire or spark detection?",
+        "a": "No. Fire is managed operationally: no-go zones on gravel margins, careful charging siting, and no charging on total fire ban days. Ask any supplier the same question and expect a straight answer."
+      },
+      {
+        "q": "Where is the machine up to on certification?",
+        "a": "Certification is in progress, with documents to follow. Any supplier who answers that question with a single word should be asked to show the paperwork instead."
+      }
+    ],
+    "readTime": 3,
+    "date": "2026-10-01"
   }
 ]
