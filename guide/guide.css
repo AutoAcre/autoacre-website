@@ -31,7 +31,7 @@ p+p{margin-top:16px}
 
 /* 4:3 image slot. Swap the .photo-slot div for <img class="photo" src="..." alt="Ben ..."> */
 .photo,.photo-slot{margin-top:40px;width:100%;aspect-ratio:4/3;border-radius:6px}
-.photo{display:block;object-fit:cover}
+.photo{display:block;height:auto;object-fit:cover;object-position:50% 20%}
 .photo-slot{background:var(--slot);border:1px dashed #b9bfb8;display:flex;align-items:center;justify-content:center}
 
 mark{background:var(--hl);color:var(--ink);padding:0 3px;border-radius:2px}
