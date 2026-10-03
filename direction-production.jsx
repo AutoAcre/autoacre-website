@@ -649,7 +649,7 @@ function ProductionCalculator({ accent, gating, initialMode }) {
                 Want a real quote against these numbers? Short form, personalised proposal — no phone tag.
               </p>
               <div style={{display:'flex', gap:12, marginTop:18, flexWrap:'wrap'}}>
-                <a href={`/quote.html?acres=${inputs.acres}&postcode=${inputs.postcode}&terrain=${inputs.terrain}`}
+                <a href={`/quote?acres=${inputs.acres}&postcode=${inputs.postcode}&terrain=${inputs.terrain}`}
                   style={{padding:'12px 20px', background:t.text, color:t.bg, textDecoration:'none', fontSize:13, fontWeight:700, letterSpacing:'0.1em', fontFamily:PROD_MONO, textTransform:'uppercase'}}>
                   GET A QUOTE →
                 </a>
