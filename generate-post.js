@@ -209,7 +209,8 @@ const GA_SNIPPET = `<!-- Google tag (gtag.js) -->
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-QV4RX5RY79');
-</script>`;
+</script>
+<script src="/analytics-events.js" defer></script>`;
 
 const SIGN_OFF = '<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>';
 
