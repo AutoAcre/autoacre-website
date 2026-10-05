@@ -87,10 +87,13 @@
       // Close all
       document.querySelectorAll('.faq-item').forEach(function (i) {
         i.classList.remove('active');
+        var q = i.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
       });
       // Toggle current
       if (!isActive) {
         item.classList.add('active');
+        this.setAttribute('aria-expanded', 'true');
       }
     });
   });

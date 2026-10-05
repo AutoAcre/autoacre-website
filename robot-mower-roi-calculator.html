@@ -149,9 +149,8 @@
   }
 </style>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
  <link rel="stylesheet" href="/nav.css">
  <link rel="stylesheet" href="/mobile-nav.css">
 </head>
@@ -415,6 +414,7 @@
 
 </nav>
 <main class="calc-page-wrap">
+  <h1 class="sr-only">Autonomous Mowing ROI Calculator</h1>
   <div id="root"></div>
  </main>
 
@@ -519,65 +519,27 @@
  <!-- Site nav behavior (mobile menu, theme toggle, dropdown) -->
  <script src="./app.js" defer></script>
 
- <!-- Calculator scripts -->
- <script type="text/babel" src="tweaks-panel.jsx"></script>
- <script type="text/babel" src="calc-shared.jsx"></script>
- <script type="text/babel" src="direction-production.jsx"></script>
+ <!-- Calculator scripts: compiled from the .jsx source files in this repo via
+      esbuild (loader=jsx, jsx=transform). Recompile when editing the .jsx:
+        esbuild --loader:.jsx=jsx --jsx=transform calc-shared.jsx --outfile=calc-shared.js
+        esbuild --loader:.jsx=jsx --jsx=transform direction-production.jsx --outfile=direction-production.js -->
+ <script src="/calc-shared.js" defer></script>
+ <script src="/direction-production.js" defer></script>
 
- <script type="text/babel">
-  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-   "accent": "#85993A",
-   "gating": "off",
-   "mode": "light"
-  }/*EDITMODE-END*/;
-
-  function App() {
-   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-   return (
-    <>
-     <ProductionCalculator
-      accent={tweaks.accent}
-      gating={tweaks.gating}
-      initialMode={tweaks.mode}
-      key={tweaks.mode}
-     />
-
-     <TweaksPanel title="Tweaks">
-      <TweakSection title="Theme">
-       <TweakRadio
-        label="Mode"
-        value={tweaks.mode}
-        onChange={v=>setTweak('mode', v)}
-        options={[{value:'dark', label:'Dark'}, {value:'light', label:'Light'}]}
-       />
-      </TweakSection>
-
-      <TweakSection title="Lead capture">
-       <TweakRadio
-        label="Gating"
-        value={tweaks.gating}
-        onChange={v=>setTweak('gating', v)}
-        options={[{value:'off', label:'Off'}, {value:'soft', label:'Soft'}]}
-       />
-       <div style={{fontSize:11, color:'#888', marginTop:-4, lineHeight:1.4}}>
-        Soft = cheapest answer + chart visible; full table gated.
-       </div>
-      </TweakSection>
-
-      <TweakSection title="Accent">
-       <TweakColor label="Accent" value={tweaks.accent} onChange={v=>setTweak('accent', v)}/>
-       <TweakButton label="Lime" onClick={()=>setTweak('accent', '#B8E04C')}/>
-       <TweakButton label="Olive" onClick={()=>setTweak('accent', '#4F5C20')}/>
-       <TweakButton label="Cyan terminal" onClick={()=>setTweak('accent', '#5CD8C8')}/>
-       <TweakButton label="Amber" onClick={()=>setTweak('accent', '#E8A547')}/>
-      </TweakSection>
-     </TweaksPanel>
-    </>
+ <!-- Inline scripts ignore `defer` (per spec, defer only applies to external
+      scripts). DOMContentLoaded fires after all defer scripts have executed,
+      so ProductionCalculator (set on window by direction-production.js) is
+      defined by the time this handler runs. -->
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+   ReactDOM.createRoot(document.getElementById('root')).render(
+    React.createElement(ProductionCalculator, {
+     accent: '#85993A',
+     gating: 'off',
+     initialMode: 'light'
+    })
    );
-  }
-
-  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  });
  </script>
  <script src="/nav.js" defer></script>
 </body>
