@@ -526,16 +526,20 @@
  <script src="/calc-shared.js" defer></script>
  <script src="/direction-production.js" defer></script>
 
- <!-- Defer runs after calc-shared.js + direction-production.js (same defer=true,
-      executed in document order), so ProductionCalculator is defined when this runs. -->
- <script defer>
-  ReactDOM.createRoot(document.getElementById('root')).render(
-   React.createElement(ProductionCalculator, {
-    accent: '#85993A',
-    gating: 'off',
-    initialMode: 'light'
-   })
-  );
+ <!-- Inline scripts ignore `defer` (per spec, defer only applies to external
+      scripts). DOMContentLoaded fires after all defer scripts have executed,
+      so ProductionCalculator (set on window by direction-production.js) is
+      defined by the time this handler runs. -->
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+   ReactDOM.createRoot(document.getElementById('root')).render(
+    React.createElement(ProductionCalculator, {
+     accent: '#85993A',
+     gating: 'off',
+     initialMode: 'light'
+    })
+   );
+  });
  </script>
  <script src="/nav.js" defer></script>
 </body>
