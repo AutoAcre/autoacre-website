@@ -1,40 +1,115 @@
-# Phase 3 pivot — suburb pages renamed from /mowing-X to /robot-mower-installation-X
-# 301 so ranking signal transfers cleanly to the new URLs.
+# ─────────────────────────────────────────────────────────────────────────────
+# Rule order: Netlify reads top to bottom and the first match wins.
+# Specific rules MUST sit above the catch-all. Everything below the catch-all
+# is dead (this was the fault we fixed on 5 Oct 2026 — the folded-suburb
+# redirects were below the catch-all and never fired).
+# ─────────────────────────────────────────────────────────────────────────────
 
+# Phase 3 pivot — surviving suburb pages renamed from /mowing-X to /robot-mower-installation-X
+# 301 so ranking signal transfers cleanly to the new URLs.
 /mowing-bangalow.html       /robot-mower-installation-bangalow.html       301
 /mowing-bangalow            /robot-mower-installation-bangalow            301
-/mowing-ewingsdale.html   /service-area.html   301
-/mowing-ewingsdale   /service-area.html   301
-/mowing-newrybar.html   /service-area.html   301
-/mowing-newrybar   /service-area.html   301
 /mowing-alstonville.html    /robot-mower-installation-alstonville.html    301
 /mowing-alstonville         /robot-mower-installation-alstonville         301
 /mowing-teven.html          /robot-mower-installation-teven.html          301
 /mowing-teven               /robot-mower-installation-teven               301
-/mowing-tintenbar.html   /service-area.html   301
-/mowing-tintenbar   /service-area.html   301
-/mowing-brooklet.html   /service-area.html   301
-/mowing-brooklet   /service-area.html   301
-/mowing-clunes.html   /service-area.html   301
-/mowing-clunes   /service-area.html   301
 /mowing-nashua.html         /robot-mower-installation-nashua.html         301
 /mowing-nashua              /robot-mower-installation-nashua              301
-/mowing-eureka.html   /service-area.html   301
-/mowing-eureka   /service-area.html   301
-/mowing-federal.html   /service-area.html   301
-/mowing-federal   /service-area.html   301
-/mowing-myocum.html   /service-area.html   301
-/mowing-myocum   /service-area.html   301
-/mowing-tyagarah.html   /service-area.html   301
-/mowing-tyagarah   /service-area.html   301
-/mowing-mullumbimby.html   /service-area.html   301
-/mowing-mullumbimby   /service-area.html   301
 /mowing-byron-bay.html      /robot-mower-installation-byron-bay.html      301
 /mowing-byron-bay           /robot-mower-installation-byron-bay           301
-/mowing-lennox-head.html   /service-area.html   301
-/mowing-lennox-head   /service-area.html   301
 /mowing-ballina.html        /robot-mower-installation-ballina.html        301
 /mowing-ballina             /robot-mower-installation-ballina             301
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Suburb pages folded into /service-area on 14 Sep 2026.
+# 11 slugs × 2 forms × 2 generations = 44 rules total.
+#   (a) /mowing-<slug>.html + bare — legacy May-era rules, previously pointed
+#       to /service-area.html, now repointed to /service-area extensionless.
+#   (b) /robot-mower-installation-<slug>.html + bare — the Sep-era URLs that
+#       had been live and indexed from May to September. The rules existed
+#       in this file but were below the catch-all so they returned 404.
+# All target /service-area (extensionless) so Section 1's .html->extensionless
+# pass does not create a chain. 301 is sufficient — no source file exists on
+# disk for any of these, so forcing (301!) is not needed.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# brooklet
+/mowing-brooklet.html                           /service-area    301
+/mowing-brooklet                                /service-area    301
+/robot-mower-installation-brooklet.html         /service-area    301
+/robot-mower-installation-brooklet              /service-area    301
+
+# clunes
+/mowing-clunes.html                             /service-area    301
+/mowing-clunes                                  /service-area    301
+/robot-mower-installation-clunes.html           /service-area    301
+/robot-mower-installation-clunes                /service-area    301
+
+# eureka
+/mowing-eureka.html                             /service-area    301
+/mowing-eureka                                  /service-area    301
+/robot-mower-installation-eureka.html           /service-area    301
+/robot-mower-installation-eureka                /service-area    301
+
+# ewingsdale
+/mowing-ewingsdale.html                         /service-area    301
+/mowing-ewingsdale                              /service-area    301
+/robot-mower-installation-ewingsdale.html       /service-area    301
+/robot-mower-installation-ewingsdale            /service-area    301
+
+# federal
+/mowing-federal.html                            /service-area    301
+/mowing-federal                                 /service-area    301
+/robot-mower-installation-federal.html          /service-area    301
+/robot-mower-installation-federal               /service-area    301
+
+# lennox-head
+/mowing-lennox-head.html                        /service-area    301
+/mowing-lennox-head                             /service-area    301
+/robot-mower-installation-lennox-head.html      /service-area    301
+/robot-mower-installation-lennox-head           /service-area    301
+
+# mullumbimby
+/mowing-mullumbimby.html                        /service-area    301
+/mowing-mullumbimby                             /service-area    301
+/robot-mower-installation-mullumbimby.html      /service-area    301
+/robot-mower-installation-mullumbimby           /service-area    301
+
+# myocum
+/mowing-myocum.html                             /service-area    301
+/mowing-myocum                                  /service-area    301
+/robot-mower-installation-myocum.html           /service-area    301
+/robot-mower-installation-myocum                /service-area    301
+
+# newrybar
+/mowing-newrybar.html                           /service-area    301
+/mowing-newrybar                                /service-area    301
+/robot-mower-installation-newrybar.html         /service-area    301
+/robot-mower-installation-newrybar              /service-area    301
+
+# tintenbar
+/mowing-tintenbar.html                          /service-area    301
+/mowing-tintenbar                               /service-area    301
+/robot-mower-installation-tintenbar.html        /service-area    301
+/robot-mower-installation-tintenbar             /service-area    301
+
+# tyagarah
+/mowing-tyagarah.html                           /service-area    301
+/mowing-tyagarah                                /service-area    301
+/robot-mower-installation-tyagarah.html         /service-area    301
+/robot-mower-installation-tyagarah              /service-area    301
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Duplicate blog posts folded into their matching installation pages (5 Oct 2026).
+# Both posts substantially duplicated the installation page they live beside.
+# Target is the extensionless installation URL so Section 1 does not create
+# a chain. Source files are deleted, so 301 (not 301!) is correct.
+# ─────────────────────────────────────────────────────────────────────────────
+
+/blog-acreage-mowing-in-alstonville-plateau-property-maintenance.html   /robot-mower-installation-alstonville   301
+/blog-acreage-mowing-in-alstonville-plateau-property-maintenance        /robot-mower-installation-alstonville   301
+/blog-acreage-mowing-in-bangalow-what-property-owners-need-to-know.html /robot-mower-installation-bangalow      301
+/blog-acreage-mowing-in-bangalow-what-property-owners-need-to-know      /robot-mower-installation-bangalow      301
 
 # Phase 4 — retire two superseded comparison pages.
 # autoacre-vs-husqvarna folds into the commercial robotic mower buyer's guide,
@@ -65,28 +140,3 @@
 # 200 OK soft-404, which Google treats worse than a normal 404.
 
 /*  /404.html  404
-
-# Suburb pages folded into service-area.html, 14 Sep 2026.
-# Zero clicks in 90 days across all eleven; the service-area page already ranks.
-/robot-mower-installation-lennox-head.html   /service-area.html   301
-/robot-mower-installation-lennox-head        /service-area.html   301
-/robot-mower-installation-federal.html   /service-area.html   301
-/robot-mower-installation-federal        /service-area.html   301
-/robot-mower-installation-eureka.html   /service-area.html   301
-/robot-mower-installation-eureka        /service-area.html   301
-/robot-mower-installation-clunes.html   /service-area.html   301
-/robot-mower-installation-clunes        /service-area.html   301
-/robot-mower-installation-mullumbimby.html   /service-area.html   301
-/robot-mower-installation-mullumbimby        /service-area.html   301
-/robot-mower-installation-brooklet.html   /service-area.html   301
-/robot-mower-installation-brooklet        /service-area.html   301
-/robot-mower-installation-tintenbar.html   /service-area.html   301
-/robot-mower-installation-tintenbar        /service-area.html   301
-/robot-mower-installation-tyagarah.html   /service-area.html   301
-/robot-mower-installation-tyagarah        /service-area.html   301
-/robot-mower-installation-ewingsdale.html   /service-area.html   301
-/robot-mower-installation-ewingsdale        /service-area.html   301
-/robot-mower-installation-myocum.html   /service-area.html   301
-/robot-mower-installation-myocum        /service-area.html   301
-/robot-mower-installation-newrybar.html   /service-area.html   301
-/robot-mower-installation-newrybar        /service-area.html   301

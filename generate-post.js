@@ -429,7 +429,7 @@ function esc(v) {
   return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-// Gate 3: Article plus FAQPage on every post.
+// Gate 3: Article plus FAQPage plus BreadcrumbList on every post.
 function buildSchema(post) {
   const graph = [{
     '@type': 'Article',
@@ -451,6 +451,15 @@ function buildSchema(post) {
       })),
     });
   }
+  // Home > Blog > Post
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://autoacre.com.au/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://autoacre.com.au/blog.html' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: 'https://autoacre.com.au/' + post.slug + '.html' },
+    ],
+  });
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 }
 
