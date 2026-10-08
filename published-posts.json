@@ -949,5 +949,35 @@
     ],
     "readTime": 3,
     "date": "2026-10-01"
+  },
+  {
+    "title": "Bushfire season is a mowing deadline",
+    "keyword": "solar farm asset protection zone mowing Queensland",
+    "tag": "Safety",
+    "img": "commercial-solar-2.jpg",
+    "slug": "blog-bushfire-season-is-a-mowing-deadline",
+    "content": "<h2>How should a Queensland solar farm keep its asset protection zone mowed for fire season?</h2>\n<p>Cut continuously all year, hold the APZs and firebreaks to the written specification, and keep dated height and coverage records. Don't rely on a spare afternoon in November, because the growth flush and the fire danger ratings arrive together.</p>\n<p>Vegetation management on solar farms is usually discussed as a cost line. In Queensland it is becoming something sharper: a compliance deadline with a fire season attached.</p>\n<p>The regulatory direction is clear. Fire authorities and planning codes increasingly expect solar facilities to maintain defined asset protection zones, cleared and cut buffers around arrays and infrastructure, held to specification, not to good intentions. New guidance for renewable sites keeps tightening, and the paperwork expectation tightens with it. It is no longer enough for the grass to be mostly under control. Someone has to be able to show it was at height, on schedule, before the season turned.</p>\n<p>Now put that against how most sites actually mow: whoever has a spare afternoon, on whatever machine is running. That model produces exactly the failure the codes are written against, a wet spring, a growth flush, a stretched crew, and fuel load standing tall under the asset right as the fire danger ratings climb.</p>\n<p>Two facts, side by side. Fire compliance is moving from suggestion to specification. And on most sites, mowing still is not anybody's actual job.</p>\n<p>The fix is not heroics in November. It is a system that cuts continuously all year, holds the APZs and firebreaks to the written spec, and produces the height and coverage records that make an auditor's visit boring. Boring is the goal. In fire compliance, boring is what winning looks like.</p>\n<h2>Common questions</h2>\n<h3>What is an asset protection zone on a solar farm?</h3>\n<p>A cleared and cut buffer around arrays and infrastructure, held to a defined height specification before and through fire season. Fire authorities and planning codes increasingly expect it maintained to spec, not to good intentions.</p>\n<h3>Can an autonomous mower work through fire season?</h3>\n<p>Yes, with operational limits. The machine has no spark or fire detection, so gravel margins are set as no-go zones, charging is sited carefully, and there's no charging on total fire ban days.</p>\n<h3>Does the machine do the whole APZ on its own?</h3>\n<p>No. It holds the mapped runs, roughly 60 to 70 percent of the task. People cut around posts, fences and structures, and wet ground is mapped out until it dries.</p>\n<h3>What records does an auditor want?</h3>\n<p>Height, zone and date, with evidence. A machine following mapped lines logs what it cut and when, and height checks with photos each cycle turn that into a file.</p>\n<h2>Read next</h2>\n<p>Related: <a href=\"blog-fire-fuel-load-and-robots-the-honest-conversation.html\">Fire, fuel load and robots: the honest conversation</a>, <a href=\"blog-solar-farm-vegetation-management-with-autonomous-mowers.html\">Solar Farm Vegetation Management with Autonomous Mowers</a> and <a href=\"blog-the-best-time-to-mow-a-solar-farm-is-2am.html\">The best time to mow a solar farm is 2am</a>.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "meta": "Solar farm asset protection zone mowing in Queensland is becoming a compliance deadline. Cut all year, hold APZs to spec, keep dated height records.",
+    "excerpt": "Solar farm asset protection zone mowing in Queensland is becoming a compliance deadline. Cut all year, hold APZs to spec, keep dated height records.",
+    "faq": [
+      {
+        "q": "What is an asset protection zone on a solar farm?",
+        "a": "A cleared and cut buffer around arrays and infrastructure, held to a defined height specification before and through fire season. Fire authorities and planning codes increasingly expect it maintained to spec, not to good intentions."
+      },
+      {
+        "q": "Can an autonomous mower work through fire season?",
+        "a": "Yes, with operational limits. The machine has no spark or fire detection, so gravel margins are set as no-go zones, charging is sited carefully, and there's no charging on total fire ban days."
+      },
+      {
+        "q": "Does the machine do the whole APZ on its own?",
+        "a": "No. It holds the mapped runs, roughly 60 to 70 percent of the task. People cut around posts, fences and structures, and wet ground is mapped out until it dries."
+      },
+      {
+        "q": "What records does an auditor want?",
+        "a": "Height, zone and date, with evidence. A machine following mapped lines logs what it cut and when, and height checks with photos each cycle turn that into a file."
+      }
+    ],
+    "readTime": 3,
+    "date": "2026-10-08"
   }
 ]
