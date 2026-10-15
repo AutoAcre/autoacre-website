@@ -262,6 +262,25 @@
   </main>
  <footer class="site-footer" role="contentinfo">
  <div class="container">
+  <!-- Newsletter signup. Netlify Forms "newsletter"; submitted in place by app.js; GA event in analytics-events.js -->
+  <section class="footer-newsletter" aria-labelledby="footer-newsletter-title">
+   <div class="footer-newsletter__copy">
+    <h2 class="footer-newsletter__title" id="footer-newsletter-title">Stay updated!</h2>
+    <p class="footer-newsletter__text">Be the first to know about the latest products, offers and stories.</p>
+   </div>
+   <form class="footer-newsletter__form" name="newsletter" method="POST" action="/thank-you-newsletter" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="newsletter">
+    <input type="hidden" name="page" value="/blog-autonomous-mowing-subscription-service-is-it-worth-it">
+    <p class="footer-newsletter__hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <div class="footer-newsletter__row">
+     <label class="sr-only" for="footer-newsletter-email">Email address</label>
+     <input class="footer-newsletter__input" id="footer-newsletter-email" type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-describedby="footer-newsletter-note">
+     <button class="footer-newsletter__button" type="submit">Subscribe</button>
+    </div>
+    <p class="footer-newsletter__note" id="footer-newsletter-note">No spam. Unsubscribe any time. <a href="/privacy">Privacy policy</a></p>
+    <p class="footer-newsletter__status" role="status" aria-live="polite" tabindex="-1"></p>
+   </form>
+  </section>
   <div class="footer-grid">
    <div class="footer-brand">
     <a aria-label='AutoAcre home' class='header-logo' href='/'>

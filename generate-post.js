@@ -489,6 +489,25 @@ function buildPostHtml(post) {
 
   const SITE_FOOTER = `  <footer class="site-footer" role="contentinfo">
     <div class="container">
+      <!-- Newsletter signup. Netlify Forms "newsletter"; submitted in place by app.js; GA event in analytics-events.js -->
+      <section class="footer-newsletter" aria-labelledby="footer-newsletter-title">
+       <div class="footer-newsletter__copy">
+        <h2 class="footer-newsletter__title" id="footer-newsletter-title">Stay updated!</h2>
+        <p class="footer-newsletter__text">Be the first to know about the latest products, offers and stories.</p>
+       </div>
+       <form class="footer-newsletter__form" name="newsletter" method="POST" action="/thank-you-newsletter" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="newsletter">
+        <input type="hidden" name="page" value="/${post.slug}">
+        <p class="footer-newsletter__hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="footer-newsletter__row">
+         <label class="sr-only" for="footer-newsletter-email">Email address</label>
+         <input class="footer-newsletter__input" id="footer-newsletter-email" type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-describedby="footer-newsletter-note">
+         <button class="footer-newsletter__button" type="submit">Subscribe</button>
+        </div>
+        <p class="footer-newsletter__note" id="footer-newsletter-note">No spam. Unsubscribe any time. <a href="/privacy">Privacy policy</a></p>
+        <p class="footer-newsletter__status" role="status" aria-live="polite" tabindex="-1"></p>
+       </form>
+      </section>
       <div class="footer-grid">
         <div class="footer-brand"><a href="index.html"><img src="./img/logo.png" alt="AutoAcre" height="48" style="height:48px;width:auto;filter:brightness(0) invert(1);"></a><p>Autonomous grounds management across the Northern Rivers.</p></div>
         <div class="footer-col"><h4>Services</h4><ul><li><a href="residential.html">Residential</a></li><li><a href="commercial.html">Commercial</a></li><li><a href="demo.html">Book a Demo</a></li><li><a href="quote.html">Get a Quote</a></li></ul></div>
@@ -608,7 +627,27 @@ ${GA_SNIPPET}
       <div class="cta-banner-actions"><a href="demo.html" class="btn btn--primary btn--large">Book a Demo</a><a href="quote.html" class="btn btn--secondary btn--large" style="border-color:rgba(255,255,255,0.3);color:#fff;">Get a Quote</a></div>
     </div></section>
   </main>
-  <footer class="site-footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span></div></div></footer>
+  <footer class="site-footer"><div class="container">
+<!-- Newsletter signup. Netlify Forms "newsletter"; submitted in place by app.js; GA event in analytics-events.js -->
+<section class="footer-newsletter" aria-labelledby="footer-newsletter-title">
+ <div class="footer-newsletter__copy">
+  <h2 class="footer-newsletter__title" id="footer-newsletter-title">Stay updated!</h2>
+  <p class="footer-newsletter__text">Be the first to know about the latest products, offers and stories.</p>
+ </div>
+ <form class="footer-newsletter__form" name="newsletter" method="POST" action="/thank-you-newsletter" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="newsletter">
+  <input type="hidden" name="page" value="/blog">
+  <p class="footer-newsletter__hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+  <div class="footer-newsletter__row">
+   <label class="sr-only" for="footer-newsletter-email">Email address</label>
+   <input class="footer-newsletter__input" id="footer-newsletter-email" type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-describedby="footer-newsletter-note">
+   <button class="footer-newsletter__button" type="submit">Subscribe</button>
+  </div>
+  <p class="footer-newsletter__note" id="footer-newsletter-note">No spam. Unsubscribe any time. <a href="/privacy">Privacy policy</a></p>
+  <p class="footer-newsletter__status" role="status" aria-live="polite" tabindex="-1"></p>
+ </form>
+</section>
+<div class="footer-bottom"><span>&copy; 2026 AutoAcre. All rights reserved.</span></div></div></footer>
   <script src="./app.js" defer></script>
 </body></html>`;
 }

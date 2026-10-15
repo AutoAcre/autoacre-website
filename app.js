@@ -98,6 +98,47 @@
     });
   });
 
+  /* ---- Footer newsletter signup (Netlify Forms, submitted in place) ---- */
+  // Without fetch the form falls back to a normal POST to /thank-you-newsletter.
+  // On success this dispatches 'autoacre:newsletter-signup'; analytics-events.js
+  // turns that into the GA4 newsletter_signup event.
+  document.querySelectorAll('form[name="newsletter"]').forEach(function (form) {
+    var status = form.querySelector('.footer-newsletter__status');
+    var button = form.querySelector('button[type="submit"]');
+    var pageField = form.querySelector('input[name="page"]');
+    if (pageField && !pageField.value) pageField.value = window.location.pathname;
+    if (!window.fetch || !window.URLSearchParams || !window.FormData || !status || !button) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.getAttribute('data-sending') === '1') return;
+      var data = new FormData(form);
+      if (data.get('bot-field')) return;
+      form.setAttribute('data-sending', '1');
+      button.disabled = true;
+      status.textContent = 'Subscribing...';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        form.reset();
+        form.classList.add('is-done');
+        status.textContent = "Thanks, you're on the list. Watch your inbox for the next update.";
+        status.focus();
+        document.dispatchEvent(new CustomEvent('autoacre:newsletter-signup', {
+          detail: { form_location: 'footer' }
+        }));
+      }).catch(function () {
+        status.textContent = 'Something went wrong. Please try again, or email ben@autoacre.com.au.';
+      }).then(function () {
+        form.removeAttribute('data-sending');
+        button.disabled = false;
+      });
+    });
+  });
+
   /* ---- Scroll Reveal (Intersection Observer) ---- */
   const revealElements = document.querySelectorAll('.reveal');
   if (revealElements.length && 'IntersectionObserver' in window) {

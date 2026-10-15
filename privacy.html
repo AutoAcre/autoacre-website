@@ -330,7 +330,7 @@
    <nav class="breadcrumb" aria-label="Breadcrumb"><a href='/'>Home</a> <span>/</span> Privacy Policy</nav>
    <div class="page-hero-inner" style="grid-template-columns:1fr;max-width:820px;">
     <div class="page-hero-text">
-     <span class="section-label">Legal · Effective 2026-05-10</span>
+     <span class="section-label">Legal · Effective 2026-10-16</span>
      <h1>Privacy Policy</h1>
      <p style="font-size:var(--text-lg);color:var(--color-text-muted);line-height:1.7;">AutoAcre is committed to protecting your personal information. This policy explains what we collect, why we collect it, how we use it, and your rights under the Australian Privacy Principles (APPs).</p>
     </div>
@@ -359,7 +359,7 @@
    </ul>
 
    <h2>3. How we collect it</h2>
-   <p>We collect information directly from you when you submit forms (site assessment, quote, demo, calculator lead capture, contact emails), call us, or otherwise interact with our services. Technical data is collected automatically by our hosting provider (Netlify) and any analytics services in use.</p>
+   <p>We collect information directly from you when you submit forms (site assessment, quote, demo, calculator lead capture, newsletter sign-up, contact emails), call us, or otherwise interact with our services. Technical data is collected automatically by our hosting provider (Netlify) and any analytics services in use.</p>
 
    <h2>4. Why we collect it and how we use it</h2>
    <p>We use personal information to:</p>
@@ -369,6 +369,7 @@
     <li>Provide the autonomous mowing system and management services you've engaged us for.</li>
     <li>Send service updates, scheduling messages and invoices.</li>
     <li>Maintain a waitlist for service operations launching Q1 2027.</li>
+    <li>Send our newsletter (product news, offers and stories) to people who sign up for it. Every newsletter includes an unsubscribe link.</li>
     <li>Improve the website, our calculator, and our service offering.</li>
     <li>Comply with legal and regulatory obligations.</li>
    </ul>
@@ -420,6 +421,25 @@
 
  <footer class="site-footer" role="contentinfo">
  <div class="container">
+  <!-- Newsletter signup. Netlify Forms "newsletter"; submitted in place by app.js; GA event in analytics-events.js -->
+  <section class="footer-newsletter" aria-labelledby="footer-newsletter-title">
+   <div class="footer-newsletter__copy">
+    <h2 class="footer-newsletter__title" id="footer-newsletter-title">Stay updated!</h2>
+    <p class="footer-newsletter__text">Be the first to know about the latest products, offers and stories.</p>
+   </div>
+   <form class="footer-newsletter__form" name="newsletter" method="POST" action="/thank-you-newsletter" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="newsletter">
+    <input type="hidden" name="page" value="/privacy">
+    <p class="footer-newsletter__hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <div class="footer-newsletter__row">
+     <label class="sr-only" for="footer-newsletter-email">Email address</label>
+     <input class="footer-newsletter__input" id="footer-newsletter-email" type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-describedby="footer-newsletter-note">
+     <button class="footer-newsletter__button" type="submit">Subscribe</button>
+    </div>
+    <p class="footer-newsletter__note" id="footer-newsletter-note">No spam. Unsubscribe any time. <a href="/privacy">Privacy policy</a></p>
+    <p class="footer-newsletter__status" role="status" aria-live="polite" tabindex="-1"></p>
+   </form>
+  </section>
   <div class="footer-grid">
    <div class="footer-brand">
     <a aria-label='AutoAcre home' class='header-logo' href='/'>
