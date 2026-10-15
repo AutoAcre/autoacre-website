@@ -1,5 +1,5 @@
 /*!
- * AutoAcre - GA4 custom events (drop-in)  v2  (4 Oct 2026)
+ * AutoAcre - GA4 custom events (drop-in)  v2.1  (16 Oct 2026)
  * Property: G-QV4RX5RY79 (gtag.js is already on every page)
  *
  * INSTALL (already live as v1; v2 is a drop-in replacement of the same file)
@@ -17,6 +17,8 @@
  *   phone_click              click on any tel: link
  *   email_click              click on any mailto: link                                [NEW in v2]
  *   outbound_click           click on a link to another domain (Facebook etc.). Params: link_domain, link_url [NEW in v2]
+ *   newsletter_signup        a successful footer newsletter signup (app.js dispatches 'autoacre:newsletter-signup'
+ *                            after Netlify accepts it). Param: form_location. Never counted as lead_form_submit. [NEW in v2.1]
  *
  * No personal data is ever read or sent: form field values are never touched, email addresses are not sent.
  * To rename an event, change it in EVENTS below.
@@ -33,7 +35,8 @@
     calcPrint: 'roi_calculator_print_pdf',
     phone: 'phone_click',
     email: 'email_click',
-    outbound: 'outbound_click'
+    outbound: 'outbound_click',
+    newsletter: 'newsletter_signup'
   };
 
   var COMPLETE_AFTER = 3; // distinct calculator controls touched before roi_calculator_complete fires
@@ -198,6 +201,7 @@
   // dispatches before any preventDefault that would stop a real submission.
   function formName(f) {
     var n = f.getAttribute && f.getAttribute('name');
+    if (n === 'newsletter') return null; // footer signup: its own event below, never a lead
     if (n === 'calc-leads') return 'calc_leads';
     if (/^\/book-site-assessment/i.test(location.pathname)) return 'book_site_assessment';
     if (/^\/quote/i.test(location.pathname)) return 'quote';
@@ -217,4 +221,9 @@
     lastSubmit[name] = now;
     send(EVENTS.leadForm, { form_name: name });
   }, false);
+
+  // ---------- newsletter signup ----------
+  document.addEventListener('autoacre:newsletter-signup', function (e) {
+    send(EVENTS.newsletter, { form_location: (e.detail && e.detail.form_location) || 'footer' });
+  });
 })();
