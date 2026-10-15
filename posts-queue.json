@@ -1,7 +1,7 @@
 {
-  "nextIndex": 13,
-  "lastPublished": 12,
-  "lastPublishedDate": "2026-10-08",
+  "nextIndex": 14,
+  "lastPublished": 13,
+  "lastPublishedDate": "2026-10-15",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -41,7 +41,7 @@
     {
       "slug": "blog-autonomous-mowing-subscription-service-is-it-worth-it",
       "date": "2026-06-08",
-      "title": "Autonomous Mowing Subscription Service \u2014 Is It Worth It?"
+      "title": "Autonomous Mowing Subscription Service — Is It Worth It?"
     },
     {
       "slug": "blog-solar-farm-vegetation-management-with-autonomous-mowers",
@@ -51,27 +51,27 @@
     {
       "slug": "blog-acreage-mowing-in-ewingsdale-prestige-property-grounds-management",
       "date": "2026-06-22",
-      "title": "Acreage Mowing in Ewingsdale \u2014 Prestige Property Grounds Management"
+      "title": "Acreage Mowing in Ewingsdale — Prestige Property Grounds Management"
     },
     {
       "slug": "blog-acreage-mowing-in-newrybar-lifestyle-property-maintenance-guide",
       "date": "2026-06-29",
-      "title": "Acreage Mowing in Newrybar \u2014 Lifestyle Property Maintenance Guide"
+      "title": "Acreage Mowing in Newrybar — Lifestyle Property Maintenance Guide"
     },
     {
       "slug": "blog-acreage-mowing-in-mullumbimby-northern-rivers-property-guide",
       "date": "2026-07-01",
-      "title": "Acreage Mowing in Mullumbimby \u2014 Northern Rivers Property Guide"
+      "title": "Acreage Mowing in Mullumbimby — Northern Rivers Property Guide"
     },
     {
       "slug": "blog-acreage-mowing-in-federal-hinterland-property-maintenance",
       "date": "2026-07-08",
-      "title": "Acreage Mowing in Federal \u2014 Hinterland Property Maintenance"
+      "title": "Acreage Mowing in Federal — Hinterland Property Maintenance"
     },
     {
       "slug": "blog-acreage-mowing-in-myocum-elevated-hinterland-property-care",
       "date": "2026-07-15",
-      "title": "Acreage Mowing in Myocum \u2014 Elevated Hinterland Property Care"
+      "title": "Acreage Mowing in Myocum — Elevated Hinterland Property Care"
     },
     {
       "slug": "blog-eight-acres-a-day-not-twelve",
@@ -137,6 +137,11 @@
       "slug": "blog-bushfire-season-is-a-mowing-deadline",
       "date": "2026-10-08",
       "title": "Bushfire season is a mowing deadline"
+    },
+    {
+      "slug": "blog-where-the-next-twelve-thousand-hectares-lands",
+      "date": "2026-10-15",
+      "title": "Where the next twelve thousand hectares lands"
     }
   ],
   "topics": [

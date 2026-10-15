@@ -909,5 +909,35 @@
     ],
     "readTime": 3,
     "date": "2026-10-08"
+  },
+  {
+    "title": "Where the next twelve thousand hectares lands",
+    "keyword": "data centre solar build vegetation management",
+    "tag": "Industry",
+    "img": "commercial-solar.jpg",
+    "slug": "blog-where-the-next-twelve-thousand-hectares-lands",
+    "content": "<h2>What does the data centre solar build mean for vegetation management?</h2>\n<p>Roughly 12,000 hectares of new fenced solar ground over the coming decade, clustered in the inland corridors, and every hectare grows grass all year. The one or two technician maintenance model that already creaks on today's estate does not scale to double.</p>\n<p>We wrote recently about Australia's proposed data centre rules: large facilities obliged to underwrite new generation, putting in at least as much energy as they take out. Run the rough maths on the solar share of that new build and you get something like 12,000 hectares of new fenced solar ground over the coming decade. Roughly Queensland's existing utility estate, built again.</p>\n<p>Here is the operational question nobody in the announcements is asking: who mows it?</p>\n<p>The new ground will not arrive evenly. Solar farms get built where flat land and grid capacity are cheap, which means the inland corridors, the Darling Downs, the Western Downs, Central Queensland. These are already cluster regions, farm beside farm, and the clusters will thicken. A rule of thumb of about two hectares per megawatt means every new gigawatt is another two thousand fenced hectares of grass that grows every month of a Queensland year.</p>\n<p>Now hold that against the current maintenance model. Most utility sites run with one or two technicians. Mowing is absorbed into their week. That model already creaks on today's estate. It does not scale to double.</p>\n<p>Something in the model has to change, and the candidates are known: grazing where it stacks up, machines where specification and records matter, and operators who can run vegetation across a cluster rather than a single fence line. The sites that sort this early will simply have a cheaper, safer, more compliant decade than the ones that hire another contractor every three years and hope.</p>\n<p>The ground is being scouted now. The mowing plan should be too.</p>\n<h2>Common questions</h2>\n<h3>Where does the two hectares per megawatt figure come from?</h3>\n<p>It's a rule of thumb for utility solar land take. Every new gigawatt is another two thousand fenced hectares, give or take, that needs cutting every month of a Queensland year.</p>\n<h3>Why can't the current technicians just absorb it?</h3>\n<p>Most utility sites run one or two technicians and mowing is absorbed into their week. That's already the lowest value use of skilled hours, and doubling the estate doubles the hours.</p>\n<h3>Is the answer machines or sheep?</h3>\n<p>Both, plus operators who can run vegetation across a cluster. Grazing where it stacks up, machines where specification and records matter.</p>\n<h3>How much of a site can a machine cover?</h3>\n<p>Plan on about eight acres (three hectares) a day per machine, on the mapped bulk runs. Close-in work around posts and structures stays with people, roughly 30 to 40 percent of the task.</p>\n<h2>Read next</h2>\n<p>Related: <a href=\"blog-solar-farm-vegetation-management-with-autonomous-mowers.html\">Solar Farm Vegetation Management with Autonomous Mowers</a>, <a href=\"blog-four-robots-919-hectares-what-brisbane-airport-just-proved.html\">Four robots, 919 hectares: what Brisbane Airport just proved</a> and <a href=\"blog-the-biggest-line-item-nobody-budgets.html\">The biggest line item nobody budgets</a>.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "meta": "Data centre solar build vegetation management: about 12,000 new hectares of fenced solar ground, and a one or two technician mowing model that can't scale.",
+    "excerpt": "Data centre solar build vegetation management: about 12,000 new hectares of fenced solar ground, and a one or two technician mowing model that can't scale.",
+    "faq": [
+      {
+        "q": "Where does the two hectares per megawatt figure come from?",
+        "a": "It's a rule of thumb for utility solar land take. Every new gigawatt is another two thousand fenced hectares, give or take, that needs cutting every month of a Queensland year."
+      },
+      {
+        "q": "Why can't the current technicians just absorb it?",
+        "a": "Most utility sites run one or two technicians and mowing is absorbed into their week. That's already the lowest value use of skilled hours, and doubling the estate doubles the hours."
+      },
+      {
+        "q": "Is the answer machines or sheep?",
+        "a": "Both, plus operators who can run vegetation across a cluster. Grazing where it stacks up, machines where specification and records matter."
+      },
+      {
+        "q": "How much of a site can a machine cover?",
+        "a": "Plan on about eight acres (three hectares) a day per machine, on the mapped bulk runs. Close-in work around posts and structures stays with people, roughly 30 to 40 percent of the task."
+      }
+    ],
+    "readTime": 3,
+    "date": "2026-10-15"
   }
 ]
