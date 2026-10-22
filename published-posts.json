@@ -939,5 +939,35 @@
     ],
     "readTime": 3,
     "date": "2026-10-15"
+  },
+  {
+    "title": "Proof, not promises: what maintained actually means",
+    "keyword": "solar farm vegetation compliance records",
+    "tag": "Solar",
+    "img": "commercial-solar-3.jpg",
+    "slug": "blog-proof-not-promises-what-maintained-actually-means",
+    "content": "<h2>What vegetation compliance records should a solar farm keep?</h2>\n<p>Height, zone and date, with photos, every cycle, against the contract numbers. A machine following mapped lines logs what it cut and when, and adding height checks and photos each cycle turns that into a file an auditor can read.</p>\n<p>Every vegetation contractor says the site is under control. The question that matters is different: can you show it?</p>\n<p>On utility solar, the contract is specific. Heights held to numbers, commonly around 100mm under the panels and 300mm between the rows, every cycle. When something goes wrong, a fire, an audit, an insurance question, the conversation is not about effort. It is about records. What was the height, in that zone, on that date, and where is the evidence.</p>\n<p>Most sites cannot answer. Not because the work was not done, but because nobody wrote it down. Mowing done by whoever had a spare hour leaves exactly the paper trail you would expect: none.</p>\n<p>This is where autonomous mowing quietly changes the game, and it has little to do with the blades. A machine that follows mapped lines knows what it cut and when. Add height checks and photos each cycle and you get something no ad hoc crew produces: a running, dated record of the whole site against its contract numbers. Coverage logs. Cut history by zone. Photographic evidence at the heights that matter.</p>\n<p>For a site manager, that record is the difference between we think we are compliant and here is the file. For an asset owner, it is the difference between trusting a contractor's word and reading a report.</p>\n<p>The mowing is the visible product. The record is the durable one. When the auditor, the insurer or the fire investigator asks their question, only one of those two is worth anything.</p>\n<h2>Common questions</h2>\n<h3>What heights does a solar contract usually specify?</h3>\n<p>Commonly around 100mm under the panels and 300mm between the rows, held every cycle. The exact numbers sit in your contract, and the record should be measured against them.</p>\n<h3>Is the record produced automatically?</h3>\n<p>Partly. The machine logs coverage and cut history by zone as it runs. Height checks and photos are done by a person each cycle, and the file is assembled by hand, not pulled from a live screen somewhere.</p>\n<h3>Does the record cover the whole site?</h3>\n<p>It covers the mapped runs the machine cuts, roughly 60 to 70 percent of the task. Close-in work around posts, edges and structures is done by people and gets logged the same way, by hand.</p>\n<h3>Who asks for these records?</h3>\n<p>Auditors, insurers and fire investigators, usually after something has gone wrong. The conversation is about evidence, not effort.</p>\n<h2>Read next</h2>\n<p>Related: <a href=\"blog-why-autonomous-mowing-trials-fail.html\">Why autonomous mowing trials fail</a>, <a href=\"blog-solar-farm-vegetation-management-with-autonomous-mowers.html\">Solar Farm Vegetation Management with Autonomous Mowers</a> and <a href=\"blog-the-mower-does-not-need-the-internet-here-is-what-does.html\">The mower does not need the internet. Here is what does.</a>.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "meta": "Solar farm vegetation compliance records: height, zone and date with photos, every cycle. Mapped-line mowing logs what was cut and when. Show the file.",
+    "excerpt": "Solar farm vegetation compliance records: height, zone and date with photos, every cycle. Mapped-line mowing logs what was cut and when. Show the file.",
+    "faq": [
+      {
+        "q": "What heights does a solar contract usually specify?",
+        "a": "Commonly around 100mm under the panels and 300mm between the rows, held every cycle. The exact numbers sit in your contract, and the record should be measured against them."
+      },
+      {
+        "q": "Is the record produced automatically?",
+        "a": "Partly. The machine logs coverage and cut history by zone as it runs. Height checks and photos are done by a person each cycle, and the file is assembled by hand, not pulled from a live screen somewhere."
+      },
+      {
+        "q": "Does the record cover the whole site?",
+        "a": "It covers the mapped runs the machine cuts, roughly 60 to 70 percent of the task. Close-in work around posts, edges and structures is done by people and gets logged the same way, by hand."
+      },
+      {
+        "q": "Who asks for these records?",
+        "a": "Auditors, insurers and fire investigators, usually after something has gone wrong. The conversation is about evidence, not effort."
+      }
+    ],
+    "readTime": 3,
+    "date": "2026-10-22"
   }
 ]

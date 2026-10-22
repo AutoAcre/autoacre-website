@@ -1,7 +1,7 @@
 {
-  "nextIndex": 14,
-  "lastPublished": 13,
-  "lastPublishedDate": "2026-10-15",
+  "nextIndex": 15,
+  "lastPublished": 14,
+  "lastPublishedDate": "2026-10-22",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -142,6 +142,11 @@
       "slug": "blog-where-the-next-twelve-thousand-hectares-lands",
       "date": "2026-10-15",
       "title": "Where the next twelve thousand hectares lands"
+    },
+    {
+      "slug": "blog-proof-not-promises-what-maintained-actually-means",
+      "date": "2026-10-22",
+      "title": "Proof, not promises: what maintained actually means"
     }
   ],
   "topics": [
