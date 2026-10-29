@@ -969,5 +969,35 @@
     ],
     "readTime": 3,
     "date": "2026-10-22"
+  },
+  {
+    "title": "Robot versus zero-turn: the real coverage maths",
+    "keyword": "robotic mower vs zero turn",
+    "tag": "Analysis",
+    "img": "rideon-1.jpg",
+    "slug": "blog-robot-versus-zero-turn-the-real-coverage-maths",
+    "content": "<h2>Does a robot mower cover more ground than a zero-turn?</h2>\n<p>Not per hour. A wide-deck zero-turn with an operator on it puts down more ground in an hour than a 48-inch tracked RTK mower does, and we'd rather say that plainly than dress it up.</p>\n<h2>Per hour is the wrong unit</h2>\n<p>A zero-turn's coverage depends on deck width and operator. Wider deck and faster ground speed means more acres an hour, and on open ground a good operator will keep that up all day.</p>\n<p>The machine does about 8 acres (3 hectares) a day. That's our planning figure and we don't move it.</p>\n<p>Here's the part that gets skipped in the comparison. The zero-turn covers ground while someone is sitting on it. The machine covers ground while nobody is.</p>\n<h2>Hours and consistency</h2>\n<p>RTK and LiDAR don't need daylight. The machine can run through the evening, through the night, and be partway through the next block before anyone turns up in the morning. We've written elsewhere about <a href=\"blog-the-best-time-to-mow-a-solar-farm-is-2am.html\">why the best time to mow a solar farm is 2am</a>.</p>\n<p>A zero-turn runs for the hours a person is on it. That's a real limit and a fair one. People have to go home.</p>\n<h2>What the person does instead</h2>\n<p>The machine doesn't do all of it. Close-in work around posts, structures and edges is 60 to 70 percent autonomous at best, and people finish the rest. Someone still sets the machine up, moves it between blocks, keeps the decks right and sorts it out when it stops.</p>\n<p>That's a skilled local technician role. The difference is where the hours land: less time driving in straight lines, more time on the work that needs judgement.</p>\n<p>The machine cuts the same line at 6am and at 6pm. It doesn't get tired at the end of a long block, doesn't cut wide on the last pass and doesn't rush a Friday afternoon. That matters more across a repeating cycle than it does on a single visit.</p>\n<h2>Where the robot loses</h2>\n<p>Dense summer grass over 300 mm roughly halves speed. Both machine types. The machine gets no exemption.</p>\n<p>Small blocks where transport and setup eat the day. Tight, cluttered ground with a lot of edge relative to open area. Jobs that need finishing today, once, and never again. On those a zero-turn with a good operator is the right tool, and we'd tell you so.</p>\n<p>Our model is to operate machines where there's enough planned, repeating work to be worth the setup. Not everywhere.</p>\n<h2>Common questions</h2>\n<h3>How many acres a day can an autonomous mower do?</h3>\n<p>We plan on about 8 acres (3 hectares) a day per machine. Dense summer grass over 300 mm roughly halves that.</p>\n<h3>Can it really run at night?</h3>\n<p>Yes. RTK positioning and LiDAR don't need daylight. The machine keeps working after the crew has gone home.</p>\n<h3>Does it replace the ride-on?</h3>\n<p>No. It takes the open repeatable passes. A zero-turn still earns its place on small, cluttered or one-off jobs.</p>\n<h3>What about edges and posts?</h3>\n<p>People do those. Close-in work runs 60 to 70 percent autonomous and the rest is finished by hand.</p>\n<h2>Read next</h2>\n<p>Related: <a href=\"blog-eight-acres-a-day-not-twelve.html\">Eight acres a day. Not twelve.</a>, <a href=\"blog-a-week-a-month-on-the-slasher.html\">A week a month on the slasher</a> and <a href=\"blog-autonomous-mowing-vs-traditional-ride-on-a-property-owner-s-guide.html\">Autonomous Mowing vs Traditional Ride-On: A Property Owner's Guide</a>.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "meta": "Robotic mower vs zero turn: a zero turn covers more per hour. The robot wins on hours it can run and frees skilled people. Honest limits both ways.",
+    "excerpt": "Robotic mower vs zero turn: a zero turn covers more per hour. The robot wins on hours it can run and frees skilled people. Honest limits both ways.",
+    "faq": [
+      {
+        "q": "How many acres a day can an autonomous mower do?",
+        "a": "We plan on about 8 acres (3 hectares) a day per machine. Dense summer grass over 300 mm roughly halves that."
+      },
+      {
+        "q": "Can it really run at night?",
+        "a": "Yes. RTK positioning and LiDAR don't need daylight. The machine keeps working after the crew has gone home."
+      },
+      {
+        "q": "Does it replace the ride-on?",
+        "a": "No. It takes the open repeatable passes. A zero-turn still earns its place on small, cluttered or one-off jobs."
+      },
+      {
+        "q": "What about edges and posts?",
+        "a": "People do those. Close-in work runs 60 to 70 percent autonomous and the rest is finished by hand."
+      }
+    ],
+    "readTime": 3,
+    "date": "2026-10-29"
   }
 ]

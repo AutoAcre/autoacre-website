@@ -1,7 +1,7 @@
 {
-  "nextIndex": 15,
-  "lastPublished": 14,
-  "lastPublishedDate": "2026-10-22",
+  "nextIndex": 16,
+  "lastPublished": 15,
+  "lastPublishedDate": "2026-10-29",
   "published": [
     {
       "slug": "blog-how-much-does-acreage-mowing-cost-in-byron-bay",
@@ -147,6 +147,11 @@
       "slug": "blog-proof-not-promises-what-maintained-actually-means",
       "date": "2026-10-22",
       "title": "Proof, not promises: what maintained actually means"
+    },
+    {
+      "slug": "blog-robot-versus-zero-turn-the-real-coverage-maths",
+      "date": "2026-10-29",
+      "title": "Robot versus zero-turn: the real coverage maths"
     }
   ],
   "topics": [
