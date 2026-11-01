@@ -999,5 +999,39 @@
     ],
     "readTime": 3,
     "date": "2026-10-29"
+  },
+  {
+    "title": "Is autonomous mowing actually cheaper than conventional mowing?",
+    "keyword": "autonomous mowing vs conventional mowing cost",
+    "tag": "Analysis",
+    "img": "acreage-valley-1.jpg",
+    "slug": "blog-is-autonomous-mowing-actually-cheaper-than-conventional-mowing",
+    "content": "<h2>Is autonomous mowing actually cheaper than conventional mowing?</h2>\n<p>Sometimes. It depends on how much planned work a site has and whether the machine has time to run, and the only honest way to find out is to measure it on the actual ground.</p>\n<h2>Compare the job, not the day rate</h2>\n<p>A machine day rate is the easy number to put side by side. It's also the wrong one.</p>\n<p>Conventional mowing carries crew time, mobilisation, fuel, scheduling around site access, and the repeat visits a growing season forces. The bill for one visit is a single line. The cost of the cycle is the whole season, and <a href=\"blog-a-week-a-month-on-the-slasher.html\">a week a month on the slasher</a> is what that looks like on plenty of sites.</p>\n<h2>Autonomous work has its own costs</h2>\n<p>Setup and mapping. Transport between blocks. Technician time on site. Edges, posts and structures, which run 60 to 70 percent autonomous and get finished by people. Recovery when the machine stops, because it will.</p>\n<p>Anyone quoting autonomous mowing without those lines in it is quoting a machine, not a job.</p>\n<h2>What actually moves the numbers</h2>\n<p>Two things. Enough planned work in one place, and enough time to run.</p>\n<p>A machine planned at about 8 acres (3 hectares) a day does well on ground with weeks of repeating passes and permission to work outside daylight. The same machine on a small, cluttered, once-a-year block does not. We put the per-hour side of it together in <a href=\"blog-robot-versus-zero-turn-the-real-coverage-maths.html\">robot versus zero-turn: the real coverage maths</a>.</p>\n<p>Dense summer grass over 300 mm roughly halves speed, for machines and for crews. Whatever cycle you're costing, cost it wet as well as dry.</p>\n<p>The work changes shape. Machines take the open repeatable passes. People do edges, structures, setup and the calls that need judgement. The role the machine creates is a skilled local technician, and that's a job with more in it, not less.</p>\n<h2>The trial is the measurement</h2>\n<p>We don't ask anyone to take the comparison on faith. Our model is to run a paid trial on the ground in question, log what the machine does on your grass and your slopes, and set that against the cycle you're running now.</p>\n<p>You already know what your current cycle costs you. After a trial you'd know what ours does.</p>\n<h2>Common questions</h2>\n<h3>Is autonomous mowing always cheaper?</h3>\n<p>No. It can improve the economics where there's enough planned work and enough running time. On small or one-off sites it often doesn't.</p>\n<h3>What gets left out of most comparisons?</h3>\n<p>Mobilisation, scheduling and repeat visits on the conventional side. Setup, transport, technician time and edge work on the autonomous side.</p>\n<h3>How much ground does one machine cover?</h3>\n<p>We plan on about 8 acres (3 hectares) a day per machine, roughly halved in dense summer growth over 300 mm.</p>\n<h3>Does this replace our mowing contractor?</h3>\n<p>No. It changes what the hours get spent on. Edges, posts and structures still need people.</p>\n<h3>How long before we'd know?</h3>\n<p>Long enough to see a full cycle on the site, including one wet stretch. A single dry week tells you very little.</p>\n<h2>Read next</h2>\n<p>Related: <a href=\"blog-the-biggest-line-item-nobody-budgets.html\">The biggest line item nobody budgets</a>, <a href=\"blog-why-autonomous-mowing-trials-fail.html\">Why autonomous mowing trials fail</a> and <a href=\"blog-the-maths-of-a-mowing-cycle.html\">The maths of a mowing cycle</a>.</p>\n<p><em>AutoAcre is an autonomous mowing operator based in the Northern Rivers, NSW, focused on solar-farm and commercial vegetation management. ben@autoacre.com.au</em></p>",
+    "meta": "Autonomous mowing vs conventional mowing cost: not automatically cheaper. It turns on planned work and running time. A paid trial is how you measure it.",
+    "excerpt": "Autonomous mowing vs conventional mowing cost: not automatically cheaper. It turns on planned work and running time. A paid trial is how you measure it.",
+    "faq": [
+      {
+        "q": "Is autonomous mowing always cheaper?",
+        "a": "No. It can improve the economics where there's enough planned work and enough running time. On small or one-off sites it often doesn't."
+      },
+      {
+        "q": "What gets left out of most comparisons?",
+        "a": "Mobilisation, scheduling and repeat visits on the conventional side. Setup, transport, technician time and edge work on the autonomous side."
+      },
+      {
+        "q": "How much ground does one machine cover?",
+        "a": "We plan on about 8 acres (3 hectares) a day per machine, roughly halved in dense summer growth over 300 mm."
+      },
+      {
+        "q": "Does this replace our mowing contractor?",
+        "a": "No. It changes what the hours get spent on. Edges, posts and structures still need people."
+      },
+      {
+        "q": "How long before we'd know?",
+        "a": "Long enough to see a full cycle on the site, including one wet stretch. A single dry week tells you very little."
+      }
+    ],
+    "readTime": 3,
+    "date": "2026-11-01"
   }
 ]
